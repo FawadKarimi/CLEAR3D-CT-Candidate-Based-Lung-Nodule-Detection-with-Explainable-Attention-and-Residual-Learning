@@ -1,5 +1,8 @@
 """Synthetic CT and temporary SQLite only; no pylidc installation or patient data."""
+import errno
+from contextlib import closing
 import json
+import logging
 import os
 from pathlib import Path
 import sqlite3
@@ -56,7 +59,7 @@ class Fixture:
         self.config.write_text((Path(__file__).parents[1] / "configs/source_audit.yaml").read_text(), encoding="utf-8")
         self.rows = [_dicom(self.raw / f"slice-{i}.dcm", i + 1, [0, 0, z]) for i, z in enumerate(positions)]
         self.save_inventory()
-        with sqlite3.connect(self.db) as conn:
+        with closing(sqlite3.connect(self.db)) as conn, conn:
             conn.executescript("""
                 CREATE TABLE scans (id INTEGER PRIMARY KEY, patient_id VARCHAR, study_instance_uid VARCHAR, series_instance_uid VARCHAR);
                 CREATE TABLE annotations (id INTEGER PRIMARY KEY, scan_id INTEGER REFERENCES scans(id));
@@ -72,7 +75,7 @@ class Fixture:
         self.inv.write_text(json.dumps({"source_root": str(self.raw), "slices": self.rows, "errors": []}), encoding="utf-8")
 
     def sql(self, sql, parameters=()):
-        with sqlite3.connect(self.db) as conn:
+        with closing(sqlite3.connect(self.db)) as conn, conn:
             conn.execute(sql, parameters)
 
     def contour(self, index, name, z, inclusion=1):
@@ -84,6 +87,10 @@ class Fixture:
         data = {key: [json.loads(line) for line in (output / f"{key}.jsonl").read_text().splitlines()]
                 for key in ("series_audit", "duplicate_positions", "contour_linkage")}
         data["provenance"] = json.loads((output / "provenance.json").read_text())
+        assert summary["source_approved"] is False and summary["training_released"] is False
+        assert summary["schema_version"] == data["provenance"]["schema_version"] == 2
+        assert data["provenance"]["configuration"]["schema_version"] == 1
+        assert all(r["schema_version"] == 2 for key in ("series_audit", "duplicate_positions", "contour_linkage") for r in data[key])
         return summary, data
 
 
@@ -126,11 +133,12 @@ def test_repeated_content_and_separate_reference_cardinalities(tmp_path, conflic
     assert len({m["metadata"]["SOPInstanceUID"] for m in group["members"]}) == 2
     assert all(m["sha256_before"] == m["sha256_after"] for m in group["members"])
     references = group["annotation_references"]
-    assert references["verified_member_cardinality"] == "one"
+    assert references["verified_inspected_member_cardinality"] == ("neither" if conflict else "one")
+    assert data["contour_linkage"][0]["status"] == ("exact_link_inspection_unresolved" if conflict else "verified_inspected_source_link")
     assert len(references["z_candidate_members"]) == 2
     assert references["contours"][0]["inclusion"] == 0
-    assert data["contour_linkage"][1]["status"] == "z_only_unverified"
-    assert data["contour_linkage"][1]["verified_record_id"] is None
+    assert data["contour_linkage"][1]["status"] == "z_only_inventory_link"
+    assert data["contour_linkage"][1]["verified_inspected_record_id"] is None
 
 
 @pytest.mark.parametrize("tag,value,padding_equal,hu_equal", [
@@ -166,8 +174,8 @@ def test_filename_collisions_missing_literal_sop_and_z_only(tmp_path):
     f.contour(6, f.rows[2]["sop_uid"] + ".dcm", 1)
     _, data = f.run()
     links = data["contour_linkage"]
-    assert [c["status"] for c in links] == ["ambiguous_exact_link", "missing_link", "z_only_unverified",
-                                           "verified_exact_inventory_link", "filename_position_contradiction", "z_only_unverified"]
+    assert [c["status"] for c in links] == ["ambiguous_exact_link", "missing_link", "z_only_inventory_link",
+                                           "exact_inventory_record_link_source_not_rechecked", "filename_position_contradiction", "z_only_inventory_link"]
     assert len(links[0]["exact_filename_record_ids"]) == 2
     assert len(links[2]["z_candidate_record_ids"]) == 1
     assert len(links[4]["exact_filename_record_ids"]) == 1  # Other series cannot collide.
@@ -181,7 +189,7 @@ def test_repeated_group_reference_cardinality(tmp_path, references, expected):
         f.contour(i + 1, f"slice-{i}.dcm", 0)
     _, data = f.run()
     ref = data["duplicate_positions"][0]["annotation_references"]
-    assert ref["verified_member_cardinality"] == expected
+    assert ref["verified_inspected_member_cardinality"] == expected
     assert ref["exact_candidate_cardinality"] == expected
 
 
@@ -194,7 +202,7 @@ def test_duplicate_database_identity_and_sops_do_not_verify(tmp_path):
     summary, data = f.run()
     assert summary["duplicate_database_identities"][0]["scan_ids"] == [1, 2]
     assert len(summary["duplicate_sop_ids"]) == 1
-    assert data["contour_linkage"][0]["verified_record_id"] is None
+    assert data["contour_linkage"][0]["verified_inspected_record_id"] is None
 
 
 @pytest.mark.parametrize("sql", ["ALTER TABLE contours RENAME TO unsupported_contours",
@@ -337,7 +345,7 @@ def test_resolved_symlink_protection_in_both_directions(tmp_path):
             audit.audit_source(f.inv, f.db, f.config, alias / "output")
     finally:
         alias.rmdir() if os.name == "nt" and not alias.is_symlink() else alias.unlink()
-    # An input file reached via a link to an external tree protects the target tree too.
+    # An input alias into an external tree is rejected before any DICOM read.
     external = tmp_path / "external"
     external.mkdir()
     link = f.raw / "linked"
@@ -347,7 +355,7 @@ def test_resolved_symlink_protection_in_both_directions(tmp_path):
         r["path"] = str(link / "input.dcm")
         f.rows.append(r)
         f.save_inventory()
-        with pytest.raises(ValueError, match="protected"):
+        with pytest.raises(ValueError, match="Raw-source boundary violation"):
             audit.audit_source(f.inv, f.db, f.config, external / "output")
     finally:
         link.rmdir() if os.name == "nt" and not link.is_symlink() else link.unlink()
@@ -456,9 +464,9 @@ def test_inspected_inventory_mismatch_invalidates_link_and_cli_fails(tmp_path):
     ds.save_as(ds.filename, enforce_file_format=True)
     summary, data = f.run()
     assert summary["audit_status"] == "failed"
-    assert data["contour_linkage"][0]["status"] == "exact_link_source_unverified"
-    assert data["contour_linkage"][0]["verified_record_id"] is None
-    assert data["duplicate_positions"][0]["annotation_references"]["verified_member_cardinality"] == "neither"
+    assert data["contour_linkage"][0]["status"] == "filename_position_contradiction"
+    assert data["contour_linkage"][0]["verified_inspected_record_id"] is None
+    assert data["duplicate_positions"][0]["annotation_references"]["verified_inspected_member_cardinality"] == "neither"
     command = [sys.executable, "-B", "-m", "lidc3d.cli", "audit-source", "--inventory", str(f.inv),
                "--annotation-db", str(f.db), "--config", str(f.config), "--out", str(tmp_path / "failed-cli")]
     result = subprocess.run(command, env={**os.environ, "PYTHONPATH": str(Path(__file__).parents[1] / "src")}, capture_output=True, text=True)
@@ -534,3 +542,267 @@ def test_invalid_inclusion_preserved_and_missing_geometry_visible(tmp_path):
     assert data["contour_linkage"][0]["original"]["inclusion"] == 2
     assert not data["contour_linkage"][0]["inclusion_valid"]
     assert "invalid_orientation" in data["series_audit"][0]["geometry"]["findings"]
+
+
+def test_ordinary_exact_inventory_link_never_reopens_or_verifies_source(tmp_path, monkeypatch):
+    f = Fixture(tmp_path)
+    f.contour(1, "slice-0.dcm", 0)
+    digest = audit.sha256
+
+    def forbid_dicom_read(*args, **kwargs):
+        pytest.fail("Ordinary inventory slice must not be opened")
+
+    def reject_dicom_hash(path):
+        assert Path(path).suffix != ".dcm", "Ordinary DICOM must not be hashed"
+        return digest(path)
+
+    monkeypatch.setattr(audit.pydicom, "dcmread", forbid_dicom_read)
+    monkeypatch.setattr(audit, "sha256", reject_dicom_hash)
+    summary, data = f.run()
+    link = data["contour_linkage"][0]
+    assert link["status"] == "exact_inventory_record_link_source_not_rechecked"
+    assert "verified" not in link["status"]
+    assert link["exact_inventory_record_id"] == 1
+    assert link["verified_inspected_record_id"] is None
+    assert link["exact_candidate_inspections"] == []
+    assert summary["counts"]["inspected_dicom_records"] == 0
+    assert summary["contour_linkage_counts"] == {link["status"]: 1}
+    assert "inventory byte immutability only" in data["provenance"]["inventory_hash_scope"]
+
+
+def test_complete_inspected_evidence_links_both_members_without_selecting(tmp_path):
+    f = Fixture(tmp_path, (0, 0, 1))
+    for i in range(3):
+        f.contour(i + 1, f"slice-{i}.dcm", 0 if i < 2 else 1)
+    before = {r["path"]: sha256(r["path"]) for r in f.rows}
+    summary, data = f.run()
+    links = data["contour_linkage"]
+    assert [r["status"] for r in links] == ["verified_inspected_source_link", "verified_inspected_source_link",
+                                           "exact_inventory_record_link_source_not_rechecked"]
+    group = data["duplicate_positions"][0]
+    assert len(group["members"]) == 2
+    assert group["resolution"] == "unresolved_no_slice_selected"
+    assert group["annotation_references"]["verified_inspected_members"] == [1, 2]
+    assert group["annotation_references"]["verified_inspected_member_cardinality"] == "multiple"
+    for member in group["members"]:
+        assert member["source_opened"] and member["bytes_unchanged"]
+        assert member["inspection_blockers"] == []
+        assert not member["warnings"] and not member["pydicom_log_warnings"]
+    assert data["series_audit"][0]["ct_count"] == 3
+    assert summary["counts"]["ct_records"] == 3
+    assert before == {r["path"]: sha256(r["path"]) for r in f.rows}
+
+
+@pytest.mark.parametrize("conflict", ["raw", "padding", "hu", "unavailable"])
+def test_pixel_conflicts_block_every_member_without_a_preference(tmp_path, conflict):
+    f = Fixture(tmp_path, (0, 0, 0))
+    for i in range(3):
+        f.contour(i + 1, f"slice-{i}.dcm", 0)
+    ds = pydicom.dcmread(f.rows[2]["path"])
+    if conflict == "raw":
+        ds.PixelData = np.full((2, 2), 500, dtype="<i2").tobytes()
+    elif conflict == "padding":
+        ds.add_new(0x00280120, "SS", 0)
+    elif conflict == "hu":
+        ds.RescaleIntercept = -999
+    else:
+        ds.PixelData = b"\0\0"
+    ds.save_as(ds.filename, enforce_file_format=True)
+    summary, data = f.run()
+    links = data["contour_linkage"]
+    assert all(r["status"] == "exact_link_inspection_unresolved" for r in links)
+    assert all(r["verified_inspected_record_id"] is None for r in links)
+    group = data["duplicate_positions"][0]
+    assert len(group["members"]) == 3 and len(group["pairwise"]) == 3
+    assert group["resolution"] == "unresolved_no_slice_selected"
+    assert group["annotation_references"]["exact_candidate_cardinality"] == "multiple"
+    assert group["annotation_references"]["verified_inspected_member_cardinality"] == "neither"
+    assert all(m["inspection_blockers"] for m in group["members"])
+    assert summary["inspection_blocker_counts"]
+
+
+def test_real_pydicom_pixel_warning_is_preserved_and_blocks_verification(tmp_path):
+    f = Fixture(tmp_path, (0, 0))
+    for i in range(2):
+        f.contour(i + 1, f"slice-{i}.dcm", 0)
+    ds = pydicom.dcmread(f.rows[1]["path"])
+    ds.PixelData += b"\0\0"  # Valid samples plus excess padding: pydicom warns while decoding.
+    ds.save_as(ds.filename, enforce_file_format=True)
+    summary, data = f.run()
+    group = data["duplicate_positions"][0]
+    assert summary["audit_status"] == "completed"  # Warnings are diagnostic, never approval.
+    assert group["members"][1]["warnings"]
+    assert group["members"][1]["decode_status"] == "decoded"
+    assert "unresolved_read_or_decode_warning" in group["members"][1]["inspection_blockers"]
+    assert group["pairwise"][0]["raw_pixels_equal"] is True
+    assert all(r["status"] == "exact_link_inspection_unresolved" for r in data["contour_linkage"])
+    assert all(r["verified_inspected_record_id"] is None for r in data["contour_linkage"])
+
+
+def test_logger_only_pydicom_warning_blocks_verification_and_handler_is_removed(tmp_path, monkeypatch):
+    f = Fixture(tmp_path, (0, 0))
+    f.contour(1, "slice-0.dcm", 0)
+    original = audit.pydicom.dcmread
+    logger = logging.getLogger("pydicom")
+    handlers_before = logger.handlers[:]
+
+    def warned_read(path, *args, **kwargs):
+        logger.warning("Synthetic identity warning from pydicom logger")
+        return original(path, *args, **kwargs)
+
+    monkeypatch.setattr(audit.pydicom, "dcmread", warned_read)
+    summary, data = f.run()
+    member = data["duplicate_positions"][0]["members"][0]
+    assert summary["audit_status"] == "completed"
+    assert not member["warnings"]
+    assert member["pydicom_log_warnings"] == [{"level": "WARNING", "message": "Synthetic identity warning from pydicom logger"}]
+    assert data["contour_linkage"][0]["status"] == "exact_link_inspection_unresolved"
+    assert logger.handlers == handlers_before
+
+
+@pytest.mark.parametrize("path_kind", ["outside", "traversal_outside", "traversal_inside", "relative"])
+def test_raw_boundary_rejected_before_any_dicom_read_or_hash(tmp_path, monkeypatch, path_kind):
+    f = Fixture(tmp_path, (0, 0))
+    outside = _dicom(tmp_path / "outside.dcm", 3, [0, 0, 0])
+    paths = {"outside": outside["path"], "traversal_outside": str(f.raw / ".." / "outside.dcm"),
+             "traversal_inside": str(f.raw / "nested" / ".." / "slice-1.dcm"), "relative": "raw/slice-1.dcm"}
+    f.rows[1]["path"] = paths[path_kind]
+    f.save_inventory()
+    digest = audit.sha256
+
+    def forbidden_read(*args, **kwargs):
+        pytest.fail("Boundary violations must fail before reading any DICOM")
+
+    def guarded_hash(path):
+        assert Path(path).suffix != ".dcm", "Boundary violation must not hash a DICOM"
+        return digest(path)
+
+    monkeypatch.setattr(audit.pydicom, "dcmread", forbidden_read)
+    monkeypatch.setattr(audit, "sha256", guarded_hash)
+    with pytest.raises(ValueError, match="Raw-source boundary violation"):
+        f.run()
+    assert not (tmp_path / "audit").exists()
+
+
+def _file_symlink(link, target):
+    try:
+        link.symlink_to(target)
+    except OSError as error:
+        unavailable = {errno.EPERM, errno.EACCES, errno.ENOSYS, errno.ENOTSUP}
+        if error.errno in unavailable or getattr(error, "winerror", None) == 1314:
+            pytest.skip(f"OS cannot create file symlinks with current privileges: {error}")
+        raise
+
+
+def test_file_symlink_outside_raw_root_never_opened(tmp_path, monkeypatch):
+    f = Fixture(tmp_path, (0, 0))
+    outside = _dicom(tmp_path / "outside.dcm", 3, [0, 0, 0])
+    link = f.raw / "outside-link.dcm"
+    _file_symlink(link, Path(outside["path"]))
+    f.rows[1]["path"] = str(link)
+    f.save_inventory()
+    digest = audit.sha256
+
+    def forbid_read(*args, **kwargs):
+        pytest.fail("Escaping symlink must not open any DICOM")
+
+    def guarded_hash(path):
+        assert Path(path).suffix != ".dcm"
+        return digest(path)
+
+    monkeypatch.setattr(audit.pydicom, "dcmread", forbid_read)
+    monkeypatch.setattr(audit, "sha256", guarded_hash)
+    with pytest.raises(ValueError, match="resolves outside source_root"):
+        f.run()
+
+
+def test_contained_file_symlink_is_valid(tmp_path):
+    f = Fixture(tmp_path, (0, 0))
+    link = f.raw / "contained-link.dcm"
+    _file_symlink(link, Path(f.rows[0]["path"]))
+    f.rows[0]["path"] = str(link)
+    f.save_inventory()
+    f.contour(1, link.name, 0)
+    summary, data = f.run()
+    assert summary["audit_status"] == "completed"
+    assert data["contour_linkage"][0]["status"] == "verified_inspected_source_link"
+
+
+def test_inspection_rechecks_boundary_after_inventory_preparation(tmp_path, monkeypatch):
+    f = Fixture(tmp_path, (0, 0))
+    outside = _dicom(tmp_path / "external" / "outside.dcm", 3, [0, 0, 0])
+    prepare = audit._prepare_inventory
+
+    def changed_inventory(inventory):
+        root, rows = prepare(inventory)
+        rows[0]["path"] = outside["path"]
+        return root, rows
+
+    def forbid_read(*args, **kwargs):
+        pytest.fail("Changed path must be rejected immediately before inspection")
+
+    monkeypatch.setattr(audit, "_prepare_inventory", changed_inventory)
+    monkeypatch.setattr(audit.pydicom, "dcmread", forbid_read)
+    summary, _ = f.run()
+    assert summary["audit_status"] == "failed"
+    assert "Raw-source boundary violation" in str(summary["operational_errors"])
+
+
+@pytest.mark.parametrize("tag,value", [("PatientID", "OTHER"), ("StudyInstanceUID", "1.2.9"),
+                                      ("SeriesInstanceUID", "1.2.9"), ("SOPInstanceUID", "1.2.9")])
+def test_inspected_identity_must_match_inventory_and_database_context(tmp_path, tag, value):
+    f = Fixture(tmp_path, (0, 0))
+    f.contour(1, "slice-0.dcm", 0)
+    ds = pydicom.dcmread(f.rows[0]["path"])
+    setattr(ds, tag, value)
+    ds.save_as(ds.filename, enforce_file_format=True)
+    summary, data = f.run()
+    assert summary["audit_status"] == "failed"
+    assert data["contour_linkage"][0]["status"] == "exact_link_inspection_unresolved"
+    assert data["contour_linkage"][0]["verified_inspected_record_id"] is None
+
+
+def test_changed_dicom_hash_blocks_inspected_source_link(tmp_path, monkeypatch):
+    f = Fixture(tmp_path, (0, 0))
+    f.contour(1, "slice-0.dcm", 0)
+    read = audit.pydicom.dcmread
+
+    def mutated_after_read(path, *args, **kwargs):
+        ds = read(path, *args, **kwargs)
+        if Path(path) == Path(f.rows[0]["path"]):
+            with Path(path).open("ab") as handle:  # Deliberate synthetic tampering by the test only.
+                handle.write(b"\0\0")
+        return ds
+
+    monkeypatch.setattr(audit.pydicom, "dcmread", mutated_after_read)
+    summary, data = f.run()
+    member = data["duplicate_positions"][0]["members"][0]
+    assert summary["audit_status"] == "failed"
+    assert not member["bytes_unchanged"]
+    assert "source_bytes_changed_or_hash_unavailable" in member["inspection_blockers"]
+    assert data["contour_linkage"][0]["status"] == "exact_link_inspection_unresolved"
+
+
+def test_actual_group_geometry_checked_in_addition_to_inventory(tmp_path):
+    f = Fixture(tmp_path, (0, 0))
+    f.contour(1, "slice-0.dcm", 0)
+    for i, row in enumerate(f.rows):
+        ds = pydicom.dcmread(row["path"])
+        # Both are individually within inventory tolerance, but they disagree with each other.
+        ds.ImageOrientationPatient = [1, 0.00009 * (-1 if i else 1), 0, 0, 1, 0]
+        ds.save_as(ds.filename, enforce_file_format=True)
+    _, data = f.run()
+    assert "variable_orientation" in data["duplicate_positions"][0]["members"][0]["inspected_group_geometry_findings"]
+    assert data["contour_linkage"][0]["status"] == "exact_link_inspection_unresolved"
+
+
+def test_contour_z_compared_directly_to_inspected_position(tmp_path):
+    f = Fixture(tmp_path, (0, 0))
+    f.contour(1, "slice-0.dcm", -0.0001)
+    ds = pydicom.dcmread(f.rows[0]["path"])
+    ds.ImagePositionPatient = [0, 0, 0.0000005]
+    ds.save_as(ds.filename, enforce_file_format=True)
+    _, data = f.run()
+    link = data["contour_linkage"][0]
+    assert link["status"] == "filename_position_contradiction"
+    assert link["verified_inspected_record_id"] is None

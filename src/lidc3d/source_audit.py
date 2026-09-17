@@ -12,6 +12,7 @@ from datetime import datetime, timezone
 import importlib.metadata
 import itertools
 import json
+import logging
 import math
 from pathlib import Path
 import platform
@@ -27,7 +28,8 @@ import yaml
 
 from .provenance import sha256, write_json
 
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
+CONFIG_SCHEMA_VERSION = 1
 TOLERANCES = {
     "repeated_position_atol_mm", "z_atol_mm", "orientation_atol",
     "in_plane_spacing_atol_mm", "position_drift_atol_mm", "spacing_atol_mm",
@@ -101,7 +103,7 @@ def _inside(path, root):
 
 def _load_config(path):
     config = yaml.safe_load(path.read_text(encoding="utf-8"))
-    if not isinstance(config, dict) or config.get("schema_version") != SCHEMA_VERSION:
+    if not isinstance(config, dict) or config.get("schema_version") != CONFIG_SCHEMA_VERSION:
         raise ValueError("Unsupported audit configuration schema_version")
     if set(config) - {"schema_version", "tolerances", "protected_roots"}:
         raise ValueError("Unknown audit configuration fields; use configs/source_audit.yaml")
@@ -118,22 +120,35 @@ def _load_config(path):
     return config
 
 
+def _source_path(path, raw_root):
+    """Validate without opening a DICOM; reject traversal even if it returns inside."""
+    path = Path(path)
+    if not path.is_absolute():
+        raise ValueError(f"Raw-source boundary violation: DICOM path must be absolute: {path}")
+    if ".." in path.parts:
+        raise ValueError(f"Raw-source boundary violation: parent traversal in DICOM path: {path}")
+    resolved = path.resolve()
+    if resolved == raw_root or not _inside(resolved, raw_root):
+        raise ValueError(f"Raw-source boundary violation: DICOM path resolves outside source_root: {path}")
+    return resolved
+
+
 def _prepare_inventory(inventory):
     if not isinstance(inventory, dict) or not isinstance(inventory.get("slices"), list):
         raise ValueError("Expected LIDC3D header inventory with slices and source_root")
     root = Path(inventory["source_root"])
     if not root.is_absolute():
         raise ValueError("Inventory source_root must be absolute")
+    root = root.resolve()
     rows = inventory["slices"]
     for row in rows:
         if any(not isinstance(row.get(k), str) or not row[k] for k in (*IDENTITY, "sop_uid", "path")):
             raise ValueError("Inventory slice needs nonempty identity, SOP UID and path strings")
-        if not Path(row["path"]).is_absolute():
-            raise ValueError("Inventory DICOM paths must be absolute")
+        _source_path(row["path"], root)
     # Stable record IDs do not depend on inventory ordering; retain repeated records.
     rows = sorted(rows, key=lambda r: (*_identity(r), r["path"], r["sop_uid"],
                                      json.dumps(r, sort_keys=True)))
-    return root.resolve(), [{**r, "record_id": i + 1} for i, r in enumerate(rows)]
+    return root, [{**r, "record_id": i + 1} for i, r in enumerate(rows)]
 
 
 def _protect_output(output, raw_root, rows, inventory, database, config_path, config, lexical_raw_root):
@@ -143,7 +158,7 @@ def _protect_output(output, raw_root, rows, inventory, database, config_path, co
     roots.update(Path(p).resolve() for p in config.get("protected_roots", []))
     roots.update(Path(p).resolve() for key, p in sysconfig.get_paths().items()
                  if key in {"purelib", "platlib", "stdlib", "platstdlib"})
-    # Protect targets reached through directory symlinks, including files outside raw_root.
+    # Protect contained targets reached through directory symlinks as well as aliases.
     roots.update(Path(r["path"]).resolve().parent for r in rows)
     roots.update(Path(r["path"]).absolute().parent for r in rows)
     if output.exists() or output.is_symlink():
@@ -333,18 +348,42 @@ def _z_comparison(rows, db_z, atol):
             "ambiguous_db_zvals": [m["zval_id"] for m in matches if len(m["ct_record_ids"]) > 1]}
 
 
-def _inspect_file(row, tol):
-    path = Path(row["path"])
-    record = {"record_id": row["record_id"], "source_path": str(path), "resolved_source_path": str(path.resolve()),
+class _PydicomWarnings(logging.Handler):
+    """Capture logger-only warnings as well as warnings.warn, without changing levels."""
+    def __init__(self):
+        super().__init__(level=logging.WARNING)
+        self.records = []
+
+    def emit(self, record):
+        self.records.append({"level": record.levelname, "message": record.getMessage()})
+
+
+@contextmanager
+def _pydicom_warnings():
+    logger, handler = logging.getLogger("pydicom"), _PydicomWarnings()
+    logger.addHandler(handler)
+    try:
+        yield handler.records
+    finally:
+        logger.removeHandler(handler)
+        handler.close()
+
+
+def _inspect_file(row, tol, raw_root):
+    # Recheck immediately before I/O and use the contained resolved path for all reads.
+    path = _source_path(row["path"], raw_root)
+    record = {"record_id": row["record_id"], "source_path": row["path"], "resolved_source_path": str(path),
               "inventory_sop_uid": row["sop_uid"], "sha256_before": None, "sha256_after": None,
+              "source_opened": False,
               "decode_status": "failed", "padding_status": "unavailable", "hu_status": "unavailable",
               "metadata": {}, "findings": []}
     raw = valid = hu = None
-    with warnings.catch_warnings(record=True) as caught:
+    with warnings.catch_warnings(record=True) as caught, _pydicom_warnings() as log_warnings:
         warnings.simplefilter("always")
         try:
             record["sha256_before"] = sha256(path)
             ds = pydicom.dcmread(path)
+            record["source_opened"] = True
             record["metadata"] = {name: _json_value(getattr(ds, name, None)) for name in METADATA}
             record["metadata"]["TransferSyntaxUID"] = str(getattr(ds.file_meta, "TransferSyntaxUID", ""))
             if row.get("sha256") and row["sha256"] != record["sha256_before"]:
@@ -399,13 +438,14 @@ def _inspect_file(row, tol):
             except OSError as error:
                 record["hash_error"] = _error(error)
         record["warnings"] = [str(w.message) for w in caught]
+        record["pydicom_log_warnings"] = log_warnings
     record["bytes_unchanged"] = record["sha256_before"] is not None and record["sha256_before"] == record["sha256_after"]
     record["findings"].sort()
     return record, raw, valid, hu
 
 
-def _content(group, tol):
-    inspected = [_inspect_file(r, tol) for r in group]
+def _content(group, tol, raw_root):
+    inspected = [_inspect_file(r, tol, raw_root) for r in group]
     pairs = []
     for a, b in itertools.combinations(inspected, 2):
         ma, ra, va, ha = a
@@ -421,10 +461,47 @@ def _content(group, tol):
                       "hu_equal_on_common_valid_pixels": bool(np.allclose(ha[shared], hb[shared], atol=tol["hu_atol"], rtol=0)) if hu_ok else None,
                       "max_abs_hu_difference_on_common_valid_pixels": float(np.max(np.abs(ha[shared] - hb[shared]))) if hu_ok else None,
                       "hu_comparison_status": "compared" if hu_ok else "unavailable_or_no_common_valid_pixels"})
-    return [v[0] for v in inspected], pairs
+    members = [v[0] for v in inspected]
+    blockers = {m["record_id"]: set(m["findings"]) for m in members}
+    actual_rows = [{**r, **{key: m["metadata"].get(tag) for key, tag in (
+        ("position", "ImagePositionPatient"), ("orientation", "ImageOrientationPatient"),
+        ("pixel_spacing", "PixelSpacing"), ("rows", "Rows"), ("columns", "Columns"),
+        ("image_type", "ImageType"))}} for r, m in zip(group, members)]
+    for row in actual_rows:
+        row["image_type"] = row["image_type"] or []
+    actual_geometry = _geometry(actual_rows, tol)
+    for m in members:
+        reasons = blockers[m["record_id"]]
+        m["inspected_group_geometry_findings"] = actual_geometry["findings"]
+        reasons.update("inspected_geometry_" + reason for reason in actual_geometry["findings"])
+        if not m["source_opened"] or "error" in m or m["decode_status"] != "decoded":
+            reasons.add("source_inspection_incomplete")
+        if "hash_error" in m or not m["bytes_unchanged"]:
+            reasons.add("source_bytes_changed_or_hash_unavailable")
+        if m["warnings"] or m["pydicom_log_warnings"]:
+            reasons.add("unresolved_read_or_decode_warning")
+    for pair in pairs:
+        for field in ("raw_pixels_equal", "padding_validity_equal", "hu_equal_on_common_valid_pixels"):
+            if pair[field] is not True:
+                reason = field + ("_conflict" if pair[field] is False else "_unavailable")
+                for record_id in pair["record_ids"]:
+                    blockers[record_id].add(reason)
+    span = np.ptp(np.array([r["position"] for r in group], dtype=float), axis=0)
+    if span.max() > tol["repeated_position_atol_mm"]:
+        for reasons in blockers.values():
+            reasons.add("repeated_position_tolerance_chain_ambiguous")
+    # A comparison involving an uncertain peer cannot establish a clean group.
+    # In particular, do not implicitly prefer the warning-free or decodable member.
+    if any(blockers.values()):
+        for reasons in blockers.values():
+            if not reasons:
+                reasons.add("repeated_position_peer_evidence_unresolved")
+    for member in members:
+        member["inspection_blockers"] = sorted(blockers[member["record_id"]])
+    return members, pairs
 
 
-def _link_contours(contours, rows, scan_count, geometry, global_sops, raw_root, tol, untrusted_ids):
+def _link_contours(contours, rows, scan_count, geometry, global_sops, raw_root, tol, inspections):
     filename, sop = defaultdict(list), defaultdict(list)
     for r in rows:
         path = Path(r["path"])
@@ -446,13 +523,21 @@ def _link_contours(contours, rows, scan_count, geometry, global_sops, raw_root, 
         exact = sorted(set(fn + uid))
         position = sorted(i for _, i in zrows[bisect_left(zs, z - tol["z_atol_mm"]):bisect_right(zs, z + tol["z_atol_mm"])]) if _finite(z) else []
         contradictory = sorted(set(exact) - set(position)) if _finite(z) else []
+        # Check the actual inspected z directly as well: tolerance errors must not accumulate.
+        if _finite(z):
+            for record_id in exact:
+                actual = _vector(inspections.get(record_id, {}).get("metadata", {}).get("ImagePositionPatient"), 3)
+                if actual is not None and abs(float(actual[2]) - z) > tol["z_atol_mm"]:
+                    contradictory.append(record_id)
+            contradictory = sorted(set(contradictory))
         ambiguous = len(exact) > 1 or scan_count != 1 or any(global_sops[by_id[i]["sop_uid"]] != 1 for i in exact)
         status = ("filename_position_contradiction" if contradictory else
                   "ambiguous_exact_link" if exact and ambiguous else
-                  "exact_link_source_unverified" if set(exact) & untrusted_ids else
                   "exact_link_geometry_unresolved" if exact and (not _finite(z) or geometry["status"] != "diagnostic_geometry_consistent") else
-                  "verified_exact_inventory_link" if exact else
-                  "z_only_unverified" if position else "missing_link")
+                  "exact_link_inspection_unresolved" if any(inspections[i]["inspection_blockers"] for i in exact if i in inspections) else
+                  "verified_inspected_source_link" if exact and exact[0] in inspections else
+                  "exact_inventory_record_link_source_not_rechecked" if exact else
+                  "z_only_inventory_link" if position else "missing_link")
         yield {"contour_id": c["id"], "annotation_id": c["annotation_id"], "scan_id": c["scan_id"],
                "identity": {k: c[k] for k in IDENTITY},
                "original": {k: c[k] for k in ("dicom_file_name", "image_z_position", "inclusion")},
@@ -460,7 +545,11 @@ def _link_contours(contours, rows, scan_count, geometry, global_sops, raw_root, 
                "z_candidate_record_ids": position, "all_candidate_record_ids": sorted(set(exact + position)),
                "position_contradiction_record_ids": contradictory,
                "identity_ambiguous": ambiguous, "status": status,
-               "verified_record_id": exact[0] if status == "verified_exact_inventory_link" else None,
+               "exact_inventory_record_id": exact[0] if status in ("exact_inventory_record_link_source_not_rechecked", "verified_inspected_source_link") else None,
+               "verified_inspected_record_id": exact[0] if status == "verified_inspected_source_link" else None,
+               "exact_candidate_inspections": [{"record_id": i, "source_opened": inspections[i]["source_opened"],
+                                                "inspection_blockers": inspections[i]["inspection_blockers"]}
+                                               for i in exact if i in inspections],
                "reader_identity": "unresolved", "inclusion_valid": c["inclusion"] in (0, 1)}
 
 
@@ -470,12 +559,12 @@ def _reference_summary(group, links):
     for link in links:
         exact = ids & set(link["exact_filename_record_ids"] + link["literal_sop_uid_record_ids"])
         z = ids & set(link["z_candidate_record_ids"])
-        verified = {link["verified_record_id"]} & ids
+        verified = {link["verified_inspected_record_id"]} & ids
         if exact or z:
             details.append({"contour_id": link["contour_id"], "annotation_id": link["annotation_id"],
                             "inclusion": link["original"]["inclusion"], "status": link["status"],
                             "exact_candidate_record_ids": sorted(exact), "z_candidate_record_ids": sorted(z),
-                            "verified_record_ids": sorted(verified)})
+                            "verified_inspected_record_ids": sorted(verified)})
         exact_members.update(exact)
         verified_members.update(verified)
         z_members.update(z)
@@ -484,7 +573,7 @@ def _reference_summary(group, links):
         return "neither" if not items else "one" if len(items) == 1 else "multiple"
 
     return {"exact_candidate_members": sorted(exact_members), "exact_candidate_cardinality": cardinality(exact_members),
-            "verified_members": sorted(verified_members), "verified_member_cardinality": cardinality(verified_members),
+            "verified_inspected_members": sorted(verified_members), "verified_inspected_member_cardinality": cardinality(verified_members),
             "z_candidate_members": sorted(z_members), "contours": details,
             "meaning": "references in this database only; neither does not mean annotation absence in XML"}
 
@@ -544,15 +633,14 @@ def _run(inventory, rows, raw_root, database, config, handles, summary, provenan
                                               for k in sorted(db_by) if len(db_by[k]) > 1]
     summary["inventory_errors"] = sorted(inventory.get("errors", []), key=lambda r: json.dumps(r, sort_keys=True))
     linkage_counts = Counter()
+    inspection_blocker_counts = Counter()
     for key in sorted(set(ct_by) | set(db_by)):
         series_rows, db_scans = ct_by[key], db_by[key]
         geometry = _geometry(series_rows, tol)
         groups = _position_groups(series_rows, tol["repeated_position_atol_mm"])
-        content = [_content(group, tol) for group in groups]
-        untrusted_ids = {m["record_id"] for members, _ in content for m in members
-                         if "error" in m or "hash_error" in m or not m["bytes_unchanged"] or m["findings"]}
-        # Never verify linkage against an inventory entry contradicted by an inspected file.
-        links = list(_link_contours(contour_by[key], series_rows, len(db_scans), geometry, sops, raw_root, tol, untrusted_ids))
+        content = [_content(group, tol, raw_root) for group in groups]
+        inspections = {m["record_id"]: m for members, _ in content for m in members}
+        links = list(_link_contours(contour_by[key], series_rows, len(db_scans), geometry, sops, raw_root, tol, inspections))
         for link in links:
             _emit(handles["contour_linkage"], link)
             linkage_counts[link["status"]] += 1
@@ -571,6 +659,7 @@ def _run(inventory, rows, raw_root, database, config, handles, summary, provenan
             summary["counts"]["repeated_position_groups"] += 1
             summary["counts"]["inspected_dicom_records"] += len(members)
             for member in members:
+                inspection_blocker_counts.update(member["inspection_blockers"])
                 if "error" in member or "hash_error" in member or not member["bytes_unchanged"] or member["findings"]:
                     summary["operational_errors"].append({"code": "dicom_inspection_failed_or_inventory_changed",
                                                           "record_id": member["record_id"], "group_id": group_id})
@@ -584,6 +673,7 @@ def _run(inventory, rows, raw_root, database, config, handles, summary, provenan
             "contour_linkage_counts": dict(sorted(Counter(link["status"] for link in links).items()))})
     summary["counts"]["series_union"] = len(set(ct_by) | set(db_by))
     summary["contour_linkage_counts"] = dict(sorted(linkage_counts.items()))
+    summary["inspection_blocker_counts"] = dict(sorted(inspection_blocker_counts.items()))
 
 
 def audit_source(inventory_path, annotation_db, config_path, output, invocation=None):
@@ -606,10 +696,14 @@ def audit_source(inventory_path, annotation_db, config_path, output, invocation=
                   "inputs": {name: {"path": str(path), "sha256_before": before[name]} for name, path in
                              (("inventory", inventory_path), ("database", database), ("config", config_path))},
                   "dicom_hash_scope": "only inspected repeated-position members; entire CT archive NOT cryptographically verified",
+                  "inventory_hash_scope": "inventory byte immutability only; not cryptographic verification of referenced DICOM files",
+                  "source_boundary_policy": "absolute paths contained by resolved source_root; no parent traversal; rechecked before inspection",
+                  "warning_policy": "all captured read/decode warnings block inspected-source verification; no harmless exceptions",
                   "installed_pylidc_source_inspected": False, "pylidc_imported_or_loader_executed": False}
     summary = {"schema_version": SCHEMA_VERSION, "audit_status": "failed", "source_approved": False,
                "training_released": False, "resolution": "diagnostic_only_requires_separate_review",
                "coverage": {"reader_identity": "unresolved_not_inferred_from_annotation_ids",
+                            "ordinary_dicom_source_evidence": "inventory_only_source_not_rechecked",
                             "small_nodule_annotations": "unresolved_not_verified_against_XML",
                             "non_nodule_annotations": "unresolved_not_verified_against_XML",
                             "annotation_counts_are_distinct_nodules": False, "negative_labels_created": False,
