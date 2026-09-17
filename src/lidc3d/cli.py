@@ -94,6 +94,11 @@ def main():
     p.add_argument("--raw", required=True)
     p.add_argument("--out", required=True)
     p.add_argument("--hash-files", action="store_true")
+    p = sub.add_parser("audit-source", help="Read-only diagnostic audit; never approves source use")
+    p.add_argument("--inventory", required=True)
+    p.add_argument("--annotation-db", required=True)
+    p.add_argument("--config", required=True)
+    p.add_argument("--out", required=True)
     p = sub.add_parser("cohort")
     p.add_argument("--inventory", required=True)
     p.add_argument("--config", required=True)
@@ -156,6 +161,9 @@ def main():
         from .ingest import inventory
         safe_output(args.out, args.raw)
         write_json(args.out, inventory(args.raw, args.hash_files))
+    elif args.command == "audit-source":
+        from .source_audit import audit_command
+        audit_command(args)
     elif args.command == "cohort":
         from .pipeline import build_cohort
         build_cohort(read_json(args.inventory), load_config(args.config), args.out)

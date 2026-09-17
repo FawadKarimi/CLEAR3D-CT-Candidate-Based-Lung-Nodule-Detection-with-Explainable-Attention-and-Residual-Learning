@@ -10,6 +10,8 @@ Read `docs/Experiment_Design.md`, `docs/Implementation_Decisions.md` and `docs/A
 
 The first server action is a read-only environment check. We will execute server steps individually and inspect each output before proceeding. No source data should be uploaded to this conversation.
 
+For diagnostic inspection of an existing inventory and the installed annotation SQLite database, see [the source audit operating guide](docs/Source_Audit.md). `lidc3d audit-source` preserves ambiguous slices and annotation links and never approves a cohort or releases training. It does not change the ingestion rejection rules.
+
 The package requires Python 3.10 or newer and a compatible PyTorch installation. Use an independent environment and output directory. Do not upgrade the environment used by either existing project. The dependency ranges in `pyproject.toml` are installation requirements, not a claim that every allowed combination has been tested. `validation/environment.json` records the specific local verification environment; the server environment must be recorded separately.
 
 ## Modules
