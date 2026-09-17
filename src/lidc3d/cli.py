@@ -95,6 +95,7 @@ def main():
     p.add_argument("--out", required=True)
     p.add_argument("--hash-files", action="store_true")
     p = sub.add_parser("audit-source", help="Read-only diagnostic audit; never approves source use")
+    p.add_argument("--pylidc-source-root", help="Read/hash provider source only; required to enable legacy filename/z evidence")
     p.add_argument("--inventory", required=True)
     p.add_argument("--annotation-db", required=True)
     p.add_argument("--config", required=True)

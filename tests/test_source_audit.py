@@ -61,12 +61,12 @@ class Fixture:
         self.save_inventory()
         with closing(sqlite3.connect(self.db)) as conn, conn:
             conn.executescript("""
-                CREATE TABLE scans (id INTEGER PRIMARY KEY, patient_id VARCHAR, study_instance_uid VARCHAR, series_instance_uid VARCHAR);
+                CREATE TABLE scans (id INTEGER PRIMARY KEY, patient_id VARCHAR, study_instance_uid VARCHAR, series_instance_uid VARCHAR, sorted_dicom_file_names TEXT);
                 CREATE TABLE annotations (id INTEGER PRIMARY KEY, scan_id INTEGER REFERENCES scans(id));
                 CREATE TABLE contours (id INTEGER PRIMARY KEY, annotation_id INTEGER REFERENCES annotations(id), inclusion BOOLEAN,
                                        image_z_position FLOAT, dicom_file_name VARCHAR, coords VARCHAR);
                 CREATE TABLE zvals (id INTEGER PRIMARY KEY, scan_id INTEGER REFERENCES scans(id), val FLOAT);
-                INSERT INTO scans VALUES (1, 'SYNTHETIC', '1.2.3', '1.2.3.4');
+                INSERT INTO scans VALUES (1, 'SYNTHETIC', '1.2.3', '1.2.3.4', NULL);
                 INSERT INTO annotations VALUES (1, 1);
             """)
             conn.executemany("INSERT INTO zvals VALUES (?, 1, ?)", enumerate(sorted(set(positions)), start=1))
@@ -81,16 +81,16 @@ class Fixture:
     def contour(self, index, name, z, inclusion=1):
         self.sql("INSERT INTO contours VALUES (?, 1, ?, ?, ?, '0,0')", (index, inclusion, z, name))
 
-    def run(self, name="audit"):
+    def run(self, name="audit", provider=None):
         output = self.root / name
-        summary = audit.audit_source(self.inv, self.db, self.config, output, invocation=["synthetic-audit"])
+        summary = audit.audit_source(self.inv, self.db, self.config, output, invocation=["synthetic-audit"], pylidc_source_root=provider)
         data = {key: [json.loads(line) for line in (output / f"{key}.jsonl").read_text().splitlines()]
                 for key in ("series_audit", "duplicate_positions", "contour_linkage")}
         data["provenance"] = json.loads((output / "provenance.json").read_text())
         assert summary["source_approved"] is False and summary["training_released"] is False
-        assert summary["schema_version"] == data["provenance"]["schema_version"] == 2
+        assert summary["schema_version"] == data["provenance"]["schema_version"] == 3
         assert data["provenance"]["configuration"]["schema_version"] == 1
-        assert all(r["schema_version"] == 2 for key in ("series_audit", "duplicate_positions", "contour_linkage") for r in data[key])
+        assert all(r["schema_version"] == 3 for key in ("series_audit", "duplicate_positions", "contour_linkage") for r in data[key])
         return summary, data
 
 
@@ -98,7 +98,7 @@ def test_matching_missing_and_equal_counts_mismatched_positions(tmp_path):
     f = Fixture(tmp_path)
     f.rows.append(_dicom(f.raw / "other.dcm", 9, [0, 0, 0], patient="OTHER", series="1.2.3.9"))
     f.save_inventory()
-    f.sql("INSERT INTO scans VALUES (2, 'DB_ONLY', '1.2.8', '1.2.8.1')")
+    f.sql("INSERT INTO scans VALUES (2, 'DB_ONLY', '1.2.8', '1.2.8.1', NULL)")
     f.sql("UPDATE zvals SET val=9 WHERE id=2")
     summary, data = f.run()
     assert summary["audit_status"] == "completed"
@@ -195,7 +195,7 @@ def test_repeated_group_reference_cardinality(tmp_path, references, expected):
 
 def test_duplicate_database_identity_and_sops_do_not_verify(tmp_path):
     f = Fixture(tmp_path, (0, 0))
-    f.sql("INSERT INTO scans VALUES (2, 'SYNTHETIC', '1.2.3', '1.2.3.4')")
+    f.sql("INSERT INTO scans VALUES (2, 'SYNTHETIC', '1.2.3', '1.2.3.4', NULL)")
     f.rows[1]["sop_uid"] = f.rows[0]["sop_uid"]
     f.save_inventory()
     f.contour(1, "slice-0.dcm", 0)
@@ -806,3 +806,396 @@ def test_contour_z_compared_directly_to_inspected_position(tmp_path):
     link = data["contour_linkage"][0]
     assert link["status"] == "filename_position_contradiction"
     assert link["verified_inspected_record_id"] is None
+
+
+def _provider(tmp_path):
+    root = tmp_path / "provider-source"
+    root.mkdir()
+    for name in (*audit.PROVIDER_FILES, "__init__.py"):
+        # Deliberately invalid Python: fingerprinting must not parse or execute it.
+        (root / name).write_text("not executable Python !\nraise AssertionError('do not import')\n", encoding="utf-8")
+    return root
+
+
+def _legacy(f, names="legacy-a,legacy-b"):
+    f.sql("UPDATE scans SET sorted_dicom_file_names=? WHERE id=1", (names,))
+
+
+def test_crosswalk_numeric_order_provider_hashes_and_no_import(tmp_path, monkeypatch):
+    import builtins
+    f = Fixture(tmp_path, (-10, 0, 10))
+    root = _provider(tmp_path)
+    _legacy(f, "003.dcm,001.dcm,002.dcm")
+    f.sql("DELETE FROM zvals")
+    for row in ((10, 1, 10), (90, 1, -10), (3, 1, 0)):
+        f.sql("INSERT INTO zvals VALUES (?, ?, ?)", row)
+    for i, (name, z) in enumerate((("003.dcm", -10), ("001.dcm", 0), ("002.dcm", 10)), 1):
+        f.contour(i, name, z)
+    original_import = builtins.__import__
+
+    def guarded_import(name, *args, **kwargs):
+        assert name.split(".")[0] not in {"pylidc", "sqlalchemy"}
+        return original_import(name, *args, **kwargs)
+
+    monkeypatch.setattr(builtins, "__import__", guarded_import)
+    summary, data = f.run(provider=root)
+    assert summary["audit_status"] == "completed"
+    assert summary["crosswalk_status_counts"][audit.CROSSWALK_SUCCESS] == 3
+    assert set(summary["crosswalk_status_counts"]) == set(audit.CROSSWALK_STATUSES)
+    assert set(summary["crosswalk_scan_finding_counts"]) == set(audit.SCAN_FINDINGS)
+    scan = data["series_audit"][0]["database_crosswalks"][0]
+    assert scan["original_sorted_dicom_file_names"] == "003.dcm,001.dcm,002.dcm"
+    assert [z["id"] for z in scan["ordered_finite_zvals"]] == [90, 3, 10]
+    assert scan["filename_count"] == scan["zval_count"] == 3
+    assert scan["index_mapping_valid"] and not scan["findings"]
+    for i, link in enumerate(data["contour_linkage"]):
+        assert link["status"] == audit.CROSSWALK_SUCCESS
+        assert link["crosswalk"]["matched_legacy_index"] == i
+        assert link["crosswalk"]["contour_minus_paired_z_mm"] == 0
+        assert link["crosswalk"]["cardinalities"]["inventory_records"] == 1
+        assert link["crosswalk_inventory_record_id"] is not None
+        assert link["verified_inspected_record_id"] is link["exact_inventory_record_id"] is None
+    provider = data["provenance"]["provider_source"]
+    assert provider["status"] == "valid" and provider["bytes_unchanged"]
+    assert provider["resolved_root"] == str(root.resolve())
+    for name, info in provider["files"].items():
+        assert info["sha256_before"] == info["sha256_after"] == sha256(root / name)
+        assert info["bytes_unchanged"]
+    assert not data["provenance"]["pylidc_imported_or_loader_executed"]
+    assert summary["counts"]["inspected_dicom_records"] == 0
+
+
+@pytest.mark.parametrize("names,contour,z,status,finding", [
+    ("legacy-a", "legacy-a", 0, "crosswalk_index_count_mismatch", "filename_zval_count_mismatch"),
+    ("legacy-a,legacy-b,extra", "extra", 1, "crosswalk_index_count_mismatch", "filename_zval_count_mismatch"),
+    ("legacy-a,", "legacy-a", 0, "crosswalk_invalid", "empty_legacy_filename"),
+    ("legacy-a,legacy-a", "legacy-a", 0, "crosswalk_filename_nonunique", "nonunique_legacy_filename"),
+    ("legacy-a,legacy-b", "absent", 0, "crosswalk_filename_missing", None),
+    ("legacy-a,legacy-b", None, 0, "crosswalk_filename_missing", None),
+    ("legacy-a,legacy-b", "", 0, "crosswalk_filename_missing", None),
+    ("legacy-a,legacy-b", "legacy-a", 1, "crosswalk_contour_z_contradiction", None),
+    ("legacy-a,legacy-b", "legacy-a", None, "crosswalk_invalid_contour_z", None),
+    (None, "legacy-a", 0, "crosswalk_unavailable", "legacy_list_not_text"),
+    (" legacy-a,LEGACY-B", "legacy-a", 0, "crosswalk_filename_missing", None),
+    (" legacy-a,LEGACY-B", "legacy-b", 1, "crosswalk_filename_missing", None),
+    (" legacy-a,LEGACY-B", " legacy-a", 0, audit.CROSSWALK_SUCCESS, None),
+])
+def test_crosswalk_statuses_and_exact_tokens(tmp_path, names, contour, z, status, finding):
+    f = Fixture(tmp_path)
+    _legacy(f, names)
+    f.contour(1, contour, z)
+    summary, data = f.run(provider=_provider(tmp_path))
+    crosswalk = data["contour_linkage"][0]["crosswalk"]
+    assert crosswalk["status"] == status
+    assert summary["crosswalk_status_counts"][status] == 1
+    if finding:
+        assert summary["crosswalk_scan_finding_counts"][finding] == 1
+    if status == "crosswalk_filename_nonunique":
+        assert crosswalk["matched_legacy_indices"] == [0, 1]
+        assert crosswalk["matched_legacy_index"] is crosswalk["paired_zval"] is None
+        assert len(crosswalk["indexed_candidate_evidence"]) == 2
+        assert len(crosswalk["inventory_record_ids"]) == 2
+    if status == "crosswalk_contour_z_contradiction":
+        assert crosswalk["contour_minus_paired_z_mm"] == 1
+        assert crosswalk["inventory_record_ids"] != data["contour_linkage"][0]["z_candidate_record_ids"]
+
+
+@pytest.mark.parametrize("value", [None, float("inf"), float("-inf"), "invalid"])
+def test_crosswalk_invalid_zvals_retained(tmp_path, value):
+    f = Fixture(tmp_path)
+    _legacy(f)
+    f.sql("UPDATE zvals SET val=? WHERE id=2", (value,))
+    f.contour(1, "legacy-a", 0)
+    summary, data = f.run(provider=_provider(tmp_path))
+    assert summary["audit_status"] == "failed"
+    assert summary["counts"]["database_zvals"] == 2
+    assert summary["crosswalk_scan_finding_counts"]["nonfinite_zval"] == 1
+    assert data["contour_linkage"][0]["status"] == "crosswalk_invalid"
+    assert data["series_audit"][0]["database_crosswalks"][0]["invalid_zvals"][0]["id"] == 2
+    assert data["series_audit"][0]["z_comparisons"][0]["invalid_zvals"][0]["id"] == 2
+
+
+def test_crosswalk_equal_zvals_only_affected_indices_ambiguous(tmp_path):
+    f = Fixture(tmp_path)
+    _legacy(f, "a,b,c")
+    f.sql("INSERT INTO zvals VALUES (3,1,0)")
+    for i, (name, z) in enumerate((("a", 0), ("b", 0), ("c", 1)), 1):
+        f.contour(i, name, z)
+    summary, data = f.run(provider=_provider(tmp_path))
+    assert [link["status"] for link in data["contour_linkage"]] == [
+        "crosswalk_paired_z_ambiguous", "crosswalk_paired_z_ambiguous", audit.CROSSWALK_SUCCESS]
+    assert summary["crosswalk_scan_finding_counts"]["equal_zvals"] == 1
+    scan = data["series_audit"][0]["database_crosswalks"][0]
+    assert scan["ambiguous_z_indices"] == [0, 1]
+    assert scan["index_mapping_valid"] and not scan["all_indices_positionally_unambiguous"]
+
+
+@pytest.mark.parametrize("positions,expected", [((0, 1), audit.CROSSWALK_SUCCESS),
+                                               ((1, 2), "crosswalk_z_inventory_missing"),
+                                               ((0, 0, 1), "crosswalk_z_inventory_ambiguous")])
+def test_crosswalk_inventory_cardinality_never_selects_or_verifies(tmp_path, positions, expected):
+    f = Fixture(tmp_path, positions)
+    f.sql("DELETE FROM zvals")
+    f.sql("INSERT INTO zvals VALUES (1,1,0)")
+    f.sql("INSERT INTO zvals VALUES (2,1,1)")
+    _legacy(f)
+    f.contour(1, "legacy-a", 0)
+    _, data = f.run(provider=_provider(tmp_path))
+    link = data["contour_linkage"][0]
+    assert link["status"] == expected
+    assert link["verified_inspected_record_id"] is None
+    if positions == (0, 0, 1):
+        group = data["duplicate_positions"][0]
+        assert group["resolution"] == "unresolved_no_slice_selected"
+        assert len(group["members"]) == len(link["crosswalk"]["inventory_record_ids"]) == 2
+        assert group["annotation_references"]["crosswalk_candidate_cardinality"] == "multiple"
+        assert group["annotation_references"]["verified_inspected_members"] == []
+        assert "preferred" not in json.dumps(data)
+
+
+@pytest.mark.parametrize("literal_kind", ["filename", "sop"])
+def test_literal_precedence_and_crosswalk_disagreement_kept(tmp_path, literal_kind):
+    f = Fixture(tmp_path)
+    name = "slice-0.dcm" if literal_kind == "filename" else f.rows[0]["sop_uid"]
+    _legacy(f, "other," + name)
+    f.contour(1, name, 0)
+    _, data = f.run(provider=_provider(tmp_path))
+    link = data["contour_linkage"][0]
+    assert link["status"] == link["literal_linkage_status"] == "exact_inventory_record_link_source_not_rechecked"
+    assert link["crosswalk"]["status"] == "crosswalk_contour_z_contradiction"
+    assert link["literal_crosswalk_candidate_disagreement"]
+    assert link["crosswalk_inventory_record_id"] is None
+
+
+def test_crosswalk_gated_without_provider_and_generic_fallback(tmp_path):
+    f = Fixture(tmp_path)
+    _legacy(f)
+    f.contour(1, "legacy-a", 0)
+    f.contour(2, "absent", 8)
+    summary, data = f.run()
+    assert summary["provider_source_status"] == "not_supplied"
+    assert [c["status"] for c in data["contour_linkage"]] == ["z_only_inventory_link", "missing_link"]
+    assert all(c["crosswalk"]["status"] == "crosswalk_unavailable" for c in data["contour_linkage"])
+
+
+@pytest.mark.parametrize("failure", ["missing", "unreadable", "changed", "removed"])
+def test_provider_failures_invalidate_artifact_set(tmp_path, monkeypatch, failure):
+    f = Fixture(tmp_path)
+    _legacy(f)
+    f.contour(1, "legacy-a", 0)
+    root = _provider(tmp_path)
+    target = root / "Scan.py"
+    if failure == "missing":
+        target.unlink()
+    elif failure == "unreadable":
+        digest = audit.sha256
+
+        def unreadable(path):
+            if Path(path) == target:
+                raise PermissionError("synthetic denied read")
+            return digest(path)
+
+        monkeypatch.setattr(audit, "sha256", unreadable)
+    else:
+        run = audit._run
+
+        def mutate(*args):
+            run(*args)
+            if failure == "changed":
+                target.write_text("changed synthetic provider source", encoding="utf-8")
+            else:
+                target.unlink()
+
+        monkeypatch.setattr(audit, "_run", mutate)
+    summary, data = f.run(provider=root)
+    assert summary["audit_status"] == "failed"
+    assert summary["provider_source_status"] == "invalid"
+    assert not data["provenance"]["provider_source"]["files"]["Scan.py"]["bytes_unchanged"]
+    assert "provider_source_provenance_invalid" in str(summary["operational_errors"])
+
+
+def test_provider_escaped_file_is_never_hashed(tmp_path, monkeypatch):
+    f = Fixture(tmp_path)
+    root = _provider(tmp_path)
+    outside = tmp_path / "outside.py"
+    outside.write_text("external bytes", encoding="utf-8")
+    (root / "Scan.py").unlink()
+    _file_symlink(root / "Scan.py", outside)
+    digest = audit.sha256
+
+    def guarded(path):
+        assert Path(path).resolve() != outside.resolve()
+        return digest(path)
+
+    monkeypatch.setattr(audit, "sha256", guarded)
+    summary, data = f.run(provider=root)
+    assert summary["provider_source_status"] == "invalid"
+    assert "escapes" in str(data["provenance"]["provider_source"]["files"]["Scan.py"])
+
+
+@pytest.mark.parametrize("alias", [False, True])
+def test_provider_output_directory_protected(tmp_path, alias):
+    f = Fixture(tmp_path)
+    root = _provider(tmp_path)
+    output = root / "audit"
+    if alias:
+        link = tmp_path / "provider-alias"
+        _directory_link(link, root)
+        output = link / "audit"
+    with pytest.raises(ValueError, match="protected"):
+        audit.audit_source(f.inv, f.db, f.config, output, pylidc_source_root=root)
+    assert not output.exists()
+
+
+def test_crosswalk_deterministic_inventory_and_db_insert_order(tmp_path):
+    f = Fixture(tmp_path)
+    root = _provider(tmp_path)
+    _legacy(f)
+    f.contour(1, "legacy-a", 0)
+    f.contour(2, "legacy-b", 1)
+    _, first = f.run("first", root)
+    f.rows.reverse()
+    f.save_inventory()
+    f.sql("DELETE FROM zvals")
+    f.sql("INSERT INTO zvals VALUES (2,1,1)")
+    f.sql("INSERT INTO zvals VALUES (1,1,0)")
+    f.sql("DELETE FROM contours")
+    f.contour(2, "legacy-b", 1)
+    f.contour(1, "legacy-a", 0)
+    _, second = f.run("second", root)
+    for artifact in ("series_audit", "contour_linkage", "duplicate_positions"):
+        assert first[artifact] == second[artifact]
+        assert (f.root / "first" / f"{artifact}.jsonl").read_bytes() == (f.root / "second" / f"{artifact}.jsonl").read_bytes()
+
+
+def test_malformed_and_orphan_rows_are_preserved(tmp_path):
+    f = Fixture(tmp_path)
+    _legacy(f)
+    f.sql("INSERT INTO scans VALUES (2,NULL,'study','series','a')")
+    f.sql("INSERT INTO annotations VALUES (2,2)")
+    f.sql("INSERT INTO annotations VALUES (3,99)")
+    f.sql("INSERT INTO zvals VALUES (3,99,0)")
+    f.sql("INSERT INTO contours VALUES (1,2,1,0,'a','0,0')")
+    f.sql("INSERT INTO contours VALUES (2,3,1,NULL,'orphan','0,0')")
+    summary, data = f.run(provider=_provider(tmp_path))
+    assert summary["audit_status"] == "failed"
+    assert len(data["contour_linkage"]) == summary["counts"]["database_contours"] == 2
+    assert {s for row in data["series_audit"] for s in row["database_scan_ids"]} == {1, 2}
+    assert any(row["identity_status"] == "orphan_contour_context" for row in data["series_audit"])
+    assert all("row" in finding for finding in data["provenance"]["database_integrity_findings"])
+
+
+def test_crosswalk_documentation_migration():
+    guide = (Path(__file__).parents[1] / "docs/Source_Audit.md").read_text(encoding="utf-8")
+    for phrase in ("schema_version: 3", "configuration remains schema version **1**", "No in-place migration",
+                   "v2 `z_only_inventory_link`", "--pylidc-source-root", "lower-InstanceNumber", "NOT EXECUTED"):
+        assert phrase in guide
+
+
+def test_required_legacy_list_column(tmp_path):
+    f = Fixture(tmp_path)
+    f.sql("ALTER TABLE scans DROP COLUMN sorted_dicom_file_names")
+    summary, _ = f.run(provider=_provider(tmp_path))
+    assert summary["audit_status"] == "failed"
+    assert "scans.sorted_dicom_file_names needs text affinity" in str(summary["operational_errors"])
+
+
+def test_duplicate_names_elsewhere_invalidate_whole_scan_mapping(tmp_path):
+    f = Fixture(tmp_path, (0, 1, 2))
+    _legacy(f, "a,b,b")
+    f.contour(1, "a", 0)
+    _, data = f.run(provider=_provider(tmp_path))
+    assert data["contour_linkage"][0]["status"] == "crosswalk_invalid"
+
+
+def test_crosswalk_uses_joined_scan_not_other_scan_names(tmp_path):
+    f = Fixture(tmp_path)
+    _legacy(f, "a,b")
+    f.sql("INSERT INTO scans VALUES (2,'SYNTHETIC','1.2.3','1.2.3.4','b,a')")
+    f.sql("INSERT INTO annotations VALUES (2,2)")
+    f.sql("INSERT INTO zvals VALUES (3,2,0)")
+    f.sql("INSERT INTO zvals VALUES (4,2,1)")
+    f.contour(1, "a", 0)
+    f.sql("INSERT INTO contours VALUES (2,2,1,1,'a','0,0')")
+    _, data = f.run(provider=_provider(tmp_path))
+    links = data["contour_linkage"]
+    assert [c["crosswalk"]["matched_legacy_index"] for c in links] == [0, 1]
+    assert [c["crosswalk"]["paired_zval"]["id"] for c in links] == [1, 4]
+    assert all(c["status"] == "crosswalk_identity_ambiguous" for c in links)
+    assert links[0]["crosswalk"]["inventory_record_ids"] != links[1]["crosswalk"]["inventory_record_ids"]
+
+
+def test_crosswalk_inventory_scope_db_only_and_ct_only_retained(tmp_path):
+    f = Fixture(tmp_path)
+    _legacy(f)
+    f.rows.append(_dicom(f.raw / "other" / "slice.dcm", 3, [0, 0, 0], patient="CT_ONLY", series="1.2.3.9"))
+    f.save_inventory()
+    f.sql("INSERT INTO scans VALUES (2,'DB_ONLY','study','series','legacy-a')")
+    f.sql("INSERT INTO annotations VALUES (2,2)")
+    f.sql("INSERT INTO zvals VALUES (3,2,0)")
+    f.contour(1, "legacy-a", 0)
+    f.sql("INSERT INTO contours VALUES (2,2,1,0,'legacy-a','0,0')")
+    summary, data = f.run(provider=_provider(tmp_path))
+    links = {c["contour_id"]: c for c in data["contour_linkage"]}
+    assert links[1]["status"] == audit.CROSSWALK_SUCCESS
+    assert len(links[1]["crosswalk"]["inventory_record_ids"]) == 1
+    assert links[2]["status"] == "crosswalk_z_inventory_missing"
+    assert {s["identity_status"] for s in data["series_audit"]} == {"ct_only", "db_only", "matched"}
+    assert summary["counts"]["series_union"] == 3
+
+
+@pytest.mark.parametrize("case,expected", [
+    ("sop_collision", "crosswalk_identity_ambiguous"),
+    ("geometry", "crosswalk_geometry_unresolved"),
+    ("inspected", "crosswalk_inspected_group_ambiguous"),
+])
+def test_crosswalk_context_cannot_promote_inspected_evidence(tmp_path, case, expected):
+    f = Fixture(tmp_path, (0, 0.0000005) if case == "inspected" else (0, 1))
+    _legacy(f)
+    if case == "sop_collision":
+        f.rows[1]["sop_uid"] = f.rows[0]["sop_uid"]
+    elif case == "geometry":
+        f.rows[0]["orientation"] = [0, 0, 0, 0, 0, 0]
+    else:
+        config = yaml.safe_load(f.config.read_text())
+        config["tolerances"]["z_atol_mm"] = 0
+        f.config.write_text(yaml.safe_dump(config), encoding="utf-8")
+    f.save_inventory()
+    f.contour(1, "legacy-a", 0)
+    _, data = f.run(provider=_provider(tmp_path))
+    link = data["contour_linkage"][0]
+    assert link["status"] == expected
+    assert link["verified_inspected_record_id"] is None
+    if case == "inspected":
+        assert len(data["duplicate_positions"][0]["members"]) == 2
+        assert len(link["crosswalk"]["inventory_record_ids"]) == 1
+        assert len(link["crosswalk"]["intersecting_repeated_position_record_ids"]) == 2
+
+
+@pytest.mark.parametrize("z,status", [(0.000099, audit.CROSSWALK_SUCCESS),
+                                      (0.000101, "crosswalk_contour_z_contradiction")])
+def test_crosswalk_direct_z_tolerance_and_signed_delta(tmp_path, z, status):
+    f = Fixture(tmp_path)
+    _legacy(f)
+    f.contour(1, "legacy-a", -z)
+    _, data = f.run(provider=_provider(tmp_path))
+    link = data["contour_linkage"][0]
+    assert link["status"] == status
+    assert link["crosswalk"]["contour_minus_paired_z_mm"] == -z
+
+
+def test_cli_provider_option_enables_crosswalk(tmp_path):
+    f = Fixture(tmp_path)
+    _legacy(f)
+    f.contour(1, "legacy-a", 0)
+    root = _provider(tmp_path)
+    output = tmp_path / "cli-audit"
+    env = dict(os.environ, PYTHONPATH=str(Path(__file__).parents[1] / "src"), PYTHONDONTWRITEBYTECODE="1")
+    proc = subprocess.run([sys.executable, "-B", "-m", "lidc3d.cli", "audit-source",
+                           "--inventory", str(f.inv), "--annotation-db", str(f.db),
+                           "--config", str(f.config), "--out", str(output),
+                           "--pylidc-source-root", str(root)], capture_output=True, text=True, env=env)
+    assert proc.returncode == 0, proc.stderr
+    assert len(proc.stdout.splitlines()) <= 4
+    summary = json.loads((output / "audit_summary.json").read_text())
+    assert summary["crosswalk_status_counts"][audit.CROSSWALK_SUCCESS] == 1
