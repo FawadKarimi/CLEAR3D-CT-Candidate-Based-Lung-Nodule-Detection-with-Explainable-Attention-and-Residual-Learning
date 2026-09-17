@@ -1,6 +1,144 @@
 # LIDC3D source audit review handoff
 
-## Current review candidate: schema v3 database filename/z crosswalk
+## Current review candidate: schema v4 linkage/volume geometry separation
+
+Repository: `FawadKarimi/LIDC3D`. Branch: `audit/linkage-volume-geometry-separation`. Exact reviewed base: `1a7ac0c498fcff3b97d99dd07f744a3f93df6fdc`. `git fetch origin` succeeded, `git merge-base --is-ancestor 1a7ac0c498fcff3b97d99dd07f744a3f93df6fdc HEAD` exited 0, and the worktree was clean before creating the requested branch directly from that commit. The containing GitHub commit identifies this candidate. Publication uses this branch only, with no PR creation, merge or force-push.
+
+Protected remote refs at task start: `main` = `abf35d8b566791e309cc85972389344069159be7`; `audit/source-annotation-linkage` = `5b64f445a831c6870bb9ad7359465da7d8304641`; `audit/database-filename-z-crosswalk` = `1a7ac0c498fcff3b97d99dd07f744a3f93df6fdc`. Both configured origin URLs are `https://github.com/FawadKarimi/LIDC3D.git`. The new branch was absent remotely. Final publication checks compare all four remote refs with their expected commits and confirm a clean worktree.
+
+Exactly five intended files:
+
+1. `README.md`
+2. `docs/Source_Audit.md`
+3. `docs/reviews/source-audit/HANDOFF.md`
+4. `src/lidc3d/source_audit.py`
+5. `tests/test_source_audit.py`
+
+No university-server command/replay, package/dependency change, research training, cohort release, slice selection, duplicate removal, volume reconstruction, research model evaluation, source approval, training release or deployment occurred. The explicitly requested complete software test suite retains its pre-existing tiny synthetic training/resume and model/evaluation unit tests; no research workflow or experiment was run. No patient data, databases, generated audit outputs, credentials, environments, archives or checkpoints are staged or published.
+
+### Corrected semantics and fields
+
+Artifact schema is now **4**; configuration remains schema **1**, with unchanged tolerances. `_geometry` still reports complete series findings and original coordinates. The new `_geometry_assessment` separates point-linkage compatibility from volume geometry. Only `irregular_spacing` is nonblocking for point linkage. Every other finding, including unknown future findings, blocks; unknown/inconsistent overall status/findings combinations also fail closed. Both literal and crosswalk point links use this assessment, while all existing provider, filename/index, finite z, direct z-agreement, inventory uniqueness, repeated-position, database identity and SOP uniqueness gates remain in place.
+
+Each series and contour now has `geometry_assessment.series`, `.linkage` and `.volume_reconstruction`. The first retains complete status/findings; the second reports `diagnostic_point_linkage_compatible` or `geometry_unresolved`, blocking reasons and the sole allowed nonblocking finding. Volume status is `uniform_spacing_geometry_diagnostic_only_not_released`, `requires_explicit_coordinate_aware_resampling_not_released` or `geometry_unresolved_not_released`. `uniform_spacing_geometry_eligible` preserves the limited existing geometry diagnostic contract only. `ordinary_uniform_spacing_preparation_eligible` and `approved` are always false; the geometry flag is also false for irregular series. No interval is replaced with a median or interpreted as uniform, and no resampling is implemented.
+
+With irregular spacing alone and a complete unique evidence chain, `database_legacy_filename_z_crosswalk_unique_inventory_link_source_not_rechecked` and its record ID are allowed. This is a point association, not source authentication or reconstruction permission. The complete irregularity remains in artifacts, and volume preparation requires a separate coordinate-aware implementation and validation.
+
+Literal/crosswalk candidate-set disagreement now overrides channel-local successes with `literal_crosswalk_candidate_conflict`. All three selected record IDs (`exact_inventory_record_id`, `verified_inspected_record_id`, `crosswalk_inventory_record_id`) are null. Both candidate sets, channel-local statuses and the disagreement flag remain diagnostic evidence. This conservative check also covers partially overlapping candidate sets and provider-gated/invalid hypotheses. Agreeing evidence keeps the stronger literal classification under its existing inspection checks. Conflicts do not count as verified inspected-member references and never choose or remove a repeated slice.
+
+Summary top-level linkage counts include conflicts and reconcile with every emitted contour status; nested crosswalk counts separately reconcile with the nested states. New `contour_linkage_geometry_counts` and `series_volume_reconstruction_counts` report geometry statuses independently. Serialization stays deterministic under equivalent inventory/DB ordering, and nonfinite inputs remain explicit diagnostic objects rather than bare NaN/Infinity JSON tokens. All approval/release/coverage restrictions remain intact, including no XML replacement, no negative labels and unresolved reader identity.
+
+### Reported server evidence, not task-generated results
+
+The user reports a completed v3 server audit under Python 3.10.17, with 106 targeted and 141 complete-suite tests passing, valid provider-source provenance and zero operational errors. Of 41,406 database contours, 41,285 had unique crosswalk success and 121 were geometry-unresolved. The 121 reportedly had one filename index, one paired zval, zero signed z difference, one inventory candidate, no repeated-position intersection, no identity ambiguity and no literal/crosswalk disagreement. Only `irregular_spacing` blocked them:
+
+- Scan 128 / LIDC-IDRI-0123: 236 slices; median 1.25 mm; 232 gaps of 1.25 mm and anomalies 0.5, 0.75, 0.5 mm; 10 contours.
+- Scan 267 / LIDC-IDRI-0267: 150 slices; median 2.5 mm; 147 gaps of 2.5 mm and two anomalies of 0.5 mm; 73 contours.
+- Scan 983 / LIDC-IDRI-0672: 462 slices; median 0.625 mm and three anomalies of 1.25 mm; 38 contours.
+
+These are reported observations awaiting v4 artifact confirmation, not independently generated measurements, hard-coded acceptance rules, or a claim that v4 has already reclassified 121 real contours. **The schema-v4 university-server replay remains NOT EXECUTED.** Original XML/SOP authentication remains unavailable. Historical statements below that v3 had not yet been replayed describe the earlier handoff date; they are superseded as reported context by the user's new v3 results, not by any server work in this task.
+
+### Verification actually executed for v4
+
+Runtime: Windows 11 (`Windows-11-10.0.22621-SP0`), CPython **3.13.7** (MSC v.1944, 64-bit AMD64). Metadata: NumPy 2.3.2, pydicom 3.0.1, pytest 9.0.1, torch 2.9.1, SciPy 1.16.2, scikit-image 0.25.2, scikit-learn 1.7.2, PyYAML 6.0.2; pylidc not installed. Test inputs are synthetic local files only.
+
+```powershell
+$env:PYTHONDONTWRITEBYTECODE='1'
+py -3.13 -m pytest -q tests/test_source_audit.py --basetemp .stage/geometry-separation-targeted-r1 2>&1 | Tee-Object -FilePath .stage/geometry-separation-targeted-r1.log
+exit $LASTEXITCODE
+```
+
+Exit 0: **150 passed in 50.41s**, zero failures/skips. This preserves 106 existing cases (with the intentional schema/conflict expectation changes) and adds 44 cases. New coverage includes uniform and irregular-only geometry for all point-link channels; all ten named unsafe findings and an unknown finding, alone and combined with irregular spacing; unknown/inconsistent statuses; unchanged z/ambiguity/provider gates; inspected-source disagreement and agreement; exact count reconciliation; deterministic irregular artifacts; and strict finite JSON. Existing protected-root, provider immutability, read-only database and immutable-output tests still pass. File-symlink/directory-alias cases actually ran without skips.
+
+```powershell
+$env:PYTHONDONTWRITEBYTECODE='1'
+py -3.13 -m pytest -q --basetemp .stage/geometry-separation-full-r1 2>&1 | Tee-Object -FilePath .stage/geometry-separation-full-r1.log
+exit $LASTEXITCODE
+```
+
+Exit 0: **185 passed in 61.56s (0:01:01)**, zero failures/skips: all 150 audit cases and all 35 pre-existing non-audit cases. No implementation or test changes followed this run.
+
+No failed test attempt has occurred during this correction. Each run used a new basetemp. Test logs and synthetic output remain ignored under `.stage/` and are not part of the commit.
+
+Python 3.10 grammar and environment checks:
+
+```powershell
+$env:PYTHONDONTWRITEBYTECODE='1'
+py -0p
+@'
+import ast, importlib.metadata, pathlib, platform, sys
+files = sorted(pathlib.Path('src').rglob('*.py')) + sorted(pathlib.Path('tests').rglob('*.py'))
+for path in files:
+    ast.parse(path.read_text(encoding='utf-8'), filename=str(path), feature_version=(3, 10))
+print(f'Python 3.10 grammar: {len(files)} source/test files passed')
+print(sys.version)
+print(platform.platform())
+for name in ('numpy', 'pydicom', 'pytest', 'torch', 'scipy', 'scikit-image', 'scikit-learn', 'PyYAML', 'pylidc'):
+    try:
+        print(name, importlib.metadata.version(name))
+    except importlib.metadata.PackageNotFoundError:
+        print(name, 'not installed')
+'@ | py -3.13 -
+exit $LASTEXITCODE
+```
+
+Exit 0: **22 source/test files passed Python 3.10 grammar parsing**. The installed interpreters are 3.14, 3.13, 3.12 and 3.9; there is no local 3.10 runtime. Added production operations are Python 3.10-compatible dictionaries, sets, sorting and existing APIs. No Python 3.10 runtime/dependency execution is claimed. The user's reported server v3 results are separate evidence, not local v4 runtime validation.
+
+```powershell
+git diff --check
+git diff --exit-code 1a7ac0c498fcff3b97d99dd07f744a3f93df6fdc -- . ':(exclude)README.md' ':(exclude)docs/Source_Audit.md' ':(exclude)docs/reviews/source-audit/HANDOFF.md' ':(exclude)src/lidc3d/source_audit.py' ':(exclude)tests/test_source_audit.py'
+```
+
+Both exited 0. Only normal Windows LF-to-CRLF notices were emitted, with no whitespace failures. The scoped check proves every other tracked file unchanged, including CLI, training, models, candidates, evaluation, references, split/preprocessing/volume/XAI modules, configuration and dependencies. Manual diff review confirms no new IO, source/database writes, pylidc/SQLAlchemy imports, loader calls, tolerance changes, selection/reconstruction rules or release paths. The existing SQLite read-only URI and query-only transaction, protected roots and exclusive output creation are unchanged.
+
+Working-file SHA256 values covering the tested implementation and tests (before Git checkout line-ending normalization):
+
+- `src/lidc3d/source_audit.py`: `24b0ff64f40e2edf368c9dd51074a9be96c81af8d07dc3d2e9833705266aa3b8`
+- `tests/test_source_audit.py`: `ec0c8bda79a8f81e8774ab9872ea8084a6c7fc599342bbc02cf156e924915dce`
+
+The following verification exited 0: both file hashes remained unchanged, and the tested audit-module hash matched both final run provenance records. Resolved-path deduplication handles pytest's `current` fixture aliases.
+
+```powershell
+$env:PYTHONDONTWRITEBYTECODE='1'
+@'
+import hashlib, json
+from pathlib import Path
+expected = {
+    'src/lidc3d/source_audit.py': '24b0ff64f40e2edf368c9dd51074a9be96c81af8d07dc3d2e9833705266aa3b8',
+    'tests/test_source_audit.py': 'ec0c8bda79a8f81e8774ab9872ea8084a6c7fc599342bbc02cf156e924915dce',
+}
+for name, digest in expected.items():
+    assert hashlib.sha256(Path(name).read_bytes()).hexdigest() == digest, name
+for run in ('geometry-separation-targeted-r1', 'geometry-separation-full-r1'):
+    paths = {p.resolve() for p in (Path('.stage') / run).glob('test_crosswalk_numeric_order*/audit/provenance.json')}
+    assert len(paths) == 1, paths
+    provenance = json.loads(next(iter(paths)).read_text())
+    assert provenance['code']['module_sha256'] == expected['src/lidc3d/source_audit.py']
+    assert provenance['schema_version'] == 4 and provenance['audit_status'] == 'completed'
+    print(run + ': tested module hash matches current file')
+print('Implementation and test hashes unchanged')
+'@ | py -3.13 -
+exit $LASTEXITCODE
+```
+
+Staged validation passed: exactly the five intended UTF-8 text files, no NUL/binary content or credential-pattern matches, matching normalized staged/worktree blobs, the correct branch/base, and no unstaged tracked changes. The staged implementation/test diff was manually reviewed. These commands exited 0:
+
+```powershell
+git add -- README.md docs/Source_Audit.md docs/reviews/source-audit/HANDOFF.md src/lidc3d/source_audit.py tests/test_source_audit.py
+git diff --cached --check
+git diff --exit-code
+git diff --cached --stat
+git diff --cached --name-only
+git diff --cached -- src/lidc3d/source_audit.py tests/test_source_audit.py
+```
+
+Publication commits and pushes only `audit/linkage-volume-geometry-separation`, then verifies its remote SHA equals local HEAD, its parent is the exact reviewed base, all three protected refs are unchanged, and `git status --porcelain` is empty. The report-only final update is restaged and whitespace-checked before commit. The containing commit and final task response provide the resulting revision without a self-referential report hash.
+
+Remaining limitations: no v4 server replay, no local Python 3.10 runtime, no original XML/SOP authentication, no ordinary-file hash verification, and no implemented/validated irregular-volume resampling. Provider/inspection evidence remains provisional until the completed final artifact set passes immutability checks. The existing quiescent-filesystem and decoder/platform limits still apply. A compatible point link or geometry diagnostic never grants source approval, preparation permission or training release.
+
+## Historical review candidate: schema v3 database filename/z crosswalk
+
+The following preserves the earlier v3 results and limitations at that handoff. The v4 semantics and verification above govern the current candidate.
 
 Repository: `FawadKarimi/LIDC3D`. Review branch: `audit/database-filename-z-crosswalk`. Exact verified base: `5b64f445a831c6870bb9ad7359465da7d8304641`. The worktree was clean before creating this branch and editing. The containing GitHub commit identifies the candidate without a self-referential commit hash in this report. Publication is a normal push of this review branch only; no pull request, merge, force-push or deployment is authorized or performed.
 

@@ -1,6 +1,7 @@
 """Synthetic CT and temporary SQLite only; no pylidc installation or patient data."""
 import errno
 from contextlib import closing
+from collections import Counter
 import json
 import logging
 import os
@@ -88,9 +89,9 @@ class Fixture:
                 for key in ("series_audit", "duplicate_positions", "contour_linkage")}
         data["provenance"] = json.loads((output / "provenance.json").read_text())
         assert summary["source_approved"] is False and summary["training_released"] is False
-        assert summary["schema_version"] == data["provenance"]["schema_version"] == 3
+        assert summary["schema_version"] == data["provenance"]["schema_version"] == 4
         assert data["provenance"]["configuration"]["schema_version"] == 1
-        assert all(r["schema_version"] == 3 for key in ("series_audit", "duplicate_positions", "contour_linkage") for r in data[key])
+        assert all(r["schema_version"] == 4 for key in ("series_audit", "duplicate_positions", "contour_linkage") for r in data[key])
         return summary, data
 
 
@@ -961,10 +962,12 @@ def test_literal_precedence_and_crosswalk_disagreement_kept(tmp_path, literal_ki
     f.contour(1, name, 0)
     _, data = f.run(provider=_provider(tmp_path))
     link = data["contour_linkage"][0]
-    assert link["status"] == link["literal_linkage_status"] == "exact_inventory_record_link_source_not_rechecked"
+    assert link["status"] == audit.LITERAL_CROSSWALK_CONFLICT
+    assert link["literal_linkage_status"] == "exact_inventory_record_link_source_not_rechecked"
     assert link["crosswalk"]["status"] == "crosswalk_contour_z_contradiction"
     assert link["literal_crosswalk_candidate_disagreement"]
     assert link["crosswalk_inventory_record_id"] is None
+    assert link["exact_inventory_record_id"] is link["verified_inspected_record_id"] is None
 
 
 def test_crosswalk_gated_without_provider_and_generic_fallback(tmp_path):
@@ -1087,7 +1090,7 @@ def test_malformed_and_orphan_rows_are_preserved(tmp_path):
 
 def test_crosswalk_documentation_migration():
     guide = (Path(__file__).parents[1] / "docs/Source_Audit.md").read_text(encoding="utf-8")
-    for phrase in ("schema_version: 3", "configuration remains schema version **1**", "No in-place migration",
+    for phrase in ("schema_version: 4", "configuration remains schema version **1**", "No in-place migration",
                    "v2 `z_only_inventory_link`", "--pylidc-source-root", "lower-InstanceNumber", "NOT EXECUTED"):
         assert phrase in guide
 
@@ -1199,3 +1202,228 @@ def test_cli_provider_option_enables_crosswalk(tmp_path):
     assert len(proc.stdout.splitlines()) <= 4
     summary = json.loads((output / "audit_summary.json").read_text())
     assert summary["crosswalk_status_counts"][audit.CROSSWALK_SUCCESS] == 1
+
+
+@pytest.mark.parametrize("positions,volume_status,uniform", [
+    ((0, 1, 2), "uniform_spacing_geometry_diagnostic_only_not_released", True),
+    ((0, 1, 3), "requires_explicit_coordinate_aware_resampling_not_released", False),
+])
+@pytest.mark.parametrize("kind", ["legacy", "literal_filename", "literal_sop"])
+def test_point_linkage_separate_from_volume_geometry(tmp_path, positions, volume_status, uniform, kind):
+    f = Fixture(tmp_path, positions)
+    name = {"legacy": "legacy-a", "literal_filename": "slice-0.dcm", "literal_sop": f.rows[0]["sop_uid"]}[kind]
+    _legacy(f, name + ",legacy-b,legacy-c")
+    f.contour(1, name, 0)
+    summary, data = f.run(provider=_provider(tmp_path))
+    link, series = data["contour_linkage"][0], data["series_audit"][0]
+    assert summary["audit_status"] == "completed"
+    assert link["crosswalk"]["status"] == audit.CROSSWALK_SUCCESS
+    if kind == "legacy":
+        assert link["status"] == audit.CROSSWALK_SUCCESS
+        assert link["crosswalk_inventory_record_id"] == 1
+        assert link["exact_inventory_record_id"] is None
+    else:
+        assert link["status"] == "exact_inventory_record_link_source_not_rechecked"
+        assert link["exact_inventory_record_id"] == 1
+        assert link["crosswalk_inventory_record_id"] is None
+    assert link["verified_inspected_record_id"] is None
+    assessment = link["geometry_assessment"]
+    assert assessment == series["geometry_assessment"]
+    assert assessment["series"] == {k: series["geometry"][k] for k in ("status", "findings")}
+    assert assessment["linkage"]["status"] == "diagnostic_point_linkage_compatible"
+    assert assessment["linkage"]["blocking_reasons"] == []
+    assert assessment["series"]["findings"] == ([] if uniform else ["irregular_spacing"])
+    assert assessment["volume_reconstruction"] == {
+        "status": volume_status, "uniform_spacing_geometry_eligible": uniform,
+        "ordinary_uniform_spacing_preparation_eligible": False, "approved": False}
+    assert [p["lps_z_mm"] for p in series["geometry"]["positions"]] == list(positions)
+    assert not summary["coverage"]["xml_reference_standard_replaced"]
+    assert not summary["coverage"]["negative_labels_created"]
+    assert "unresolved" in summary["coverage"]["reader_identity"]
+
+
+@pytest.mark.parametrize("finding", [
+    "invalid_position", "invalid_orientation", "non_axial_geometry_unsupported",
+    "invalid_pixel_spacing", "invalid_dimensions", "localizer_unsupported",
+    "variable_orientation", "variable_pixel_spacing", "variable_dimensions",
+    "in_plane_drift_unsupported", "future_unknown_geometry_finding",
+])
+@pytest.mark.parametrize("irregular", [False, True])
+def test_every_unsafe_and_unknown_geometry_finding_blocks_point_linkage(tmp_path, monkeypatch, finding, irregular):
+    f = Fixture(tmp_path, (0, 1, 3) if irregular else (0, 1, 2))
+    _legacy(f, "legacy-a,slice-1.dcm,legacy-c")
+    f.contour(1, "legacy-a", 0)
+    f.contour(2, "slice-1.dcm", 1)
+    original = audit._geometry
+
+    def diagnosed(rows, tol):
+        geometry = original(rows, tol)
+        geometry["findings"] = sorted(set(geometry["findings"]) | {finding})
+        geometry["status"] = "unsupported_or_ambiguous"
+        return geometry
+
+    monkeypatch.setattr(audit, "_geometry", diagnosed)
+    _, data = f.run(provider=_provider(tmp_path))
+    assert [c["status"] for c in data["contour_linkage"]] == [
+        "crosswalk_geometry_unresolved", "exact_link_geometry_unresolved"]
+    for link in data["contour_linkage"]:
+        assert link["crosswalk"]["status"] == "crosswalk_geometry_unresolved"
+        assessment = link["geometry_assessment"]
+        assert assessment["linkage"]["status"] == "geometry_unresolved"
+        assert finding in assessment["linkage"]["blocking_reasons"]
+        assert assessment["linkage"]["nonblocking_findings"] == (["irregular_spacing"] if irregular else [])
+        assert assessment["volume_reconstruction"]["status"] == "geometry_unresolved_not_released"
+        assert not assessment["volume_reconstruction"]["uniform_spacing_geometry_eligible"]
+        assert link["crosswalk_inventory_record_id"] is link["exact_inventory_record_id"] is link["verified_inspected_record_id"] is None
+
+
+@pytest.mark.parametrize("status,findings", [
+    ("future_geometry_status", []), ("future_geometry_status", ["irregular_spacing"]),
+    ("unsupported_or_ambiguous", []), ("diagnostic_geometry_consistent", ["irregular_spacing"]),
+    ("no_ct_records", []),
+])
+def test_unknown_or_inconsistent_geometry_status_fails_closed(status, findings):
+    assessment = audit._geometry_assessment({"status": status, "findings": findings})
+    assert assessment["linkage"]["status"] == "geometry_unresolved"
+    assert "series_geometry_status_unresolved" in assessment["linkage"]["blocking_reasons"]
+    assert not assessment["volume_reconstruction"]["uniform_spacing_geometry_eligible"]
+    assert not assessment["volume_reconstruction"]["ordinary_uniform_spacing_preparation_eligible"]
+
+
+@pytest.mark.parametrize("case,expected", [
+    ("contradiction", "crosswalk_contour_z_contradiction"),
+    ("multiple", "crosswalk_z_inventory_ambiguous"),
+    ("repeated", "crosswalk_inspected_group_ambiguous"),
+    ("provider_absent", "crosswalk_unavailable"),
+    ("provider_missing", "crosswalk_unavailable"),
+    ("provider_changed", audit.CROSSWALK_SUCCESS),
+])
+def test_irregular_spacing_does_not_bypass_existing_evidence_gates(tmp_path, monkeypatch, case, expected):
+    positions = (0, 0, 1, 3) if case == "multiple" else (0, 0.0000005, 1, 3) if case == "repeated" else (0, 1, 3)
+    f = Fixture(tmp_path, positions)
+    _legacy(f, ",".join(f"legacy-{i}" for i in range(len(set(positions)))))
+    f.contour(1, "legacy-0", 1 if case == "contradiction" else 0)
+    provider = None if case == "provider_absent" else _provider(tmp_path)
+    if case == "repeated":
+        config = yaml.safe_load(f.config.read_text())
+        config["tolerances"]["z_atol_mm"] = 0
+        f.config.write_text(yaml.safe_dump(config), encoding="utf-8")
+    if case == "provider_missing":
+        (provider / "Scan.py").unlink()
+    if case == "provider_changed":
+        original = audit._run
+
+        def mutate(*args):
+            original(*args)
+            (provider / "Scan.py").write_text("synthetic changed source", encoding="utf-8")
+
+        monkeypatch.setattr(audit, "_run", mutate)
+    summary, data = f.run(provider=provider)
+    link = data["contour_linkage"][0]
+    assert link["geometry_assessment"]["series"]["findings"] == ["irregular_spacing"]
+    assert link["crosswalk"]["status"] == expected
+    assert link["verified_inspected_record_id"] is None
+    assert not link["geometry_assessment"]["volume_reconstruction"]["ordinary_uniform_spacing_preparation_eligible"]
+    if case in ("provider_missing", "provider_changed"):
+        assert summary["audit_status"] == "failed"
+        assert summary["provider_source_status"] == "invalid"
+        assert "provisional" in link["crosswalk"]["evidence_scope"]
+    elif case == "provider_absent":
+        assert link["status"] == "z_only_inventory_link"
+    else:
+        assert link["status"] == expected
+        assert link["crosswalk_inventory_record_id"] is None
+
+
+@pytest.mark.parametrize("with_provider", [False, True])
+def test_literal_crosswalk_conflict_clears_inspected_verification(tmp_path, with_provider):
+    f = Fixture(tmp_path, (0, 0, 1, 2))
+    _legacy(f, "other,slice-0.dcm,third")
+    f.contour(1, "slice-0.dcm", 0)
+    summary, data = f.run(provider=_provider(tmp_path) if with_provider else None)
+    link = data["contour_linkage"][0]
+    assert summary["audit_status"] == "completed"
+    assert link["literal_linkage_status"] == "verified_inspected_source_link"
+    assert link["status"] == audit.LITERAL_CROSSWALK_CONFLICT
+    assert link["literal_crosswalk_candidate_disagreement"]
+    assert link["exact_filename_record_ids"] == [1]
+    assert link["crosswalk"]["inventory_record_ids"] == [3]
+    assert link["all_candidate_record_ids"] == [1, 2, 3]
+    assert link["exact_inventory_record_id"] is link["verified_inspected_record_id"] is link["crosswalk_inventory_record_id"] is None
+    group = data["duplicate_positions"][0]
+    assert group["annotation_references"]["verified_inspected_members"] == []
+    assert len(group["members"]) == 2 and group["resolution"] == "unresolved_no_slice_selected"
+    assert summary["contour_linkage_counts"] == {audit.LITERAL_CROSSWALK_CONFLICT: 1}
+
+
+def test_agreeing_crosswalk_keeps_limited_literal_inspected_verification(tmp_path):
+    f = Fixture(tmp_path, (0, 0.0000005, 1))
+    _legacy(f, "slice-0.dcm,other,third")
+    f.contour(1, "slice-0.dcm", 0)
+    config = yaml.safe_load(f.config.read_text())
+    config["tolerances"]["z_atol_mm"] = 0
+    f.config.write_text(yaml.safe_dump(config), encoding="utf-8")
+    _, data = f.run(provider=_provider(tmp_path))
+    link = data["contour_linkage"][0]
+    assert link["literal_linkage_status"] == link["status"] == "verified_inspected_source_link"
+    assert not link["literal_crosswalk_candidate_disagreement"]
+    assert link["exact_filename_record_ids"] == link["crosswalk"]["inventory_record_ids"] == [1]
+    assert link["verified_inspected_record_id"] == link["exact_inventory_record_id"] == 1
+    assert link["crosswalk_inventory_record_id"] is None
+    assert data["duplicate_positions"][0]["resolution"] == "unresolved_no_slice_selected"
+
+
+def test_schema_v4_counts_and_deterministic_irregular_artifacts(tmp_path):
+    f = Fixture(tmp_path, (0, 1, 3))
+    provider = _provider(tmp_path)
+    _legacy(f, "legacy-a,slice-0.dcm,legacy-c")
+    contours = [(1, "legacy-a", 0), (2, "slice-0.dcm", 0), (3, "missing", 1),
+                (4, "legacy-c", 1), (5, "legacy-c", 3)]
+    for c in contours:
+        f.contour(*c)
+    summary, first = f.run("first", provider)
+    links = first["contour_linkage"]
+    assert summary["contour_linkage_counts"] == dict(Counter(c["status"] for c in links))
+    assert {k: v for k, v in summary["crosswalk_status_counts"].items() if v} == dict(Counter(c["crosswalk"]["status"] for c in links))
+    assert sum(summary["contour_linkage_counts"].values()) == sum(summary["crosswalk_status_counts"].values()) == len(links) == 5
+    assert summary["contour_linkage_geometry_counts"] == dict(Counter(c["geometry_assessment"]["linkage"]["status"] for c in links))
+    assert summary["series_volume_reconstruction_counts"] == dict(Counter(s["geometry_assessment"]["volume_reconstruction"]["status"] for s in first["series_audit"]))
+    assert first["series_audit"][0]["contour_linkage_counts"] == summary["contour_linkage_counts"]
+    assert summary["contour_linkage_counts"][audit.LITERAL_CROSSWALK_CONFLICT] == 1
+    f.rows.reverse()
+    f.save_inventory()
+    f.sql("DELETE FROM zvals")
+    for row in ((3, 1, 3), (2, 1, 1), (1, 1, 0)):
+        f.sql("INSERT INTO zvals VALUES (?,?,?)", row)
+    f.sql("DELETE FROM contours")
+    for c in reversed(contours):
+        f.contour(*c)
+    again, second = f.run("second", provider)
+    assert summary == again
+    for artifact in ("series_audit", "contour_linkage", "duplicate_positions"):
+        assert first[artifact] == second[artifact]
+        assert (f.root / "first" / f"{artifact}.jsonl").read_bytes() == (f.root / "second" / f"{artifact}.jsonl").read_bytes()
+
+
+def test_schema_v4_artifacts_contain_no_nonfinite_json_number_tokens(tmp_path):
+    f = Fixture(tmp_path)
+    _legacy(f)
+    f.rows[1]["position"][2] = float("nan")
+    f.save_inventory()
+    f.sql("UPDATE zvals SET val=? WHERE id=2", (float("inf"),))
+    f.contour(1, "legacy-a", float("-inf"))
+    summary, data = f.run(provider=_provider(tmp_path))
+    assert summary["audit_status"] == "failed"
+
+    def reject_constant(token):
+        pytest.fail("Nonstandard JSON number token: " + token)
+
+    for name in ("series_audit.jsonl", "contour_linkage.jsonl", "duplicate_positions.jsonl", "provenance.json", "audit_summary.json"):
+        text = (f.root / "audit" / name).read_text(encoding="utf-8")
+        records = text.splitlines() if name.endswith("jsonl") else [text]
+        for record in records:
+            parsed = json.loads(record, parse_constant=reject_constant)
+            assert parsed["schema_version"] == 4
+            json.dumps(parsed, allow_nan=False)
+    assert data["contour_linkage"][0]["original"]["image_z_position"] == {"nonfinite": "-inf"}
+    assert data["series_audit"][0]["geometry"]["positions"][1]["position_lps_mm"][2] == {"nonfinite": "nan"}

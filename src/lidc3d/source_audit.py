@@ -28,7 +28,7 @@ import yaml
 
 from .provenance import sha256, write_json
 
-SCHEMA_VERSION = 3
+SCHEMA_VERSION = 4
 CONFIG_SCHEMA_VERSION = 1
 TOLERANCES = {
     "repeated_position_atol_mm", "z_atol_mm", "orientation_atol",
@@ -45,6 +45,7 @@ REQUIRED = {
     "zvals": {"id": "integer", "scan_id": "integer", "val": "real"},
 }
 CROSSWALK_SUCCESS = "database_legacy_filename_z_crosswalk_unique_inventory_link_source_not_rechecked"
+LITERAL_CROSSWALK_CONFLICT = "literal_crosswalk_candidate_conflict"
 CROSSWALK_STATUSES = (
     "crosswalk_unavailable", "crosswalk_filename_nonunique", "crosswalk_index_count_mismatch",
     "crosswalk_invalid", "crosswalk_filename_missing", "crosswalk_paired_z_ambiguous",
@@ -407,6 +408,31 @@ def _geometry(rows, tol):
             "evidence": "inventory_headers; frame count and encoding rechecked only for repeated groups"}
 
 
+def _geometry_assessment(geometry):
+    """Point identity and volume geometry are separate diagnostics, never releases."""
+    findings = sorted(set(geometry["findings"]))
+    # Explicit allowlist: every other present or future finding blocks point linkage.
+    blocking = sorted(set(findings) - {"irregular_spacing"})
+    known_status = ((geometry["status"] == "diagnostic_geometry_consistent" and not findings) or
+                    (geometry["status"] == "unsupported_or_ambiguous" and bool(findings)))
+    if not known_status:
+        blocking.append("series_geometry_status_unresolved")
+    linkage_compatible = not blocking
+    uniform_geometry = linkage_compatible and not findings
+    volume_status = (
+        "uniform_spacing_geometry_diagnostic_only_not_released" if uniform_geometry else
+        "requires_explicit_coordinate_aware_resampling_not_released" if linkage_compatible else
+        "geometry_unresolved_not_released")
+    return {"series": {"status": geometry["status"], "findings": findings},
+            "linkage": {"status": "diagnostic_point_linkage_compatible" if linkage_compatible else "geometry_unresolved",
+                        "blocking_reasons": blocking,
+                        "nonblocking_findings": [f for f in findings if f == "irregular_spacing"]},
+            "volume_reconstruction": {"status": volume_status,
+                                      "uniform_spacing_geometry_eligible": uniform_geometry,
+                                      "ordinary_uniform_spacing_preparation_eligible": False,
+                                      "approved": False}}
+
+
 def _z_comparison(rows, db_z, atol):
     invalid = [d for d in db_z if not _finite(d["val"])]
     finite_z = [d for d in db_z if _finite(d["val"])]
@@ -619,7 +645,7 @@ def _scan_crosswalk(scan, zvals):
             "findings": findings, "evidence_scope": CROSSWALK_SCOPE}
 
 
-def _contour_crosswalk(c, scan, provider_available, zrows, zs, atol, scan_count, geometry, inspections, sops, by_id):
+def _contour_crosswalk(c, scan, provider_available, zrows, zs, atol, scan_count, geometry_assessment, inspections, sops, by_id):
     name, z = c["dicom_file_name"], c["image_z_position"]
     indices = scan["filename_indices"].get(name, []) if scan and isinstance(name, str) else []
     ordered = scan["ordered_finite_zvals"] if scan else []
@@ -649,7 +675,7 @@ def _contour_crosswalk(c, scan, provider_available, zrows, zs, atol, scan_count,
         "crosswalk_z_inventory_ambiguous" if len(candidates) > 1 else
         "crosswalk_inspected_group_ambiguous" if repeated_members else
         "crosswalk_identity_ambiguous" if scan_count != 1 or sops[by_id[candidates[0]]["sop_uid"]] != 1 else
-        "crosswalk_geometry_unresolved" if geometry["status"] != "diagnostic_geometry_consistent" else
+        "crosswalk_geometry_unresolved" if geometry_assessment["linkage"]["status"] != "diagnostic_point_linkage_compatible" else
         CROSSWALK_SUCCESS)
     return {"status": status, "scan_id": c["scan_id"], "legacy_filename": name,
             "provider_gate": "fingerprinted_pending_final_immutability" if provider_available else "unavailable_or_invalid",
@@ -665,6 +691,7 @@ def _contour_crosswalk(c, scan, provider_available, zrows, zs, atol, scan_count,
 
 
 def _link_contours(contours, rows, scan_count, geometry, global_sops, raw_root, tol, inspections, crosswalks, provider_available):
+    geometry_assessment = _geometry_assessment(geometry)
     filename, sop = defaultdict(list), defaultdict(list)
     for r in rows:
         path = Path(r["path"])
@@ -696,15 +723,20 @@ def _link_contours(contours, rows, scan_count, geometry, global_sops, raw_root, 
         ambiguous = len(exact) > 1 or scan_count != 1 or any(global_sops[by_id[i]["sop_uid"]] != 1 for i in exact)
         status = ("filename_position_contradiction" if contradictory else
                   "ambiguous_exact_link" if exact and ambiguous else
-                  "exact_link_geometry_unresolved" if exact and (not _finite(z) or geometry["status"] != "diagnostic_geometry_consistent") else
+                  "exact_link_geometry_unresolved" if exact and (not _finite(z) or geometry_assessment["linkage"]["status"] != "diagnostic_point_linkage_compatible") else
                   "exact_link_inspection_unresolved" if any(inspections[i]["inspection_blockers"] for i in exact if i in inspections) else
                   "verified_inspected_source_link" if exact and exact[0] in inspections else
                   "exact_inventory_record_link_source_not_rechecked" if exact else
                   "z_only_inventory_link" if position else "missing_link")
         literal_status = status
         crosswalk = _contour_crosswalk(c, crosswalks.get(c["scan_id"]), provider_available, zrows, zs,
-                                      tol["z_atol_mm"], scan_count, geometry, inspections, global_sops, by_id)
-        if not exact and crosswalk["status"] != "crosswalk_unavailable":
+                                      tol["z_atol_mm"], scan_count, geometry_assessment, inspections, global_sops, by_id)
+        disagreement = bool(exact and crosswalk["inventory_record_ids"] and set(exact) != set(crosswalk["inventory_record_ids"]))
+        # Conflicting evidence cannot retain a selected/verified ID from either channel,
+        # including when the crosswalk candidates are only diagnostic hypotheses.
+        if disagreement:
+            status = LITERAL_CROSSWALK_CONFLICT
+        elif not exact and crosswalk["status"] != "crosswalk_unavailable":
             status = crosswalk["status"]
         yield {"contour_id": c["id"], "annotation_id": c["annotation_id"], "scan_id": c["scan_id"],
                "identity": {k: c[k] for k in IDENTITY},
@@ -712,7 +744,8 @@ def _link_contours(contours, rows, scan_count, geometry, global_sops, raw_root, 
                "exact_filename_record_ids": fn, "literal_sop_uid_record_ids": uid,
                "z_candidate_record_ids": position, "all_candidate_record_ids": sorted(set(exact + position + crosswalk["inventory_record_ids"])),
                "literal_linkage_status": literal_status, "crosswalk": crosswalk,
-               "literal_crosswalk_candidate_disagreement": bool(exact and crosswalk["inventory_record_ids"] and set(exact) != set(crosswalk["inventory_record_ids"])),
+               "geometry_assessment": geometry_assessment,
+               "literal_crosswalk_candidate_disagreement": disagreement,
                "crosswalk_inventory_record_id": crosswalk["inventory_record_ids"][0] if status == CROSSWALK_SUCCESS else None,
                "position_contradiction_record_ids": contradictory,
                "identity_ambiguous": ambiguous, "status": status,
@@ -819,10 +852,14 @@ def _run(inventory, rows, raw_root, database, config, handles, summary, provenan
     summary["inventory_errors"] = sorted(inventory.get("errors", []), key=lambda r: json.dumps(r, sort_keys=True))
     linkage_counts = Counter()
     crosswalk_counts = Counter()
+    linkage_geometry_counts = Counter()
+    volume_geometry_counts = Counter()
     inspection_blocker_counts = Counter()
     for key in sorted(set(ct_by) | set(db_by) | set(contour_by), key=_identity_order):
         series_rows, db_scans = ct_by[key], db_by[key]
         geometry = _geometry(series_rows, tol)
+        geometry_assessment = _geometry_assessment(geometry)
+        volume_geometry_counts[geometry_assessment["volume_reconstruction"]["status"]] += 1
         groups = _position_groups(series_rows, tol["repeated_position_atol_mm"])
         content = [_content(group, tol, raw_root) for group in groups]
         inspections = {m["record_id"]: m for members, _ in content for m in members}
@@ -832,6 +869,7 @@ def _run(inventory, rows, raw_root, database, config, handles, summary, provenan
             _emit(handles["contour_linkage"], link)
             linkage_counts[link["status"]] += 1
             crosswalk_counts[link["crosswalk"]["status"]] += 1
+            linkage_geometry_counts[link["geometry_assessment"]["linkage"]["status"]] += 1
             if not link["inclusion_valid"]:
                 summary["operational_errors"].append({"code": "invalid_contour_inclusion", "contour_id": link["contour_id"]})
         group_ids = []
@@ -855,7 +893,8 @@ def _run(inventory, rows, raw_root, database, config, handles, summary, provenan
             "identity": dict(zip(IDENTITY, key)), "ct_count": len(series_rows), "database_scan_ids": [s["id"] for s in db_scans],
             "identity_status": "orphan_contour_context" if not db_scans and not series_rows else "ct_only" if not db_scans else "db_only" if not series_rows else "duplicate_database_identity" if len(db_scans) > 1 else "matched",
             "database_crosswalks": [crosswalks[s["id"]] for s in db_scans],
-            "geometry": geometry, "z_comparisons": [{"scan_id": s["id"], **_z_comparison(series_rows, z_by[s["id"]], tol["z_atol_mm"])} for s in db_scans],
+            "geometry": geometry, "geometry_assessment": geometry_assessment,
+            "z_comparisons": [{"scan_id": s["id"], **_z_comparison(series_rows, z_by[s["id"]], tol["z_atol_mm"])} for s in db_scans],
             "duplicate_sop_ids": sorted({r["sop_uid"] for r in series_rows if sops[r["sop_uid"]] > 1}),
             "repeated_position_group_ids": group_ids,
             "annotation_count": sum(annotation_counts[s["id"]] for s in db_scans),
@@ -863,6 +902,8 @@ def _run(inventory, rows, raw_root, database, config, handles, summary, provenan
     summary["counts"]["series_union"] = len(set(ct_by) | set(db_by) | set(contour_by))
     summary["contour_linkage_counts"] = dict(sorted(linkage_counts.items()))
     summary["crosswalk_status_counts"] = {status: crosswalk_counts[status] for status in CROSSWALK_STATUSES}
+    summary["contour_linkage_geometry_counts"] = dict(sorted(linkage_geometry_counts.items()))
+    summary["series_volume_reconstruction_counts"] = dict(sorted(volume_geometry_counts.items()))
     summary["inspection_blocker_counts"] = dict(sorted(inspection_blocker_counts.items()))
 
 
@@ -902,6 +943,7 @@ def audit_source(inventory_path, annotation_db, config_path, output, invocation=
                             "annotation_counts_are_distinct_nodules": False, "negative_labels_created": False,
                             "xml_reference_standard_replaced": False},
                "crosswalk_status_counts": dict.fromkeys(CROSSWALK_STATUSES, 0),
+               "contour_linkage_geometry_counts": {}, "series_volume_reconstruction_counts": {},
                "crosswalk_scan_finding_counts": dict.fromkeys(SCAN_FINDINGS, 0),
                "counts": {"repeated_position_groups": 0, "inspected_dicom_records": 0}, "operational_errors": []}
     output.mkdir(parents=True, exist_ok=False)
