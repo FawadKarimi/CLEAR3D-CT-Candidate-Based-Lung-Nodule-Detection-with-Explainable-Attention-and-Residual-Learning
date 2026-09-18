@@ -1,6 +1,6 @@
 # Independent LIDC3D research implementation
 
-This is a new project implementing the prospective two-stage 3D thesis protocol. **It is separate from ConsenDxFormer and LungDxFormer.** It imports neither repository, their models, labels, predictions, checkpoints, splits nor processed images. The only proposed shared resource is the raw LIDC-IDRI CT/XML archive on the university GPU server, accessed read-only.
+This is a new project implementing the prospective two-stage 3D thesis protocol.It imports neither repository, their models, labels, predictions, checkpoints, splits nor processed images. The only proposed shared resource is the raw LIDC-IDRI CT/XML archive on the university GPU server, accessed read-only.
 
 **Status: research software, synthetic verification only. `PENDING_VERIFIED_EXPERIMENT`.** No patient cohort has been processed here, no model has been trained on LIDC-IDRI, and no performance or clinical utility has been established.
 
