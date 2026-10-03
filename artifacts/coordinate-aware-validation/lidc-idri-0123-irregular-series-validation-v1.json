@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "commit": "43001d4ad40eef6453fc2f7cf34373436d232bbf",
+  "patient_id": "LIDC-IDRI-0123",
+  "series_uid": "1.3.6.1.4.1.14519.5.2.1.6279.6001.103115201714075993579787468219",
+  "source_slice_count": 236,
+  "strict_rejection": "Irregular slice spacing or missing slices",
+  "source_gap_mm": {
+    "minimum": 0.5,
+    "median": 1.25,
+    "maximum": 1.25
+  },
+  "regularized": {
+    "shape_zyx": [
+      293,
+      512,
+      512
+    ],
+    "spacing_zyx_mm": [
+      0.9991438356164384,
+      0.859375,
+      0.859375
+    ],
+    "minimum_output_gap_mm": 0.999143835616394,
+    "maximum_output_gap_mm": 0.9991438356164508,
+    "valid_fraction": 1.0
+  },
+  "canonical": {
+    "shape_zyx": [
+      293,
+      441,
+      441
+    ],
+    "valid_fraction": 0.9920724859845316
+  },
+  "header_read_errors_outside_selected_series": 0,
+  "checks": {
+    "source_slice_count_is_236": true,
+    "strict_loader_rejected_irregular_geometry": true,
+    "coordinate_aware_path_used": true,
+    "source_min_gap_is_0_5": true,
+    "source_max_gap_is_1_25": true,
+    "regularized_gap_not_above_1mm": true,
+    "regularized_gaps_uniform": true,
+    "regularized_hu_finite": true,
+    "canonical_hu_finite": true,
+    "regularized_shape_matches_valid": true,
+    "canonical_shape_matches_valid": true,
+    "regularized_has_valid_voxels": true,
+    "canonical_has_valid_voxels": true
+  },
+  "acceptance_pass": true
+}
