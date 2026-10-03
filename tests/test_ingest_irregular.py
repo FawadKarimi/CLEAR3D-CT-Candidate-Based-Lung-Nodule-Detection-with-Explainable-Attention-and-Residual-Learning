@@ -1,7 +1,7 @@
 from types import SimpleNamespace
 import numpy as np
 import pytest
-from lidc3d import ingest
+from lidc3d import ingest, pipeline
 
 
 CFG = {"orientation_atol": 1e-6, "position_atol_mm": 1e-4,
@@ -99,3 +99,37 @@ def test_regular_series_is_unchanged_with_opt_in_arguments(fake_reader):
     assert np.array_equal(strict.valid, opted.valid)
     assert np.array_equal(strict.affine, opted.affine)
     assert opted.metadata["coordinate_aware_resampling"] is False
+
+
+def test_pipeline_forwards_complete_coordinate_aware_policy(monkeypatch):
+    captured = {}
+
+    def fake_load(paths, geometry, **kwargs):
+        captured.update(paths=paths, geometry=geometry, kwargs=kwargs)
+        return "volume"
+
+    monkeypatch.setattr(pipeline, "load_series", fake_load)
+    geometry = {
+        **CFG,
+        "coordinate_aware_spacing_mm": 1.0,
+        "max_interpolation_gap_mm": 1.25,
+    }
+    result = pipeline._load_configured_series(["a", "b"], {"geometry": geometry})
+    assert result == "volume"
+    assert captured == {
+        "paths": ["a", "b"],
+        "geometry": geometry,
+        "kwargs": {
+            "coordinate_aware_spacing_mm": 1.0,
+            "max_interpolation_gap_mm": 1.25,
+        },
+    }
+
+
+@pytest.mark.parametrize("geometry", [
+    {**CFG, "coordinate_aware_spacing_mm": 1.0},
+    {**CFG, "max_interpolation_gap_mm": 1.25},
+])
+def test_pipeline_rejects_partial_coordinate_aware_policy(geometry):
+    with pytest.raises(ValueError, match="must be configured together"):
+        pipeline._load_configured_series(["a", "b"], {"geometry": geometry})
