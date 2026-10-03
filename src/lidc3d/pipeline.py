@@ -134,6 +134,12 @@ def prepare_candidates(cohort, config, output, allow_test=False):
                 if sha256(path) != expected:
                     raise ValueError("Raw source changed since cohort construction")
             native = _load_configured_series(scan["dicom_paths"], config)
+            if native.metadata["series_uid"] != scan["series_uid"]:
+                raise ValueError("Loaded DICOM series disagrees with cohort manifest")
+            record["pixel_fingerprint"] = native.metadata["pixel_fingerprint"]
+            record["native_affine"] = native.affine.tolist()
+            record["source_hashes"] = native.metadata["source_hashes"]
+            record["coordinate_aware_resampling"] = native.metadata["coordinate_aware_resampling"]
             volume = resample_lps(native, config["preprocess"]["spacing_mm"])
             del native
             image = normalize(volume.hu, config["preprocess"]["window_hu"])
