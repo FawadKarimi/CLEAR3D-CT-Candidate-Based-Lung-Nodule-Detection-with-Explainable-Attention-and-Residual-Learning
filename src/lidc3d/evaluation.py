@@ -34,7 +34,8 @@ def match(predictions, reference, ignored):
             raise ValueError("Invalid geometry")
         distances = np.linalg.norm(np.array([r["center_lps"] for r in reference])[:, None]-centers[None], axis=-1)
         ratios = distances/radii[:, None]
-        eligible = ratios <= 1
+        strict = np.array([bool(r.get("strict_radius")) for r in reference])[:, None]
+        eligible = np.where(strict, ratios < 1, ratios <= 1)
         # One dummy per reference. A single additional real match outweighs
         # the largest possible change in summed eligible normalized distances.
         penalty = len(reference) + 1
