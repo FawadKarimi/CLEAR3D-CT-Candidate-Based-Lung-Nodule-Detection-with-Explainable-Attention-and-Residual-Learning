@@ -14,6 +14,19 @@ from .evaluation import DetectionCurves
 from .provenance import write_json, write_jsonl, read_jsonl, read_json, sha256, canonical_hash, safe_output
 
 
+def _load_configured_series(paths, config):
+    """Load a series under one explicit, frozen geometry policy."""
+    geometry = config["geometry"]
+    spacing = geometry.get("coordinate_aware_spacing_mm")
+    max_gap = geometry.get("max_interpolation_gap_mm")
+    if (spacing is None) != (max_gap is None):
+        raise ValueError(
+            "Coordinate-aware spacing and maximum interpolation gap must be configured together")
+    return load_series(
+        paths, geometry, coordinate_aware_spacing_mm=spacing,
+        max_interpolation_gap_mm=max_gap)
+
+
 def build_cohort(inventory, config, output):
     """Create draft references and proposed patient partitions, not a release.
 
@@ -65,7 +78,7 @@ def build_cohort(inventory, config, output):
                 continue
             scan_id = "scan_" + canonical_hash({"patient": patient, "study": study, "series": uid})[:20]
             try:
-                volume = load_series([r["path"] for r in slices], config["geometry"])
+                volume = _load_configured_series([r["path"] for r in slices], config)
                 marks = parse_xml(xml["path"], volume)
                 positive, ignored, audit = make_references(marks, volume.affine, output/scan_id, scan_id)
                 write_json(output/f"{scan_id}_reference_audit.json", audit)
@@ -120,7 +133,7 @@ def prepare_candidates(cohort, config, output, allow_test=False):
             for path, expected in scan["source_hashes"].items():
                 if sha256(path) != expected:
                     raise ValueError("Raw source changed since cohort construction")
-            native = load_series(scan["dicom_paths"], config["geometry"])
+            native = _load_configured_series(scan["dicom_paths"], config)
             volume = resample_lps(native, config["preprocess"]["spacing_mm"])
             del native
             image = normalize(volume.hu, config["preprocess"]["window_hu"])
