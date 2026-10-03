@@ -41,6 +41,10 @@ def test_hash_inventory_recomputes_changed_file(tmp_path):
     result = enrich_inventory(inventory, tmp_path / "hashed2.json", journal, 0)
     assert result["computed_this_run"] == 1
     assert result["reused_from_journal"] == 2
+    third = enrich_inventory(
+        inventory, tmp_path / "hashed3.json", journal, 0)
+    assert third["computed_this_run"] == 0
+    assert third["reused_from_journal"] == 3
 
 
 def test_hash_inventory_rejects_paths_outside_source_root(tmp_path):
