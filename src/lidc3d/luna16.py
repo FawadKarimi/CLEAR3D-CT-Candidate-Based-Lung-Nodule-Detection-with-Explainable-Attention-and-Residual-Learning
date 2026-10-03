@@ -4,7 +4,8 @@ import csv
 from collections import Counter, defaultdict
 from pathlib import Path
 import numpy as np
-from .provenance import read_json, sha256
+from .provenance import (read_json, sha256, canonical_hash, safe_output,
+                         write_json, write_jsonl)
 
 
 _ASSIGNMENT_FIELDS = [
@@ -157,3 +158,100 @@ def load_protocol(assignments_path, protocol_path, annotations_path,
         "roles": roles,
         "fold": fold,
     }
+
+
+
+def build_cohort(inventory, assignments_path, protocol_path, annotations_path,
+                 excluded_annotations_path, fold, output):
+    """Build fold-specific manifests from a previously hashed DICOM inventory."""
+    spec = load_protocol(
+        assignments_path, protocol_path, annotations_path,
+        excluded_annotations_path, fold)
+    output = Path(output).resolve()
+    safe_output(output, inventory["source_root"])
+    output.mkdir(parents=True, exist_ok=False)
+
+    by_series = defaultdict(list)
+    for row in inventory["slices"]:
+        by_series[row["series_uid"]].append(row)
+    missing = sorted(set(spec["assignments"]) - set(by_series))
+    if missing:
+        raise ValueError(f"Assigned LUNA16 series missing from inventory: {missing[:5]}")
+
+    audit_path = output / "luna16_reference_adapter_audit.json"
+    audit = {
+        "schema_version": 1,
+        "status": "PROTOCOL_BOUND_REFERENCES_NOT_YET_PREPARED",
+        "fold": fold,
+        "protocol_hashes": spec["hashes"],
+        "inventory_hash": canonical_hash(inventory),
+        "series": len(spec["assignments"]),
+        "included_rows": sum(map(len, spec["included"].values())),
+        "excluded_rows": sum(map(len, spec["excluded"].values())),
+        "strict_radius_matching": True,
+    }
+    write_json(audit_path, audit)
+
+    scans = []
+    for uid, assignment in sorted(spec["assignments"].items()):
+        rows = by_series[uid]
+        patients = {row["patient_id"] for row in rows}
+        studies = {row["study_uid"] for row in rows}
+        if patients != {assignment["patient_id"]}:
+            raise ValueError(f"Assignment/inventory patient mismatch: {uid}")
+        if len(studies) != 1:
+            raise ValueError(f"Series spans multiple studies: {uid}")
+        if any("LOCALIZER" in row["image_type"] for row in rows):
+            raise ValueError(f"Localizer in assigned LUNA16 series: {uid}")
+        if any(not row.get("sha256") for row in rows):
+            raise ValueError(
+                "LUNA16 cohort construction requires an inventory created with --hash-files")
+        paths = [row["path"] for row in rows]
+        if len(paths) != len(set(paths)):
+            raise ValueError(f"Duplicate inventory paths: {uid}")
+        scan_id = "scan_" + canonical_hash({
+            "patient": assignment["patient_id"],
+            "study": next(iter(studies)),
+            "series": uid,
+        })[:20]
+        role = spec["roles"][uid]
+        scans.append({
+            "scan_id": scan_id,
+            "patient_id": assignment["patient_id"],
+            "study_uid": next(iter(studies)),
+            "series_uid": uid,
+            "source_root": inventory["source_root"],
+            "dicom_paths": paths,
+            "source_hashes": {row["path"]: row["sha256"] for row in rows},
+            "positive": spec["included"].get(uid, []),
+            "ignored": spec["excluded"].get(uid, []),
+            "reference_audit_path": str(audit_path),
+            "unresolved_associations": 0,
+            "official_subset": assignment["official_subset"],
+            "patient_grouped_subset": assignment["patient_grouped_subset"],
+            "split": "val" if role == "validation" else role,
+            "fold": fold,
+            "status": "manifest_only_not_prepared",
+        })
+
+    patient_roles = defaultdict(set)
+    for scan in scans:
+        patient_roles[scan["patient_id"]].add(scan["split"])
+    leakage = {p: sorted(v) for p, v in patient_roles.items() if len(v) != 1}
+    if leakage:
+        raise ValueError(f"Patient leakage in emitted manifests: {leakage}")
+
+    development = [scan for scan in scans if scan["split"] != "test"]
+    withheld = [scan for scan in scans if scan["split"] == "test"]
+    write_jsonl(output / "cohort_development.jsonl", development)
+    write_jsonl(output / "cohort_test_WITHHOLD.jsonl", withheld)
+    write_json(output / "cohort_summary.json", {
+        **audit,
+        "status": "MANIFESTS_CREATED_NOT_PREPARED_NOT_FROZEN",
+        "patients": len(patient_roles),
+        "role_counts": dict(sorted(Counter(s["split"] for s in scans).items())),
+        "development_manifest_sha256": sha256(output / "cohort_development.jsonl"),
+        "withheld_manifest_sha256": sha256(output / "cohort_test_WITHHOLD.jsonl"),
+        "acceptance_pass": len(scans) == spec["protocol"]["series_count"] and not leakage,
+    })
+    return scans
