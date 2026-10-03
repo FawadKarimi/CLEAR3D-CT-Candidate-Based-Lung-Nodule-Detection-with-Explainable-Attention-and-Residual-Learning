@@ -6,6 +6,8 @@ geometry:
   position_atol_mm: 0.1
   spacing_rtol: 0.01
   spacing_atol_mm: 0.1
+  coordinate_aware_spacing_mm: 1.0
+  max_interpolation_gap_mm: 1.25
 preprocess:
   spacing_mm: 1.0
   window_hu: [-1000, 400]
