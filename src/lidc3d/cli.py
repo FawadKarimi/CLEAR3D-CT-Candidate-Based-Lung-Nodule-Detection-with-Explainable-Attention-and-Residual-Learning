@@ -104,6 +104,14 @@ def main():
     p.add_argument("--inventory", required=True)
     p.add_argument("--config", required=True)
     p.add_argument("--out", required=True)
+    p = sub.add_parser("luna16-cohort")
+    p.add_argument("--inventory", required=True)
+    p.add_argument("--assignments", required=True)
+    p.add_argument("--protocol", required=True)
+    p.add_argument("--annotations", required=True)
+    p.add_argument("--excluded-annotations", required=True)
+    p.add_argument("--fold", type=int, choices=range(10), required=True)
+    p.add_argument("--out", required=True)
     p = sub.add_parser("prepare")
     p.add_argument("--cohort", required=True)
     p.add_argument("--config", required=True)
@@ -168,6 +176,11 @@ def main():
     elif args.command == "cohort":
         from .pipeline import build_cohort
         build_cohort(read_json(args.inventory), load_config(args.config), args.out)
+    elif args.command == "luna16-cohort":
+        from .luna16 import build_cohort
+        build_cohort(
+            read_json(args.inventory), args.assignments, args.protocol,
+            args.annotations, args.excluded_annotations, args.fold, args.out)
     elif args.command == "prepare":
         from .pipeline import prepare_candidates
         cohort = read_jsonl(args.cohort)
