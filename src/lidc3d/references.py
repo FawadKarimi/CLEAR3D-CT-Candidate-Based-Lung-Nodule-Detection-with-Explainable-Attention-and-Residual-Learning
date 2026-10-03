@@ -196,7 +196,8 @@ def mask_lookup(path):
 def inside_ignore(center, ignored, point_radius=None):
     for region in ignored:
         radius = point_radius if point_radius is not None and region.get("point_only") else region["radius_mm"]
-        if np.linalg.norm(np.asarray(center)-region["center_lps"]) <= radius:
+        distance = np.linalg.norm(np.asarray(center)-region["center_lps"])
+        if distance < radius if region.get("strict_radius") else distance <= radius:
             return True
         if region.get("mask_path"):
             coords, affine = mask_lookup(region["mask_path"])
@@ -207,6 +208,9 @@ def inside_ignore(center, ignored, point_radius=None):
 
 
 def candidate_label(center, positive, ignored):
-    if any(np.linalg.norm(np.asarray(center)-r["center_lps"]) <= r["radius_mm"] for r in positive):
+    def contained(region):
+        distance = np.linalg.norm(np.asarray(center)-region["center_lps"])
+        return distance < region["radius_mm"] if region.get("strict_radius") else distance <= region["radius_mm"]
+    if any(contained(region) for region in positive):
         return 1
     return -1 if inside_ignore(center, ignored) else 0
