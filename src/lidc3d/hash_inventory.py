@@ -19,8 +19,10 @@ def _load_journal(path):
             except json.JSONDecodeError as error:
                 raise ValueError(f"Invalid hash journal line {number}") from error
             key = row.get("path")
-            if not key or key in records:
-                raise ValueError(f"Invalid or duplicate hash journal path at line {number}")
+            if not key:
+                raise ValueError(f"Invalid hash journal path at line {number}")
+            # A later record supersedes an earlier one when a source file was
+            # intentionally replaced between resumptions.
             records[key] = row
     return records
 
