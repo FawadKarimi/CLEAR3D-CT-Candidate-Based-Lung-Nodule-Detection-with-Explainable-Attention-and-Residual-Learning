@@ -2,7 +2,7 @@ import csv
 import json
 from pathlib import Path
 import pytest
-from lidc3d.luna16 import load_protocol
+from lidc3d.luna16 import load_protocol, build_cohort
 from lidc3d.provenance import sha256
 
 
@@ -114,3 +114,61 @@ def test_protocol_adapter_rejects_nonpositive_included_diameter(tmp_path):
     paths[1].write_text(json.dumps(protocol))
     with pytest.raises(ValueError, match="Nonpositive included diameter"):
         load_protocol(*paths, fold=0)
+
+
+
+def inventory_fixture(tmp_path, hashed=True):
+    raw = tmp_path / "raw"
+    raw.mkdir()
+    rows = []
+    for index, (uid, patient) in enumerate((("s0", "p0"), ("s1", "p1"), ("s2", "p2"))):
+        path = raw / f"{uid}.dcm"
+        path.write_bytes(uid.encode())
+        row = {
+            "path": str(path), "patient_id": patient, "study_uid": f"study-{index}",
+            "series_uid": uid, "sop_uid": f"sop-{index}", "rows": 2, "columns": 2,
+            "position": [0, 0, index], "orientation": [1, 0, 0, 0, 1, 0],
+            "pixel_spacing": [1, 1], "image_type": ["ORIGINAL", "PRIMARY", "AXIAL"],
+            "transfer_syntax": "1.2.840.10008.1.2.1",
+        }
+        if hashed:
+            row["sha256"] = sha256(path)
+        rows.append(row)
+    return {"source_root": str(raw), "slices": rows, "xml": [], "errors": [],
+            "status": "HEADER_INVENTORY_ONLY_NOT_COHORT_FREEZE"}
+
+
+def test_build_cohort_emits_patient_independent_manifests(tmp_path):
+    paths = fixture(tmp_path)
+    scans = build_cohort(
+        inventory_fixture(tmp_path), *paths, fold=0, output=tmp_path / "out")
+    assert {scan["split"] for scan in scans} == {"train", "val", "test"}
+    assert len({scan["patient_id"] for scan in scans}) == 3
+    assert all(scan["status"] == "manifest_only_not_prepared" for scan in scans)
+    summary = json.loads((tmp_path / "out" / "cohort_summary.json").read_text())
+    assert summary["acceptance_pass"] is True
+    assert summary["role_counts"] == {"test": 1, "train": 1, "val": 1}
+
+
+def test_build_cohort_requires_prehashed_inventory(tmp_path):
+    paths = fixture(tmp_path)
+    with pytest.raises(ValueError, match="--hash-files"):
+        build_cohort(
+            inventory_fixture(tmp_path, hashed=False), *paths,
+            fold=0, output=tmp_path / "out")
+
+
+def test_luna16_radius_boundary_is_strict():
+    from lidc3d.references import candidate_label, inside_ignore
+    from lidc3d.evaluation import match
+    region = {
+        "id": "r", "center_lps": [0, 0, 0], "radius_mm": 5,
+        "strict_radius": True, "point_only": True,
+    }
+    boundary = [5, 0, 0]
+    assert candidate_label(boundary, [region], []) == 0
+    assert inside_ignore(boundary, [region]) is False
+    result = match(
+        [{"id": "p", "center_lps": boundary, "score": 1.0}],
+        [region], [])
+    assert result["tp"] == 0 and result["fp"] == 1 and result["fn"] == 1
