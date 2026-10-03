@@ -1,0 +1,628 @@
+{
+  "schema_version": 1,
+  "name": "luna16_patient_grouped_cv10",
+  "primary_evaluation": true,
+  "assignment_csv": "/experiment-storage/chaidir/fawad-dsai/LIDC3D/artifacts/reference-discovery/luna16-folds/luna16_patient_grouped_subset_assignments_v1.csv",
+  "assignment_sha256": "db9a2f9a1770080afccad9a32e4be5acbdb73d3c051d17904f96842dbfb208e9",
+  "reference_files": {
+    "annotations": {
+      "path": "/experiment-storage/chaidir/fawad-dsai/data/reference/luna16-zenodo-3723295/resolved-reference-v1/annotations.csv",
+      "sha256": "db9adb75b381f3e95b1f601d9b63f2e42bd6536ab5a06dc539c5ec8a4005cec7"
+    },
+    "candidates_v2": {
+      "path": "/experiment-storage/chaidir/fawad-dsai/data/reference/luna16-zenodo-3723295/resolved-reference-v1/candidates_V2.csv",
+      "sha256": "8c168d9113f97a3cfd609d18703c50a62067f8f61fe4833be1650a02baa43c82"
+    }
+  },
+  "rules": {
+    "test_subset": "k",
+    "validation_subset": "(k + 1) mod 10",
+    "training_subsets": "all subsets except test and validation",
+    "patient_grouping": "mandatory",
+    "model_selection_uses_test_data": false,
+    "official_uncorrected_assignment_use": "secondary benchmark-sensitivity analysis only"
+  },
+  "series_count": 888,
+  "patient_count": 887,
+  "cross_subset_patients": {},
+  "subset_summary": {
+    "0": {
+      "series": 89,
+      "patients": 89,
+      "annotated_series": 67,
+      "included_annotation_rows": 112,
+      "candidate_class_0": 78997,
+      "candidate_class_1": 138,
+      "contains_irregular_geometry_series": false
+    },
+    "1": {
+      "series": 89,
+      "patients": 89,
+      "annotated_series": 61,
+      "included_annotation_rows": 128,
+      "candidate_class_0": 70842,
+      "candidate_class_1": 170,
+      "contains_irregular_geometry_series": false
+    },
+    "2": {
+      "series": 90,
+      "patients": 89,
+      "annotated_series": 57,
+      "included_annotation_rows": 130,
+      "candidate_class_0": 75108,
+      "candidate_class_1": 190,
+      "contains_irregular_geometry_series": false
+    },
+    "3": {
+      "series": 89,
+      "patients": 89,
+      "annotated_series": 65,
+      "included_annotation_rows": 119,
+      "candidate_class_0": 75792,
+      "candidate_class_1": 158,
+      "contains_irregular_geometry_series": false
+    },
+    "4": {
+      "series": 89,
+      "patients": 89,
+      "annotated_series": 62,
+      "included_annotation_rows": 128,
+      "candidate_class_0": 76413,
+      "candidate_class_1": 170,
+      "contains_irregular_geometry_series": true
+    },
+    "5": {
+      "series": 89,
+      "patients": 89,
+      "annotated_series": 54,
+      "included_annotation_rows": 108,
+      "candidate_class_0": 75564,
+      "candidate_class_1": 127,
+      "contains_irregular_geometry_series": false
+    },
+    "6": {
+      "series": 88,
+      "patients": 88,
+      "annotated_series": 62,
+      "included_annotation_rows": 127,
+      "candidate_class_0": 75686,
+      "candidate_class_1": 145,
+      "contains_irregular_geometry_series": false
+    },
+    "7": {
+      "series": 89,
+      "patients": 89,
+      "annotated_series": 54,
+      "included_annotation_rows": 111,
+      "candidate_class_0": 74943,
+      "candidate_class_1": 120,
+      "contains_irregular_geometry_series": false
+    },
+    "8": {
+      "series": 88,
+      "patients": 88,
+      "annotated_series": 60,
+      "included_annotation_rows": 118,
+      "candidate_class_0": 74293,
+      "candidate_class_1": 195,
+      "contains_irregular_geometry_series": false
+    },
+    "9": {
+      "series": 88,
+      "patients": 88,
+      "annotated_series": 59,
+      "included_annotation_rows": 105,
+      "candidate_class_0": 75780,
+      "candidate_class_1": 144,
+      "contains_irregular_geometry_series": false
+    }
+  },
+  "folds": [
+    {
+      "fold": 0,
+      "roles": {
+        "train": {
+          "subsets": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "series": 710,
+          "patients": 709,
+          "annotated_series": 473,
+          "included_annotation_rows": 946,
+          "candidate_class_0": 603579,
+          "candidate_class_1": 1249
+        },
+        "validation": {
+          "subsets": [
+            1
+          ],
+          "series": 89,
+          "patients": 89,
+          "annotated_series": 61,
+          "included_annotation_rows": 128,
+          "candidate_class_0": 70842,
+          "candidate_class_1": 170
+        },
+        "test": {
+          "subsets": [
+            0
+          ],
+          "series": 89,
+          "patients": 89,
+          "annotated_series": 67,
+          "included_annotation_rows": 112,
+          "candidate_class_0": 78997,
+          "candidate_class_1": 138
+        }
+      },
+      "patient_overlaps": {
+        "train_validation": [],
+        "train_test": [],
+        "validation_test": []
+      }
+    },
+    {
+      "fold": 1,
+      "roles": {
+        "train": {
+          "subsets": [
+            0,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "series": 709,
+          "patients": 709,
+          "annotated_series": 483,
+          "included_annotation_rows": 928,
+          "candidate_class_0": 607468,
+          "candidate_class_1": 1197
+        },
+        "validation": {
+          "subsets": [
+            2
+          ],
+          "series": 90,
+          "patients": 89,
+          "annotated_series": 57,
+          "included_annotation_rows": 130,
+          "candidate_class_0": 75108,
+          "candidate_class_1": 190
+        },
+        "test": {
+          "subsets": [
+            1
+          ],
+          "series": 89,
+          "patients": 89,
+          "annotated_series": 61,
+          "included_annotation_rows": 128,
+          "candidate_class_0": 70842,
+          "candidate_class_1": 170
+        }
+      },
+      "patient_overlaps": {
+        "train_validation": [],
+        "train_test": [],
+        "validation_test": []
+      }
+    },
+    {
+      "fold": 2,
+      "roles": {
+        "train": {
+          "subsets": [
+            0,
+            1,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "series": 709,
+          "patients": 709,
+          "annotated_series": 479,
+          "included_annotation_rows": 937,
+          "candidate_class_0": 602518,
+          "candidate_class_1": 1209
+        },
+        "validation": {
+          "subsets": [
+            3
+          ],
+          "series": 89,
+          "patients": 89,
+          "annotated_series": 65,
+          "included_annotation_rows": 119,
+          "candidate_class_0": 75792,
+          "candidate_class_1": 158
+        },
+        "test": {
+          "subsets": [
+            2
+          ],
+          "series": 90,
+          "patients": 89,
+          "annotated_series": 57,
+          "included_annotation_rows": 130,
+          "candidate_class_0": 75108,
+          "candidate_class_1": 190
+        }
+      },
+      "patient_overlaps": {
+        "train_validation": [],
+        "train_test": [],
+        "validation_test": []
+      }
+    },
+    {
+      "fold": 3,
+      "roles": {
+        "train": {
+          "subsets": [
+            0,
+            1,
+            2,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "series": 710,
+          "patients": 709,
+          "annotated_series": 474,
+          "included_annotation_rows": 939,
+          "candidate_class_0": 601213,
+          "candidate_class_1": 1229
+        },
+        "validation": {
+          "subsets": [
+            4
+          ],
+          "series": 89,
+          "patients": 89,
+          "annotated_series": 62,
+          "included_annotation_rows": 128,
+          "candidate_class_0": 76413,
+          "candidate_class_1": 170
+        },
+        "test": {
+          "subsets": [
+            3
+          ],
+          "series": 89,
+          "patients": 89,
+          "annotated_series": 65,
+          "included_annotation_rows": 119,
+          "candidate_class_0": 75792,
+          "candidate_class_1": 158
+        }
+      },
+      "patient_overlaps": {
+        "train_validation": [],
+        "train_test": [],
+        "validation_test": []
+      }
+    },
+    {
+      "fold": 4,
+      "roles": {
+        "train": {
+          "subsets": [
+            0,
+            1,
+            2,
+            3,
+            6,
+            7,
+            8,
+            9
+          ],
+          "series": 710,
+          "patients": 709,
+          "annotated_series": 485,
+          "included_annotation_rows": 950,
+          "candidate_class_0": 601441,
+          "candidate_class_1": 1260
+        },
+        "validation": {
+          "subsets": [
+            5
+          ],
+          "series": 89,
+          "patients": 89,
+          "annotated_series": 54,
+          "included_annotation_rows": 108,
+          "candidate_class_0": 75564,
+          "candidate_class_1": 127
+        },
+        "test": {
+          "subsets": [
+            4
+          ],
+          "series": 89,
+          "patients": 89,
+          "annotated_series": 62,
+          "included_annotation_rows": 128,
+          "candidate_class_0": 76413,
+          "candidate_class_1": 170
+        }
+      },
+      "patient_overlaps": {
+        "train_validation": [],
+        "train_test": [],
+        "validation_test": []
+      }
+    },
+    {
+      "fold": 5,
+      "roles": {
+        "train": {
+          "subsets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            7,
+            8,
+            9
+          ],
+          "series": 711,
+          "patients": 710,
+          "annotated_series": 485,
+          "included_annotation_rows": 951,
+          "candidate_class_0": 602168,
+          "candidate_class_1": 1285
+        },
+        "validation": {
+          "subsets": [
+            6
+          ],
+          "series": 88,
+          "patients": 88,
+          "annotated_series": 62,
+          "included_annotation_rows": 127,
+          "candidate_class_0": 75686,
+          "candidate_class_1": 145
+        },
+        "test": {
+          "subsets": [
+            5
+          ],
+          "series": 89,
+          "patients": 89,
+          "annotated_series": 54,
+          "included_annotation_rows": 108,
+          "candidate_class_0": 75564,
+          "candidate_class_1": 127
+        }
+      },
+      "patient_overlaps": {
+        "train_validation": [],
+        "train_test": [],
+        "validation_test": []
+      }
+    },
+    {
+      "fold": 6,
+      "roles": {
+        "train": {
+          "subsets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            8,
+            9
+          ],
+          "series": 711,
+          "patients": 710,
+          "annotated_series": 485,
+          "included_annotation_rows": 948,
+          "candidate_class_0": 602789,
+          "candidate_class_1": 1292
+        },
+        "validation": {
+          "subsets": [
+            7
+          ],
+          "series": 89,
+          "patients": 89,
+          "annotated_series": 54,
+          "included_annotation_rows": 111,
+          "candidate_class_0": 74943,
+          "candidate_class_1": 120
+        },
+        "test": {
+          "subsets": [
+            6
+          ],
+          "series": 88,
+          "patients": 88,
+          "annotated_series": 62,
+          "included_annotation_rows": 127,
+          "candidate_class_0": 75686,
+          "candidate_class_1": 145
+        }
+      },
+      "patient_overlaps": {
+        "train_validation": [],
+        "train_test": [],
+        "validation_test": []
+      }
+    },
+    {
+      "fold": 7,
+      "roles": {
+        "train": {
+          "subsets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            9
+          ],
+          "series": 711,
+          "patients": 710,
+          "annotated_series": 487,
+          "included_annotation_rows": 957,
+          "candidate_class_0": 604182,
+          "candidate_class_1": 1242
+        },
+        "validation": {
+          "subsets": [
+            8
+          ],
+          "series": 88,
+          "patients": 88,
+          "annotated_series": 60,
+          "included_annotation_rows": 118,
+          "candidate_class_0": 74293,
+          "candidate_class_1": 195
+        },
+        "test": {
+          "subsets": [
+            7
+          ],
+          "series": 89,
+          "patients": 89,
+          "annotated_series": 54,
+          "included_annotation_rows": 111,
+          "candidate_class_0": 74943,
+          "candidate_class_1": 120
+        }
+      },
+      "patient_overlaps": {
+        "train_validation": [],
+        "train_test": [],
+        "validation_test": []
+      }
+    },
+    {
+      "fold": 8,
+      "roles": {
+        "train": {
+          "subsets": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "series": 712,
+          "patients": 711,
+          "annotated_series": 482,
+          "included_annotation_rows": 963,
+          "candidate_class_0": 603345,
+          "candidate_class_1": 1218
+        },
+        "validation": {
+          "subsets": [
+            9
+          ],
+          "series": 88,
+          "patients": 88,
+          "annotated_series": 59,
+          "included_annotation_rows": 105,
+          "candidate_class_0": 75780,
+          "candidate_class_1": 144
+        },
+        "test": {
+          "subsets": [
+            8
+          ],
+          "series": 88,
+          "patients": 88,
+          "annotated_series": 60,
+          "included_annotation_rows": 118,
+          "candidate_class_0": 74293,
+          "candidate_class_1": 195
+        }
+      },
+      "patient_overlaps": {
+        "train_validation": [],
+        "train_test": [],
+        "validation_test": []
+      }
+    },
+    {
+      "fold": 9,
+      "roles": {
+        "train": {
+          "subsets": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "series": 711,
+          "patients": 710,
+          "annotated_series": 475,
+          "included_annotation_rows": 969,
+          "candidate_class_0": 598641,
+          "candidate_class_1": 1275
+        },
+        "validation": {
+          "subsets": [
+            0
+          ],
+          "series": 89,
+          "patients": 89,
+          "annotated_series": 67,
+          "included_annotation_rows": 112,
+          "candidate_class_0": 78997,
+          "candidate_class_1": 138
+        },
+        "test": {
+          "subsets": [
+            9
+          ],
+          "series": 88,
+          "patients": 88,
+          "annotated_series": 59,
+          "included_annotation_rows": 105,
+          "candidate_class_0": 75780,
+          "candidate_class_1": 144
+        }
+      },
+      "patient_overlaps": {
+        "train_validation": [],
+        "train_test": [],
+        "validation_test": []
+      }
+    }
+  ],
+  "annotation_uids_outside_assignment": [],
+  "candidate_uids_outside_assignment": [],
+  "overlap_failures": [],
+  "all_roles_have_annotations": true,
+  "all_roles_have_positive_candidates": true,
+  "acceptance_pass": true
+}
