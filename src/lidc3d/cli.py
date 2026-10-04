@@ -117,6 +117,8 @@ def main():
     p.add_argument("--config", required=True)
     p.add_argument("--out", required=True)
     p.add_argument("--release", help="Required before preparing withheld test CTs")
+    p.add_argument("--resume", action="store_true",
+                   help="Resume from verified per-scan checkpoints")
     p = sub.add_parser("freeze")
     p.add_argument("--scans", required=True)
     p.add_argument("--pool", required=True)
@@ -188,7 +190,8 @@ def main():
         if any(s["split"] == "test" for s in cohort):
             release = read_json(args.release) if args.release else {}
             allow = release.get("status") == "approved" and release.get("cohort_sha256") == sha256(args.cohort)
-        prepare_candidates(cohort, load_config(args.config), args.out, allow)
+        prepare_candidates(cohort, load_config(args.config), args.out, allow,
+                           resume=args.resume)
     elif args.command == "freeze":
         from .pipeline import freeze_bundle
         freeze_bundle(args.scans, args.pool, load_config(args.config), read_json(args.review), args.out, args.test)
