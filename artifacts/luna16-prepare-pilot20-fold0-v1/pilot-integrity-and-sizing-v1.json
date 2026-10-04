@@ -1,0 +1,33 @@
+{
+  "acceptance_pass": true,
+  "by_role": {
+    "train": {
+      "max_seconds": 44.69860224798322,
+      "mean_proposals": 42213.5,
+      "mean_scan_bytes": 270240990.6,
+      "mean_seconds": 38.30998616106808,
+      "scans": 10
+    },
+    "val": {
+      "max_seconds": 61.20364700071514,
+      "mean_proposals": 41105.3,
+      "mean_scan_bytes": 279183830,
+      "mean_seconds": 38.886863271519545,
+      "scans": 10
+    }
+  },
+  "host_memory": {
+    "MemAvailable_GiB": 87.39474105834961,
+    "MemTotal_GiB": 125.54072570800781
+  },
+  "pilot_proposals": 833188,
+  "preparation_sha256": "b5303cc52e50a85ee685b729788fbb9d932c696a7aba52fd9bc8b7881448df63",
+  "rough_full_cohort_projection": {
+    "caveat": "Pilot selection is not random. Object-size estimates exclude allocator overhead, volumes, cohort records and other memory.",
+    "hours": 8.516950279312105,
+    "one_proposal_pool_GiB": 38.834149550873235,
+    "proposals": 33629957,
+    "scan_storage_GiB": 201.83479804173115,
+    "two_proposal_pools_GiB": 77.66829910174647
+  }
+}
