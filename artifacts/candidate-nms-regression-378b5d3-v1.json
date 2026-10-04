@@ -1,0 +1,80 @@
+{
+  "acceptance_pass": true,
+  "baseline": "/experiment-storage/chaidir/fawad-dsai/LIDC3D/artifacts/luna16-prepare-smoke-fold0-v2/prepared",
+  "baseline_preparation_sha256": "dae4c7603c84ffee7e604fc7276abf43722682fa1d1b92e84afb8bef8faf66c4",
+  "candidate_implementation_sha256": "46737a1edf3e716886bac076d791146713452f57e1c01db9c69904deb1c26ae7",
+  "checks": {
+    "all_capped_candidates_exact": true,
+    "all_diagnostics_exact": true,
+    "all_proposal_rows_exact": true,
+    "baseline_integrity_verified": true
+  },
+  "kind": "candidate_optimization_exact_regression",
+  "scans": [
+    {
+      "acceptance_pass": true,
+      "baseline_capped_sha256": "648f866709185fb3118ee48f52ae517823e8b130d09f46db2b61a8db6277fe4a",
+      "baseline_diagnostics_sha256": "cb38faca5f4d43dbf40a8c33e325156e785d91326eca7f59a1e625e6a526baef",
+      "baseline_proposal_sha256": "fd19bdeec68eb35ea4da1ddabb88b883fed88a29db298adb089509ae80b4ffd3",
+      "candidate_rows": 30690,
+      "checks": {
+        "capped_candidates_exact": true,
+        "diagnostics_exact": true,
+        "proposal_rows_exact": true
+      },
+      "current_capped_sha256": "648f866709185fb3118ee48f52ae517823e8b130d09f46db2b61a8db6277fe4a",
+      "current_diagnostics_sha256": "cb38faca5f4d43dbf40a8c33e325156e785d91326eca7f59a1e625e6a526baef",
+      "current_proposal_sha256": "fd19bdeec68eb35ea4da1ddabb88b883fed88a29db298adb089509ae80b4ffd3",
+      "first_proposal_difference": null,
+      "scan_id": "scan_ee82b838346d0949753c",
+      "seconds": 33.97637950628996,
+      "series_uid": "1.3.6.1.4.1.14519.5.2.1.6279.6001.103115201714075993579787468219"
+    },
+    {
+      "acceptance_pass": true,
+      "baseline_capped_sha256": "9bccac0c71477ff2971334a23e20d3052f39b3699c8c080f2839132c7c9699af",
+      "baseline_diagnostics_sha256": "61f8c74a44cf7aa311da355b47e398351eb9c5c97e2b33c5369aeaa4321b3261",
+      "baseline_proposal_sha256": "90ce95a5424cd3bf5cd55bf96843b261af4083a595ef72e231263b3be4d21287",
+      "candidate_rows": 55454,
+      "checks": {
+        "capped_candidates_exact": true,
+        "diagnostics_exact": true,
+        "proposal_rows_exact": true
+      },
+      "current_capped_sha256": "9bccac0c71477ff2971334a23e20d3052f39b3699c8c080f2839132c7c9699af",
+      "current_diagnostics_sha256": "61f8c74a44cf7aa311da355b47e398351eb9c5c97e2b33c5369aeaa4321b3261",
+      "current_proposal_sha256": "90ce95a5424cd3bf5cd55bf96843b261af4083a595ef72e231263b3be4d21287",
+      "first_proposal_difference": null,
+      "scan_id": "scan_e9ade4c0616c7b81dde1",
+      "seconds": 24.875940995290875,
+      "series_uid": "1.3.6.1.4.1.14519.5.2.1.6279.6001.100225287222365663678666836860"
+    },
+    {
+      "acceptance_pass": true,
+      "baseline_capped_sha256": "ae7ceec3252ec4a2f39dc286e84a4d99df8a65090e23a007cb84322b5610cbe4",
+      "baseline_diagnostics_sha256": "7e52a904716bc861522fdbb2267d2ba0536043cca3466d0900e113b91f8ff8a1",
+      "baseline_proposal_sha256": "93dd1a259500f6c22aa4f1872ecc6af1fe301374375659cf96fac7837f4a5293",
+      "candidate_rows": 61421,
+      "checks": {
+        "capped_candidates_exact": true,
+        "diagnostics_exact": true,
+        "proposal_rows_exact": true
+      },
+      "current_capped_sha256": "ae7ceec3252ec4a2f39dc286e84a4d99df8a65090e23a007cb84322b5610cbe4",
+      "current_diagnostics_sha256": "7e52a904716bc861522fdbb2267d2ba0536043cca3466d0900e113b91f8ff8a1",
+      "current_proposal_sha256": "93dd1a259500f6c22aa4f1872ecc6af1fe301374375659cf96fac7837f4a5293",
+      "first_proposal_difference": null,
+      "scan_id": "scan_63c0607cc7ba11c0faa8",
+      "seconds": 30.546084765344858,
+      "series_uid": "1.3.6.1.4.1.14519.5.2.1.6279.6001.104562737760173137525888934217"
+    }
+  ],
+  "schema_version": 1,
+  "validation_code_sha256": {
+    "candidate_regression.py": "ed6271e7b1fa025aa06566475e30adcaa560ad1679cf1599556c5c74e50bbbf8",
+    "candidates.py": "46737a1edf3e716886bac076d791146713452f57e1c01db9c69904deb1c26ae7",
+    "geometry.py": "e7844480f5859a71d53866a286b7cc1f0062c19a4d334ce738a02fc879e7a711",
+    "pipeline.py": "c0f3c7407a6c39d5d189d6e32b3cf0801037e7960cb7b4586f6238b9317d622b",
+    "provenance.py": "dc3c59f86b83dda71867967e92b0be715136ff0c36262a376b662ceb996b07c6"
+  }
+}
