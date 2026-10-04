@@ -1,7 +1,13 @@
 """Annotation-free lung masking and multiscale LoG proposals."""
 from __future__ import annotations
+from collections import defaultdict
+from itertools import product
 import numpy as np
 from scipy import ndimage as ndi
+
+
+_NEIGHBOR_CELLS = tuple(product((-1, 0, 1), repeat=3))
+_MAX_GRID_COORD = np.iinfo(np.int32).max
 
 
 def lung_mask(hu, valid, spacing=1.0, air_hu=-400, min_component_mm3=10000, dilation_mm=5):
@@ -37,6 +43,63 @@ def lung_mask(hu, valid, spacing=1.0, air_hu=-400, min_component_mm3=10000, dila
     return mask, base, diagnostics
 
 
+def _greedy_nms(proposals, sigmas, spacing, nms_mm):
+    """Exact greedy NMS with a spatial index over already accepted centers.
+
+    ``proposals`` must already be in the required priority order.  The grid
+    only removes accepted centers that provably cannot be within ``nms_mm``;
+    the final decision deliberately uses the original norm expression so
+    strict-boundary and floating-point behavior remain unchanged.
+    """
+    proposals = list(proposals)
+    selected = []
+    suppressed = 0
+    use_grid = (np.isfinite(spacing) and spacing > 0 and
+                np.isfinite(nms_mm) and nms_mm > 0)
+    if use_grid:
+        try:
+            use_grid = all(
+                np.isfinite(value) and float(value).is_integer()
+                and abs(int(value)) <= _MAX_GRID_COORD
+                for _, _, z, y, x in proposals for value in (z, y, x))
+        except (TypeError, ValueError, OverflowError):
+            use_grid = False
+    buckets = defaultdict(list)
+    with np.errstate(over="ignore", divide="ignore", invalid="ignore"):
+        ratio = nms_mm / spacing if use_grid else None
+    if use_grid and (not np.isfinite(ratio) or
+                     ratio > np.iinfo(np.intp).max - 2):
+        use_grid = False
+    # One extra voxel makes the bin bound conservative at floating-point
+    # quotient boundaries. Larger cells only add exact predicate checks.
+    cell_span = max(1, int(np.ceil(ratio)) + 1) if use_grid else None
+
+    for score, scale, z, y, x in proposals:
+        center = np.array([z, y, x], float)
+        if use_grid:
+            # Proposal coordinates originate in np.argwhere and are integral.
+            # Any point strictly nearer than the radius differs by at most
+            # cell_span on every axis and therefore lies in an adjacent bin.
+            cell = tuple(int(value) // cell_span for value in (z, y, x))
+            nearby = (row
+                      for offset in _NEIGHBOR_CELLS
+                      for row in buckets.get(tuple(a + b for a, b in zip(cell, offset)), ()))
+        else:
+            # Preserve legacy behavior for invalid/nonfinite configuration;
+            # normal validated configurations always take the indexed path.
+            nearby = iter(selected)
+        if any(np.linalg.norm(center - row["zyx"]) * spacing < nms_mm
+               for row in nearby):
+            suppressed += 1
+            continue
+        row = {"zyx": center.tolist(), "log_response": score,
+               "sigma_mm": sigmas[scale]}
+        selected.append(row)
+        if use_grid:
+            buckets[cell].append(row)
+    return selected, suppressed
+
+
 def generate(image, mask, config, spacing=1.0):
     """Stream scales to avoid materializing a four-scale full-volume array."""
     threshold = config["threshold"]
@@ -69,17 +132,9 @@ def generate(image, mask, config, spacing=1.0):
             proposals.append((float(current[z, y, x]), scale, int(z), int(y), int(x)))
         prev, current = current, nxt
     proposals.sort(key=lambda p: (-p[0], p[1], p[2], p[3], p[4]))
-    selected = []
-    suppressed = 0
     # Do not stop at the cap: retain suppression diagnostics and pre-cap centers.
-    for score, scale, z, y, x in proposals:
-        center = np.array([z, y, x], float)
-        if any(np.linalg.norm(center - row["zyx"]) * spacing < config["nms_mm"]
-               for row in selected):
-            suppressed += 1
-            continue
-        selected.append({"zyx": center.tolist(), "log_response": score,
-                         "sigma_mm": sigmas[scale]})
+    selected, suppressed = _greedy_nms(
+        proposals, sigmas, spacing, config["nms_mm"])
     cap = int(config["cap"])
     if cap < 1:
         raise ValueError("Candidate cap must be positive")
