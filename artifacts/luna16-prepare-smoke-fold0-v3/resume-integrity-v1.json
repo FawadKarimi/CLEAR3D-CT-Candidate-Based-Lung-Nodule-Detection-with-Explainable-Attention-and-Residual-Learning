@@ -1,0 +1,16 @@
+{
+  "manifest": "/experiment-storage/chaidir/fawad-dsai/LIDC3D/artifacts/luna16-prepare-smoke-fold0-v3/smoke-cohort.jsonl",
+  "preparation_sha256": "5eae9f838d7c5ab09dcc434f35d9d296ad7fca80ce787c7516d1b9a0c21bc096",
+  "before_snapshot_sha256": "bbaf73952ce28e01ba4fe6840959c2f590e9b12d1f65b69f35706f9def1c7fc0",
+  "after_snapshot_sha256": "bbaf73952ce28e01ba4fe6840959c2f590e9b12d1f65b69f35706f9def1c7fc0",
+  "changed_paths": [],
+  "error": null,
+  "checks": {
+    "resume_succeeded": true,
+    "all_three_scans_resumed": true,
+    "no_scan_recomputed": true,
+    "already_complete_confirmed": true,
+    "prepared_tree_unchanged": true
+  },
+  "acceptance_pass": true
+}

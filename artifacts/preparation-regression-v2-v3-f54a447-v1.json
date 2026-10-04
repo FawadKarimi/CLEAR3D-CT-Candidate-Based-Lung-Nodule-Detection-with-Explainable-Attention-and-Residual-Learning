@@ -1,0 +1,531 @@
+{
+  "acceptance_pass": true,
+  "aggregate_pool_evidence": {
+    "baseline": {
+      "bytes": 32956108,
+      "sha256": "7610ff1f25edb35d7c444c5cd305536616e929bb46cfeb4b494e196839f43d63"
+    },
+    "candidate": {
+      "bytes": 32956108,
+      "sha256": "7610ff1f25edb35d7c444c5cd305536616e929bb46cfeb4b494e196839f43d63"
+    }
+  },
+  "baseline": "/experiment-storage/chaidir/fawad-dsai/LIDC3D/artifacts/luna16-prepare-smoke-fold0-v2/prepared",
+  "baseline_plan_sha256": "753253cbd41e8bec1c43e44f9a9fc7ce83c0d2aa87a9e43bea89d3aaceae8cb4",
+  "baseline_preparation_sha256": "dae4c7603c84ffee7e604fc7276abf43722682fa1d1b92e84afb8bef8faf66c4",
+  "baseline_root_inventory": {
+    "entries": [
+      ".prepare.lock",
+      "preparation.json",
+      "preparation_plan.json",
+      "proposal_pool.jsonl",
+      "scan_63c0607cc7ba11c0faa8",
+      "scan_e9ade4c0616c7b81dde1",
+      "scan_ee82b838346d0949753c",
+      "scans.jsonl"
+    ],
+    "safe_and_exact": true,
+    "scan_entries": {
+      "scan_63c0607cc7ba11c0faa8": {
+        "entries": [
+          "base_mask.npy",
+          "checkpoint.json",
+          "geometry.json",
+          "image.npy",
+          "lung_mask.npy",
+          "proposals.jsonl",
+          "record.json",
+          "valid.npy"
+        ],
+        "safe_and_exact": true
+      },
+      "scan_e9ade4c0616c7b81dde1": {
+        "entries": [
+          "base_mask.npy",
+          "checkpoint.json",
+          "geometry.json",
+          "image.npy",
+          "lung_mask.npy",
+          "proposals.jsonl",
+          "record.json",
+          "valid.npy"
+        ],
+        "safe_and_exact": true
+      },
+      "scan_ee82b838346d0949753c": {
+        "entries": [
+          "base_mask.npy",
+          "checkpoint.json",
+          "geometry.json",
+          "image.npy",
+          "lung_mask.npy",
+          "proposals.jsonl",
+          "record.json",
+          "valid.npy"
+        ],
+        "safe_and_exact": true
+      }
+    }
+  },
+  "candidate": "/experiment-storage/chaidir/fawad-dsai/LIDC3D/artifacts/luna16-prepare-smoke-fold0-v3/prepared",
+  "candidate_plan_sha256": "7cf6ce184a2aa6438866bae43c373fc8a6e31547fc2db6c341b6641963b5fd0c",
+  "candidate_preparation_sha256": "5eae9f838d7c5ab09dcc434f35d9d296ad7fca80ce787c7516d1b9a0c21bc096",
+  "candidate_root_inventory": {
+    "entries": [
+      ".prepare.lock",
+      "preparation.json",
+      "preparation_plan.json",
+      "proposal_pool.jsonl",
+      "scan_63c0607cc7ba11c0faa8",
+      "scan_e9ade4c0616c7b81dde1",
+      "scan_ee82b838346d0949753c",
+      "scans.jsonl"
+    ],
+    "safe_and_exact": true,
+    "scan_entries": {
+      "scan_63c0607cc7ba11c0faa8": {
+        "entries": [
+          "base_mask.npy",
+          "checkpoint.json",
+          "geometry.json",
+          "image.npy",
+          "lung_mask.npy",
+          "proposals.jsonl",
+          "record.json",
+          "valid.npy"
+        ],
+        "safe_and_exact": true
+      },
+      "scan_e9ade4c0616c7b81dde1": {
+        "entries": [
+          "base_mask.npy",
+          "checkpoint.json",
+          "geometry.json",
+          "image.npy",
+          "lung_mask.npy",
+          "proposals.jsonl",
+          "record.json",
+          "valid.npy"
+        ],
+        "safe_and_exact": true
+      },
+      "scan_ee82b838346d0949753c": {
+        "entries": [
+          "base_mask.npy",
+          "checkpoint.json",
+          "geometry.json",
+          "image.npy",
+          "lung_mask.npy",
+          "proposals.jsonl",
+          "record.json",
+          "valid.npy"
+        ],
+        "safe_and_exact": true
+      }
+    }
+  },
+  "checkpoint_comparisons": {
+    "scan_63c0607cc7ba11c0faa8": {
+      "baseline_sha256": "9ca7d9796d2c7ab9b0dfab61d788a9b2e0b458de806b6795ea577c58bf6e8ed1",
+      "candidate_sha256": "9ca7d9796d2c7ab9b0dfab61d788a9b2e0b458de806b6795ea577c58bf6e8ed1",
+      "exact": true
+    },
+    "scan_e9ade4c0616c7b81dde1": {
+      "baseline_sha256": "95c0df7922aa3b09ee2c044bbeec3fc41e3ebccd35a90e5880110f1aacd8ddc7",
+      "candidate_sha256": "95c0df7922aa3b09ee2c044bbeec3fc41e3ebccd35a90e5880110f1aacd8ddc7",
+      "exact": true
+    },
+    "scan_ee82b838346d0949753c": {
+      "baseline_sha256": "4cf78bda130c6db18739a3b77b6d702d8f0617f0eaa8358744fa75b20068ac0f",
+      "candidate_sha256": "4cf78bda130c6db18739a3b77b6d702d8f0617f0eaa8358744fa75b20068ac0f",
+      "exact": true
+    }
+  },
+  "checks": {
+    "all_scans_successful": true,
+    "all_scientific_files_byte_exact": true,
+    "artifact_inventories_exact": true,
+    "baseline_authenticated": true,
+    "candidate_uses_current_implementation": true,
+    "checkpoint_semantics_exact": true,
+    "cohort_hash_exact": true,
+    "config_exact": true,
+    "implementation_changed": true,
+    "independently_materialized_files": true,
+    "marker_keys_match_plans": true,
+    "normalized_scan_records_exact": true,
+    "per_scan_records_exact": true,
+    "plan_keys_valid": true,
+    "plan_semantics_exact": true,
+    "preparation_key_changed": true,
+    "preparation_semantics_exact": true,
+    "preparation_timings_valid": true,
+    "proposal_counts_exact": true,
+    "proposal_pool_bytes_exact": true,
+    "root_inventories_exact": true,
+    "root_inventories_unchanged": true,
+    "scan_ids_exact": true,
+    "threshold_exact": true
+  },
+  "comparison_code_sha256": {
+    "candidates.py": "46737a1edf3e716886bac076d791146713452f57e1c01db9c69904deb1c26ae7",
+    "geometry.py": "e7844480f5859a71d53866a286b7cc1f0062c19a4d334ce738a02fc879e7a711",
+    "ingest.py": "9c5beae12e4cb48ad2f15903708e9b45d1af2f42c7193f370ff2aef0474829cc",
+    "pipeline.py": "c0f3c7407a6c39d5d189d6e32b3cf0801037e7960cb7b4586f6238b9317d622b",
+    "preparation_regression.py": "ac59baecd210a7b20fd85e44d3e15c6bf965d12594c37cae6f0102e24f2d8f7d",
+    "provenance.py": "dc3c59f86b83dda71867967e92b0be715136ff0c36262a376b662ceb996b07c6"
+  },
+  "expected_proposals": 147565,
+  "expected_scan_ids": [
+    "scan_ee82b838346d0949753c",
+    "scan_e9ade4c0616c7b81dde1",
+    "scan_63c0607cc7ba11c0faa8"
+  ],
+  "file_comparisons": {
+    "scan_63c0607cc7ba11c0faa8": {
+      "base_mask.npy": {
+        "baseline": {
+          "bytes": 50813408,
+          "sha256": "3e06492e229b7f518dbf876dc270f7d96c100c9d0173280e3fb4bd69898bf14a"
+        },
+        "candidate": {
+          "bytes": 50813408,
+          "sha256": "3e06492e229b7f518dbf876dc270f7d96c100c9d0173280e3fb4bd69898bf14a"
+        },
+        "exact": true
+      },
+      "geometry.json": {
+        "baseline": {
+          "bytes": 162631,
+          "sha256": "a36dfac3c840601c85034d45cad7347938435e57c68cc82614ed364eac608038"
+        },
+        "candidate": {
+          "bytes": 162631,
+          "sha256": "a36dfac3c840601c85034d45cad7347938435e57c68cc82614ed364eac608038"
+        },
+        "exact": true
+      },
+      "image.npy": {
+        "baseline": {
+          "bytes": 203253248,
+          "sha256": "8a647a4c78e2f0c250a63c6fc43136efbce931b2cce3c0ef5b936b891a691b3e"
+        },
+        "candidate": {
+          "bytes": 203253248,
+          "sha256": "8a647a4c78e2f0c250a63c6fc43136efbce931b2cce3c0ef5b936b891a691b3e"
+        },
+        "exact": true
+      },
+      "lung_mask.npy": {
+        "baseline": {
+          "bytes": 50813408,
+          "sha256": "6fc35154bd2b57e3cf29c9695fb40c524edff99bd61b0e6a1eb3c7ade9e4137e"
+        },
+        "candidate": {
+          "bytes": 50813408,
+          "sha256": "6fc35154bd2b57e3cf29c9695fb40c524edff99bd61b0e6a1eb3c7ade9e4137e"
+        },
+        "exact": true
+      },
+      "proposals.jsonl": {
+        "baseline": {
+          "bytes": 13384463,
+          "sha256": "3af6165b0cb2dff048026319431b9df9a3ef1c34abcda947b16f620528522d90"
+        },
+        "candidate": {
+          "bytes": 13384463,
+          "sha256": "3af6165b0cb2dff048026319431b9df9a3ef1c34abcda947b16f620528522d90"
+        },
+        "exact": true
+      },
+      "valid.npy": {
+        "baseline": {
+          "bytes": 50813408,
+          "sha256": "47826c5d1e80804c91ef26b95402046ee330f9a69ec2a155d13ace5cdbd2eaf9"
+        },
+        "candidate": {
+          "bytes": 50813408,
+          "sha256": "47826c5d1e80804c91ef26b95402046ee330f9a69ec2a155d13ace5cdbd2eaf9"
+        },
+        "exact": true
+      }
+    },
+    "scan_e9ade4c0616c7b81dde1": {
+      "base_mask.npy": {
+        "baseline": {
+          "bytes": 38236917,
+          "sha256": "bb1e9d3b3f6ecd8a60ed05916049aac4f573b74c7ad7faeecb97f0cfea03c10e"
+        },
+        "candidate": {
+          "bytes": 38236917,
+          "sha256": "bb1e9d3b3f6ecd8a60ed05916049aac4f573b74c7ad7faeecb97f0cfea03c10e"
+        },
+        "exact": true
+      },
+      "geometry.json": {
+        "baseline": {
+          "bytes": 116563,
+          "sha256": "ec8a64ce4abd9003fec5544adc6342ed50a1ce9213528a625d44f07de62bde3c"
+        },
+        "candidate": {
+          "bytes": 116563,
+          "sha256": "ec8a64ce4abd9003fec5544adc6342ed50a1ce9213528a625d44f07de62bde3c"
+        },
+        "exact": true
+      },
+      "image.npy": {
+        "baseline": {
+          "bytes": 152947284,
+          "sha256": "19489fe7973b770f260e91b3eb862bbb3c71ef9b844b78a48d01362d68a44a04"
+        },
+        "candidate": {
+          "bytes": 152947284,
+          "sha256": "19489fe7973b770f260e91b3eb862bbb3c71ef9b844b78a48d01362d68a44a04"
+        },
+        "exact": true
+      },
+      "lung_mask.npy": {
+        "baseline": {
+          "bytes": 38236917,
+          "sha256": "1ae671d122de995dec424cef859b9957de417793128c2139e88bf0e07d39289c"
+        },
+        "candidate": {
+          "bytes": 38236917,
+          "sha256": "1ae671d122de995dec424cef859b9957de417793128c2139e88bf0e07d39289c"
+        },
+        "exact": true
+      },
+      "proposals.jsonl": {
+        "baseline": {
+          "bytes": 12780028,
+          "sha256": "b46a0ed8ddcb57f9b2c456e2a6d1289d6ec4508017036090fe0857436c0c4b4d"
+        },
+        "candidate": {
+          "bytes": 12780028,
+          "sha256": "b46a0ed8ddcb57f9b2c456e2a6d1289d6ec4508017036090fe0857436c0c4b4d"
+        },
+        "exact": true
+      },
+      "valid.npy": {
+        "baseline": {
+          "bytes": 38236917,
+          "sha256": "30760c1f6a2eb0527cfa32854aac290abedaeb6cc50e00b7963c612da375e651"
+        },
+        "candidate": {
+          "bytes": 38236917,
+          "sha256": "30760c1f6a2eb0527cfa32854aac290abedaeb6cc50e00b7963c612da375e651"
+        },
+        "exact": true
+      }
+    },
+    "scan_ee82b838346d0949753c": {
+      "base_mask.npy": {
+        "baseline": {
+          "bytes": 56983061,
+          "sha256": "34cb73cfcbdd0b91a376c3b3431c26f108ea2d47420681c96b79d23c689e0175"
+        },
+        "candidate": {
+          "bytes": 56983061,
+          "sha256": "34cb73cfcbdd0b91a376c3b3431c26f108ea2d47420681c96b79d23c689e0175"
+        },
+        "exact": true
+      },
+      "geometry.json": {
+        "baseline": {
+          "bytes": 144469,
+          "sha256": "f4d2c4393a2e9431f3083c5b4269278bc6889da5913fe3a32dffee26b083a8e3"
+        },
+        "candidate": {
+          "bytes": 144469,
+          "sha256": "f4d2c4393a2e9431f3083c5b4269278bc6889da5913fe3a32dffee26b083a8e3"
+        },
+        "exact": true
+      },
+      "image.npy": {
+        "baseline": {
+          "bytes": 227931860,
+          "sha256": "cd2906b20ea69cc9b716ed411e981c6e6dfd9c774ca9090be1ca71854cbf05f0"
+        },
+        "candidate": {
+          "bytes": 227931860,
+          "sha256": "cd2906b20ea69cc9b716ed411e981c6e6dfd9c774ca9090be1ca71854cbf05f0"
+        },
+        "exact": true
+      },
+      "lung_mask.npy": {
+        "baseline": {
+          "bytes": 56983061,
+          "sha256": "90f21472ca3f0df62c3089b73761e9b7073ddb0668eecb7575891cf979a23200"
+        },
+        "candidate": {
+          "bytes": 56983061,
+          "sha256": "90f21472ca3f0df62c3089b73761e9b7073ddb0668eecb7575891cf979a23200"
+        },
+        "exact": true
+      },
+      "proposals.jsonl": {
+        "baseline": {
+          "bytes": 6791617,
+          "sha256": "e318ca37540b3adc4b00474d067678853e53850f9f2f284edc116e9a821a83b3"
+        },
+        "candidate": {
+          "bytes": 6791617,
+          "sha256": "e318ca37540b3adc4b00474d067678853e53850f9f2f284edc116e9a821a83b3"
+        },
+        "exact": true
+      },
+      "valid.npy": {
+        "baseline": {
+          "bytes": 56983061,
+          "sha256": "4694a9dcb2741f219a1efcaee516b3747a2cbd92d5051b789649c3bbe7532478"
+        },
+        "candidate": {
+          "bytes": 56983061,
+          "sha256": "4694a9dcb2741f219a1efcaee516b3747a2cbd92d5051b789649c3bbe7532478"
+        },
+        "exact": true
+      }
+    }
+  },
+  "final_baseline_root_inventory": {
+    "entries": [
+      ".prepare.lock",
+      "preparation.json",
+      "preparation_plan.json",
+      "proposal_pool.jsonl",
+      "scan_63c0607cc7ba11c0faa8",
+      "scan_e9ade4c0616c7b81dde1",
+      "scan_ee82b838346d0949753c",
+      "scans.jsonl"
+    ],
+    "safe_and_exact": true,
+    "scan_entries": {
+      "scan_63c0607cc7ba11c0faa8": {
+        "entries": [
+          "base_mask.npy",
+          "checkpoint.json",
+          "geometry.json",
+          "image.npy",
+          "lung_mask.npy",
+          "proposals.jsonl",
+          "record.json",
+          "valid.npy"
+        ],
+        "safe_and_exact": true
+      },
+      "scan_e9ade4c0616c7b81dde1": {
+        "entries": [
+          "base_mask.npy",
+          "checkpoint.json",
+          "geometry.json",
+          "image.npy",
+          "lung_mask.npy",
+          "proposals.jsonl",
+          "record.json",
+          "valid.npy"
+        ],
+        "safe_and_exact": true
+      },
+      "scan_ee82b838346d0949753c": {
+        "entries": [
+          "base_mask.npy",
+          "checkpoint.json",
+          "geometry.json",
+          "image.npy",
+          "lung_mask.npy",
+          "proposals.jsonl",
+          "record.json",
+          "valid.npy"
+        ],
+        "safe_and_exact": true
+      }
+    }
+  },
+  "final_candidate_root_inventory": {
+    "entries": [
+      ".prepare.lock",
+      "preparation.json",
+      "preparation_plan.json",
+      "proposal_pool.jsonl",
+      "scan_63c0607cc7ba11c0faa8",
+      "scan_e9ade4c0616c7b81dde1",
+      "scan_ee82b838346d0949753c",
+      "scans.jsonl"
+    ],
+    "safe_and_exact": true,
+    "scan_entries": {
+      "scan_63c0607cc7ba11c0faa8": {
+        "entries": [
+          "base_mask.npy",
+          "checkpoint.json",
+          "geometry.json",
+          "image.npy",
+          "lung_mask.npy",
+          "proposals.jsonl",
+          "record.json",
+          "valid.npy"
+        ],
+        "safe_and_exact": true
+      },
+      "scan_e9ade4c0616c7b81dde1": {
+        "entries": [
+          "base_mask.npy",
+          "checkpoint.json",
+          "geometry.json",
+          "image.npy",
+          "lung_mask.npy",
+          "proposals.jsonl",
+          "record.json",
+          "valid.npy"
+        ],
+        "safe_and_exact": true
+      },
+      "scan_ee82b838346d0949753c": {
+        "entries": [
+          "base_mask.npy",
+          "checkpoint.json",
+          "geometry.json",
+          "image.npy",
+          "lung_mask.npy",
+          "proposals.jsonl",
+          "record.json",
+          "valid.npy"
+        ],
+        "safe_and_exact": true
+      }
+    }
+  },
+  "kind": "preparation_end_to_end_exact_regression",
+  "preparation_seconds": {
+    "scan_63c0607cc7ba11c0faa8": {
+      "baseline_seconds": 6404.906225821003,
+      "candidate_seconds": 50.39999741502106
+    },
+    "scan_e9ade4c0616c7b81dde1": {
+      "baseline_seconds": 4796.67318931967,
+      "candidate_seconds": 40.31909024901688
+    },
+    "scan_ee82b838346d0949753c": {
+      "baseline_seconds": 1548.3020281717181,
+      "candidate_seconds": 58.66639459691942
+    }
+  },
+  "record_comparisons": {
+    "scan_63c0607cc7ba11c0faa8": {
+      "baseline_sha256": "0c2191b17415090579a5c183d38ba51430226362728691e1bb9d819c572954d8",
+      "candidate_sha256": "0c2191b17415090579a5c183d38ba51430226362728691e1bb9d819c572954d8",
+      "exact": true
+    },
+    "scan_e9ade4c0616c7b81dde1": {
+      "baseline_sha256": "c93840acdc8df9630da8f10983f62692774c21073985a630b88c2155dcfbfc24",
+      "candidate_sha256": "c93840acdc8df9630da8f10983f62692774c21073985a630b88c2155dcfbfc24",
+      "exact": true
+    },
+    "scan_ee82b838346d0949753c": {
+      "baseline_sha256": "b43d53136bc11cd8005d9be4eea66ca075a5ecfa98cf50e78ab35c7003152962",
+      "candidate_sha256": "b43d53136bc11cd8005d9be4eea66ca075a5ecfa98cf50e78ab35c7003152962",
+      "exact": true
+    }
+  },
+  "schema_version": 1
+}
