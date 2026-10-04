@@ -191,7 +191,7 @@ def main():
             release = read_json(args.release) if args.release else {}
             allow = release.get("status") == "approved" and release.get("cohort_sha256") == sha256(args.cohort)
         prepare_candidates(cohort, load_config(args.config), args.out, allow,
-                           resume=args.resume)
+                           resume=args.resume, materialize_pool=False)
     elif args.command == "freeze":
         from .pipeline import freeze_bundle
         freeze_bundle(args.scans, args.pool, load_config(args.config), read_json(args.review), args.out, args.test)

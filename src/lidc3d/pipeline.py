@@ -5,6 +5,7 @@ from collections import defaultdict
 from contextlib import contextmanager
 import fcntl
 import importlib.metadata
+from itertools import chain
 import json
 import os
 from pathlib import Path
@@ -19,6 +20,42 @@ from .splits import patient_split
 from .candidates import lung_mask, generate
 from .evaluation import DetectionCurves
 from .provenance import write_json, write_jsonl, read_jsonl, read_json, sha256, canonical_hash, safe_output
+
+
+def _iter_jsonl(path):
+    """Read an ordered JSONL artifact without retaining its rows."""
+    with Path(path).open(encoding="utf-8") as handle:
+        for line in handle:
+            if line.strip():
+                yield json.loads(line)
+
+
+class PreparedProposalPool:
+    """Reiterable disk-backed pool; per-scan reads use verified checkpoints.
+
+    Callers must verify the preparation before using per_scan for selection.
+    No proposal dictionaries are cached across scans or iterations.
+    """
+    def __init__(self, output, scans):
+        self.output = Path(output)
+        self.scan_ids = tuple(scan.get("scan_id") for scan in scans)
+
+    def __iter__(self):
+        return _iter_jsonl(self.output/"proposal_pool.jsonl")
+
+    def __len__(self):
+        return sum(read_json(self.output/uid/"checkpoint.json")["proposal_count"]
+                   for uid in self.scan_ids)
+
+    def per_scan(self, scan_id):
+        if scan_id not in self.scan_ids:
+            raise ValueError("Scan outside prepared proposal pool")
+        return _iter_jsonl(self.output/scan_id/"proposals.jsonl")
+
+
+def _checkpoint_proposals(output, scans):
+    return chain.from_iterable(
+        _iter_jsonl(output/scan["scan_id"]/"proposals.jsonl") for scan in scans)
 
 
 def _load_configured_series(paths, config):
@@ -229,7 +266,9 @@ def _verify_preparation_artifacts(output, scans, pool, preparation, config):
     declared = preparation.get("artifacts")
     if not isinstance(declared, dict):
         raise ValueError("Preparation artifact inventory is missing")
-    expected_paths, collected = set(), []
+    expected_paths = set()
+    aggregate = iter(pool)
+    sentinel = object()
     for scan in scans:
         _source_evidence(scan)
         scan_dir, _ = _scan_paths(output, scan["scan_id"])
@@ -262,8 +301,16 @@ def _verify_preparation_artifacts(output, scans, pool, preparation, config):
                 raise ValueError(f"Preparation artifact changed: {relative}")
         if read_json(scan_dir/"record.json") != scan:
             raise ValueError("Preparation scan aggregate changed")
-        collected.extend(read_jsonl(scan_dir/"proposals.jsonl"))
-    if set(declared) != expected_paths or collected != pool:
+        count = 0
+        for row in _iter_jsonl(scan_dir/"proposals.jsonl"):
+            if (row.get("scan_id") != scan["scan_id"] or
+                    row.get("id") != f"{scan['scan_id']}:candidate:{count:06d}" or
+                    next(aggregate, sentinel) != row):
+                raise ValueError("Preparation artifact aggregation changed")
+            count += 1
+        if count != checkpoint.get("proposal_count"):
+            raise ValueError("Preparation checkpoint proposal count changed")
+    if set(declared) != expected_paths or next(aggregate, sentinel) is not sentinel:
         raise ValueError("Preparation artifact aggregation changed")
 
 
@@ -410,8 +457,13 @@ def _preparation_implementation_hash():
     return canonical_hash({"files": files, "packages": packages})
 
 
-def prepare_candidates(cohort, config, output, allow_test=False, resume=False):
-    """CT-only proposal pools with durable, verified per-scan checkpoints."""
+def prepare_candidates(cohort, config, output, allow_test=False, resume=False,
+                       materialize_pool=True):
+    """CT-only proposal pools with durable, verified per-scan checkpoints.
+
+    The Python API retains its list return by default for existing callers.
+    CLI and large-cohort callers use materialize_pool=False for bounded memory.
+    """
     if any(s["split"] == "test" for s in cohort) and not allow_test:
         raise ValueError("Test preparation requires a separately reviewed release")
     if not cohort:
@@ -446,8 +498,9 @@ def prepare_candidates(cohort, config, output, allow_test=False, resume=False):
         output.mkdir(parents=True, exist_ok=False)
         _write_aggregate(output, "preparation_plan.json", write_json, plan)
     with _preparation_lock(output):
-        return _prepare_candidates_locked(
+        scans, pool = _prepare_candidates_locked(
             cohort, config, output, threshold, preparation_key, resume)
+        return scans, list(pool) if materialize_pool else pool
 
 
 def _prepare_candidates_locked(cohort, config, output, threshold,
@@ -477,12 +530,13 @@ def _prepare_candidates_locked(cohort, config, output, threshold,
     for scan in cohort:
         scan_dir, _ = _scan_paths(output, scan["scan_id"])
         if (scan_dir/"checkpoint.json").is_file():
-            checkpoints[scan["scan_id"]] = _load_scan_checkpoint(
-                scan, preparation_key, scan_dir)
+            record, proposals = _load_scan_checkpoint(scan, preparation_key, scan_dir)
+            checkpoints[scan["scan_id"]] = record, len(proposals)
+            del proposals
         elif completed:
             raise ValueError(
                 f"Completed preparation is missing scan checkpoint: {scan['scan_id']}")
-    scans, pool = [], []
+    scans, proposal_count = [], 0
     _progress("run_start", scans=len(cohort), resume=resume,
               preparation_key=preparation_key)
     for index, scan in enumerate(cohort, 1):
@@ -490,12 +544,12 @@ def _prepare_candidates_locked(cohort, config, output, threshold,
         scan_dir, staging = _scan_paths(output, scan["scan_id"])
         _progress("scan_start", index=index, total=len(cohort), scan_id=scan["scan_id"])
         if scan["scan_id"] in checkpoints:
-            record, proposals = checkpoints[scan["scan_id"]]
+            record, count = checkpoints[scan["scan_id"]]
             scans.append(record)
-            pool.extend(proposals)
+            proposal_count += count
             _progress("scan_resumed", index=index, total=len(cohort),
                       scan_id=scan["scan_id"], status=record["status"],
-                      proposals=len(proposals))
+                      proposals=count)
             continue
         if completed:
             raise ValueError(f"Completed preparation is missing scan checkpoint: {scan['scan_id']}")
@@ -524,25 +578,28 @@ def _prepare_candidates_locked(cohort, config, output, threshold,
         record, proposals = _load_scan_checkpoint(
             scan, preparation_key, staging, record_dir=scan_dir)
         _publish_scan(staging, scan_dir, output)
-        pool.extend(proposals)
+        count = len(proposals)
+        proposal_count += count
+        del proposals
         scans.append(record)
         _progress("scan_complete", index=index, total=len(cohort),
                   scan_id=scan["scan_id"], status=record["status"],
-                  proposals=len(proposals), seconds=preparation_seconds)
+                  proposals=count, seconds=preparation_seconds)
+    pool = PreparedProposalPool(output, scans)
     if completed:
         aggregate_scans = read_jsonl(output/"scans.jsonl")
-        aggregate_pool = read_jsonl(output/"proposal_pool.jsonl")
-        if aggregate_scans != scans or aggregate_pool != pool:
+        if aggregate_scans != scans:
             raise ValueError("Final aggregates disagree with per-scan checkpoints")
         _verify_preparation_artifacts(
-            output, aggregate_scans, aggregate_pool, final, config)
-        _progress("run_already_complete", scans=len(scans), proposals=len(pool))
+            output, aggregate_scans, pool, final, config)
+        _progress("run_already_complete", scans=len(scans), proposals=proposal_count)
         return scans, pool
     _progress("source_reverify", scans=len(cohort))
     for scan in cohort:
         _source_evidence(scan)
     _write_aggregate(output, "scans.jsonl", write_jsonl, scans)
-    _write_aggregate(output, "proposal_pool.jsonl", write_jsonl, pool)
+    _write_aggregate(output, "proposal_pool.jsonl", write_jsonl,
+                     _checkpoint_proposals(output, scans))
     preparation = {"schema_version": 1, "preparation_key": preparation_key,
         "cohort_hash": canonical_hash(cohort), "config": config,
         "minimum_pool_threshold": threshold, "status": "PROPOSALS_NOT_YET_FROZEN",
@@ -550,7 +607,7 @@ def _prepare_candidates_locked(cohort, config, output, threshold,
                   for name in ("scans.jsonl", "proposal_pool.jsonl")},
         "artifacts": _collect_preparation_artifacts(output, scans)}
     _write_aggregate(output, "preparation.json", write_json, preparation)
-    _progress("run_complete", scans=len(scans), proposals=len(pool),
+    _progress("run_complete", scans=len(scans), proposals=proposal_count,
               failed=sum(row["status"] != "ok" for row in scans))
     return scans, pool
 
@@ -563,7 +620,7 @@ def select_candidates(scans, pool, config):
     from .training import cases_from
     trace, options = [], []
     for index, threshold in enumerate(config["candidates"]["threshold_search"]):
-        chosen = filter_pool(scans, pool, threshold, config["candidates"]["cap"])
+        chosen = filter_pool(val_scans, pool, threshold, config["candidates"]["cap"])
         predictions = [{**p, "score": p["log_response"]} for p in chosen if p["scan_id"] in {s["scan_id"] for s in val_scans}]
         summary = DetectionCurves(cases_from(val_scans, predictions)).summarize()
         if summary["cpm"] is None:
@@ -578,7 +635,8 @@ def select_candidates(scans, pool, config):
 def filter_pool(scans, pool, threshold, cap):
     selected = []
     for scan in scans:
-        rows = [p for p in pool if p["scan_id"] == scan["scan_id"] and p["log_response"] >= threshold]
+        source = pool.per_scan(scan["scan_id"]) if isinstance(pool, PreparedProposalPool) else pool
+        rows = [p for p in source if p["scan_id"] == scan["scan_id"] and p["log_response"] >= threshold]
         rows.sort(key=lambda p: (-p["log_response"], p["id"]))
         selected.extend(rows[:cap])
     return selected
@@ -589,7 +647,8 @@ def freeze_bundle(scans_path, pool_path, config, review, output, test=False):
     if (scans_path.parent != pool_path.parent or scans_path.name != "scans.jsonl" or
             pool_path.name != "proposal_pool.jsonl"):
         raise ValueError("Freeze requires canonical preparation aggregate paths")
-    scans, pool = read_jsonl(scans_path), read_jsonl(pool_path)
+    scans = read_jsonl(scans_path)
+    pool = PreparedProposalPool(scans_path.parent, scans)
     preparation = read_json(scans_path.parent / "preparation.json")
     _verify_preparation_artifacts(
         scans_path.parent, scans, pool, preparation, config)

@@ -279,3 +279,127 @@ def test_freeze_rejects_preparation_aggregate_drift(resume_case, name):
             case["output"]/"scans.jsonl",
             case["output"]/"proposal_pool.jsonl",
             case["config"], {}, case["output"].with_name("frozen"))
+
+
+def test_disk_pool_fresh_and_complete_resume_without_aggregate_loading(resume_case, monkeypatch):
+    case = resume_case
+    real_read = pipeline.read_jsonl
+
+    def bounded_read(path):
+        assert Path(path).name != "proposal_pool.jsonl"
+        return real_read(path)
+
+    monkeypatch.setattr(pipeline, "read_jsonl", bounded_read)
+    scans, pool = pipeline.prepare_candidates(case["cohort"], case["config"],
+        case["output"], materialize_pool=False)
+    assert isinstance(pool, pipeline.PreparedProposalPool)
+    expected = read_jsonl(case["output"]/"proposal_pool.jsonl")
+    assert list(pool) == list(pool) == expected
+    assert len(pool) == 2
+    assert (case["output"]/"proposal_pool.jsonl").read_bytes() == b"".join(
+        (case["output"]/scan["scan_id"]/"proposals.jsonl").read_bytes()
+        for scan in scans)
+    before = snapshot(case["output"])
+    calls = case["calls"].copy()
+    resumed_scans, resumed_pool = pipeline.prepare_candidates(
+        case["cohort"], case["config"], case["output"], resume=True,
+        materialize_pool=False)
+    assert resumed_scans == scans and list(resumed_pool) == expected
+    assert case["calls"] == calls
+    assert snapshot(case["output"]) == before
+
+
+def test_disk_pool_interrupted_resume(resume_case, monkeypatch):
+    case = resume_case
+    interrupt_after_first(case, monkeypatch)
+    scans, pool = pipeline.prepare_candidates(case["cohort"], case["config"],
+        case["output"], resume=True, materialize_pool=False)
+    assert case["calls"]["s0"] == 1
+    assert len(scans) == 2 and len(pool) == 2
+    assert list(pool) == read_jsonl(case["output"]/"proposal_pool.jsonl")
+
+
+@pytest.mark.parametrize("mutation", ["truncate", "extra", "reverse"])
+def test_streaming_verifier_rejects_rehashed_aggregate_drift(resume_case, mutation):
+    from lidc3d.provenance import read_json
+    case = resume_case
+    scans, pool = pipeline.prepare_candidates(case["cohort"], case["config"],
+        case["output"], materialize_pool=False)
+    path = case["output"]/"proposal_pool.jsonl"
+    lines = path.read_text().splitlines(True)
+    if mutation == "truncate":
+        lines = lines[:-1]
+    elif mutation == "extra":
+        lines.append(lines[0])
+    else:
+        lines.reverse()
+    path.write_text("".join(lines))
+    preparation = read_json(case["output"]/"preparation.json")
+    preparation["files"]["proposal_pool.jsonl"] = sha256(path)
+    with pytest.raises(ValueError, match="aggregation changed"):
+        pipeline._verify_preparation_artifacts(case["output"], scans, pool,
+                                               preparation, case["config"])
+
+
+def test_disk_selection_matches_list_threshold_ties_caps(tmp_path):
+    from lidc3d.provenance import write_jsonl
+    scans = [{"scan_id": "scan_s0"}, {"scan_id": "scan_s1"}]
+    rows = []
+    for scan in scans:
+        directory = tmp_path/scan["scan_id"]
+        directory.mkdir()
+        proposals = [{"scan_id": scan["scan_id"], "id": f"{scan['scan_id']}:{i}",
+                      "log_response": response}
+                     for i, response in enumerate([.5, .2, .5, .8])]
+        write_jsonl(directory/"proposals.jsonl", proposals)
+        rows.extend(proposals)
+    write_jsonl(tmp_path/"proposal_pool.jsonl", rows)
+    pool = pipeline.PreparedProposalPool(tmp_path, scans)
+    for threshold in [.2, .5, .9]:
+        for cap in [0, 1, 3, 10]:
+            assert pipeline.filter_pool(scans, pool, threshold, cap) == pipeline.filter_pool(
+                scans, rows, threshold, cap)
+
+
+def test_freeze_does_not_load_aggregate_pool(resume_case, monkeypatch):
+    case = resume_case
+    pipeline.prepare_candidates(case["cohort"], case["config"], case["output"])
+    real_read = pipeline.read_jsonl
+    def guarded(path):
+        assert Path(path).name != "proposal_pool.jsonl"
+        return real_read(path)
+    monkeypatch.setattr(pipeline, "read_jsonl", guarded)
+    # Hash verification must complete before the missing review is rejected.
+    with pytest.raises(ValueError, match="Reference review"):
+        pipeline.freeze_bundle(case["output"]/"scans.jsonl",
+            case["output"]/"proposal_pool.jsonl", case["config"], {},
+            case["output"].with_name("frozen"))
+
+
+def test_disk_threshold_trace_and_frozen_candidates_match_lists(resume_case, monkeypatch):
+    from lidc3d.provenance import read_json
+    case = resume_case
+    case["cohort"][1]["positive"] = [{"id": "nodule", "center_lps": [1., 1., 2.],
+                                       "radius_mm": 2.}]
+    case["config"]["candidates"]["threshold_search"] = [.1, .5, .9]
+    scans, pool = pipeline.prepare_candidates(case["cohort"], case["config"],
+        case["output"], materialize_pool=False)
+    rows = list(pool)
+    assert pipeline.select_candidates(scans, pool, case["config"]) == pipeline.select_candidates(
+        scans, rows, case["config"])
+    threshold, trace = pipeline.select_candidates(scans, rows, case["config"])
+    review = {"status": "approved", "scans_sha256": sha256(case["output"]/"scans.jsonl"),
+              **{key: "synthetic test review" for key in ("reviewer", "geometry_audit",
+                 "annotation_audit", "source_exclusions_audit", "prior_test_access")}}
+    real_read = pipeline.read_jsonl
+    def guarded(path):
+        assert Path(path).name != "proposal_pool.jsonl"
+        return real_read(path)
+    monkeypatch.setattr(pipeline, "read_jsonl", guarded)
+    output = case["output"].with_name("frozen")
+    pipeline.freeze_bundle(case["output"]/"scans.jsonl",
+        case["output"]/"proposal_pool.jsonl", case["config"], review, output)
+    assert read_jsonl(output/"candidates.jsonl") == pipeline.filter_pool(
+        scans, rows, threshold, case["config"]["candidates"]["cap"])
+    assert read_json(output/"candidate_selection.json") == {
+        "threshold": threshold, "validation_trace": trace}
