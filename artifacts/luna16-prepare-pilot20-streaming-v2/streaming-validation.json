@@ -1,0 +1,15 @@
+{
+  "acceptance_pass": true,
+  "baseline_preparation_sha256": "b5303cc52e50a85ee685b729788fbb9d932c696a7aba52fd9bc8b7881448df63",
+  "candidate_preparation_sha256": "829d6c545949903f08fca6c8c9c1050b58189721f813a1a5a0383eab8e7503f8",
+  "changed_paths": [],
+  "checks": {
+    "all_scans_resumed": true,
+    "already_complete": true,
+    "exact_equivalence": true,
+    "no_recomputation": true,
+    "prepared_tree_unchanged": true
+  },
+  "comparison_report_sha256": "0587b841d9670de869f3483657705b377edfcba877b30fdf5399cb604be56b59",
+  "pilot_manifest_sha256": "efb24cb6777d8528843aebb7edfaadd37381104c55b024e73e7c778cfc7bd303"
+}
