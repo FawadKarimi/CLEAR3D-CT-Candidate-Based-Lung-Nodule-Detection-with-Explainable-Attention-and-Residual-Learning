@@ -1,4 +1,4 @@
-# Independent LIDC3D research implementation
+# Independent "CLEAR3D-CT: Candidate-Based Lung Nodule Detection with Explainable Attention and Residual Learning in a Two-Stage 3D CT Framework" research implementation
 
 This is a new project implementing the prospective two-stage 3D thesis protocol.It imports neither repository, their models, labels, predictions, checkpoints, splits nor processed images. The only proposed shared resource is the raw LIDC-IDRI CT/XML archive on the university GPU server, accessed read-only.
 
