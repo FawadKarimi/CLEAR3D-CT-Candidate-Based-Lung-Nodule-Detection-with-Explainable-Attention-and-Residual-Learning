@@ -1,5 +1,7 @@
 # Independent "CLEAR3D-CT: Candidate-Based Lung Nodule Detection with Explainable Attention and Residual Learning in a Two-Stage 3D CT Framework" research implementation
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+
 This is a new project implementing the prospective two-stage 3D thesis protocol.It imports neither repository, their models, labels, predictions, checkpoints, splits nor processed images. The only proposed shared resource is the raw LIDC-IDRI CT/XML archive on the university GPU server, accessed read-only.
 
 **Status: research software, synthetic verification only. `PENDING_VERIFIED_EXPERIMENT`.** No patient cohort has been processed here, no model has been trained on LIDC-IDRI, and no performance or clinical utility has been established.
