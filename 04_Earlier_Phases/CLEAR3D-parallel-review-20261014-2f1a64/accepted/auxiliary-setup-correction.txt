@@ -1,0 +1,1 @@
+Initial packaging helper syntax check refused an escaped newline in README text before execution. Corrected auxiliary literal to raw heredoc string; reviewed source and computation unchanged.

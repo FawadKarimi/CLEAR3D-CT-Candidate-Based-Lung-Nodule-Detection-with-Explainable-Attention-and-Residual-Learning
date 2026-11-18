@@ -1,0 +1,635 @@
+{
+  "total_cases": 10,
+  "detected_cases": 3,
+  "missed_cases": 7,
+  "root_cause_breakdown": {
+    "DETECTED_WITHIN_5MM": 3,
+    "GEOMETRY_OR_BOUNDS_ERROR": 0,
+    "LUNG_MASK_EXCLUSION": 0,
+    "CANDIDATE_GENERATION": 1,
+    "RANKING_AND_CAP": 6,
+    "UNEXPLAINED": 0
+  },
+  "per_patient_records": [
+    {
+      "patient_id": "CT-Training-LC001",
+      "diagnosis": "malignant",
+      "spreadsheet_ref": {
+        "pixel_x_1based": 120,
+        "pixel_y_1based": 325,
+        "instance_number": 135
+      },
+      "dicom_metadata": {
+        "pixel_spacing": [
+          0.703125,
+          0.703125
+        ],
+        "slice_thickness": 1.0,
+        "image_position_patient": [
+          -169.523102,
+          -44.6758165,
+          -207.5
+        ],
+        "image_orientation_patient": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "total_slices": 285
+      },
+      "lps_ground_truth": [
+        -85.851227,
+        183.1366835,
+        -207.5
+      ],
+      "resampled_voxel_zyx": [
+        150,
+        228,
+        84
+      ],
+      "hu_diagnostics": {
+        "target_hu": 221.6666717529297,
+        "box_7x7x7_mean_hu": -715.9891357421875,
+        "box_7x7x7_max_hu": 348.7585144042969,
+        "box_7x7x7_min_hu": -974.2666625976562
+      },
+      "mask_diagnostics": {
+        "target_in_mask": true,
+        "box_7x7x7_mask_fraction": 1.0,
+        "distance_to_mask_mm": 0.0
+      },
+      "proposal_diagnostics": {
+        "detected_in_cap400": true,
+        "min_dist_cap400_mm": 0.3779183319514945,
+        "rank_in_cap400": 349,
+        "detected_in_uncapped": true,
+        "min_dist_uncapped_mm": 0.3779183319514945,
+        "rank_in_uncapped": 349,
+        "total_uncapped_proposals": 29610
+      },
+      "root_cause": "DETECTED_WITHIN_5MM",
+      "root_cause_evidence": "Candidate rank 349 at distance 0.38 mm"
+    },
+    {
+      "patient_id": "CT-Training-LC002",
+      "diagnosis": "malignant",
+      "spreadsheet_ref": {
+        "pixel_x_1based": 139,
+        "pixel_y_1based": 359,
+        "instance_number": 70
+      },
+      "dicom_metadata": {
+        "pixel_spacing": [
+          0.68359375,
+          0.68359375
+        ],
+        "slice_thickness": 1.0,
+        "image_position_patient": [
+          -183.586697,
+          -48.4536629,
+          -345.0
+        ],
+        "image_orientation_patient": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "total_slices": 366
+      },
+      "lps_ground_truth": [
+        -89.25075949999999,
+        196.27289960000002,
+        -345.0
+      ],
+      "resampled_voxel_zyx": [
+        296,
+        245,
+        94
+      ],
+      "hu_diagnostics": {
+        "target_hu": 166.53713989257812,
+        "box_7x7x7_mean_hu": -522.8269653320312,
+        "box_7x7x7_max_hu": 340.7778015136719,
+        "box_7x7x7_min_hu": -1022.1851806640625
+      },
+      "mask_diagnostics": {
+        "target_in_mask": true,
+        "box_7x7x7_mask_fraction": 1.0,
+        "distance_to_mask_mm": 0.0
+      },
+      "proposal_diagnostics": {
+        "detected_in_cap400": false,
+        "min_dist_cap400_mm": 13.664515947199654,
+        "rank_in_cap400": null,
+        "detected_in_uncapped": true,
+        "min_dist_uncapped_mm": 1.231131622237618,
+        "rank_in_uncapped": 1057,
+        "total_uncapped_proposals": 50000
+      },
+      "root_cause": "RANKING_AND_CAP",
+      "root_cause_evidence": "Candidate within 1.23 mm found at rank 1057 (> 400 cap)"
+    },
+    {
+      "patient_id": "CT-Training-LC003",
+      "diagnosis": "malignant",
+      "spreadsheet_ref": {
+        "pixel_x_1based": 375,
+        "pixel_y_1based": 323,
+        "instance_number": 70
+      },
+      "dicom_metadata": {
+        "pixel_spacing": [
+          0.84765625,
+          0.84765625
+        ],
+        "slice_thickness": 1.0,
+        "image_position_patient": [
+          -237.666666,
+          -164.0,
+          1595.5
+        ],
+        "image_orientation_patient": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "total_slices": 413
+      },
+      "lps_ground_truth": [
+        79.35677150000001,
+        108.9453125,
+        1595.5
+      ],
+      "resampled_voxel_zyx": [
+        343,
+        273,
+        317
+      ],
+      "hu_diagnostics": {
+        "target_hu": 96.50244903564453,
+        "box_7x7x7_mean_hu": -176.8607177734375,
+        "box_7x7x7_max_hu": 275.4745178222656,
+        "box_7x7x7_min_hu": -893.0034790039062
+      },
+      "mask_diagnostics": {
+        "target_in_mask": true,
+        "box_7x7x7_mask_fraction": 1.0,
+        "distance_to_mask_mm": 0.0
+      },
+      "proposal_diagnostics": {
+        "detected_in_cap400": true,
+        "min_dist_cap400_mm": 1.4373726166386014,
+        "rank_in_cap400": 375,
+        "detected_in_uncapped": true,
+        "min_dist_uncapped_mm": 1.4373726166386014,
+        "rank_in_uncapped": 375,
+        "total_uncapped_proposals": 31166
+      },
+      "root_cause": "DETECTED_WITHIN_5MM",
+      "root_cause_evidence": "Candidate rank 375 at distance 1.44 mm"
+    },
+    {
+      "patient_id": "CT-Training-LC008",
+      "diagnosis": "malignant",
+      "spreadsheet_ref": {
+        "pixel_x_1based": 95,
+        "pixel_y_1based": 328,
+        "instance_number": 65
+      },
+      "dicom_metadata": {
+        "pixel_spacing": [
+          0.544921875,
+          0.544921875
+        ],
+        "slice_thickness": 1.0,
+        "image_position_patient": [
+          -140.5,
+          -12.4250803,
+          212.5
+        ],
+        "image_orientation_patient": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "total_slices": 376
+      },
+      "lps_ground_truth": [
+        -89.27734375,
+        165.764372825,
+        212.5
+      ],
+      "resampled_voxel_zyx": [
+        311,
+        178,
+        51
+      ],
+      "hu_diagnostics": {
+        "target_hu": -2.3119051456451416,
+        "box_7x7x7_mean_hu": 68.4268798828125,
+        "box_7x7x7_max_hu": 174.01385498046875,
+        "box_7x7x7_min_hu": -53.487403869628906
+      },
+      "mask_diagnostics": {
+        "target_in_mask": true,
+        "box_7x7x7_mask_fraction": 1.0,
+        "distance_to_mask_mm": 0.0
+      },
+      "proposal_diagnostics": {
+        "detected_in_cap400": false,
+        "min_dist_cap400_mm": 24.97387711776381,
+        "rank_in_cap400": null,
+        "detected_in_uncapped": true,
+        "min_dist_uncapped_mm": 2.080316512737073,
+        "rank_in_uncapped": 49737,
+        "total_uncapped_proposals": 50000
+      },
+      "root_cause": "RANKING_AND_CAP",
+      "root_cause_evidence": "Candidate within 2.08 mm found at rank 49737 (> 400 cap)"
+    },
+    {
+      "patient_id": "CT-Training-LC009",
+      "diagnosis": "malignant",
+      "spreadsheet_ref": {
+        "pixel_x_1based": 145,
+        "pixel_y_1based": 299,
+        "instance_number": 63
+      },
+      "dicom_metadata": {
+        "pixel_spacing": [
+          0.662109375,
+          0.662109375
+        ],
+        "slice_thickness": 1.0,
+        "image_position_patient": [
+          -194.5,
+          -34.9306779,
+          -92.3999939
+        ],
+        "image_orientation_patient": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "total_slices": 281
+      },
+      "lps_ground_truth": [
+        -99.15625,
+        162.37791585,
+        -92.3999939
+      ],
+      "resampled_voxel_zyx": [
+        218,
+        197,
+        95
+      ],
+      "hu_diagnostics": {
+        "target_hu": -2.55552077293396,
+        "box_7x7x7_mean_hu": 58.08229446411133,
+        "box_7x7x7_max_hu": 254.96791076660156,
+        "box_7x7x7_min_hu": -852.5762939453125
+      },
+      "mask_diagnostics": {
+        "target_in_mask": true,
+        "box_7x7x7_mask_fraction": 0.967930029154519,
+        "distance_to_mask_mm": 0.0
+      },
+      "proposal_diagnostics": {
+        "detected_in_cap400": false,
+        "min_dist_cap400_mm": 14.66989719341166,
+        "rank_in_cap400": null,
+        "detected_in_uncapped": true,
+        "min_dist_uncapped_mm": 2.7419230596913406,
+        "rank_in_uncapped": 4055,
+        "total_uncapped_proposals": 26540
+      },
+      "root_cause": "RANKING_AND_CAP",
+      "root_cause_evidence": "Candidate within 2.74 mm found at rank 4055 (> 400 cap)"
+    },
+    {
+      "patient_id": "CT-Training-BE001",
+      "diagnosis": "benign",
+      "spreadsheet_ref": {
+        "pixel_x_1based": 405,
+        "pixel_y_1based": 296,
+        "instance_number": 169
+      },
+      "dicom_metadata": {
+        "pixel_spacing": [
+          0.70703125,
+          0.70703125
+        ],
+        "slice_thickness": 1.0,
+        "image_position_patient": [
+          -179.414349,
+          -43.0278091,
+          -343.000031
+        ],
+        "image_orientation_patient": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "total_slices": 251
+      },
+      "lps_ground_truth": [
+        106.22627600000001,
+        165.54640965,
+        -343.000031
+      ],
+      "resampled_voxel_zyx": [
+        82,
+        209,
+        286
+      ],
+      "hu_diagnostics": {
+        "target_hu": 215.1656494140625,
+        "box_7x7x7_mean_hu": -513.7374267578125,
+        "box_7x7x7_max_hu": 525.8792724609375,
+        "box_7x7x7_min_hu": -1013.168701171875
+      },
+      "mask_diagnostics": {
+        "target_in_mask": true,
+        "box_7x7x7_mask_fraction": 1.0,
+        "distance_to_mask_mm": 0.0
+      },
+      "proposal_diagnostics": {
+        "detected_in_cap400": false,
+        "min_dist_cap400_mm": 31.049196890796974,
+        "rank_in_cap400": null,
+        "detected_in_uncapped": true,
+        "min_dist_uncapped_mm": 0.5571714848020872,
+        "rank_in_uncapped": 1169,
+        "total_uncapped_proposals": 39716
+      },
+      "root_cause": "RANKING_AND_CAP",
+      "root_cause_evidence": "Candidate within 0.56 mm found at rank 1169 (> 400 cap)"
+    },
+    {
+      "patient_id": "CT-Training-BE002",
+      "diagnosis": "benign",
+      "spreadsheet_ref": {
+        "pixel_x_1based": 184,
+        "pixel_y_1based": 268,
+        "instance_number": 117
+      },
+      "dicom_metadata": {
+        "pixel_spacing": [
+          0.939453125,
+          0.939453125
+        ],
+        "slice_thickness": 1.0,
+        "image_position_patient": [
+          -241.5,
+          -151.5,
+          -159.5
+        ],
+        "image_orientation_patient": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "total_slices": 350
+      },
+      "lps_ground_truth": [
+        -69.580078125,
+        99.333984375,
+        -159.5
+      ],
+      "resampled_voxel_zyx": [
+        233,
+        251,
+        172
+      ],
+      "hu_diagnostics": {
+        "target_hu": 87.14894104003906,
+        "box_7x7x7_mean_hu": -515.8666381835938,
+        "box_7x7x7_max_hu": 134.87913513183594,
+        "box_7x7x7_min_hu": -880.4749755859375
+      },
+      "mask_diagnostics": {
+        "target_in_mask": true,
+        "box_7x7x7_mask_fraction": 1.0,
+        "distance_to_mask_mm": 0.0
+      },
+      "proposal_diagnostics": {
+        "detected_in_cap400": true,
+        "min_dist_cap400_mm": 1.168762142101059,
+        "rank_in_cap400": 227,
+        "detected_in_uncapped": true,
+        "min_dist_uncapped_mm": 1.168762142101059,
+        "rank_in_uncapped": 227,
+        "total_uncapped_proposals": 15730
+      },
+      "root_cause": "DETECTED_WITHIN_5MM",
+      "root_cause_evidence": "Candidate rank 227 at distance 1.17 mm"
+    },
+    {
+      "patient_id": "CT-Training-BE006",
+      "diagnosis": "benign",
+      "spreadsheet_ref": {
+        "pixel_x_1based": 449,
+        "pixel_y_1based": 266,
+        "instance_number": 241
+      },
+      "dicom_metadata": {
+        "pixel_spacing": [
+          0.65234375,
+          0.65234375
+        ],
+        "slice_thickness": 1.0,
+        "image_position_patient": [
+          -152.395864,
+          -38.1002731,
+          -144.000031
+        ],
+        "image_orientation_patient": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "total_slices": 389
+      },
+      "lps_ground_truth": [
+        139.854136,
+        134.77082065,
+        -144.000031
+      ],
+      "resampled_voxel_zyx": [
+        148,
+        173,
+        292
+      ],
+      "hu_diagnostics": {
+        "target_hu": -938.8677368164062,
+        "box_7x7x7_mean_hu": -381.80401611328125,
+        "box_7x7x7_max_hu": 408.85894775390625,
+        "box_7x7x7_min_hu": -1024.0
+      },
+      "mask_diagnostics": {
+        "target_in_mask": true,
+        "box_7x7x7_mask_fraction": 1.0,
+        "distance_to_mask_mm": 0.0
+      },
+      "proposal_diagnostics": {
+        "detected_in_cap400": false,
+        "min_dist_cap400_mm": 16.411011678787187,
+        "rank_in_cap400": null,
+        "detected_in_uncapped": true,
+        "min_dist_uncapped_mm": 2.9316790106164623,
+        "rank_in_uncapped": 5222,
+        "total_uncapped_proposals": 50000
+      },
+      "root_cause": "RANKING_AND_CAP",
+      "root_cause_evidence": "Candidate within 2.93 mm found at rank 5222 (> 400 cap)"
+    },
+    {
+      "patient_id": "CT-Training-BE007",
+      "diagnosis": "benign",
+      "spreadsheet_ref": {
+        "pixel_x_1based": 385,
+        "pixel_y_1based": 206,
+        "instance_number": 194
+      },
+      "dicom_metadata": {
+        "pixel_spacing": [
+          0.748046875,
+          0.748046875
+        ],
+        "slice_thickness": 1.0,
+        "image_position_patient": [
+          -198.5,
+          -80.5,
+          -223.300003
+        ],
+        "image_orientation_patient": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "total_slices": 341
+      },
+      "lps_ground_truth": [
+        88.75,
+        72.849609375,
+        -223.300003
+      ],
+      "resampled_voxel_zyx": [
+        147,
+        153,
+        287
+      ],
+      "hu_diagnostics": {
+        "target_hu": -22.799787521362305,
+        "box_7x7x7_mean_hu": 21.62605094909668,
+        "box_7x7x7_max_hu": 156.17332458496094,
+        "box_7x7x7_min_hu": -159.24557495117188
+      },
+      "mask_diagnostics": {
+        "target_in_mask": true,
+        "box_7x7x7_mask_fraction": 1.0,
+        "distance_to_mask_mm": 0.0
+      },
+      "proposal_diagnostics": {
+        "detected_in_cap400": false,
+        "min_dist_cap400_mm": 14.528970256528433,
+        "rank_in_cap400": null,
+        "detected_in_uncapped": false,
+        "min_dist_uncapped_mm": 7.09100718975012,
+        "rank_in_uncapped": null,
+        "total_uncapped_proposals": 50000
+      },
+      "root_cause": "CANDIDATE_GENERATION",
+      "root_cause_evidence": "No LoG peak >= 0.005 within 5 mm across scales [1.0, 1.5, 2.0, 3.0] mm (min uncapped dist: 7.09 mm)"
+    },
+    {
+      "patient_id": "CT-Training-BE010",
+      "diagnosis": "benign",
+      "spreadsheet_ref": {
+        "pixel_x_1based": 120,
+        "pixel_y_1based": 336,
+        "instance_number": 69
+      },
+      "dicom_metadata": {
+        "pixel_spacing": [
+          0.705078125,
+          0.705078125
+        ],
+        "slice_thickness": 1.0,
+        "image_position_patient": [
+          -186.648369,
+          -57.2915497,
+          -352.699982
+        ],
+        "image_orientation_patient": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "total_slices": 353
+      },
+      "lps_ground_truth": [
+        -102.744072125,
+        178.909622175,
+        -352.699982
+      ],
+      "resampled_voxel_zyx": [
+        284,
+        236,
+        84
+      ],
+      "hu_diagnostics": {
+        "target_hu": 78.36567687988281,
+        "box_7x7x7_mean_hu": -195.2495880126953,
+        "box_7x7x7_max_hu": 278.05609130859375,
+        "box_7x7x7_min_hu": -1024.0
+      },
+      "mask_diagnostics": {
+        "target_in_mask": true,
+        "box_7x7x7_mask_fraction": 1.0,
+        "distance_to_mask_mm": 0.0
+      },
+      "proposal_diagnostics": {
+        "detected_in_cap400": false,
+        "min_dist_cap400_mm": 24.27131031097056,
+        "rank_in_cap400": null,
+        "detected_in_uncapped": true,
+        "min_dist_uncapped_mm": 3.904977331742885,
+        "rank_in_uncapped": 4565,
+        "total_uncapped_proposals": 50000
+      },
+      "root_cause": "RANKING_AND_CAP",
+      "root_cause_evidence": "Candidate within 3.90 mm found at rank 4565 (> 400 cap)"
+    }
+  ]
+}

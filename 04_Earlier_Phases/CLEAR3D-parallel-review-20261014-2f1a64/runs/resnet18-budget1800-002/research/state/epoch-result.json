@@ -1,0 +1,61 @@
+{
+  "checkpoint_commit_sha256": "547f9b17e9b6520b4a34d51be5be7db32dba2b5c5123375b8403e09f8ad9ab60",
+  "endpoint_epoch": 2,
+  "epochs": [
+    {
+      "actual_updates": 60,
+      "epoch": 0,
+      "loss": 0.6961842586182886,
+      "skips": 0,
+      "validation_classes": {
+        "0": 369,
+        "1": 15
+      },
+      "validation_rows": 384
+    },
+    {
+      "actual_updates": 60,
+      "epoch": 1,
+      "loss": 0.7014572229650285,
+      "skips": 0,
+      "validation_classes": {
+        "0": 369,
+        "1": 15
+      },
+      "validation_rows": 384
+    },
+    {
+      "actual_updates": 60,
+      "epoch": 2,
+      "loss": 0.6990390358699693,
+      "skips": 0,
+      "validation_classes": {
+        "0": 369,
+        "1": 15
+      },
+      "validation_rows": 384
+    }
+  ],
+  "no_best_epoch_selection": true,
+  "phase_seconds": {
+    "setup": 4.216981131583452,
+    "training": 828.9557306058705,
+    "validation": 32.27128271013498
+  },
+  "reference_release": "HOLD",
+  "status": "PASS",
+  "update_state": {
+    "boundaries": 180,
+    "consecutive_skips": 0,
+    "optimizer_updates": 180,
+    "policy": {
+      "max_consecutive_skips": 8,
+      "max_total_skips": 16,
+      "require_update_each_epoch": true,
+      "version": "bounded-amp-v1"
+    },
+    "scale_changes": 0,
+    "scaler_update_calls": 180,
+    "skipped_updates": 0
+  }
+}

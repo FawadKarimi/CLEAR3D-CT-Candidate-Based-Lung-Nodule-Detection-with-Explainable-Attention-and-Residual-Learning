@@ -1,0 +1,45 @@
+{
+  "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-training-review-20261013-6e91ab/runs/diagnostic-epochs18-001/research/state/epoch-checkpoints/d18eaa14342c47a2813f45eac27ec7ce/commit.json": {
+    "epoch": 0,
+    "parent": {
+      "commit_sha256": "23032fb415ed39c4a503e4543671c33886e400407018c8db8c10b27854829559",
+      "generation": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-training-review-20261013-6e91ab/runs/diagnostic-epochs18-001/research/state/epoch-checkpoints/2751f24f9ec7459591cdac9a86ab74dd"
+    },
+    "schema": "scoped-epoch-commit-v1",
+    "state_sha256": "1b1e840947a1b2f5998cadcf056b4a68c1d9fa83b822b1fd4451eaf4e1cfac53",
+    "status": "COMMITTED"
+  },
+  "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-training-review-20261013-6e91ab/runs/diagnostic-epochs18-001/research/state/epoch-checkpoints/2751f24f9ec7459591cdac9a86ab74dd/commit.json": {
+    "epoch": -1,
+    "parent": null,
+    "schema": "scoped-epoch-commit-v1",
+    "state_sha256": "39e479154ecec7057288117624d82045a856c043d092e653deaf59392477aa1a",
+    "status": "COMMITTED"
+  },
+  "validation": {
+    "classes": {
+      "0": {
+        "count": 369,
+        "probability_max": 0.4806023935285962,
+        "probability_mean": 0.4760485559525951,
+        "probability_min": 0.47293535264074715,
+        "probability_sum": 175.6619171465076,
+        "unweighted_loss_sum": 238.50764706604994,
+        "weighted_loss_sum": 238.50764706604994
+      },
+      "1": {
+        "count": 15,
+        "probability_max": 0.47765621292519445,
+        "probability_mean": 0.47607041827065266,
+        "probability_min": 0.47449791224975735,
+        "probability_sum": 7.14105627405979,
+        "unweighted_loss_sum": 11.132859959527387,
+        "weighted_loss_sum": 33.398579878582154
+      }
+    },
+    "epoch": 0,
+    "kind": "complete_validation_diagnostics",
+    "not_model_quality_acceptance": true,
+    "rows": 384
+  }
+}

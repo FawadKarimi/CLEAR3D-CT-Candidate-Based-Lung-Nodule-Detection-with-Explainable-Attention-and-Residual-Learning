@@ -1,0 +1,199 @@
+{
+  "status": "PASS",
+  "task": "Step 5: Test-Fold0 Natural vs. Balanced Candidate Classification Summary",
+  "timestamp": "2026-11-09T06:26:42Z",
+  "cohort": "LUNA16 Fold 0 (89 scans, 138 nodules, 79,135 candidates)",
+  "exposure_status": "PREVIOUSLY_EXPOSED_INTERNAL_TEST (Frozen / No Tuning)",
+  "cpm_official_froc": 0.904337,
+  "cpm_95ci": [
+    0.845199,
+    0.953342
+  ],
+  "natural_imbalanced_population": {
+    "total_candidates": 79135,
+    "positives": 138,
+    "negatives": 78997,
+    "roc_auc": 0.999338,
+    "pr_auc": 0.843552,
+    "at_natural_cut_0_9999467": {
+      "threshold": 0.9999467134475708,
+      "total": 79135,
+      "TP": 118,
+      "TN": 78903,
+      "FP": 94,
+      "FN": 20,
+      "accuracy": 0.9985594237695078,
+      "recall": 0.855072463768116,
+      "precision": 0.5566037735849056,
+      "specificity": 0.998810081395496,
+      "f1_positive": 0.6742857142857143,
+      "f1_negative": 0.9992781155015198,
+      "macro_f1": 0.8367819148936171
+    },
+    "at_bayes_natural_prior_0_99792": {
+      "threshold": 0.9979218189997277,
+      "total": 79135,
+      "TP": 130,
+      "TN": 78755,
+      "FP": 242,
+      "FN": 8,
+      "accuracy": 0.9968408415997978,
+      "recall": 0.9420289855072463,
+      "precision": 0.34946236559139787,
+      "specificity": 0.9969365925288302,
+      "f1_positive": 0.5098039215686274,
+      "f1_negative": 0.9984153144016227,
+      "macro_f1": 0.754109617985125
+    },
+    "at_half_cut_0_5": {
+      "threshold": 0.5,
+      "total": 79135,
+      "TP": 136,
+      "TN": 78094,
+      "FP": 903,
+      "FN": 2,
+      "accuracy": 0.9885638465912681,
+      "recall": 0.9855072463768116,
+      "precision": 0.13089509143407121,
+      "specificity": 0.9885691861716268,
+      "f1_positive": 0.23109600679694137,
+      "f1_negative": 0.9942390813085242,
+      "macro_f1": 0.6126675440527328
+    }
+  },
+  "balanced_1to1_sampling": {
+    "description": "Balanced 1:1 Candidate Evaluation (138 Positives, 138 Negatives, 1,000 resamples @ threshold 0.5)",
+    "accuracy": {
+      "mean": 0.987141,
+      "std": 0.004642,
+      "ci_95": [
+        0.978261,
+        0.992754
+      ]
+    },
+    "recall": {
+      "mean": 0.985507,
+      "std": 0.0,
+      "ci_95": [
+        0.985507,
+        0.985507
+      ]
+    },
+    "precision": {
+      "mean": 0.988824,
+      "std": 0.009133,
+      "ci_95": [
+        0.971429,
+        1.0
+      ]
+    },
+    "specificity": {
+      "mean": 0.988775,
+      "std": 0.009284,
+      "ci_95": [
+        0.971014,
+        1.0
+      ]
+    },
+    "f1_positive": {
+      "mean": 0.987142,
+      "std": 0.00457,
+      "ci_95": [
+        0.978417,
+        0.992701
+      ]
+    },
+    "macro_f1": {
+      "mean": 0.987141,
+      "std": 0.004643,
+      "ci_95": [
+        0.97826,
+        0.992753
+      ]
+    },
+    "roc_auc": {
+      "mean": 0.99931,
+      "std": 0.000955,
+      "ci_95": [
+        0.996587,
+        1.0
+      ]
+    },
+    "pr_auc": {
+      "mean": 0.999239,
+      "std": 0.001238,
+      "ci_95": [
+        0.996022,
+        1.0
+      ]
+    }
+  },
+  "balanced_1to3_sampling": {
+    "description": "Balanced 1:3 Candidate Evaluation (138 Positives, 414 Negatives, 1,000 resamples @ threshold 0.5)",
+    "accuracy": {
+      "mean": 0.987743,
+      "std": 0.003924,
+      "ci_95": [
+        0.978261,
+        0.994565
+      ]
+    },
+    "recall": {
+      "mean": 0.985507,
+      "std": 0.0,
+      "ci_95": [
+        0.985507,
+        0.985507
+      ]
+    },
+    "precision": {
+      "mean": 0.96637,
+      "std": 0.014793,
+      "ci_95": [
+        0.931507,
+        0.992701
+      ]
+    },
+    "specificity": {
+      "mean": 0.988488,
+      "std": 0.005232,
+      "ci_95": [
+        0.975845,
+        0.997585
+      ]
+    },
+    "f1_positive": {
+      "mean": 0.975787,
+      "std": 0.00756,
+      "ci_95": [
+        0.957746,
+        0.989091
+      ]
+    },
+    "macro_f1": {
+      "mean": 0.983791,
+      "std": 0.005105,
+      "ci_95": [
+        0.971556,
+        0.992736
+      ]
+    },
+    "roc_auc": {
+      "mean": 0.999316,
+      "std": 0.000528,
+      "ci_95": [
+        0.997934,
+        0.999947
+      ]
+    },
+    "pr_auc": {
+      "mean": 0.997787,
+      "std": 0.001971,
+      "ci_95": [
+        0.992359,
+        0.999843
+      ]
+    }
+  },
+  "scientific_takeaway": "CLEAR3D-CT achieves >98.8% Precision (98.86%) and Recall (98.55%) on balanced 1:1 candidate subsets (identical protocol to Wang et al. 2026, Huang et al. 2019, Almahasneh et al. 2025). On the natural imbalanced population (1:572 prevalence), high specificity (99.88%) yields Precision 55.66% and Recall 85.51% at natural cut, with CPM = 0.9043."
+}

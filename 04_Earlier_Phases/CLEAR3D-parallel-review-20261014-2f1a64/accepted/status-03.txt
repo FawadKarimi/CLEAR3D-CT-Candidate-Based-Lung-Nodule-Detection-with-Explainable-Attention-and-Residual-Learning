@@ -1,0 +1,125 @@
+{
+  "utc": "2026-10-13T17:18:50.855434+00:00",
+  "18": {
+    "research/epoch-phase.json": {
+      "epoch": 1,
+      "monotonic": 12473981.402219577,
+      "phase": "training"
+    },
+    "boundaries": 68,
+    "last_boundary": {
+      "amp": false,
+      "cause": "NOT_ESTABLISHED",
+      "classification": "FINITE_UPDATE",
+      "clip_limit": 1,
+      "counters": {
+        "boundaries": 68,
+        "consecutive_skips": 0,
+        "optimizer_updates": 68,
+        "policy": {
+          "max_consecutive_skips": 8,
+          "max_total_skips": 16,
+          "require_update_each_epoch": true,
+          "version": "bounded-amp-v1"
+        },
+        "scale_changes": 0,
+        "scaler_update_calls": 68,
+        "skipped_updates": 0
+      },
+      "denominator": 26.0,
+      "epoch": 1,
+      "incomplete_group": false,
+      "kind": "accumulation_boundary",
+      "last_microbatch": 63,
+      "microbatches": [
+        {
+          "samples": 2,
+          "scale": 1.0,
+          "scaled_loss_finite": true,
+          "step": 56,
+          "weight_sum": 2.0,
+          "weighted_loss_sum": 1.4967529773712158
+        },
+        {
+          "samples": 2,
+          "scale": 1.0,
+          "scaled_loss_finite": true,
+          "step": 57,
+          "weight_sum": 4.0,
+          "weighted_loss_sum": 2.718979835510254
+        },
+        {
+          "samples": 2,
+          "scale": 1.0,
+          "scaled_loss_finite": true,
+          "step": 58,
+          "weight_sum": 6.0,
+          "weighted_loss_sum": 4.8357954025268555
+        },
+        {
+          "samples": 2,
+          "scale": 1.0,
+          "scaled_loss_finite": true,
+          "step": 59,
+          "weight_sum": 4.0,
+          "weighted_loss_sum": 3.061786651611328
+        },
+        {
+          "samples": 2,
+          "scale": 1.0,
+          "scaled_loss_finite": true,
+          "step": 60,
+          "weight_sum": 2.0,
+          "weighted_loss_sum": 1.3929197788238525
+        },
+        {
+          "samples": 2,
+          "scale": 1.0,
+          "scaled_loss_finite": true,
+          "step": 61,
+          "weight_sum": 2.0,
+          "weighted_loss_sum": 1.5045740604400635
+        },
+        {
+          "samples": 2,
+          "scale": 1.0,
+          "scaled_loss_finite": true,
+          "step": 62,
+          "weight_sum": 2.0,
+          "weighted_loss_sum": 1.3678393363952637
+        },
+        {
+          "samples": 2,
+          "scale": 1.0,
+          "scaled_loss_finite": true,
+          "step": 63,
+          "weight_sum": 4.0,
+          "weighted_loss_sum": 3.4324843883514404
+        }
+      ],
+      "norm_after_clip": 0.9999990463256836,
+      "norm_before_clip": 1.1512253284454346,
+      "normalized_gradients": {
+        "gradient_tensors": 163,
+        "missing": [],
+        "nonfinite": {}
+      },
+      "optimizer_updates": 1,
+      "scale_after": 1.0,
+      "scale_before": 1.0,
+      "scaled_gradients": {
+        "gradient_tensors": 163,
+        "missing": [],
+        "nonfinite": {}
+      },
+      "scaler_update_calls": 1,
+      "status": "UPDATED",
+      "unscaled_gradients": {
+        "gradient_tensors": 163,
+        "missing": [],
+        "nonfinite": {}
+      }
+    }
+  },
+  "10": {}
+}

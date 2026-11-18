@@ -1,0 +1,136 @@
+{
+  "status": "REPRODUCED_AND_AUDITED",
+  "dataset": "SPIE-AAPM Lung CT Challenge Calibration Cohort (10 scans)",
+  "reproduced_metrics": {
+    "proposal_coverage_5mm": 0.3,
+    "detected_scans": 3,
+    "total_scans": 10,
+    "cpm_linear_interp": 0.3,
+    "cpm_step_interp": 0.3,
+    "sensitivities_7_fps": [
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3
+    ],
+    "bootstrap_1000_cpm_95ci": [
+      0.0,
+      0.3
+    ],
+    "bootstrap_mean_cpm": 0.19309997200000004,
+    "bootstrap_mean_duplicate_patients": 3.478
+  },
+  "per_patient_coverage": {
+    "CT-Training-BE001": {
+      "total_proposals": 400,
+      "min_distance_mm": 31.0492,
+      "detected_5mm": false,
+      "matched_count": 0,
+      "best_match_rank": null,
+      "best_match_cal_prob": null,
+      "best_match_raw_prob": null
+    },
+    "CT-Training-BE002": {
+      "total_proposals": 400,
+      "min_distance_mm": 1.1688,
+      "detected_5mm": true,
+      "matched_count": 1,
+      "best_match_rank": 1,
+      "best_match_cal_prob": 0.99999607,
+      "best_match_raw_prob": 0.99234301
+    },
+    "CT-Training-BE006": {
+      "total_proposals": 400,
+      "min_distance_mm": 16.411,
+      "detected_5mm": false,
+      "matched_count": 0,
+      "best_match_rank": null,
+      "best_match_cal_prob": null,
+      "best_match_raw_prob": null
+    },
+    "CT-Training-BE007": {
+      "total_proposals": 400,
+      "min_distance_mm": 14.529,
+      "detected_5mm": false,
+      "matched_count": 0,
+      "best_match_rank": null,
+      "best_match_cal_prob": null,
+      "best_match_raw_prob": null
+    },
+    "CT-Training-BE010": {
+      "total_proposals": 400,
+      "min_distance_mm": 24.2713,
+      "detected_5mm": false,
+      "matched_count": 0,
+      "best_match_rank": null,
+      "best_match_cal_prob": null,
+      "best_match_raw_prob": null
+    },
+    "CT-Training-LC001": {
+      "total_proposals": 400,
+      "min_distance_mm": 0.3779,
+      "detected_5mm": true,
+      "matched_count": 1,
+      "best_match_rank": 1,
+      "best_match_cal_prob": 0.99999535,
+      "best_match_raw_prob": 0.99154621
+    },
+    "CT-Training-LC002": {
+      "total_proposals": 400,
+      "min_distance_mm": 13.6645,
+      "detected_5mm": false,
+      "matched_count": 0,
+      "best_match_rank": null,
+      "best_match_cal_prob": null,
+      "best_match_raw_prob": null
+    },
+    "CT-Training-LC003": {
+      "total_proposals": 400,
+      "min_distance_mm": 1.4374,
+      "detected_5mm": true,
+      "matched_count": 1,
+      "best_match_rank": 1,
+      "best_match_cal_prob": 0.9999969,
+      "best_match_raw_prob": 0.99329281
+    },
+    "CT-Training-LC008": {
+      "total_proposals": 400,
+      "min_distance_mm": 24.9739,
+      "detected_5mm": false,
+      "matched_count": 0,
+      "best_match_rank": null,
+      "best_match_cal_prob": null,
+      "best_match_raw_prob": null
+    },
+    "CT-Training-LC009": {
+      "total_proposals": 400,
+      "min_distance_mm": 14.6699,
+      "detected_5mm": false,
+      "matched_count": 0,
+      "best_match_rank": null,
+      "best_match_cal_prob": null,
+      "best_match_raw_prob": null
+    }
+  },
+  "methodological_audits": {
+    "matching_rule_distinction": {
+      "official_luna16_rule": "Euclidean distance d < max(diameter_mm / 2.0, 5.0 mm), where diameter_mm is annotated in ground truth",
+      "pilot_spie_aapm_rule": "Euclidean distance d < 5.0 mm fixed Cartesian distance threshold",
+      "reason_for_difference": "LUNGx/SPIE-AAPM calibration ground-truth provides only (x, y, slice) center points without nodule diameter or contour annotations"
+    },
+    "annotation_completeness_and_false_positive_interpretation": {
+      "lungx_challenge_scope": "Classification (benign vs malignant) of a single primary biopsy-proven nodule per patient",
+      "unannotated_pulmonary_structures": "LUNGx reference explicitly does NOT exhaustively annotate secondary benign nodules, granulomas, scars, lymph nodes, or vascular bifurcations",
+      "consequence_for_cad_fp_evaluation": "Candidate proposals categorized as false positives are non-matches to the single biopsy target, but may represent true physiological nodules or granulomas unannotated in the challenge protocol"
+    },
+    "bootstrap_cluster_properties": {
+      "cluster_unit": "Patient / Scan level (N=10)",
+      "resampling": "10 patients drawn with replacement; when patient P is drawn k times, its target nodule and all 400 candidate rows are replicated k times",
+      "denominator_consistency": "Scan count denominator and nodule target denominator both equal 10 in every bootstrap sample",
+      "interpolation_robustness": "Linear vs step-wise interpolation yields identical CPM because true nodule probabilities are separated at Rank 1 (0 FPs at threshold)"
+    }
+  }
+}

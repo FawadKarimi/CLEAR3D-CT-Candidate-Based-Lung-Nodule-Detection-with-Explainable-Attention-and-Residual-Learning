@@ -1,0 +1,42 @@
+{
+  "scope": "exploratory repeatedly used development; 142 scans; 400 proposals per scan; not independent test",
+  "false_positives_per_scan": [
+    0.125,
+    0.25,
+    0.5,
+    1,
+    2,
+    4,
+    8
+  ],
+  "results": {
+    "previous": {
+      "sensitivity": [
+        0.026041667,
+        0.046875,
+        0.078125,
+        0.109375,
+        0.140625,
+        0.145833333,
+        0.171875
+      ],
+      "mean": 0.10267857142857142,
+      "sha256": "844da0abf2913c2f864d519c727aa96e65909b72f93cad8c2225dcde69c8e3b2"
+    },
+    "rotating": {
+      "sensitivity": [
+        0.015625,
+        0.015625,
+        0.03125,
+        0.041666667,
+        0.072916667,
+        0.088541667,
+        0.151041667
+      ],
+      "mean": 0.05952380971428571,
+      "sha256": "fe1e82ea982a675f13fd983d3a53018abc10c14aef3c8fe37b4ae107433265b3"
+    }
+  },
+  "reference_release": "HOLD",
+  "cap4000": "NOT_ADOPTED"
+}

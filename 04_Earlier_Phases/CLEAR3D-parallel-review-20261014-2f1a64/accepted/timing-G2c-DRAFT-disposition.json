@@ -1,0 +1,42 @@
+{
+  "status": "DRAFT",
+  "scope": "clear3d-timing-epoch0-instrumentation-v1",
+  "reference_release": "HOLD",
+  "cap4000_policy": "NOT_ADOPTED",
+  "date": null,
+  "supplied_by": null,
+  "instruction": null,
+  "holds": [
+    "reference_origin",
+    "excluded_reference_outliers",
+    "geometry_and_source_scope",
+    "protocol_evaluation_disclosure",
+    "prior_test_access",
+    "independent_reference_review"
+  ],
+  "label_guided": true,
+  "prior_exposure_uncertain": true,
+  "pretraining_overlap_uncertain": true,
+  "sampled_monitoring": true,
+  "no_scientific_approval": true,
+  "train_only": true,
+  "policy": {
+    "scope": "clear3d-timing-epoch0-instrumentation-v1",
+    "depth": 18,
+    "epochs": 1,
+    "draws": 960,
+    "compare": "diagnostics_on_vs_off",
+    "validation": false,
+    "resume": false,
+    "reference_release": "HOLD",
+    "cap4000_policy": "NOT_ADOPTED"
+  },
+  "limits": {
+    "total_seconds": 900,
+    "setup_seconds": 180,
+    "run_seconds": 900,
+    "min_gpu_bytes": 10737418240,
+    "gpu_uuid": "GPU-ca0a8f46-9b8e-e098-a97b-e0420b412e90"
+  },
+  "proposed_text": "DRAFT: Two back-to-back epoch-0 timing probes (instrumented vs lean config), same bindings otherwise. No validation tuning."
+}

@@ -1,0 +1,33 @@
+{
+  "rule": "max best_check macro, then acc, then pos_f1",
+  "winner_depth": 18,
+  "winner_step": 180,
+  "checks": [
+    {
+      "depth": 10,
+      "best_step": 20,
+      "best_check": {
+        "acc": 0.8888888888888888,
+        "macro": 0.47058823529411764,
+        "pos_f1": 0.0,
+        "pos_precision": 0.0,
+        "pos_recall": 0.0,
+        "n": 9
+      },
+      "stop": "budget"
+    },
+    {
+      "depth": 18,
+      "best_step": 180,
+      "best_check": {
+        "acc": 0.8888888888888888,
+        "macro": 0.8,
+        "pos_f1": 0.6666666666666666,
+        "pos_precision": 0.5,
+        "pos_recall": 1.0,
+        "n": 9
+      },
+      "stop": "budget"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "folds": [
+    {
+      "fold": 1,
+      "val_patients": 29,
+      "best_raw_th": 0.99999,
+      "best_rec85_th": 0.99998
+    },
+    {
+      "fold": 2,
+      "val_patients": 29,
+      "best_raw_th": 0.99999,
+      "best_rec85_th": 0.99998
+    },
+    {
+      "fold": 3,
+      "val_patients": 28,
+      "best_raw_th": 0.99999,
+      "best_rec85_th": 0.9999467
+    },
+    {
+      "fold": 4,
+      "val_patients": 28,
+      "best_raw_th": 0.99999,
+      "best_rec85_th": 0.99998
+    },
+    {
+      "fold": 5,
+      "val_patients": 28,
+      "best_raw_th": 0.99999,
+      "best_rec85_th": 0.9999467
+    }
+  ],
+  "raw_candidates": {
+    "baseline_nat_cut_oof": {
+      "TP": 235,
+      "TN": 122209,
+      "FP": 215,
+      "FN": 30,
+      "precision": 0.5222222222222223,
+      "recall": 0.8867924528301887,
+      "f1_positive": 0.6573426573426574,
+      "macro_f1": 0.8281706399689095,
+      "fp_per_scan": 1.5140845070422535
+    },
+    "oof_dev_tuned_raw_f1": {
+      "TP": 202,
+      "TN": 122327,
+      "FP": 97,
+      "FN": 63,
+      "precision": 0.6755852842809364,
+      "recall": 0.7622641509433963,
+      "f1_positive": 0.7163120567375887,
+      "macro_f1": 0.8578292496714977,
+      "fp_per_scan": 0.6830985915492958
+    },
+    "oof_dev_tuned_rec85": {
+      "TP": 226,
+      "TN": 122247,
+      "FP": 177,
+      "FN": 39,
+      "precision": 0.5607940446650124,
+      "recall": 0.8528301886792453,
+      "f1_positive": 0.6766467065868264,
+      "macro_f1": 0.8378820145659398,
+      "fp_per_scan": 1.2464788732394365
+    }
+  },
+  "clean_candidates": {
+    "baseline_nat_cut_oof": {
+      "TP": 235,
+      "TN": 120868,
+      "FP": 44,
+      "FN": 30,
+      "precision": 0.8422939068100358,
+      "recall": 0.8867924528301887,
+      "f1_positive": 0.8639705882352942,
+      "macro_f1": 0.9318322814217288,
+      "fp_per_scan": 0.30985915492957744
+    },
+    "oof_dev_tuned_raw_f1": {
+      "TP": 202,
+      "TN": 120898,
+      "FP": 14,
+      "FN": 63,
+      "precision": 0.9351851851851852,
+      "recall": 0.7622641509433963,
+      "f1_positive": 0.8399168399168399,
+      "macro_f1": 0.9197992455156339,
+      "fp_per_scan": 0.09859154929577464
+    },
+    "oof_dev_tuned_rec85": {
+      "TP": 226,
+      "TN": 120877,
+      "FP": 35,
+      "FN": 39,
+      "precision": 0.8659003831417624,
+      "recall": 0.8528301886792453,
+      "f1_positive": 0.8593155893536122,
+      "macro_f1": 0.9295047933700922,
+      "fp_per_scan": 0.24647887323943662
+    }
+  }
+}

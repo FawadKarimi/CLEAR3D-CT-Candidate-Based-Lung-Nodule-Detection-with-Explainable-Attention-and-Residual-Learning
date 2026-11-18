@@ -1,0 +1,12 @@
+{
+  "rows": 56800,
+  "original_rows": 54800,
+  "recovery_rows": 2000,
+  "candidate_order_and_coordinates_match_baseline": true,
+  "original_sha256": "9dab8f4118d35ec0aa583b9ae84db116b87fad368fd94dc5ecdaff6cf80d720b",
+  "recovery_sha256": "0218425598b97c0b2dbbeaeaa66964f607b0da13a9dbbe4cb2ad4c995ee13aff",
+  "baseline_sha256": "62a6d498d17882fbefa6614aa02ced0d4012ad2f73bc468b9c7a842b5534f36e",
+  "merged_sha256": "15c2041065d35d4ec6ce6f5061ad75d7d92aa1b8530d0b88bbfed590a4910f10",
+  "reference_release": "HOLD",
+  "scope": "exploratory development; partial scores preserved after timeout, no test claim"
+}

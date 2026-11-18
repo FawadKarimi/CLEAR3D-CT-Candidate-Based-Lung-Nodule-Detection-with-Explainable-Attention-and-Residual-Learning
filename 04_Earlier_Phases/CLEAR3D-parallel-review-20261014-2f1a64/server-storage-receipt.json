@@ -1,0 +1,12 @@
+{
+  "package_sha256": "bfafef4f4253aa8c12e3e9f73b5b05eb2aa927c8a4b309909217a63562db571d",
+  "bytes": 1603490,
+  "members": 370,
+  "hashes": "PASS",
+  "existing_files_preserved": true,
+  "shell_syntax_exit": 0,
+  "stderr": "",
+  "research_executed": false,
+  "reference_release": "HOLD",
+  "cap4000_policy": "NOT_ADOPTED"
+}

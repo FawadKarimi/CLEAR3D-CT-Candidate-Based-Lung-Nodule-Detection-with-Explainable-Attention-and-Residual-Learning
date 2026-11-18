@@ -1,0 +1,59 @@
+=== P[3] ===
+  r 0 <ns0:rPr xmlns:ns0="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><ns0:rFonts ns0:ascii="Times New Roman" ns0:hAnsi="Times New Roman" /><ns0:b /><ns0:i /><ns0:color ns0:val="000000" /><ns0:sz ns0:val="18" /></ns0:rPr> | 'Abstract—'
+  r 1 <ns0:rPr xmlns:ns0="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><ns0:rFonts ns0:ascii="Times New Roman" ns0:hAnsi="Times New Roman" /><ns0:b /><ns0:i ns0:val="0" /><ns0:color ns0:val="000000" /><ns0:sz ns0:val="18" /></ns0:rPr> | 'Candidate generators in thoracic computed tomograp'
+=== P[4] ===
+  r 0 <ns0:rPr xmlns:ns0="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><ns0:rFonts ns0:ascii="Times New Roman" ns0:hAnsi="Times New Roman" /><ns0:b /><ns0:i /><ns0:color ns0:val="000000" /><ns0:sz ns0:val="18" /></ns0:rPr> | 'Index Terms—computed tomography; pulmonary nodules'
+=== P[24] ===
+  r 0 <ns0:rPr xmlns:ns0="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><ns0:rFonts ns0:ascii="Times New Roman" ns0:hAnsi="Times New Roman" /><ns0:b ns0:val="0" /><ns0:i ns0:val="0" /><ns0:color ns0:val="000000" /><ns0:sz ns0:val="17" /></ns0:rPr> | 'Fig. 1. Schematic of the retained CLEAR3D-MSFv2 so'
+=== P[95] ===
+  r 0 <ns0:rPr xmlns:ns0="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><ns0:rFonts ns0:ascii="Times New Roman" ns0:hAnsi="Times New Roman" /><ns0:b ns0:val="0" /><ns0:i ns0:val="0" /><ns0:color ns0:val="000000" /><ns0:sz ns0:val="17" /></ns0:rPr> | '[1] S. G. Armato III et al., “The Lung Image Datab'
+=== TBL[33] ===
+  ['Cohort', 'Scans', 'Role']
+  ['Fit (active)', '566', 'Model training']
+  ['Development', '142', 'Repeated model development']
+  ['Internal test', '89', 'Frozen ensemble evaluation']
+  ['Broader CV', '797', 'Separate 10-fold recipe']
+  ['LUNGx subset', '58', 'Exploratory external pipeline']
+=== TBL[53] ===
+  ['FP/scan', 'Test', 'Broader CV']
+  ['0.125', '0.7768', '0.2025']
+  ['0.25', '0.8214', '0.3752']
+  ['0.5', '0.8750', '0.5756']
+  ['1', '0.9286', '0.8261']
+  ['2', '0.9554', '0.8932']
+  ['4', '0.9821', '0.9187']
+  ['8', '0.9911', '0.9461']
+  ['Mean CPM', '0.9043', '0.6768']
+=== TBL[56] ===
+  ['Population / cut', 'Prec.', 'Rec.', 'F1+', 'Macro F1']
+  ['Natural / τ₀', '55.66', '85.51', '67.43', '83.68']
+  ['Natural / 0.5', '13.09', '98.55', '23.11', '61.27']
+  ['1:1 sample / 0.5', '98.88', '98.55', '98.71', '98.71']
+=== TBL[62] ===
+  ['System', 'CPM', 'Avg. precision']
+  ['Run 004 ensemble', '0.9129', '0.7974']
+  ['CLEAR3D-HighRes', '0.8006', '0.4994']
+  ['MedicalNet ResNet-18', '0.0975', '0.1648']
+=== TBL[71] ===
+  ['Fold', 'CPM', 'Fold', 'CPM']
+  ['0', '0.8214', '5', '0.8991']
+  ['1', '0.8270', '6', '0.7516']
+  ['2', '0.6378', '7', '0.7347']
+  ['3', '0.5007', '8', '0.6857']
+  ['4', '0.6612', '9', '0.7156']
+=== TBL[80] ===
+  ['Study', 'Scope', 'CPM']
+  ['Liu et al. (2024) [5]', 'FPR classifier', '0.912']
+  ['Li et al. (2025) [6]', 'Two-stage detector', '0.929']
+  ['Zamanidoost et al. (2025) [8]', 'Detector + FPR', '0.9112']
+  ['Wang et al. (2026) [7]', 'Two-stage, 6 folds', '0.878']
+  ['Almahasneh et al. (2025) [10]', 'Whole detector; 10-fold', '0.874']
+  ['Silva and Pedrini (2026) [11]', 'Whole detector; 10-fold', '0.863']
+  ['Chou et al. (2026) [12]', 'Whole detector; 10-fold', '0.7795']
+  ['Lin et al. (2024) [13]', '3D proposal network', '0.901']
+  ['Mittapalli et al. (2021) [14]', 'FPR network', '0.948']
+  ['CLEAR3D ensemble (ours)', 'FPR; 89 scans', '0.9043']
+  ['CLEAR3D single-model CV (ours)', 'FPR; 797 scans', '0.6768']
+FROC_ARM_C: [PosixPath('runs/exp_fold0_focal_and_matched_inner_20261115_eval_cpu/official_cad_eval/arm_c_cal/froc_arm_c_fold0_calibrated_predictions.txt'), PosixPath('runs/exp_fold0_focal_and_matched_inner_20261115_eval_cpu/official_cad_eval/arm_c_raw/froc_arm_c_fold0_predictions.txt'), PosixPath('runs/exp_fold0_focal_and_matched_inner_20261115_eval_cpu/official_cad_eval/arm_a_raw/froc_arm_a_fold0_predictions.txt')]
+FROC_ARM_E_F0: [PosixPath('runs/exp_fold0_arm_e_8view_tta_20261116/official_cad_eval/arm_e_8view/froc_arm_e_fold0_8view_raw.txt')]
+FROC_ARM_E_HOLD: [PosixPath('runs/exp_hold_test_arm_e_8view_20261116/official_cad_eval/arm_e_hold_8view/froc_arm_e_hold_8view_raw.txt')]

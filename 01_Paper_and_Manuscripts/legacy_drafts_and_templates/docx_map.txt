@@ -1,0 +1,112 @@
+FILES: ['[Content_Types].xml', '_rels/.rels', 'docProps/app.xml', 'docProps/core.xml', 'word/document.xml', 'word/_rels/document.xml.rels', 'word/settings.xml', 'word/theme/theme1.xml', 'word/styles.xml', 'word/fontTable.xml', 'word/numbering.xml', 'word/endnotes.xml', 'word/footnotes.xml', 'word/webSettings.xml', 'word/media/image9.png', 'word/media/image10.png', 'word/media/image1.png', 'word/media/image2.png']
+BODY CHILDREN: 111
+P[000] style=Title img=0 | CLEAR3D-CT: Candidate-Based Lung Nodule Detection with Residual Learning and Attention
+TBL[001] rows=1 cols=3 hdr=['1st Mohammad Fawad KarimiDepartment of InformaticsUniversitas Syiah KualaBanda Aceh, Indonesiamfkarimi@mhs.usk.ac.id', '2nd Kahlil MuchtarDepartment of Electrical and ComputerEngineering, Universitas Syiah KualaBanda Aceh, Indonesiakahlil@usk.ac.id', '3rd Hammam RizaDepartment of InformaticsUniversitas Syiah KualaBanda Aceh, Indonesiahammam.riza@usk.ac.id']
+P[002] style=None img=0 | 
+P[003] style=FirstParagraph img=0 | Abstract—Candidate generators in thoracic computed tomography (CT) produce many locations that 
+P[004] style=BodyText img=0 | Index Terms—computed tomography; pulmonary nodules; false-positive reduction; multi-scale learn
+P[005] style=Heading1 img=0 | I. INTRODUCTION
+P[006] style=BodyText img=0 | Pulmonary nodule analysis in thoracic CT requires sensitivity to small structures while limitin
+P[007] style=BodyText img=0 | Candidate classification does not recover nodules absent from the input proposals. In addition,
+P[008] style=BodyText img=0 | CLEAR3D-CT is a candidate-based lung nodule detection approach using attention and residual lea
+P[009] style=Heading1 img=0 | II. RELATED WORK
+P[010] style=Heading2 img=0 | A. Multi-Scale Candidate Classification
+P[011] style=BodyText img=0 | Three-dimensional contextual networks learn appearance at different spatial scales [3]. Kim et 
+P[012] style=BodyText img=0 | Multi-scale designs address a practical ambiguity in nodule appearance. A small central field c
+P[013] style=Heading2 img=0 | B. Detection Pipelines and Evaluation
+P[014] style=BodyText img=0 | Recent two-stage systems combine a candidate detector with a reduction network. Li et al. repor
+P[015] style=BodyText img=0 | Evaluation based on the full CT volume places an additional requirement on the proposal stage: 
+P[016] style=Heading1 img=0 | III. METHODOLOGY
+P[017] style=Heading2 img=0 | A. Task and Input Construction
+P[018] style=BodyText img=0 | For the main LUNA16 experiment, the input is a supplied candidates_V2 coordinate and a CT volum
+P[019] style=BodyText img=0 | The archived input-construction code uses a validity mask when standardizing the fine patch. It
+P[020] style=Heading2 img=0 | B. Multi-Scale Network
+P[021] style=BodyText img=0 | The network uses three scale-specific 3D squeeze-and-excitation residual branches. Each branch 
+P[022] style=BodyText img=0 | Within the archived model, convolutional residual blocks include group normalization and squeez
+P[023] style=None img=1 | 
+P[024] style=None img=0 | Fig. 1. Schematic of the retained CLEAR3D-MSFv2 source and cross-scale attention. The focal fie
+P[025] style=Heading2 img=0 | C. Ensemble Scoring and Calibration
+P[026] style=BodyText img=0 | The preserved internal-test report identifies five fold checkpoints and four views (identity, X
+P[027] style=BodyText img=0 | The archived internal report describes pre-sigmoid aggregation and fit-side calibration. The so
+P[028] style=Heading1 img=0 | IV. EXPERIMENTAL SETUP
+P[029] style=Heading2 img=0 | A. Cohorts and Data Separation
+P[030] style=BodyText img=0 | The manuscript records an active fit pool of 565 patients and 566 scans, 142 development scans 
+P[031] style=BodyText img=0 | The 138 positive test candidate rows should not be described as 138 separate patients or physic
+P[032] style=None img=0 | TABLE I. COHORTS AND ANALYTIC ROLES
+TBL[033] rows=6 cols=3 hdr=['Cohort', 'Scans', 'Role']
+P[034] style=None img=0 | The broader CV cohort contains 796 patients; the LUNGx subset excludes two prior pilot scans. O
+P[035] style=Heading2 img=0 | B. Broader Cross-Validation and External Evaluation
+P[036] style=BodyText img=0 | A separate patient-assigned 10-fold experiment pooled 682,787 out-of-fold predictions from 797 
+P[037] style=BodyText img=0 | The separate cross-validation script specifies 125 steps per epoch, batches of 12 positive and 
+P[038] style=BodyText img=0 | For the exploratory SPIE-AAPM LUNGx analysis [9], a multiscale Laplacian-of-Gaussian proposal g
+P[039] style=BodyText img=0 | The cap was selected using a development analysis, and the two pilot scans were separated in th
+P[040] style=Heading2 img=0 | C. Metrics and Comparisons
+P[041] style=BodyText img=0 | LUNA16 CPM is the mean nodule sensitivity at 0.125, 0.25, 0.5, 1, 2, 4 and 8 false positives pe
+P[042] style=BodyText img=0 | For the balanced analysis, all positive internal-test candidate rows were retained and equal nu
+P[043] style=BodyText img=0 | Each 1:1 resample retained the same 138 positive candidate rows and drew 138 of 78,997 negative
+P[044] style=Heading1 img=0 | V. RESULTS AND DISCUSSION
+P[045] style=Heading2 img=0 | A. Internal Test Performance
+P[046] style=BodyText img=0 | The frozen five-model ensemble achieved internal-test CPM 0.9043 (Fig. 2 and Table II). Sensiti
+P[047] style=None img=1 | 
+P[048] style=None img=0 | Fig. 2. Archived FROC curves for the frozen ensemble on development and internal test scans. Th
+P[049] style=BodyText img=0 | The raw internal-test candidate precision-recall curve has average precision 0.8429 (Fig. 3). T
+P[050] style=None img=1 | 
+P[051] style=None img=0 | Fig. 3. Candidate-level precision-recall curve on the archived internal test scores. Points mar
+P[052] style=None img=0 | TABLE II. NODULE SENSITIVITY AT SEVEN FP RATES
+TBL[053] rows=9 cols=3 hdr=['FP/scan', 'Test', 'Broader CV']
+P[054] style=None img=0 | Test: frozen five-model ensemble, 89 scans. CV: distinct single-model folds, 797 scans and a 10
+P[055] style=None img=0 | TABLE III. INTERNAL TEST CANDIDATE CLASSIFICATION (%)
+TBL[056] rows=4 cols=5 hdr=['Population / cut', 'Prec.', 'Rec.', 'F1+', 'Macro F1']
+P[057] style=None img=0 | τ₀ = 0.9999467. The 1:1 row is the mean of 1,000 post-hoc negative resamples; all 138 positive 
+P[058] style=Heading2 img=0 | B. Development System Comparison
+P[059] style=BodyText img=0 | Three systems scored 122,689 development candidates. The corrected audit reports CPMs of 0.9129
+P[060] style=BodyText img=0 | The comparator table permits inspection of the tested systems on identical development coordina
+P[061] style=None img=0 | TABLE IV. EXPLORATORY DEVELOPMENT SYSTEMS
+TBL[062] rows=4 cols=3 hdr=['System', 'CPM', 'Avg. precision']
+P[063] style=None img=0 | Identical candidate coordinates, but unmatched training, preprocessing and inference budgets. A
+P[064] style=Heading2 img=0 | C. Broader Cross-Validation
+P[065] style=BodyText img=0 | The broader CV prediction file contains 1,387 positive and 681,400 negative candidate rows. At 
+P[066] style=BodyText img=0 | Across the ten saved fold curves, the CPMs range from 0.5007 to 0.8991 (Fig. 4). The fold assig
+P[067] style=BodyText img=0 | The pooled FROC uses an archived evaluator with a 100-mark-per-scan limit. A later audit packag
+P[068] style=None img=1 | 
+P[069] style=None img=0 | Fig. 4. CPM interpolated from the ten archived project-specific fold curves. The arithmetic fol
+P[070] style=None img=0 | TABLE V. PROJECT-ASSIGNED CROSS-VALIDATION FOLDS
+TBL[071] rows=6 cols=4 hdr=['Fold', 'CPM', 'Fold', 'CPM']
+P[072] style=Heading2 img=0 | D. Exploratory External Pipeline
+P[073] style=BodyText img=0 | On the 58 LUNGx scans not used in the two-scan pilot, 47 of 70 target centers had a retained pr
+P[074] style=BodyText img=0 | For these 58 scans the fixed 5 mm proposal coverage bounds target detection under the specified
+P[075] style=Heading2 img=0 | E. Contextual Comparison with Published Studies
+P[076] style=BodyText img=0 | Table VI includes recent examples using the seven-rate CPM, together with our two LUNA16 result
+P[077] style=BodyText img=0 | Almahasneh et al. reported 0.874 CPM for their integrated AttentNet detector with augmentation 
+P[078] style=BodyText img=0 | Lin et al. reported 0.901 CPM for their LUNA16-trained modified 3D region proposal network [13]
+P[079] style=None img=0 | TABLE VI. PUBLISHED LUNA16 CPM CONTEXT
+TBL[080] rows=12 cols=3 hdr=['Study', 'Scope', 'CPM']
+P[081] style=None img=0 | Reported metrics are from different experiments and are not a head-to-head comparison. Wang et 
+P[082] style=Heading2 img=0 | F. Scope and Limitations
+P[083] style=BodyText img=0 | The internal test was exposed through analysis and is not external clinical validation; the aut
+P[084] style=BodyText img=0 | Prior data exposure, unequal comparator budgets and unresolved preprocessing and inference bind
+P[085] style=BodyText img=0 | An independent evaluation of the entire pipeline would require a locked proposal generator, pre
+P[086] style=Heading1 img=0 | VI. CONCLUSION
+P[087] style=BodyText img=0 | CLEAR3D-CT integrates focal, fine and context CT features for supplied-candidate false-positive
+P[088] style=Heading1 img=0 | ETHICS STATEMENT
+P[089] style=BodyText img=0 | This study uses publicly available, de-identified LIDC-IDRI and SPIE-AAPM data distributed thro
+P[090] style=Heading1 img=0 | DATA AND CODE AVAILABILITY
+P[091] style=BodyText img=0 | LIDC-IDRI and LUNA16 are publicly available subject to their respective conditions [1], [2]. SP
+P[092] style=Heading1 img=0 | ACKNOWLEDGMENT
+P[093] style=BodyText img=0 | The authors acknowledge the Kemitraan Negara Berkembang (KNB) Scholarship Program and Universit
+P[094] style=Heading1 img=0 | REFERENCES
+P[095] style=FirstParagraph img=0 | [1] S. G. Armato III et al., “The Lung Image Database Consortium (LIDC) and Image Database Reso
+P[096] style=FirstParagraph img=0 | [2] A. A. A. Setio et al., “Validation, comparison, and combination of algorithms for automatic
+P[097] style=FirstParagraph img=0 | [3] Q. Dou et al., “Multilevel contextual 3-D CNNs for false positive reduction in pulmonary no
+P[098] style=FirstParagraph img=0 | [4] B.-C. Kim, J. S. Yoon, J.-S. Choi, and H.-I. Suk, “Multi-scale gradual integration CNN for 
+P[099] style=FirstParagraph img=0 | [5] B. Liu et al., “3D ARCNN: An asymmetric residual CNN for false positive reduction in pulmon
+P[100] style=FirstParagraph img=0 | [6] Y. Li et al., “Lung nodule detection using a multi-scale convolutional neural network and g
+P[101] style=FirstParagraph img=0 | [7] L. Wang et al., “Dual-stage pulmonary nodule detection in CT scans via cross-layer attentio
+P[102] style=FirstParagraph img=0 | [8] Y. Zamanidoost, M. Rivron, T. Ould-Bachir, and S. Martel, “DA OMS-CNN: Dual-attention OMS-C
+P[103] style=FirstParagraph img=0 | [9] S. G. Armato III et al., “SPIE-AAPM-NCI Lung Nodule Classification Challenge Dataset,” 2015
+P[104] style=FirstParagraph img=0 | [10] M. Almahasneh, X. Xie, and A. Paiement, “AttentNet: Fully convolutional 3D attention for l
+P[105] style=FirstParagraph img=0 | [11] L. Silva and H. Pedrini, “Lung nodule detection and false positive reduction using multi-v
+P[106] style=FirstParagraph img=0 | [12] L.-F. Chou, B.-R. Peng, S.-W. Chien, and Y.-M. Huang, “Inter-slice representation outweigh
+P[107] style=FirstParagraph img=0 | [13] C.-Y. Lin et al., “Development of a modified 3D region proposal network for lung nodule de
+P[108] style=FirstParagraph img=0 | [14] P. S. Mittapalli and V. Thanikaiselvan, “Multiscale CNN with compound fusions for false po
+P[109] style=FirstParagraph img=0 | [15] FawadKarimi, “CLEAR3D-CT project repository,” GitHub, commit 8d2a1e6. [Online]. Available:

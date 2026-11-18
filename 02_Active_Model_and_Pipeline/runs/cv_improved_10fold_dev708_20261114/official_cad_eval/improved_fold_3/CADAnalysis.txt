@@ -1,0 +1,16 @@
+
+************************************************************
+CAD Analysis: fold_3_predictions
+************************************************************
+
+Candidate detection results:
+    True positives: 90
+    False positives: 6301
+    False negatives: 3
+    True negatives: 0
+    Total number of candidates: 6898
+    Total number of nodules: 93
+    Ignored candidates on excluded nodules: 471
+    Ignored candidates which were double detections on a nodule: 36
+    Sensitivity: 0.967741935
+    Average number of candidates per scan: 99.971014493

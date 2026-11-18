@@ -1,0 +1,12 @@
+{
+  "utc": "2026-10-13T17:20:25.680031+00:00",
+  "18": {
+    "research/epoch-phase.json": {
+      "epoch": 1,
+      "monotonic": 12473981.402219577,
+      "phase": "training"
+    },
+    "boundaries": 91
+  },
+  "10": {}
+}

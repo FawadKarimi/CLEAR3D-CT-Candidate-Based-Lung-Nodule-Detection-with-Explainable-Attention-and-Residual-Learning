@@ -1,0 +1,134 @@
+{
+  "runs/evaluation-full-dev-20261109/full_dev_predictions_run004.csv": {
+    "size_bytes": 15648213,
+    "sha256": "0c9824d9da5f122d501865e6946afea200097b8c0723df96b17d64fde8b5c67f"
+  },
+  "runs/evaluation-full-dev-20261109/full_dev_predictions_highres.csv": {
+    "size_bytes": 14824756,
+    "sha256": "5dcb55ef2af62bd7ff6bf713c572ec69a6012774b7c9977ca2d7ce9e59aef364"
+  },
+  "runs/evaluation-full-dev-20261109/full_dev_predictions_medicalnet.csv": {
+    "size_bytes": 14652096,
+    "sha256": "53534c49e3fc4d38ce345d6d5276a31b2213fd2c56e7e1e06d4b3920cd154d85"
+  },
+  "runs/evaluation-full-dev-20261109/full_dev_predictions_medicalnet_mismatched_raw32_backup.csv": {
+    "size_bytes": 14701748,
+    "sha256": "ce9507a850e6612a04ea2bc9e5fd9c956415d65859e21ea4c78b406640a27f34"
+  },
+  "runs/evaluation-full-dev-20261109/metrics_summary_audit.json": {
+    "size_bytes": 6231,
+    "sha256": "37ccd13f2e516cddcd4beba8a8cd4050f1aa519064fd87af8ecdc7a50d5378de"
+  },
+  "runs/evaluation-full-dev-20261109/froc_and_bootstrap_comparison_audit.json": {
+    "size_bytes": 11929,
+    "sha256": "73c68a0303f6c3d1afd9cda1d7d93e66ceaa32f8321401466575960359b7c193"
+  },
+  "runs/evaluation-full-dev-20261109/froc_three_models_comparison_audit.png": {
+    "size_bytes": 240655,
+    "sha256": "2734315f3e71ea855d0554f13fc69cfa5d7122b1913b151d78b635db50596900"
+  },
+  "runs/evaluation-full-dev-20261109/mednet_corrected_inference.log": {
+    "size_bytes": 2904,
+    "sha256": "de4d0dec9edfdb9b93ac7da6a105339b695a445e1502c2a43313d009dec8f8e6"
+  },
+  "score_full_dev_cohort_20261109.py": {
+    "size_bytes": 10549,
+    "sha256": "349eff9e0eb8e44f94cbb46ca02f3b6a29b36312f3ae63d8fb56f6f825771ec1"
+  },
+  "train_medicalnet_resnet18_comparator.py": {
+    "size_bytes": 21391,
+    "sha256": "cc24dbf10f8ae21088fa972284496a430a08afc802e74fbe43ac315c1613dbeb"
+  },
+  "run_medicalnet_full_dev_corrected.py": {
+    "size_bytes": 5969,
+    "sha256": "db052deea53237fd13aa09ccf5b95292e01cb8c484c1e012ca488f0998e79342"
+  },
+  "evaluate_and_audit_all_three_models_20261109.py": {
+    "size_bytes": 23634,
+    "sha256": "8a6a7b12cdbcfb88f2b0b3114a30207753e597a883ced004d2e15a15f6680d91"
+  },
+  "selection-001.json": {
+    "size_bytes": 1123200,
+    "sha256": "8ab4cda286f59a69f942527a80fb6a97ed4271f9e4c902aa9ed06a9c50334001"
+  },
+  "balanced-candidate-classification-20261106-001.json": {
+    "size_bytes": 524800,
+    "sha256": "3e485ec412da5543999673b8cab25ca547af64efc35c93d0a62cf1fdbe012401"
+  },
+  "paper-ablation-verify-package-20261107-004/reference/patient_series_mapping.json": {
+    "size_bytes": 25770,
+    "sha256": "ad1ace33a76f44ca9990ca7e7bd8b0fd9d27740ac83008f04c48d58c069de40e"
+  },
+  "runs/clear3d-msf-official-dev-eval-20261106-004/seriesuids.csv": {
+    "size_bytes": 9230,
+    "sha256": "edc352e21e049a5fe70200ae868006aa1a5fda2faf4424117b1a8074641e7dff"
+  },
+  "runs/comparator-medicalnet-resnet18-20261109/dev_predictions_1060.csv": {
+    "size_bytes": 23467,
+    "sha256": "7e174798dca83811a9ac46e08e706e2173efe2b0825128bd07cc950e65d826d2"
+  },
+  "runs/comparator-medicalnet-resnet18-20261109/medicalnet_resnet18_evaluation_summary.json": {
+    "size_bytes": 2053,
+    "sha256": "6e011dc8ceecb43d25d6552ba3f627c187d706ab277f0b28ebda0af3294a32e9"
+  },
+  "runs/evaluation-full-dev-20261109/official_luna16_eval_run004/froc_eval_run004.txt": {
+    "size_bytes": 721218,
+    "sha256": "b031f5663e81f97fccce97b5c25d1ae768d2a0aa088dc0557545a72660b843d7"
+  },
+  "runs/evaluation-full-dev-20261109/official_luna16_eval_run004/CADAnalysis.txt": {
+    "size_bytes": 551,
+    "sha256": "f937e5b5ac27aadeb9c9df07e40c07fea941420f9b544317ae922d5f067a18d4"
+  },
+  "runs/evaluation-full-dev-20261109/official_luna16_eval_run004/froc_eval_run004.png": {
+    "size_bytes": 96830,
+    "sha256": "8ab05856b8da85233235f76af4a0cc841131334dab2f7fc0ad508de8de2f6cad"
+  },
+  "runs/evaluation-full-dev-20261109/official_luna16_eval_run004/froc_gt_prob_vectors_eval_run004.csv": {
+    "size_bytes": 1695486,
+    "sha256": "4a3d826de1b36b2127f89adab9077a785fa8a064ff6e5c6b048934f3c1a40138"
+  },
+  "runs/evaluation-full-dev-20261109/official_luna16_eval_run004/nodulesWithoutCandidate_eval_run004.txt": {
+    "size_bytes": 361,
+    "sha256": "4847151434479233230031299840ebe1010065b40693102921b9cda1e62ca8a8"
+  },
+  "runs/evaluation-full-dev-20261109/official_luna16_eval_highres/CADAnalysis.txt": {
+    "size_bytes": 552,
+    "sha256": "a7d08be9390a79f6b81ce5bdd1b2bd7ca76f9972682cb2bec8237ed6ee19677c"
+  },
+  "runs/evaluation-full-dev-20261109/official_luna16_eval_highres/froc_eval_highres.txt": {
+    "size_bytes": 194044,
+    "sha256": "957af8e960bb9aec0a71656ae125ea0f4af8f105d7b1474fd47061e2d0a32018"
+  },
+  "runs/evaluation-full-dev-20261109/official_luna16_eval_highres/nodulesWithoutCandidate_eval_highres.txt": {
+    "size_bytes": 361,
+    "sha256": "4847151434479233230031299840ebe1010065b40693102921b9cda1e62ca8a8"
+  },
+  "runs/evaluation-full-dev-20261109/official_luna16_eval_highres/froc_eval_highres.png": {
+    "size_bytes": 98716,
+    "sha256": "15160fe942cce00d86c8c0f6d33bc5b0b70a7c01a84c2c2f0cb74f863ce44627"
+  },
+  "runs/evaluation-full-dev-20261109/official_luna16_eval_highres/froc_gt_prob_vectors_eval_highres.csv": {
+    "size_bytes": 1695486,
+    "sha256": "1bcb9f65c752eea863d5d5760fc4d2000e2b4152a22cc8e432c8c15449de52cb"
+  },
+  "runs/evaluation-full-dev-20261109/official_luna16_eval_medicalnet/nodulesWithoutCandidate_eval_medicalnet.txt": {
+    "size_bytes": 361,
+    "sha256": "4847151434479233230031299840ebe1010065b40693102921b9cda1e62ca8a8"
+  },
+  "runs/evaluation-full-dev-20261109/official_luna16_eval_medicalnet/froc_gt_prob_vectors_eval_medicalnet.csv": {
+    "size_bytes": 1695486,
+    "sha256": "bf2031b32858bdcf49732f08a8fb0c377b4269d2d8929c67e8ab82724a017879"
+  },
+  "runs/evaluation-full-dev-20261109/official_luna16_eval_medicalnet/CADAnalysis.txt": {
+    "size_bytes": 555,
+    "sha256": "9f63b5cfc07917878d8fbd45cf13597e2cddf33a85dc66cf1c23e3f2eb4bd8cc"
+  },
+  "runs/evaluation-full-dev-20261109/official_luna16_eval_medicalnet/froc_eval_medicalnet.txt": {
+    "size_bytes": 39716,
+    "sha256": "73fcff097325a6b9f91018043bc8d153cee06d2ac43209b53a7bc26941c9bcc0"
+  },
+  "runs/evaluation-full-dev-20261109/official_luna16_eval_medicalnet/froc_eval_medicalnet.png": {
+    "size_bytes": 95675,
+    "sha256": "bfa14eaf0873a7638e61049df13b83e13bbf904779ac557d65af72050f0351bb"
+  }
+}

@@ -1,0 +1,706 @@
+{
+  "LUNGx-CT001": [
+    {
+      "scan_id": "LUNGx-CT001",
+      "nodule_index": 1,
+      "pixel_x_1based": 135,
+      "pixel_y_1based": 303,
+      "instance_number": 142,
+      "raw_pos_str": "135, 303"
+    }
+  ],
+  "LUNGx-CT002": [
+    {
+      "scan_id": "LUNGx-CT002",
+      "nodule_index": 1,
+      "pixel_x_1based": 330,
+      "pixel_y_1based": 348,
+      "instance_number": 205,
+      "raw_pos_str": "330, 348"
+    },
+    {
+      "scan_id": "LUNGx-CT002",
+      "nodule_index": 2,
+      "pixel_x_1based": 364,
+      "pixel_y_1based": 212,
+      "instance_number": 150,
+      "raw_pos_str": "364, 212"
+    }
+  ],
+  "LUNGx-CT003": [
+    {
+      "scan_id": "LUNGx-CT003",
+      "nodule_index": 1,
+      "pixel_x_1based": 374,
+      "pixel_y_1based": 374,
+      "instance_number": 146,
+      "raw_pos_str": "374, 374"
+    }
+  ],
+  "LUNGx-CT004": [
+    {
+      "scan_id": "LUNGx-CT004",
+      "nodule_index": 1,
+      "pixel_x_1based": 197,
+      "pixel_y_1based": 290,
+      "instance_number": 41,
+      "raw_pos_str": "197, 290"
+    },
+    {
+      "scan_id": "LUNGx-CT004",
+      "nodule_index": 2,
+      "pixel_x_1based": 328,
+      "pixel_y_1based": 242,
+      "instance_number": 80,
+      "raw_pos_str": "328, 242"
+    }
+  ],
+  "LUNGx-CT005": [
+    {
+      "scan_id": "LUNGx-CT005",
+      "nodule_index": 1,
+      "pixel_x_1based": 333,
+      "pixel_y_1based": 356,
+      "instance_number": 42,
+      "raw_pos_str": "333, 356"
+    },
+    {
+      "scan_id": "LUNGx-CT005",
+      "nodule_index": 2,
+      "pixel_x_1based": 164,
+      "pixel_y_1based": 420,
+      "instance_number": 138,
+      "raw_pos_str": "164, 420"
+    }
+  ],
+  "LUNGx-CT006": [
+    {
+      "scan_id": "LUNGx-CT006",
+      "nodule_index": 1,
+      "pixel_x_1based": 381,
+      "pixel_y_1based": 284,
+      "instance_number": 50,
+      "raw_pos_str": "381, 284"
+    }
+  ],
+  "LUNGx-CT007": [
+    {
+      "scan_id": "LUNGx-CT007",
+      "nodule_index": 1,
+      "pixel_x_1based": 170,
+      "pixel_y_1based": 355,
+      "instance_number": 188,
+      "raw_pos_str": "170, 355"
+    }
+  ],
+  "LUNGx-CT008": [
+    {
+      "scan_id": "LUNGx-CT008",
+      "nodule_index": 1,
+      "pixel_x_1based": 172,
+      "pixel_y_1based": 208,
+      "instance_number": 139,
+      "raw_pos_str": "172, 208"
+    }
+  ],
+  "LUNGx-CT009": [
+    {
+      "scan_id": "LUNGx-CT009",
+      "nodule_index": 1,
+      "pixel_x_1based": 175,
+      "pixel_y_1based": 209,
+      "instance_number": 164,
+      "raw_pos_str": "175, 209"
+    }
+  ],
+  "LUNGx-CT010": [
+    {
+      "scan_id": "LUNGx-CT010",
+      "nodule_index": 1,
+      "pixel_x_1based": 164,
+      "pixel_y_1based": 163,
+      "instance_number": 139,
+      "raw_pos_str": "164, 163"
+    }
+  ],
+  "LUNGx-CT011": [
+    {
+      "scan_id": "LUNGx-CT011",
+      "nodule_index": 1,
+      "pixel_x_1based": 179,
+      "pixel_y_1based": 335,
+      "instance_number": 56,
+      "raw_pos_str": "179, 335"
+    }
+  ],
+  "LUNGx-CT012": [
+    {
+      "scan_id": "LUNGx-CT012",
+      "nodule_index": 1,
+      "pixel_x_1based": 131,
+      "pixel_y_1based": 360,
+      "instance_number": 88,
+      "raw_pos_str": "131, 360"
+    }
+  ],
+  "LUNGx-CT013": [
+    {
+      "scan_id": "LUNGx-CT013",
+      "nodule_index": 1,
+      "pixel_x_1based": 373,
+      "pixel_y_1based": 240,
+      "instance_number": 91,
+      "raw_pos_str": "373, 240"
+    }
+  ],
+  "LUNGx-CT014": [
+    {
+      "scan_id": "LUNGx-CT014",
+      "nodule_index": 1,
+      "pixel_x_1based": 163,
+      "pixel_y_1based": 212,
+      "instance_number": 204,
+      "raw_pos_str": "163, 212"
+    }
+  ],
+  "LUNGx-CT015": [
+    {
+      "scan_id": "LUNGx-CT015",
+      "nodule_index": 1,
+      "pixel_x_1based": 353,
+      "pixel_y_1based": 413,
+      "instance_number": 124,
+      "raw_pos_str": "353, 413"
+    }
+  ],
+  "LUNGx-CT016": [
+    {
+      "scan_id": "LUNGx-CT016",
+      "nodule_index": 1,
+      "pixel_x_1based": 344,
+      "pixel_y_1based": 358,
+      "instance_number": 62,
+      "raw_pos_str": "344, 358"
+    },
+    {
+      "scan_id": "LUNGx-CT016",
+      "nodule_index": 2,
+      "pixel_x_1based": 204,
+      "pixel_y_1based": 295,
+      "instance_number": 55,
+      "raw_pos_str": "204, 295"
+    }
+  ],
+  "LUNGx-CT017": [
+    {
+      "scan_id": "LUNGx-CT017",
+      "nodule_index": 1,
+      "pixel_x_1based": 354,
+      "pixel_y_1based": 355,
+      "instance_number": 178,
+      "raw_pos_str": "354, 355"
+    },
+    {
+      "scan_id": "LUNGx-CT017",
+      "nodule_index": 2,
+      "pixel_x_1based": 376,
+      "pixel_y_1based": 283,
+      "instance_number": 153,
+      "raw_pos_str": "376, 283"
+    }
+  ],
+  "LUNGx-CT018": [
+    {
+      "scan_id": "LUNGx-CT018",
+      "nodule_index": 1,
+      "pixel_x_1based": 116,
+      "pixel_y_1based": 242,
+      "instance_number": 137,
+      "raw_pos_str": "116, 242"
+    }
+  ],
+  "LUNGx-CT019": [
+    {
+      "scan_id": "LUNGx-CT019",
+      "nodule_index": 1,
+      "pixel_x_1based": 128,
+      "pixel_y_1based": 362,
+      "instance_number": 131,
+      "raw_pos_str": "128, 362"
+    }
+  ],
+  "LUNGx-CT020": [
+    {
+      "scan_id": "LUNGx-CT020",
+      "nodule_index": 1,
+      "pixel_x_1based": 379,
+      "pixel_y_1based": 285,
+      "instance_number": 179,
+      "raw_pos_str": "379, 285"
+    }
+  ],
+  "LUNGx-CT021": [
+    {
+      "scan_id": "LUNGx-CT021",
+      "nodule_index": 1,
+      "pixel_x_1based": 296,
+      "pixel_y_1based": 267,
+      "instance_number": 76,
+      "raw_pos_str": "296, 267"
+    }
+  ],
+  "LUNGx-CT022": [
+    {
+      "scan_id": "LUNGx-CT022",
+      "nodule_index": 1,
+      "pixel_x_1based": 159,
+      "pixel_y_1based": 355,
+      "instance_number": 68,
+      "raw_pos_str": "159, 355"
+    }
+  ],
+  "LUNGx-CT023": [
+    {
+      "scan_id": "LUNGx-CT023",
+      "nodule_index": 1,
+      "pixel_x_1based": 332,
+      "pixel_y_1based": 277,
+      "instance_number": 61,
+      "raw_pos_str": "332, 277"
+    }
+  ],
+  "LUNGx-CT024": [
+    {
+      "scan_id": "LUNGx-CT024",
+      "nodule_index": 1,
+      "pixel_x_1based": 107,
+      "pixel_y_1based": 284,
+      "instance_number": 197,
+      "raw_pos_str": "107, 284"
+    }
+  ],
+  "LUNGx-CT025": [
+    {
+      "scan_id": "LUNGx-CT025",
+      "nodule_index": 1,
+      "pixel_x_1based": 134,
+      "pixel_y_1based": 300,
+      "instance_number": 214,
+      "raw_pos_str": "134, 300"
+    }
+  ],
+  "LUNGx-CT026": [
+    {
+      "scan_id": "LUNGx-CT026",
+      "nodule_index": 1,
+      "pixel_x_1based": 427,
+      "pixel_y_1based": 316,
+      "instance_number": 138,
+      "raw_pos_str": "427, 316"
+    }
+  ],
+  "LUNGx-CT027": [
+    {
+      "scan_id": "LUNGx-CT027",
+      "nodule_index": 1,
+      "pixel_x_1based": 357,
+      "pixel_y_1based": 250,
+      "instance_number": 97,
+      "raw_pos_str": "357, 250"
+    }
+  ],
+  "LUNGx-CT028": [
+    {
+      "scan_id": "LUNGx-CT028",
+      "nodule_index": 1,
+      "pixel_x_1based": 117,
+      "pixel_y_1based": 312,
+      "instance_number": 135,
+      "raw_pos_str": "117, 312"
+    }
+  ],
+  "LUNGx-CT029": [
+    {
+      "scan_id": "LUNGx-CT029",
+      "nodule_index": 1,
+      "pixel_x_1based": 179,
+      "pixel_y_1based": 369,
+      "instance_number": 73,
+      "raw_pos_str": "179, 369"
+    },
+    {
+      "scan_id": "LUNGx-CT029",
+      "nodule_index": 2,
+      "pixel_x_1based": 353,
+      "pixel_y_1based": 277,
+      "instance_number": 79,
+      "raw_pos_str": "353, 277"
+    }
+  ],
+  "LUNGx-CT030": [
+    {
+      "scan_id": "LUNGx-CT030",
+      "nodule_index": 1,
+      "pixel_x_1based": 118,
+      "pixel_y_1based": 310,
+      "instance_number": 104,
+      "raw_pos_str": "118, 310"
+    }
+  ],
+  "LUNGx-CT031": [
+    {
+      "scan_id": "LUNGx-CT031",
+      "nodule_index": 1,
+      "pixel_x_1based": 130,
+      "pixel_y_1based": 230,
+      "instance_number": 70,
+      "raw_pos_str": "130, 230"
+    }
+  ],
+  "LUNGx-CT032": [
+    {
+      "scan_id": "LUNGx-CT032",
+      "nodule_index": 1,
+      "pixel_x_1based": 392,
+      "pixel_y_1based": 341,
+      "instance_number": 239,
+      "raw_pos_str": "392, 341"
+    }
+  ],
+  "LUNGx-CT033": [
+    {
+      "scan_id": "LUNGx-CT033",
+      "nodule_index": 1,
+      "pixel_x_1based": 188,
+      "pixel_y_1based": 312,
+      "instance_number": 113,
+      "raw_pos_str": "188, 312"
+    }
+  ],
+  "LUNGx-CT034": [
+    {
+      "scan_id": "LUNGx-CT034",
+      "nodule_index": 1,
+      "pixel_x_1based": 128,
+      "pixel_y_1based": 274,
+      "instance_number": 150,
+      "raw_pos_str": "128, 274"
+    }
+  ],
+  "LUNGx-CT035": [
+    {
+      "scan_id": "LUNGx-CT035",
+      "nodule_index": 1,
+      "pixel_x_1based": 154,
+      "pixel_y_1based": 355,
+      "instance_number": 268,
+      "raw_pos_str": "154, 355"
+    },
+    {
+      "scan_id": "LUNGx-CT035",
+      "nodule_index": 2,
+      "pixel_x_1based": 454,
+      "pixel_y_1based": 300,
+      "instance_number": 215,
+      "raw_pos_str": "454, 300"
+    }
+  ],
+  "LUNGx-CT036": [
+    {
+      "scan_id": "LUNGx-CT036",
+      "nodule_index": 1,
+      "pixel_x_1based": 150,
+      "pixel_y_1based": 392,
+      "instance_number": 220,
+      "raw_pos_str": "150, 392"
+    }
+  ],
+  "LUNGx-CT037": [
+    {
+      "scan_id": "LUNGx-CT037",
+      "nodule_index": 1,
+      "pixel_x_1based": 374,
+      "pixel_y_1based": 315,
+      "instance_number": 62,
+      "raw_pos_str": "374, 315"
+    }
+  ],
+  "LUNGx-CT038": [
+    {
+      "scan_id": "LUNGx-CT038",
+      "nodule_index": 1,
+      "pixel_x_1based": 184,
+      "pixel_y_1based": 249,
+      "instance_number": 197,
+      "raw_pos_str": "184, 249"
+    }
+  ],
+  "LUNGx-CT039": [
+    {
+      "scan_id": "LUNGx-CT039",
+      "nodule_index": 1,
+      "pixel_x_1based": 149,
+      "pixel_y_1based": 380,
+      "instance_number": 242,
+      "raw_pos_str": "149, 380"
+    }
+  ],
+  "LUNGx-CT040": [
+    {
+      "scan_id": "LUNGx-CT040",
+      "nodule_index": 1,
+      "pixel_x_1based": 336,
+      "pixel_y_1based": 353,
+      "instance_number": 189,
+      "raw_pos_str": "336, 353"
+    }
+  ],
+  "LUNGx-CT041": [
+    {
+      "scan_id": "LUNGx-CT041",
+      "nodule_index": 1,
+      "pixel_x_1based": 107,
+      "pixel_y_1based": 292,
+      "instance_number": 172,
+      "raw_pos_str": "107, 292"
+    }
+  ],
+  "LUNGx-CT042": [
+    {
+      "scan_id": "LUNGx-CT042",
+      "nodule_index": 1,
+      "pixel_x_1based": 326,
+      "pixel_y_1based": 391,
+      "instance_number": 178,
+      "raw_pos_str": "326, 391"
+    }
+  ],
+  "LUNGx-CT043": [
+    {
+      "scan_id": "LUNGx-CT043",
+      "nodule_index": 1,
+      "pixel_x_1based": 394,
+      "pixel_y_1based": 162,
+      "instance_number": 177,
+      "raw_pos_str": "394, 162"
+    },
+    {
+      "scan_id": "LUNGx-CT043",
+      "nodule_index": 2,
+      "pixel_x_1based": 440,
+      "pixel_y_1based": 289,
+      "instance_number": 230,
+      "raw_pos_str": "440, 289"
+    }
+  ],
+  "LUNGx-CT044": [
+    {
+      "scan_id": "LUNGx-CT044",
+      "nodule_index": 1,
+      "pixel_x_1based": 136,
+      "pixel_y_1based": 298,
+      "instance_number": 90,
+      "raw_pos_str": "136, 298"
+    }
+  ],
+  "LUNGx-CT045": [
+    {
+      "scan_id": "LUNGx-CT045",
+      "nodule_index": 1,
+      "pixel_x_1based": 314,
+      "pixel_y_1based": 216,
+      "instance_number": 148,
+      "raw_pos_str": "314, 216"
+    }
+  ],
+  "LUNGx-CT046": [
+    {
+      "scan_id": "LUNGx-CT046",
+      "nodule_index": 1,
+      "pixel_x_1based": 309,
+      "pixel_y_1based": 211,
+      "instance_number": 61,
+      "raw_pos_str": "309, 211"
+    }
+  ],
+  "LUNGx-CT047": [
+    {
+      "scan_id": "LUNGx-CT047",
+      "nodule_index": 1,
+      "pixel_x_1based": 199,
+      "pixel_y_1based": 306,
+      "instance_number": 53,
+      "raw_pos_str": "199, 306"
+    },
+    {
+      "scan_id": "LUNGx-CT047",
+      "nodule_index": 2,
+      "pixel_x_1based": 236,
+      "pixel_y_1based": 276,
+      "instance_number": 67,
+      "raw_pos_str": "236, 276"
+    }
+  ],
+  "LUNGx-CT048": [
+    {
+      "scan_id": "LUNGx-CT048",
+      "nodule_index": 1,
+      "pixel_x_1based": 368,
+      "pixel_y_1based": 312,
+      "instance_number": 115,
+      "raw_pos_str": "368, 312"
+    }
+  ],
+  "LUNGx-CT049": [
+    {
+      "scan_id": "LUNGx-CT049",
+      "nodule_index": 1,
+      "pixel_x_1based": 398,
+      "pixel_y_1based": 296,
+      "instance_number": 71,
+      "raw_pos_str": "398, 296"
+    }
+  ],
+  "LUNGx-CT050": [
+    {
+      "scan_id": "LUNGx-CT050",
+      "nodule_index": 1,
+      "pixel_x_1based": 385,
+      "pixel_y_1based": 316,
+      "instance_number": 41,
+      "raw_pos_str": "385, 316"
+    }
+  ],
+  "LUNGx-CT051": [
+    {
+      "scan_id": "LUNGx-CT051",
+      "nodule_index": 1,
+      "pixel_x_1based": 303,
+      "pixel_y_1based": 297,
+      "instance_number": 77,
+      "raw_pos_str": "303, 297"
+    }
+  ],
+  "LUNGx-CT052": [
+    {
+      "scan_id": "LUNGx-CT052",
+      "nodule_index": 1,
+      "pixel_x_1based": 135,
+      "pixel_y_1based": 202,
+      "instance_number": 124,
+      "raw_pos_str": "135, 202"
+    },
+    {
+      "scan_id": "LUNGx-CT052",
+      "nodule_index": 2,
+      "pixel_x_1based": 342,
+      "pixel_y_1based": 341,
+      "instance_number": 50,
+      "raw_pos_str": "342, 341"
+    }
+  ],
+  "LUNGx-CT053": [
+    {
+      "scan_id": "LUNGx-CT053",
+      "nodule_index": 1,
+      "pixel_x_1based": 195,
+      "pixel_y_1based": 303,
+      "instance_number": 213,
+      "raw_pos_str": "195, 303"
+    }
+  ],
+  "LUNGx-CT054": [
+    {
+      "scan_id": "LUNGx-CT054",
+      "nodule_index": 1,
+      "pixel_x_1based": 196,
+      "pixel_y_1based": 336,
+      "instance_number": 180,
+      "raw_pos_str": "196, 336"
+    },
+    {
+      "scan_id": "LUNGx-CT054",
+      "nodule_index": 2,
+      "pixel_x_1based": 174,
+      "pixel_y_1based": 208,
+      "instance_number": 149,
+      "raw_pos_str": "174, 208"
+    }
+  ],
+  "LUNGx-CT055": [
+    {
+      "scan_id": "LUNGx-CT055",
+      "nodule_index": 1,
+      "pixel_x_1based": 223,
+      "pixel_y_1based": 193,
+      "instance_number": 125,
+      "raw_pos_str": "223, 193"
+    }
+  ],
+  "LUNGx-CT056": [
+    {
+      "scan_id": "LUNGx-CT056",
+      "nodule_index": 1,
+      "pixel_x_1based": 209,
+      "pixel_y_1based": 308,
+      "instance_number": 56,
+      "raw_pos_str": "209, 308"
+    },
+    {
+      "scan_id": "LUNGx-CT056",
+      "nodule_index": 2,
+      "pixel_x_1based": 374,
+      "pixel_y_1based": 218,
+      "instance_number": 98,
+      "raw_pos_str": "374, 218"
+    }
+  ],
+  "LUNGx-CT057": [
+    {
+      "scan_id": "LUNGx-CT057",
+      "nodule_index": 1,
+      "pixel_x_1based": 396,
+      "pixel_y_1based": 353,
+      "instance_number": 169,
+      "raw_pos_str": "396, 353"
+    }
+  ],
+  "LUNGx-CT058": [
+    {
+      "scan_id": "LUNGx-CT058",
+      "nodule_index": 1,
+      "pixel_x_1based": 377,
+      "pixel_y_1based": 234,
+      "instance_number": 157,
+      "raw_pos_str": "377, 234"
+    }
+  ],
+  "LUNGx-CT059": [
+    {
+      "scan_id": "LUNGx-CT059",
+      "nodule_index": 1,
+      "pixel_x_1based": 75,
+      "pixel_y_1based": 288,
+      "instance_number": 235,
+      "raw_pos_str": "75, 288"
+    },
+    {
+      "scan_id": "LUNGx-CT059",
+      "nodule_index": 2,
+      "pixel_x_1based": 371,
+      "pixel_y_1based": 207,
+      "instance_number": 258,
+      "raw_pos_str": "371, 207"
+    }
+  ],
+  "LUNGx-CT060": [
+    {
+      "scan_id": "LUNGx-CT060",
+      "nodule_index": 1,
+      "pixel_x_1based": 192,
+      "pixel_y_1based": 298,
+      "instance_number": 133,
+      "raw_pos_str": "192, 298"
+    }
+  ]
+}

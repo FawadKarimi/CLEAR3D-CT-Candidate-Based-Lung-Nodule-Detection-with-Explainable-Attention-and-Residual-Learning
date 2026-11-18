@@ -1,0 +1,317 @@
+{
+  "smoke": false,
+  "models": {
+    "zuo": {
+      "history": [
+        {
+          "epoch": 1,
+          "loss": 0.6128438098159262
+        },
+        {
+          "epoch": 2,
+          "loss": 0.4741500290792163
+        },
+        {
+          "epoch": 3,
+          "loss": 0.42611474065276667
+        },
+        {
+          "epoch": 4,
+          "loss": 0.3480340572210347
+        },
+        {
+          "epoch": 5,
+          "loss": 0.30266585679558233
+        },
+        {
+          "epoch": 6,
+          "loss": 0.3029298232035424
+        },
+        {
+          "epoch": 7,
+          "loss": 0.26673867332378054
+        },
+        {
+          "epoch": 8,
+          "loss": 0.24788461133413683
+        }
+      ],
+      "gradient_seen": true,
+      "dev": {
+        "tp": 184,
+        "fp": 430,
+        "fn": 81,
+        "tn": 121994,
+        "precision": 0.2996742671009772,
+        "recall": 0.6943396226415094,
+        "specificity": 0.996487616807162,
+        "accuracy": 0.9958349974325327,
+        "f1": 0.41865756541524457,
+        "n": 122689,
+        "positives": 265,
+        "negatives": 122424,
+        "auc": 0.9780213276715998,
+        "threshold": 0.9632823061943052,
+        "skipped_outside": 0
+      }
+    },
+    "wang": {
+      "history": [
+        {
+          "epoch": 1,
+          "loss": 0.5115991779035185
+        },
+        {
+          "epoch": 2,
+          "loss": 0.4416274628109806
+        },
+        {
+          "epoch": 3,
+          "loss": 0.5091645131266214
+        },
+        {
+          "epoch": 4,
+          "loss": 0.48446177576130967
+        },
+        {
+          "epoch": 5,
+          "loss": 0.47424748915482345
+        },
+        {
+          "epoch": 6,
+          "loss": 0.4668044684439655
+        },
+        {
+          "epoch": 7,
+          "loss": 0.43649763583652373
+        },
+        {
+          "epoch": 8,
+          "loss": 0.43564505154282096
+        }
+      ],
+      "gradient_seen": true,
+      "dev": {
+        "tp": 101,
+        "fp": 513,
+        "fn": 164,
+        "tn": 121911,
+        "precision": 0.16449511400651465,
+        "recall": 0.38113207547169814,
+        "specificity": 0.9958096451676142,
+        "accuracy": 0.9944819828998525,
+        "f1": 0.229806598407281,
+        "n": 122689,
+        "positives": 265,
+        "negatives": 122424,
+        "auc": 0.8482695771824245,
+        "threshold": 0.3955466747283935,
+        "skipped_outside": 0
+      }
+    },
+    "clear": {
+      "history": [
+        {
+          "epoch": 1,
+          "loss": 0.6434140345914577
+        },
+        {
+          "epoch": 2,
+          "loss": 0.6200671842912349
+        },
+        {
+          "epoch": 3,
+          "loss": 0.6255541667947925
+        },
+        {
+          "epoch": 4,
+          "loss": 0.5971288386641479
+        },
+        {
+          "epoch": 5,
+          "loss": 0.6064749659319234
+        },
+        {
+          "epoch": 6,
+          "loss": 0.6030004345546893
+        },
+        {
+          "epoch": 7,
+          "loss": 0.5993575108487431
+        },
+        {
+          "epoch": 8,
+          "loss": 0.5904299666484197
+        }
+      ],
+      "gradient_seen": true,
+      "dev": {
+        "tp": 75,
+        "fp": 539,
+        "fn": 190,
+        "tn": 121885,
+        "precision": 0.12214983713355049,
+        "recall": 0.2830188679245283,
+        "specificity": 0.9955972685094426,
+        "accuracy": 0.9940581470221455,
+        "f1": 0.1706484641638225,
+        "n": 122689,
+        "positives": 265,
+        "negatives": 122424,
+        "auc": 0.7979444775287617,
+        "threshold": 0.8378149223327631,
+        "skipped_outside": 0
+      }
+    },
+    "ablation": {
+      "history": [
+        {
+          "epoch": 1,
+          "loss": 0.6411513598953805
+        },
+        {
+          "epoch": 2,
+          "loss": 0.6150359195180055
+        },
+        {
+          "epoch": 3,
+          "loss": 0.6351560291236009
+        },
+        {
+          "epoch": 4,
+          "loss": 0.6107153674451317
+        },
+        {
+          "epoch": 5,
+          "loss": 0.6070716447704206
+        },
+        {
+          "epoch": 6,
+          "loss": 0.610081026588029
+        },
+        {
+          "epoch": 7,
+          "loss": 0.6081448884271994
+        },
+        {
+          "epoch": 8,
+          "loss": 0.6030201474583246
+        }
+      ],
+      "gradient_seen": true,
+      "dev": {
+        "tp": 77,
+        "fp": 537,
+        "fn": 188,
+        "tn": 121887,
+        "precision": 0.1254071661237785,
+        "recall": 0.29056603773584905,
+        "specificity": 0.9956136051754558,
+        "accuracy": 0.9940907497819691,
+        "f1": 0.1751990898748578,
+        "n": 122689,
+        "positives": 265,
+        "negatives": 122424,
+        "auc": 0.8037901065150624,
+        "threshold": 0.7073421406745908,
+        "skipped_outside": 0
+      }
+    }
+  },
+  "departures": [
+    "Shared cubic 32-voxel crops and per-crop z-score.",
+    "Zuo view is the center 18 voxels. Wang views are cubic 32, 16, and 8, not 32x48x48, 16x24x24, and 8x12x12.",
+    "Negatives are a seeded draw of 7 per positive from the training patients, not every LUNA candidate. Wang uses a seeded 3-per-positive subset of that draw.",
+    "No brightness filter and no lung-mask exclusion. A candidate is ignored only when its center is outside the array.",
+    "Epoch count is fixed at 8 before evaluation. Threshold is chosen once on the development candidates.",
+    "Hard-negative weights after epoch 2 use training-bank losses only. There is no vessel mask."
+  ],
+  "confirm": {
+    "zuo": {
+      "tp": 110,
+      "fp": 180,
+      "fn": 51,
+      "tn": 65794,
+      "precision": 0.3793103448275862,
+      "recall": 0.6832298136645962,
+      "specificity": 0.9972716524691545,
+      "accuracy": 0.9965071444772057,
+      "f1": 0.48780487804878053,
+      "n": 66135,
+      "positives": 161,
+      "negatives": 65974,
+      "auc": 0.9750686652957772,
+      "threshold": 0.9632823061943052,
+      "skipped_outside": 0
+    },
+    "wang": {
+      "tp": 59,
+      "fp": 205,
+      "fn": 102,
+      "tn": 65769,
+      "precision": 0.22348484848484848,
+      "recall": 0.36645962732919257,
+      "specificity": 0.9968927153120927,
+      "accuracy": 0.9953579798896197,
+      "f1": 0.2776470588235294,
+      "n": 66135,
+      "positives": 161,
+      "negatives": 65974,
+      "auc": 0.8655046115475191,
+      "threshold": 0.3955466747283935,
+      "skipped_outside": 0
+    },
+    "clear": {
+      "tp": 37,
+      "fp": 238,
+      "fn": 124,
+      "tn": 65736,
+      "precision": 0.13454545454545455,
+      "recall": 0.22981366459627328,
+      "specificity": 0.9963925182647709,
+      "accuracy": 0.9945263476222878,
+      "f1": 0.16972477064220184,
+      "n": 66135,
+      "positives": 161,
+      "negatives": 65974,
+      "auc": 0.814307800908583,
+      "threshold": 0.8378149223327631,
+      "skipped_outside": 0
+    },
+    "ablation": {
+      "tp": 36,
+      "fp": 194,
+      "fn": 125,
+      "tn": 65780,
+      "precision": 0.1565217391304348,
+      "recall": 0.2236024844720497,
+      "specificity": 0.9970594476611999,
+      "accuracy": 0.9951765328494746,
+      "f1": 0.18414322250639387,
+      "n": 66135,
+      "positives": 161,
+      "negatives": 65974,
+      "auc": 0.8116414013651528,
+      "threshold": 0.7073421406745908,
+      "skipped_outside": 0
+    }
+  },
+  "paired": {
+    "clear_minus_zuo": {
+      "mean": -0.3173995837174875,
+      "low": -0.3937567306383963,
+      "high": -0.23975267053120253
+    },
+    "clear_minus_wang": {
+      "mean": -0.1088016521851252,
+      "low": -0.16429656388192543,
+      "high": -0.052374306295710986
+    },
+    "clear_minus_ablation": {
+      "mean": -0.01222094389836057,
+      "low": -0.0539947339495287,
+      "high": 0.026075527627092907
+    }
+  },
+  "seconds": 1491.1691555976868
+}

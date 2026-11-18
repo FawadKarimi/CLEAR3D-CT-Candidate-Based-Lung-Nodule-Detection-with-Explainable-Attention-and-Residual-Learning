@@ -1,0 +1,246 @@
+{
+  "total_time_s": 2078.871540784836,
+  "success_count": 60,
+  "results": {
+    "LUNGx-CT002": {
+      "ok": true,
+      "msg": "Already complete (272/272 slices)"
+    },
+    "LUNGx-CT001": {
+      "ok": true,
+      "msg": "Already complete (313/313 slices)"
+    },
+    "LUNGx-CT005": {
+      "ok": true,
+      "msg": "Success: 405 slices (107.1 MB in 70.0s)"
+    },
+    "LUNGx-CT004": {
+      "ok": true,
+      "msg": "Success: 317 slices (90.5 MB in 91.0s)"
+    },
+    "LUNGx-CT003": {
+      "ok": true,
+      "msg": "Success: 332 slices (107.5 MB in 125.2s)"
+    },
+    "LUNGx-CT006": {
+      "ok": true,
+      "msg": "Success: 340 slices (108.4 MB in 90.6s)"
+    },
+    "LUNGx-CT007": {
+      "ok": true,
+      "msg": "Success: 288 slices (97.6 MB in 107.7s)"
+    },
+    "LUNGx-CT008": {
+      "ok": true,
+      "msg": "Success: 288 slices (96.9 MB in 100.0s)"
+    },
+    "LUNGx-CT009": {
+      "ok": true,
+      "msg": "Success: 275 slices (94.5 MB in 75.4s)"
+    },
+    "LUNGx-CT011": {
+      "ok": true,
+      "msg": "Success: 267 slices (87.5 MB in 63.9s)"
+    },
+    "LUNGx-CT010": {
+      "ok": true,
+      "msg": "Success: 292 slices (95.1 MB in 101.9s)"
+    },
+    "LUNGx-CT012": {
+      "ok": true,
+      "msg": "Success: 307 slices (99.1 MB in 79.8s)"
+    },
+    "LUNGx-CT013": {
+      "ok": true,
+      "msg": "Success: 324 slices (100.8 MB in 118.0s)"
+    },
+    "LUNGx-CT014": {
+      "ok": true,
+      "msg": "Success: 315 slices (99.1 MB in 122.7s)"
+    },
+    "LUNGx-CT015": {
+      "ok": true,
+      "msg": "Success: 362 slices (116.5 MB in 123.8s)"
+    },
+    "LUNGx-CT016": {
+      "ok": true,
+      "msg": "Success: 261 slices (83.0 MB in 117.8s)"
+    },
+    "LUNGx-CT018": {
+      "ok": true,
+      "msg": "Success: 310 slices (102.0 MB in 120.0s)"
+    },
+    "LUNGx-CT017": {
+      "ok": true,
+      "msg": "Success: 335 slices (105.4 MB in 165.5s)"
+    },
+    "LUNGx-CT019": {
+      "ok": true,
+      "msg": "Success: 374 slices (92.2 MB in 88.9s)"
+    },
+    "LUNGx-CT021": {
+      "ok": true,
+      "msg": "Success: 286 slices (82.2 MB in 76.2s)"
+    },
+    "LUNGx-CT020": {
+      "ok": true,
+      "msg": "Success: 405 slices (126.6 MB in 114.0s)"
+    },
+    "LUNGx-CT022": {
+      "ok": true,
+      "msg": "Success: 344 slices (109.5 MB in 88.1s)"
+    },
+    "LUNGx-CT023": {
+      "ok": true,
+      "msg": "Success: 268 slices (95.4 MB in 95.7s)"
+    },
+    "LUNGx-CT024": {
+      "ok": true,
+      "msg": "Success: 469 slices (102.4 MB in 92.6s)"
+    },
+    "LUNGx-CT025": {
+      "ok": true,
+      "msg": "Success: 300 slices (72.3 MB in 85.0s)"
+    },
+    "LUNGx-CT027": {
+      "ok": true,
+      "msg": "Success: 275 slices (88.0 MB in 74.1s)"
+    },
+    "LUNGx-CT026": {
+      "ok": true,
+      "msg": "Success: 319 slices (103.3 MB in 99.4s)"
+    },
+    "LUNGx-CT028": {
+      "ok": true,
+      "msg": "Success: 351 slices (117.6 MB in 127.2s)"
+    },
+    "LUNGx-CT029": {
+      "ok": true,
+      "msg": "Success: 243 slices (76.9 MB in 85.7s)"
+    },
+    "LUNGx-CT030": {
+      "ok": true,
+      "msg": "Success: 202 slices (50.3 MB in 70.4s)"
+    },
+    "LUNGx-CT033": {
+      "ok": true,
+      "msg": "Success: 307 slices (98.1 MB in 128.0s)"
+    },
+    "LUNGx-CT031": {
+      "ok": true,
+      "msg": "Success: 313 slices (101.8 MB in 150.1s)"
+    },
+    "LUNGx-CT032": {
+      "ok": true,
+      "msg": "Success: 328 slices (106.6 MB in 142.3s)"
+    },
+    "LUNGx-CT035": {
+      "ok": true,
+      "msg": "Success: 356 slices (113.0 MB in 104.5s)"
+    },
+    "LUNGx-CT036": {
+      "ok": true,
+      "msg": "Success: 306 slices (96.2 MB in 115.3s)"
+    },
+    "LUNGx-CT034": {
+      "ok": true,
+      "msg": "Success: 300 slices (93.6 MB in 128.0s)"
+    },
+    "LUNGx-CT039": {
+      "ok": true,
+      "msg": "Success: 304 slices (102.4 MB in 81.2s)"
+    },
+    "LUNGx-CT037": {
+      "ok": true,
+      "msg": "Success: 379 slices (124.1 MB in 117.0s)"
+    },
+    "LUNGx-CT038": {
+      "ok": true,
+      "msg": "Success: 321 slices (105.7 MB in 113.1s)"
+    },
+    "LUNGx-CT040": {
+      "ok": true,
+      "msg": "Success: 334 slices (83.7 MB in 81.4s)"
+    },
+    "LUNGx-CT042": {
+      "ok": true,
+      "msg": "Success: 276 slices (85.3 MB in 75.0s)"
+    },
+    "LUNGx-CT041": {
+      "ok": true,
+      "msg": "Success: 399 slices (102.2 MB in 107.8s)"
+    },
+    "LUNGx-CT043": {
+      "ok": true,
+      "msg": "Success: 343 slices (109.6 MB in 126.1s)"
+    },
+    "LUNGx-CT044": {
+      "ok": true,
+      "msg": "Success: 386 slices (132.6 MB in 146.6s)"
+    },
+    "LUNGx-CT045": {
+      "ok": true,
+      "msg": "Success: 379 slices (124.3 MB in 154.4s)"
+    },
+    "LUNGx-CT046": {
+      "ok": true,
+      "msg": "Success: 243 slices (77.4 MB in 79.1s)"
+    },
+    "LUNGx-CT047": {
+      "ok": true,
+      "msg": "Success: 348 slices (113.4 MB in 130.3s)"
+    },
+    "LUNGx-CT049": {
+      "ok": true,
+      "msg": "Success: 338 slices (109.0 MB in 114.9s)"
+    },
+    "LUNGx-CT048": {
+      "ok": true,
+      "msg": "Success: 422 slices (109.5 MB in 123.5s)"
+    },
+    "LUNGx-CT050": {
+      "ok": true,
+      "msg": "Success: 285 slices (91.1 MB in 94.7s)"
+    },
+    "LUNGx-CT052": {
+      "ok": true,
+      "msg": "Success: 265 slices (88.2 MB in 82.7s)"
+    },
+    "LUNGx-CT051": {
+      "ok": true,
+      "msg": "Success: 298 slices (100.8 MB in 111.5s)"
+    },
+    "LUNGx-CT054": {
+      "ok": true,
+      "msg": "Success: 265 slices (84.7 MB in 63.1s)"
+    },
+    "LUNGx-CT053": {
+      "ok": true,
+      "msg": "Success: 334 slices (111.3 MB in 107.0s)"
+    },
+    "LUNGx-CT055": {
+      "ok": true,
+      "msg": "Success: 246 slices (83.1 MB in 89.2s)"
+    },
+    "LUNGx-CT056": {
+      "ok": true,
+      "msg": "Success: 309 slices (97.2 MB in 89.0s)"
+    },
+    "LUNGx-CT057": {
+      "ok": true,
+      "msg": "Success: 254 slices (86.6 MB in 96.9s)"
+    },
+    "LUNGx-CT058": {
+      "ok": true,
+      "msg": "Success: 353 slices (107.3 MB in 90.2s)"
+    },
+    "LUNGx-CT059": {
+      "ok": true,
+      "msg": "Success: 307 slices (100.3 MB in 114.9s)"
+    },
+    "LUNGx-CT060": {
+      "ok": true,
+      "msg": "Success: 347 slices (110.3 MB in 107.9s)"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+schema_version: 1
+# Diagnostic tolerances only: these neither select slices nor change ingestion.
+tolerances:
+  repeated_position_atol_mm: 0.000001
+  z_atol_mm: 0.0001
+  orientation_atol: 0.0001
+  in_plane_spacing_atol_mm: 0.000001
+  position_drift_atol_mm: 0.1
+  spacing_atol_mm: 0.1
+  spacing_rtol: 0.01
+  hu_atol: 0.000001
+# Additional absolute source trees to protect, if needed at the deployment site.
+protected_roots: []

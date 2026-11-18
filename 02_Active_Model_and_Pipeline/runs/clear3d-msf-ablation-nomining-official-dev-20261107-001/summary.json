@@ -1,0 +1,120 @@
+{
+  "status": "PASS",
+  "scope": "exploratory official dev candidates (Task 2 natural prevalence & Task 3 LUNA16 FROC); single-fold Control B No-Mining comparator; prior dev exposure; zero dev tuning; not untouched test",
+  "reference_release": "HOLD",
+  "cap4000": "NOT_ADOPTED",
+  "scans": 142,
+  "rows_unfiltered": 122689,
+  "rows_excluded_filtered": 121177,
+  "seconds": 1521.4,
+  "gpu_peak_bytes": 1839202304,
+  "scores_csv_sha256": "bb90835d9905fe77a03e11382681cd26ad160ec5c426ca34a9a247e303b9ec24",
+  "checkpoint_sha256": [
+    "941aaa0f357cf339e937d4b728a503fc60364aab543e419dfa487370a260d7ba"
+  ],
+  "scale_oof": 1.25,
+  "bias_oof": 1.249379237858798,
+  "nat_cut_oof": 0.9994153380393982,
+  "task2_natural_unfiltered_122689": {
+    "roc_auc": 0.99564780429044,
+    "pr_auc": 0.605512986441776,
+    "at_0_5": {
+      "rows": 122689,
+      "positives": 265,
+      "negatives": 122424,
+      "threshold": 0.5,
+      "TP": 261,
+      "TN": 120229,
+      "FP": 2195,
+      "FN": 4,
+      "fp_per_scan_142": 15.45774647887324,
+      "accuracy": 0.9820766327869654,
+      "macro_f1": 0.5913895303300585,
+      "f1_positive": 0.1918412348401323,
+      "f1_negative": 0.9909378258199846,
+      "precision_positive": 0.10627035830618893,
+      "recall_positive": 0.9849056603773585,
+      "specificity_negative": 0.982070509050513
+    },
+    "at_fit_oof_nat_threshold": {
+      "rows": 122689,
+      "positives": 265,
+      "negatives": 122424,
+      "threshold": 0.9994153380393982,
+      "TP": 78,
+      "TN": 122391,
+      "FP": 33,
+      "FN": 187,
+      "fp_per_scan_142": 0.2323943661971831,
+      "accuracy": 0.998206848209701,
+      "macro_f1": 0.7069978325839112,
+      "f1_positive": 0.4148936170212766,
+      "f1_negative": 0.9991020481465458,
+      "precision_positive": 0.7027027027027027,
+      "recall_positive": 0.2943396226415094,
+      "specificity_negative": 0.9997304450107822
+    }
+  },
+  "task2_natural_excluded_filtered": {
+    "roc_auc": 0.9966425917742141,
+    "pr_auc": 0.8609104448620626,
+    "at_0_5": {
+      "rows": 121177,
+      "positives": 265,
+      "negatives": 120912,
+      "threshold": 0.5,
+      "TP": 261,
+      "TN": 119382,
+      "FP": 1530,
+      "FN": 4,
+      "fp_per_scan_142": 10.774647887323944,
+      "accuracy": 0.9873408320060738,
+      "macro_f1": 0.6237536551971963,
+      "f1_positive": 0.2538910505836576,
+      "f1_negative": 0.993616259810735,
+      "precision_positive": 0.1457286432160804,
+      "recall_positive": 0.9849056603773585,
+      "specificity_negative": 0.9873461691147281
+    },
+    "at_fit_oof_nat_threshold": {
+      "rows": 121177,
+      "positives": 265,
+      "negatives": 120912,
+      "threshold": 0.9994153380393982,
+      "TP": 78,
+      "TN": 120909,
+      "FP": 3,
+      "FN": 187,
+      "fp_per_scan_142": 0.02112676056338028,
+      "accuracy": 0.9984320456852372,
+      "macro_f1": 0.7250409770049162,
+      "f1_positive": 0.4508670520231214,
+      "f1_negative": 0.9992149019867111,
+      "precision_positive": 0.9629629629629629,
+      "recall_positive": 0.2943396226415094,
+      "specificity_negative": 0.9999751885668916
+    }
+  },
+  "task3_luna16_froc_142_dev_series": {
+    "fp_per_scan_grid": [
+      0.125,
+      0.25,
+      0.5,
+      1.0,
+      2.0,
+      4.0,
+      8.0
+    ],
+    "sensitivities": [
+      0.677083333,
+      0.796875,
+      0.869791667,
+      0.911458333,
+      0.932291667,
+      0.96875,
+      0.96875
+    ],
+    "cpm": 0.875,
+    "series_count": 142
+  }
+}

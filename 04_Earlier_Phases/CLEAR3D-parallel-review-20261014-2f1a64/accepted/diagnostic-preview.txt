@@ -1,0 +1,309 @@
+{
+  "samples.jsonl": {
+    "count": 44,
+    "first": [
+      {
+        "available_ram_bytes": 98844110848,
+        "gpu": {
+          "driver": "535.230.02",
+          "free_bytes": 10959716352,
+          "model": "NVIDIA GeForce RTX 2080 Ti",
+          "processes": [
+            {
+              "gpu_bytes": 253755392,
+              "pid": 3340885
+            },
+            {
+              "gpu_bytes": 322961408,
+              "pid": 3477966
+            }
+          ],
+          "total_bytes": 11811160064,
+          "uuid": "GPU-ca0a8f46-9b8e-e098-a97b-e0420b412e90"
+        },
+        "monotonic": 12473762.607613789,
+        "owned_gpu_bytes": 0,
+        "owned_worker": {
+          "children": [],
+          "pid": 1034733,
+          "rss_bytes": 15708160,
+          "start_ticks": 1247376245
+        },
+        "phase": "setup",
+        "utc": "2026-10-13T17:14:46.843651+00:00"
+      },
+      {
+        "available_ram_bytes": 98822483968,
+        "gpu": {
+          "driver": "535.230.02",
+          "free_bytes": 10959716352,
+          "model": "NVIDIA GeForce RTX 2080 Ti",
+          "processes": [
+            {
+              "gpu_bytes": 253755392,
+              "pid": 3340885
+            },
+            {
+              "gpu_bytes": 322961408,
+              "pid": 3477966
+            }
+          ],
+          "total_bytes": 11811160064,
+          "uuid": "GPU-ca0a8f46-9b8e-e098-a97b-e0420b412e90"
+        },
+        "monotonic": 12473763.757087268,
+        "owned_gpu_bytes": 0,
+        "owned_worker": {
+          "children": [],
+          "pid": 1034733,
+          "rss_bytes": 71262208,
+          "start_ticks": 1247376245
+        },
+        "phase": "setup",
+        "utc": "2026-10-13T17:14:47.993128+00:00"
+      },
+      {
+        "available_ram_bytes": 98821259264,
+        "gpu": {
+          "driver": "535.230.02",
+          "free_bytes": 10959716352,
+          "model": "NVIDIA GeForce RTX 2080 Ti",
+          "processes": [
+            {
+              "gpu_bytes": 253755392,
+              "pid": 3340885
+            },
+            {
+              "gpu_bytes": 322961408,
+              "pid": 3477966
+            }
+          ],
+          "total_bytes": 11811160064,
+          "uuid": "GPU-ca0a8f46-9b8e-e098-a97b-e0420b412e90"
+        },
+        "monotonic": 12473764.902370768,
+        "owned_gpu_bytes": 0,
+        "owned_worker": {
+          "children": [],
+          "pid": 1034733,
+          "rss_bytes": 71262208,
+          "start_ticks": 1247376245
+        },
+        "phase": "setup",
+        "utc": "2026-10-13T17:14:49.138410+00:00"
+      },
+      {
+        "available_ram_bytes": 98821746688,
+        "gpu": {
+          "driver": "535.230.02",
+          "free_bytes": 10959716352,
+          "model": "NVIDIA GeForce RTX 2080 Ti",
+          "processes": [
+            {
+              "gpu_bytes": 253755392,
+              "pid": 3340885
+            },
+            {
+              "gpu_bytes": 322961408,
+              "pid": 3477966
+            }
+          ],
+          "total_bytes": 11811160064,
+          "uuid": "GPU-ca0a8f46-9b8e-e098-a97b-e0420b412e90"
+        },
+        "monotonic": 12473766.05731403,
+        "owned_gpu_bytes": 0,
+        "owned_worker": {
+          "children": [],
+          "pid": 1034733,
+          "rss_bytes": 71262208,
+          "start_ticks": 1247376245
+        },
+        "phase": "setup",
+        "utc": "2026-10-13T17:14:50.293353+00:00"
+      }
+    ],
+    "last": {
+      "available_ram_bytes": 97865166848,
+      "gpu": {
+        "driver": "535.230.02",
+        "free_bytes": 9860808704,
+        "model": "NVIDIA GeForce RTX 2080 Ti",
+        "processes": [
+          {
+            "gpu_bytes": 253755392,
+            "pid": 3340885
+          },
+          {
+            "gpu_bytes": 322961408,
+            "pid": 3477966
+          },
+          {
+            "gpu_bytes": 1098907648,
+            "pid": 1034733
+          }
+        ],
+        "total_bytes": 11811160064,
+        "uuid": "GPU-ca0a8f46-9b8e-e098-a97b-e0420b412e90"
+      },
+      "monotonic": 12473812.619153382,
+      "owned_gpu_bytes": 1098907648,
+      "owned_worker": {
+        "children": [],
+        "pid": 1034733,
+        "rss_bytes": 1401483264,
+        "start_ticks": 1247376245
+      },
+      "phase": "training",
+      "utc": "2026-10-13T17:15:36.855195+00:00"
+    }
+  },
+  "state/training-diagnostics.jsonl": {
+    "count": 379,
+    "first": [
+      {
+        "epoch": 0,
+        "full_tensor_retained": false,
+        "kind": "activation_sample",
+        "microbatch": 0,
+        "module": "encoder",
+        "statistics": [
+          {
+            "max": 1.5693044662475586,
+            "mean": 0.0754338594889532,
+            "min": -1.5664973258972168,
+            "nonfinite_count": 0,
+            "rms": 0.47981146747974734,
+            "sample_count": 256,
+            "zeros": 0
+          },
+          {
+            "max": 1.2760286331176758,
+            "mean": -0.06921502449858963,
+            "min": -1.5357446670532227,
+            "nonfinite_count": 0,
+            "rms": 0.5287383028231546,
+            "sample_count": 256,
+            "zeros": 0
+          },
+          {
+            "max": 1.026540756225586,
+            "mean": -0.003537970426123138,
+            "min": -1.2882421016693115,
+            "nonfinite_count": 0,
+            "rms": 0.3401362004567554,
+            "sample_count": 256,
+            "zeros": 0
+          }
+        ]
+      },
+      {
+        "epoch": 0,
+        "full_tensor_retained": false,
+        "kind": "activation_sample",
+        "microbatch": 0,
+        "module": "transformers.0",
+        "statistics": [
+          {
+            "max": 1.234519362449646,
+            "mean": -0.016031205635954393,
+            "min": -1.6464173793792725,
+            "nonfinite_count": 0,
+            "rms": 0.5662358494695993,
+            "sample_count": 256,
+            "zeros": 0
+          }
+        ]
+      },
+      {
+        "epoch": 0,
+        "full_tensor_retained": false,
+        "kind": "activation_sample",
+        "microbatch": 0,
+        "module": "transformers.1",
+        "statistics": [
+          {
+            "max": 1.431276559829712,
+            "mean": 0.03590209506364772,
+            "min": -1.6300441026687622,
+            "nonfinite_count": 0,
+            "rms": 0.5811625547284404,
+            "sample_count": 256,
+            "zeros": 0
+          }
+        ]
+      },
+      {
+        "epoch": 0,
+        "full_tensor_retained": false,
+        "kind": "activation_sample",
+        "microbatch": 0,
+        "module": "transformers.2",
+        "statistics": [
+          {
+            "max": 1.5744332075119019,
+            "mean": 0.0016781700724095572,
+            "min": -1.6521042585372925,
+            "nonfinite_count": 0,
+            "rms": 0.5904420511300474,
+            "sample_count": 256,
+            "zeros": 0
+          }
+        ]
+      }
+    ],
+    "last": {
+      "classes": {
+        "0": {
+          "count": 1,
+          "positive_probability": {
+            "max": 0.49512883600418206,
+            "mean": 0.49512883600418206,
+            "min": 0.49512883600418206,
+            "nonfinite_count": 0,
+            "rms": 0.49512883600418206,
+            "sample_count": 1,
+            "zeros": 0
+          },
+          "unweighted_loss_sum": 0.6834520101547241,
+          "weighted_loss_sum": 0.6834520101547241
+        },
+        "1": {
+          "count": 1,
+          "positive_probability": {
+            "max": 0.4808005329488719,
+            "mean": 0.4808005329488719,
+            "min": 0.4808005329488719,
+            "nonfinite_count": 0,
+            "rms": 0.4808005329488719,
+            "sample_count": 1,
+            "zeros": 0
+          },
+          "unweighted_loss_sum": 0.7323027849197388,
+          "weighted_loss_sum": 2.1969083547592163
+        }
+      },
+      "epoch": 0,
+      "kind": "class_losses",
+      "microbatch": 61
+    }
+  },
+  "files": [
+    "request.json",
+    "gpu-before.jsonl",
+    "epoch-phases.jsonl",
+    "owned-worker.json",
+    "samples.jsonl",
+    "identity.json",
+    "epoch-phase.json",
+    "worker.log",
+    "phase.json",
+    "state/boundaries.jsonl",
+    "state/epoch-commit.json",
+    "state/training-diagnostics.jsonl",
+    "state/identity.json",
+    "state/sampling-0.json",
+    "state/epoch-checkpoints/2751f24f9ec7459591cdac9a86ab74dd/state.pt",
+    "state/epoch-checkpoints/2751f24f9ec7459591cdac9a86ab74dd/commit.json"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "pass": true,
+  "roles": {
+    "dev": {
+      "class_counts": {
+        "0": 122424,
+        "1": 265
+      },
+      "failures": [],
+      "input_sha256": "a0ff783d8ab1f895aa68045af818ac2c7ffc8b96cd4d5b12bcddcb2b57f3be76",
+      "input_stable": true,
+      "passed_rows": 122689,
+      "rows": 122689,
+      "scans": 142
+    },
+    "fit": {
+      "class_counts": {
+        "0": 479979,
+        "1": 984
+      },
+      "failures": [],
+      "input_sha256": "3207691fc556a871258b181e6366e2e8743cc09edbac601de73c2fcc321c3d76",
+      "input_stable": true,
+      "passed_rows": 480963,
+      "rows": 480963,
+      "scans": 566
+    }
+  },
+  "scope": "metadata/geometry audit; no model training; reference HOLD",
+  "seconds": 24.655300602316856,
+  "split_sha256": "2ffc30511188ca27686d7c2d5a73fa2723f822a42a62a9c159987c7e0d54ede1"
+}

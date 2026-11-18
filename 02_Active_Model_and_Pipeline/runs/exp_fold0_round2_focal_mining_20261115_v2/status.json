@@ -1,0 +1,6 @@
+{
+  "stage": "failed",
+  "updated_at": "2026-11-15 14:28:27",
+  "pid": 3628331,
+  "error": "[Errno 2] No such file or directory: '/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/exp_fold0_round2_focal_mining_20261115_v2/run_fold0_focal_experiment.py'"
+}

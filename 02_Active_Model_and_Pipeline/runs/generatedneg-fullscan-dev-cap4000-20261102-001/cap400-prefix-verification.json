@@ -1,0 +1,9 @@
+{
+  "scope": "exploratory development only; verifies numerical reproducibility of shared first 400 proposals, not independent test",
+  "matched_rows": 56800,
+  "unique_scans": 142,
+  "discrepancies_over_1e-6_or_identity": 0,
+  "max_absolute_probability_difference": 0.0,
+  "pass": true,
+  "reference_release": "HOLD"
+}

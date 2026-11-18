@@ -1,0 +1,29 @@
+{
+  "acc": 0.0390625,
+  "macro": 0.03759398496240601,
+  "pos_f1": 0.07518796992481203,
+  "pos_precision": 0.0390625,
+  "pos_recall": 1.0,
+  "n": 384,
+  "by_class": {
+    "0": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "tp": 0,
+      "predicted": 0,
+      "support": 369
+    },
+    "1": {
+      "precision": 0.0390625,
+      "recall": 1.0,
+      "f1": 0.07518796992481203,
+      "tp": 15,
+      "predicted": 384,
+      "support": 15
+    }
+  },
+  "threshold": 0.5,
+  "depth": 18,
+  "step": 120
+}

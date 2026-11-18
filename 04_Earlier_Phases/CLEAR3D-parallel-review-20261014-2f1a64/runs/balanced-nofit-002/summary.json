@@ -1,0 +1,15 @@
+{
+  "stop": "budget",
+  "hold_patient": "LIDC-IDRI-0694",
+  "fit_pos": 14,
+  "check_pos": 1,
+  "val": {
+    "acc": 0.6171875,
+    "macro": 0.39412023570577565,
+    "pos_f1": 0.026490066225165563,
+    "pos_precision": 0.014705882352941176,
+    "pos_recall": 0.13333333333333333,
+    "n": 384
+  },
+  "threshold": 0.5
+}

@@ -1,0 +1,9 @@
+{
+  "stage": "completed",
+  "updated_at": "2026-11-14 17:17:56",
+  "elapsed_seconds": 21037.71,
+  "pooled_baseline_cpm": 0.6821202053571428,
+  "pooled_improved_cpm": 0.8680157052857143,
+  "mean_baseline_cpm": 0.7224465623690269,
+  "mean_improved_cpm": 0.867635866957143
+}

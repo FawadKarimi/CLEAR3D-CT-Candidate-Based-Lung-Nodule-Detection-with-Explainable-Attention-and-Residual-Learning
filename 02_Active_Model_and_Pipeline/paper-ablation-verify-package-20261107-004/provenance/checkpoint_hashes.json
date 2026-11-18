@@ -1,0 +1,23 @@
+{
+  "fold0_baseline": {
+    "checkpoint_path": "runs/clear3d-msf-ensemble-20261106-004/checkpoints/fold-0.pt",
+    "bytes": 16233387,
+    "sha256": "739d1d7883d66922f568be4cdc66f491bdabe8eb9e1c2c22ecb8c5bf7b8f5494",
+    "training_run": "clear3d-msf-ensemble-20261106-004",
+    "scoring_run": "clear3d-msf-ablation-fold0-dev-20261107-001"
+  },
+  "control_b_nomining": {
+    "checkpoint_path": "runs/clear3d-msf-ablation-nomining-dev-20261107-001/checkpoints/fold-0.pt",
+    "bytes": 16233387,
+    "sha256": "941aaa0f357cf339e937d4b728a503fc60364aab543e419dfa487370a260d7ba",
+    "training_run": "clear3d-msf-ablation-nomining-dev-20261107-001",
+    "scoring_run": "clear3d-msf-ablation-nomining-official-dev-20261107-001"
+  },
+  "control_a_fineonly": {
+    "checkpoint_path": "runs/clear3d-msf-ablation-fineonly-dev-20261107-001/checkpoints/fold-0.pt",
+    "bytes": 10786421,
+    "sha256": "0907483e7e1aac661cb20063eb08cb8c543b11369b74bbcdb741d153a5f241af",
+    "training_run": "clear3d-msf-ablation-fineonly-dev-20261107-001",
+    "scoring_run": "clear3d-msf-ablation-fineonly-official-dev-20261107-001"
+  }
+}

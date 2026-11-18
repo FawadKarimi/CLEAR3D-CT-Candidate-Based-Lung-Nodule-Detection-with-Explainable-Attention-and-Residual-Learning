@@ -1,0 +1,11 @@
+{
+  "actual_updates": 60,
+  "epoch": 1,
+  "loss": 0.7068780793911881,
+  "skips": 0,
+  "validation_classes": {
+    "0": 369,
+    "1": 15
+  },
+  "validation_rows": 384
+}

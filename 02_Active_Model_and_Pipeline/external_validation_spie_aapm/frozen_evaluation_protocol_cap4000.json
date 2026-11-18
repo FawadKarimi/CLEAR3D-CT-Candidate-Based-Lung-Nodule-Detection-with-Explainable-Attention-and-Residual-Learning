@@ -1,0 +1,150 @@
+{
+  "protocol_name": "CLEAR3D-MSFv2 SPIE-AAPM Independent Test Evaluation (Cap=4000)",
+  "timestamp": "2026-11-08T18:55:00Z",
+  "status": "FROZEN_BEFORE_EVALUATION",
+  "selection_basis": {
+    "candidate_cap": 4000,
+    "selection_cohort": "Permitted 142 LUNA16 Development Scans (runs/generatedneg-fullscan-dev-cap4000-20261102-001)",
+    "dev_coverage_measurement": "92.19% nodule sensitivity (177/192 nodules) at cap=4000",
+    "external_tuning": false
+  },
+  "frozen_system": {
+    "architecture": "CLEAR3DMSFv2",
+    "model_code": {
+      "path": "clear3d_msf_model_20261106_002.py",
+      "sha256": "e83899960b095eab9f92fe104f13e3380c9c5bc48e6ebc82b173003a520914e7"
+    },
+    "checkpoints": {
+      "fold-0": {
+        "path": "runs/clear3d-msf-ensemble-20261106-004/checkpoints/fold-0.pt",
+        "sha256": "739d1d7883d66922f568be4cdc66f491bdabe8eb9e1c2c22ecb8c5bf7b8f5494"
+      },
+      "fold-1": {
+        "path": "runs/clear3d-msf-ensemble-20261106-004/checkpoints/fold-1.pt",
+        "sha256": "547c56eef21b55569e611a5d2a05f0418c59b8258b0ac45d1e1d814a4623d6e4"
+      },
+      "fold-2": {
+        "path": "runs/clear3d-msf-ensemble-20261106-004/checkpoints/fold-2.pt",
+        "sha256": "9e93f0474463b3a15953391ec7adf1ac0ed6d3ed7a3d80712aef240022625290"
+      },
+      "fold-3": {
+        "path": "runs/clear3d-msf-ensemble-20261106-004/checkpoints/fold-3.pt",
+        "sha256": "2ad01868acb7a3a008b8f26584f556dffb9b05d4dccb7f137039ad09f6782758"
+      },
+      "fold-4": {
+        "path": "runs/clear3d-msf-ensemble-20261106-004/checkpoints/fold-4.pt",
+        "sha256": "90d4fb48ecba46ef95e9a55563ba7d4c7aa0d19236f922d96f2f80431901727a"
+      }
+    },
+    "inference": {
+      "tta": "4-view (Identity, Sagittal_flip, CoronalAxial_flip, XYZ_flip)",
+      "aggregation": "pre_sigmoid_logit_average_across_5_folds",
+      "precision": "fp16_autocast_cuda1",
+      "batch_size": 64
+    },
+    "calibration": {
+      "method": "Platt_scaling_and_natural_prevalence_thresholding",
+      "source": "100% fit-only 5-fold patient-disjoint OOF (zero dev access)",
+      "scale_oof": 1.7000000000000002,
+      "bias_oof": 4.175479443210625,
+      "nat_cut_oof": 0.9999467134475708,
+      "cut_half": 0.5
+    }
+  },
+  "candidate_generator": {
+    "algorithm": "Multiscale Laplacian of Gaussian (LoG) 3D Blob Detector with physical NMS",
+    "code": "lidc3d/src/lidc3d/candidates.py",
+    "sigmas_mm": [
+      1.0,
+      1.5,
+      2.0,
+      3.0
+    ],
+    "threshold": 0.005,
+    "nms_mm": 3.0,
+    "cap": 4000
+  },
+  "matching_protocol": {
+    "rule": "Fixed Euclidean distance < 5.0 mm",
+    "tie_breaking": "Closest candidate assigned as True Positive; duplicate hits (< 5mm) ignored",
+    "evaluation_type": "NON_OFFICIAL_FIXED_5MM_MATCHING",
+    "distinction_from_official_luna16": "LUNA16 official uses max(radius, 5.0 mm); SPIE-AAPM LUNGx ground truth provides only center coordinates without lesion diameters, necessitating a fixed 5.0 mm radius."
+  },
+  "data_exposure_accounting": {
+    "total_scans": 60,
+    "total_nodules": 73,
+    "technical_pilot_scans": [
+      "LUNGx-CT001",
+      "LUNGx-CT002"
+    ],
+    "technical_pilot_nodules": 3,
+    "unexposed_scans": [
+      "LUNGx-CT003",
+      "LUNGx-CT004",
+      "LUNGx-CT005",
+      "LUNGx-CT006",
+      "LUNGx-CT007",
+      "LUNGx-CT008",
+      "LUNGx-CT009",
+      "LUNGx-CT010",
+      "LUNGx-CT011",
+      "LUNGx-CT012",
+      "LUNGx-CT013",
+      "LUNGx-CT014",
+      "LUNGx-CT015",
+      "LUNGx-CT016",
+      "LUNGx-CT017",
+      "LUNGx-CT018",
+      "LUNGx-CT019",
+      "LUNGx-CT020",
+      "LUNGx-CT021",
+      "LUNGx-CT022",
+      "LUNGx-CT023",
+      "LUNGx-CT024",
+      "LUNGx-CT025",
+      "LUNGx-CT026",
+      "LUNGx-CT027",
+      "LUNGx-CT028",
+      "LUNGx-CT029",
+      "LUNGx-CT030",
+      "LUNGx-CT031",
+      "LUNGx-CT032",
+      "LUNGx-CT033",
+      "LUNGx-CT034",
+      "LUNGx-CT035",
+      "LUNGx-CT036",
+      "LUNGx-CT037",
+      "LUNGx-CT038",
+      "LUNGx-CT039",
+      "LUNGx-CT040",
+      "LUNGx-CT041",
+      "LUNGx-CT042",
+      "LUNGx-CT043",
+      "LUNGx-CT044",
+      "LUNGx-CT045",
+      "LUNGx-CT046",
+      "LUNGx-CT047",
+      "LUNGx-CT048",
+      "LUNGx-CT049",
+      "LUNGx-CT050",
+      "LUNGx-CT051",
+      "LUNGx-CT052",
+      "LUNGx-CT053",
+      "LUNGx-CT054",
+      "LUNGx-CT055",
+      "LUNGx-CT056",
+      "LUNGx-CT057",
+      "LUNGx-CT058",
+      "LUNGx-CT059",
+      "LUNGx-CT060"
+    ],
+    "unexposed_scan_count": 58,
+    "unexposed_nodule_count": 70
+  },
+  "governance": {
+    "reference_release": "HOLD",
+    "confirmation_cohort": "83 patients strictly restricted / untouched",
+    "internal_test_fold0": "Untouched / zero retraining or tuning",
+    "manuscript_writing": "DEFERRED"
+  }
+}

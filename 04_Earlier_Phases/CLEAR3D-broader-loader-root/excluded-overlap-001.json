@@ -1,0 +1,16 @@
+{
+  "counts": {
+    "fit": {
+      "negative_rows_in_excluded_region": 5015,
+      "affected_series": 549,
+      "negative_rows": 479979
+    },
+    "dev": {
+      "negative_rows_in_excluded_region": 1512,
+      "affected_series": 140,
+      "negative_rows": 122424
+    }
+  },
+  "excluded_sha256": "73a5c139257294fe45a68620ed1b2cf383ba8b22af1501d2f498abbd6b802c25",
+  "convention": "strict radius, 5 mm for negative diameter; exploratory, no labels altered"
+}

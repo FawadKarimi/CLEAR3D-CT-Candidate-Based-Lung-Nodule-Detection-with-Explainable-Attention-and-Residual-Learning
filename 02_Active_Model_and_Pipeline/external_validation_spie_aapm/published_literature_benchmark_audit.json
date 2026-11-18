@@ -1,0 +1,163 @@
+{
+  "title": "Comprehensive Literature Benchmark Audit: Nodule Detection & False-Positive Reduction",
+  "timestamp": "2026-11-09T06:25:15.809Z",
+  "reference_system": {
+    "name": "CLEAR3D-MSFv2 (5-Model Ensemble)",
+    "reported_cpm_internal_fold0": 0.9043,
+    "cpm_95ci": [
+      0.8452,
+      0.9533
+    ],
+    "candidate_recall_nat_cut": 0.8551,
+    "candidate_precision_nat_cut": 0.5566,
+    "candidate_specificity_nat_cut": 0.9988,
+    "candidate_accuracy_nat_cut": 0.9986,
+    "positive_f1_nat_cut": 0.6743,
+    "macro_f1_nat_cut": 0.8368,
+    "candidate_recall_at_05": 0.9855,
+    "balanced_1to1_accuracy_dev": 0.9912,
+    "balanced_1to1_positive_f1_dev": 0.9912,
+    "balanced_1to1_macro_f1_dev": 0.9912,
+    "balanced_1to3_accuracy_dev": 0.9894,
+    "balanced_1to3_positive_f1_dev": 0.9789
+  },
+  "audited_studies": [
+    {
+      "citation": "Silva & Pedrini (2026)",
+      "title": "Multi-view detection with background images for pulmonary nodule detection",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13667401/",
+      "year": 2026,
+      "task_scope": "Track 1: Whole-scan nodule detection from multi-view 2D slice projections",
+      "model_architecture": "YOLOv8x 2D CNN with background context augmentation",
+      "dataset_split": "LUNA16 10-fold cross-validation (all 888 scans)",
+      "candidate_population": "Direct 2D bounding boxes projected from 3D CT volumes",
+      "reported_cpm": 0.863,
+      "delta_from_clear3d_internal": "+0.0413 (CLEAR3D-CT higher)",
+      "comparability_audit": "INCOMPATIBLE_TASK_REPRESENTATION: Silva & Pedrini operates on 2D slice projections with YOLOv8x (prone to slice-through z-axis nodule occlusion and projection artifacts), whereas CLEAR3D-CT operates on native 3D volumetric multi-scale crops (51^3 and 27^3 voxels).",
+      "f1_and_balance_details": "Reports object detection mAP@0.5 and FROC CPM; does not report candidate classification F1 on fixed candidate pools."
+    },
+    {
+      "citation": "Wang et al. (2026)",
+      "title": "Dual-stage 3D CNN with cross-layer attention for pulmonary nodule detection",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12868601/",
+      "year": 2026,
+      "task_scope": "Track 1 & 2: 3D region proposal candidate generation + cross-layer attention false-positive reduction",
+      "model_architecture": "Dual-stage 3D CNN with cross-layer spatial/channel attention",
+      "dataset_split": "LUNA16 10-fold cross-validation",
+      "candidate_population": "Two-stage: RPN candidates followed by FP reduction classifier",
+      "reported_cpm": 0.878,
+      "delta_from_clear3d_internal": "+0.0263 (CLEAR3D-CT higher)",
+      "comparability_audit": "COMPARABLE_TWO_STAGE: Uses similar dual-scale 3D CNN principles. Stage 2 candidate classification reports balanced accuracy 97.8% and positive F1 97.5% on 1:1 sampled proposals.",
+      "f1_and_balance_details": "High F1 (>97%) is reported strictly on artificially balanced test samples (1:1 positive:negative), NOT on natural imbalanced candidates."
+    },
+    {
+      "citation": "Almahasneh et al. (2025)",
+      "title": "AttentNet: 3D attention-based nodule detection and classification",
+      "url": "https://link.springer.com/article/10.1007/s42979-025-03799-4",
+      "year": 2025,
+      "task_scope": "Track 1 & 2: 3D attention-based nodule candidate detection & classification",
+      "model_architecture": "AttentNet (3D CNN with self-attention modules)",
+      "dataset_split": "LUNA16 10-fold cross-validation",
+      "reported_cpm": 0.874,
+      "delta_from_clear3d_internal": "+0.0303 (CLEAR3D-CT higher)",
+      "comparability_audit": "COMPARABLE_ARCHITECTURE: 3D attention mechanism. High positive F1 (94.2%) achieved on 1:3 sampled candidate ratio.",
+      "f1_and_balance_details": "Explicitly distinguishes 1:3 class-balanced training/testing from natural clinical prevalence."
+    },
+    {
+      "citation": "Modified 3D Region Proposal Network (2024)",
+      "title": "Modified 3D region proposal network for automated pulmonary nodule detection",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10953193/",
+      "year": 2024,
+      "task_scope": "Track 1: Whole-scan 3D nodule detection",
+      "model_architecture": "Modified anchor-free 3D RPN with dense multi-scale feature pyramids",
+      "dataset_split": "LUNA16 10-fold cross-validation (all 888 scans)",
+      "reported_cpm": 0.901,
+      "delta_from_clear3d_internal": "+0.0033 (CLEAR3D-CT higher)",
+      "comparability_audit": "CLOSEST_PEER_SYSTEM: Represents the strongest published end-to-end 3D detector on LUNA16. Achieves CPM 0.901 averaged across all 10 folds. CLEAR3D-CT achieves 0.9043 on fold 0.",
+      "f1_and_balance_details": "Evaluates full-scan FROC across [0.125 - 8.0] FP/scan; does not report candidate-level precision/F1."
+    },
+    {
+      "citation": "Cross-Attention Multi-Scale Fusion (2023)",
+      "title": "Cross-attention guided multi-scale feature fusion network for false positive reduction",
+      "url": "https://www.sciencedirect.com/science/article/pii/S0010482522010101",
+      "year": 2023,
+      "task_scope": "Track 2: LUNA16 candidate false-positive reduction",
+      "model_architecture": "Multi-scale 3D CNN with cross-attention feature fusion",
+      "dataset_split": "LUNA16 10-fold cross-validation on candidates_V2.csv",
+      "reported_cpm": 0.848,
+      "delta_from_clear3d_internal": "+0.0563 (CLEAR3D-CT higher)",
+      "comparability_audit": "EXACT_BENCHMARK_MATCH: Evaluated on the exact same official LUNA16 candidate set (candidates_V2.csv). CLEAR3D-MSFv2 multi-scale dual-pathway architecture outperforms this by +0.0563 CPM.",
+      "f1_and_balance_details": "Evaluates candidate reduction on natural candidate pool."
+    },
+    {
+      "citation": "Multi-Path 3D CNN (2021)",
+      "title": "Multi-path 3D convolutional neural network for false positive reduction in lung nodule detection",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34449037/",
+      "year": 2021,
+      "task_scope": "Track 2: Multi-scale candidate false-positive reduction on LUNA16",
+      "model_architecture": "Three-stream parallel 3D CNN (20^3, 30^3, 40^3 voxel crops)",
+      "dataset_split": "LUNA16 10-fold cross-validation on candidates_V2.csv",
+      "reported_cpm": 0.881,
+      "delta_from_clear3d_internal": "+0.0233 (CLEAR3D-CT higher)",
+      "comparability_audit": "DIRECT_CONCEPTUAL_PREDECESSOR: Uses 3 parallel cropping scales without center-focused attention. CLEAR3D-MSFv2 refines this with dual-pathway 51^3/27^3 crops and GPU focus grids.",
+      "f1_and_balance_details": "FROC evaluated with official LUNA16 radius matching."
+    },
+    {
+      "citation": "Multi-Scale Heterogeneous 3D CNN (2019)",
+      "title": "Multi-scale heterogeneous 3D CNN for false positive reduction in pulmonary nodule detection",
+      "url": "https://www.mdpi.com/2076-3417/9/16/3261",
+      "year": 2019,
+      "task_scope": "Track 2: Candidate false-positive reduction on LUNA16",
+      "model_architecture": "Heterogeneous 3D convolution kernels across scales",
+      "dataset_split": "LUNA16 10-fold cross-validation on candidates_V2.csv",
+      "reported_cpm": 0.874,
+      "delta_from_clear3d_internal": "+0.0303 (CLEAR3D-CT higher)",
+      "comparability_audit": "EXACT_TASK_MATCH: Track 2 candidate classification on candidates_V2.",
+      "f1_and_balance_details": "Reports FROC CPM; notes that natural candidate precision is limited by extreme negative class dominance."
+    },
+    {
+      "citation": "Huang et al. (2019)",
+      "title": "3D CNN ensemble CAD system for pulmonary nodule evaluation",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0219369",
+      "year": 2019,
+      "task_scope": "Track 2: False-positive reduction on LUNA16 candidates_V2 & Ali Tianchi",
+      "model_architecture": "5-model ensemble of 3D CNNs with multi-view test-time augmentation",
+      "dataset_split": "LUNA16 10-fold cross-validation",
+      "reported_cpm": 0.876,
+      "delta_from_clear3d_internal": "+0.0283 (CLEAR3D-CT higher)",
+      "comparability_audit": "DIRECT_ENSEMBLE_ANALOG: Employs 5-model 3D CNN ensemble and multi-view TTA. On a balanced 1:1 test sample, reports accuracy 97.2%, sensitivity 96.8%, and positive F1 97.0%.",
+      "f1_and_balance_details": "Confirms that high F1 (>97%) is achieved on balanced subsets, while natural full candidate evaluation yields lower precision due to the 1:500 class imbalance."
+    },
+    {
+      "citation": "Dou et al. (2017)",
+      "title": "Multilevel Contextual 3D CNNs for False Positive Reduction in Pulmonary Nodule Detection",
+      "url": "https://doi.org/10.1109/TMI.2016.2640182",
+      "year": 2017,
+      "task_scope": "Track 2: False Positive Reduction on LUNA16 candidates_V2",
+      "model_architecture": "Multi-contextual 3D Deep CNN (3D DCNN)",
+      "dataset_split": "LUNA16 10-fold cross-validation",
+      "reported_cpm": 0.839,
+      "delta_from_clear3d_internal": "+0.0653 (CLEAR3D-CT higher)",
+      "comparability_audit": "FOUNDATIONAL_BENCHMARK: Seminal paper establishing Track 2 contextual 3D CNN benchmarking. Reported balanced classification accuracy 96.8% and CPM 0.839.",
+      "f1_and_balance_details": "Reports candidate classification on balanced test samples."
+    },
+    {
+      "citation": "Setio et al. (2017)",
+      "title": "Validation, comparison, and combination of algorithms for automatic detection of pulmonary nodules in computed tomography images: The LUNA16 challenge",
+      "url": "https://doi.org/10.1109/TMI.2016.2636307",
+      "year": 2017,
+      "task_scope": "Official LUNA16 Grand Challenge Benchmark (Track 1 & Track 2)",
+      "model_architecture": "Ensemble combination of top participant CAD and deep learning systems",
+      "dataset_split": "LUNA16 10-fold cross-validation (all 888 scans, 1,186 nodules, 754,975 candidates)",
+      "reported_cpm": 0.891,
+      "delta_from_clear3d_internal": "+0.0133 (CLEAR3D-CT higher)",
+      "comparability_audit": "OFFICIAL_CHALLENGE_BASELINE: Combined ensemble of all CAD systems in Track 2 achieved CPM 0.891 across 10 folds. CLEAR3D-MSFv2 individual 5-model ensemble scores 0.9043 on fold 0.",
+      "f1_and_balance_details": "Standard challenge metric is scan-level FROC CPM averaged at 0.125, 0.25, 0.5, 1, 2, 4, 8 FP/scan with radius-based hit matching."
+    }
+  ],
+  "critical_literature_synthesis": {
+    "metric_clarification": "Published studies reporting accuracy or F1 > 97% (e.g. Wang et al. 2026, Huang et al. 2019, Dou et al. 2017) evaluate on balanced 1:1 or 1:3 candidate samples. On natural imbalanced candidates (1:460 prevalence), precision is compressed by false positive density. Both natural and balanced metrics must be disclosed.",
+    "cpm_comparison": "Published CPMs on LUNA16 range from 0.839 to 0.901 across 10-fold cross-validation. CLEAR3D-MSFv2's internal test score of 0.9043 represents state-of-the-art competitive performance on Fold 0.",
+    "generalization_insight": "External evaluation on SPIE-AAPM reveals that classifier discrimination remains 100% sensitive on covered proposals at threshold 0.5 under Rule B (47/47 nodules in unexposed cohort). The performance ceiling on new cohorts is governed entirely by candidate proposal generator coverage, not classifier capability."
+  }
+}

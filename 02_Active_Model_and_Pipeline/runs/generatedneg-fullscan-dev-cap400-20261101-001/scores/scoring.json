@@ -1,0 +1,11 @@
+{
+  "status": "scoring_only",
+  "scope": "exploratory development, not benchmark or FROC",
+  "scans": 142,
+  "rows": 56800,
+  "seconds": 2922.151530755684,
+  "checkpoint_sha256": "2390ebd45570a21ed9c909f0c8dfa622d3a9c4a8b683f40a35997d4d41b15c7c",
+  "reference_release": "HOLD",
+  "cap4000": "NOT_ADOPTED",
+  "device": "cuda"
+}

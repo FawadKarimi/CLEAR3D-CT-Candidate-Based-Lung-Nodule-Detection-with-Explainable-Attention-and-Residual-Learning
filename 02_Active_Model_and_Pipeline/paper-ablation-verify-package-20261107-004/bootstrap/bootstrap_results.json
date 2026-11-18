@@ -1,0 +1,128 @@
+{
+  "status": "PASS",
+  "scope": "exploratory development cohort paired bootstrap (142 patients, 192 nodules)",
+  "limitations": "Evaluated on repeatedly used development cohort (142 scans). Does NOT claim proof of generalizable isolated component effects. Both 95% percentile confidence intervals cross zero, indicating exploratory nature.",
+  "configuration": {
+    "replicate_count": 2000,
+    "random_seed": 42,
+    "resampling_unit": "Patient ID (142 unique LIDC-IDRI patients)",
+    "interpolation_method": "np.interp linear piecewise over sorted FROC points",
+    "evaluation_grid": [
+      0.125,
+      0.25,
+      0.5,
+      1.0,
+      2.0,
+      4.0,
+      8.0
+    ],
+    "total_patients": 142,
+    "total_ground_truth_nodules": 192
+  },
+  "point_estimates": {
+    "fold0_baseline": {
+      "cpm": 0.9040178571428573,
+      "sensitivities": [
+        0.78125,
+        0.8645833333333334,
+        0.890625,
+        0.9114583333333334,
+        0.953125,
+        0.9635416666666666,
+        0.9635416666666666
+      ]
+    },
+    "control_b_nomining": {
+      "cpm": 0.875,
+      "sensitivities": [
+        0.6770833333333334,
+        0.796875,
+        0.8697916666666666,
+        0.9114583333333334,
+        0.9322916666666666,
+        0.96875,
+        0.96875
+      ]
+    },
+    "control_a_fineonly": {
+      "cpm": 0.865327380952381,
+      "sensitivities": [
+        0.671875,
+        0.7760416666666666,
+        0.8645833333333334,
+        0.890625,
+        0.9322916666666666,
+        0.9479166666666666,
+        0.9739583333333334
+      ]
+    }
+  },
+  "paired_differences": {
+    "diff1_fold0_vs_nomining": {
+      "point_estimate": 0.029017857142857317,
+      "bootstrap_mean": 0.021081439276644468,
+      "std_error": 0.01699576745730377,
+      "ci_95_percentile": [
+        -0.014719413123775612,
+        0.05112894175737848
+      ],
+      "ci_90_percentile": [
+        -0.009902445392829435,
+        0.0470315325497287
+      ],
+      "ci_99_percentile": [
+        -0.024812869603784725,
+        0.06050549290162346
+      ],
+      "p_gt_0": 0.885,
+      "p_le_0": 0.115,
+      "zero_in_95_ci": true,
+      "quantiles": {
+        "p01": -0.021929905917255164,
+        "p025": -0.014719413123775612,
+        "p05": -0.009902445392829435,
+        "p10": -0.001690726776873885,
+        "p25": 0.01032543191197996,
+        "p50": 0.022521341754514923,
+        "p75": 0.033334799437016255,
+        "p90": 0.04175998838940449,
+        "p95": 0.0470315325497287,
+        "p975": 0.05112894175737848,
+        "p99": 0.05698246825073403
+      }
+    },
+    "diff2_nomining_vs_fineonly": {
+      "point_estimate": 0.009672619047618958,
+      "bootstrap_mean": 0.011948004134677406,
+      "std_error": 0.010907289878839708,
+      "ci_95_percentile": [
+        -0.009086378443004597,
+        0.03385947626554568
+      ],
+      "ci_90_percentile": [
+        -0.00586188321482437,
+        0.030027764167891425
+      ],
+      "ci_99_percentile": [
+        -0.015121459402474407,
+        0.041446731644720486
+      ],
+      "p_gt_0": 0.8635,
+      "p_le_0": 0.1365,
+      "zero_in_95_ci": true,
+      "quantiles": {
+        "p01": -0.01166490219391833,
+        "p025": -0.009086378443004597,
+        "p05": -0.00586188321482437,
+        "p10": -0.0021877102489347043,
+        "p25": 0.004464285714285671,
+        "p50": 0.011904761904761862,
+        "p75": 0.01899133931029051,
+        "p90": 0.025960497835497878,
+        "p95": 0.030027764167891425,
+        "p975": 0.03385947626554568,
+        "p99": 0.03798793794974645
+      }
+    }
+  }
+}

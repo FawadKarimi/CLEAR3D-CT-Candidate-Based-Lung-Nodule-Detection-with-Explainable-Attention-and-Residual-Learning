@@ -1,0 +1,40 @@
+{
+  "smoke": true,
+  "models": {
+    "zuo": {
+      "history": [
+        {
+          "epoch": 1,
+          "loss": 0.6524388954043389
+        }
+      ],
+      "gradient_seen": true,
+      "dev": {
+        "tp": 1,
+        "fp": 42,
+        "fn": 13,
+        "tn": 8373,
+        "precision": 0.023255813953488372,
+        "recall": 0.07142857142857142,
+        "specificity": 0.9950089126559715,
+        "accuracy": 0.9934749080555226,
+        "f1": 0.03508771929824561,
+        "n": 8429,
+        "positives": 14,
+        "negatives": 8415,
+        "auc": 0.7604702487055428,
+        "threshold": 0.7341662406921386,
+        "skipped_outside": 0
+      }
+    }
+  },
+  "departures": [
+    "Shared cubic 32-voxel crops and per-crop z-score.",
+    "Zuo view is the center 18 voxels. Wang views are cubic 32, 16, and 8, not 32x48x48, 16x24x24, and 8x12x12.",
+    "Negatives are a seeded draw of 7 per positive from the training patients, not every LUNA candidate. Wang uses a seeded 3-per-positive subset of that draw.",
+    "No brightness filter and no lung-mask exclusion. A candidate is ignored only when its center is outside the array.",
+    "Epoch count is fixed at 8 before evaluation. Threshold is chosen once on the development candidates.",
+    "Hard-negative weights after epoch 2 use training-bank losses only. There is no vessel mask."
+  ],
+  "seconds": 49.19612383842468
+}

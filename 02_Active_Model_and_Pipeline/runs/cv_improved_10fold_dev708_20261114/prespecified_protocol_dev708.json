@@ -1,0 +1,43 @@
+{
+  "protocol_id": "CLEAR3D-10FOLD-DEV708-PRESPECIFIED-20261114",
+  "created_at": "2026-11-14 11:27:20",
+  "reference_release": "HOLD",
+  "cohort_boundaries": {
+    "permitted_dev_scans": 708,
+    "permitted_dev_patients": 707,
+    "quarantined_patients_excluded": 91,
+    "withheld_test_scans_excluded": 89,
+    "pairwise_patient_overlap_across_folds": 0,
+    "multi_scan_patient_LIDC_IDRI_0332_fold": 2
+  },
+  "prespecified_training_recipe": {
+    "model_architecture": "CLEAR3DMSFv2(in_channels=3, dim=160, dropout=0.25)",
+    "scout_epochs": 12,
+    "scout_steps_per_epoch": 125,
+    "scout_batch_composition": "12 pos + 20 rand_neg",
+    "random_neg_bank_per_fold": 16000,
+    "hard_neg_bank_per_fold": 12000,
+    "main_epochs": 22,
+    "main_steps_per_epoch": 125,
+    "main_batch_composition": "10 pos + 12 rand_neg + 10 hard_neg",
+    "tta_views": [
+      [
+        false,
+        false
+      ],
+      [
+        true,
+        false
+      ],
+      [
+        false,
+        true
+      ],
+      [
+        true,
+        true
+      ]
+    ],
+    "threshold_or_ensemble_tuning_on_eval": false
+  }
+}

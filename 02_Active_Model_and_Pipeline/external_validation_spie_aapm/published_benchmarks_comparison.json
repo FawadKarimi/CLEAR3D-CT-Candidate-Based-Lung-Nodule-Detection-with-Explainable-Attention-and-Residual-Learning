@@ -1,0 +1,108 @@
+{
+  "title": "Published LUNA16 & Nodule CAD Benchmarks Comparison",
+  "timestamp": "2026-11-09T05:25:11.113Z",
+  "evaluation_context": "Track 2 False-Positive Reduction vs. Complete End-to-End CAD Systems",
+  "internal_benchmark": {
+    "system": "CLEAR3D-MSFv2 (5-Model Ensemble)",
+    "cohort": "LUNA16 Subset 0 (Fold 0, 89 scans, 138 nodules)",
+    "task": "False-Positive Reduction on supplied candidates_V2 (79,135 candidates)",
+    "training_regime": "100% from scratch on LUNA16 Folds 1-9 (zero pretrained weights)",
+    "tta": "4-view (Identity, X_flip, YZ_flip, XYZ_flip)",
+    "cpm": 0.9043,
+    "cpm_95ci": [
+      0.8452,
+      0.9533
+    ],
+    "sensitivities_7pts": [
+      0.7768,
+      0.8214,
+      0.875,
+      0.9286,
+      0.9554,
+      0.9821,
+      0.9911
+    ],
+    "precision_nat_cut": 0.5566,
+    "recall_nat_cut": 0.8551,
+    "specificity_nat_cut": 0.9988,
+    "fp_per_scan_nat_cut": 1.056
+  },
+  "external_evaluation": {
+    "system": "CLEAR3D-MSFv2 (5-Model Ensemble + Cap=4000 Candidate Generator)",
+    "cohort": "SPIE-AAPM LUNGx Challenge (58 unexposed scans, 70 nodules)",
+    "matching_protocol": "Fixed 5.0 mm Euclidean distance (non-official, single center coordinate)",
+    "candidate_proposal_coverage": 0.6714,
+    "coverage_95ci": [
+      0.5538,
+      0.7838
+    ],
+    "rule_A_closest_cpm": 0.4279,
+    "rule_A_closest_cpm_95ci": [
+      0.3469,
+      0.5193
+    ],
+    "rule_B_highest_scoring_cpm": 0.434,
+    "rule_B_highest_scoring_cpm_95ci": [
+      0.3531,
+      0.5216
+    ],
+    "nodule_sensitivity_nat_cut": 0.5571,
+    "fp_per_scan_nat_cut": 2.655,
+    "nodule_sensitivity_half_cut_ruleB": 0.6714,
+    "covered_nodule_retrieval_rate_at_half_cut": 1,
+    "fp_per_scan_half_cut": 17.224,
+    "critical_finding": "Classifier achieves 100% sensitivity on covered nodules under Rule B at 0.5 cut; external sensitivity bottleneck is strictly proposal candidate coverage (67.14%), not classifier discrimination."
+  },
+  "published_literature_reference_points": [
+    {
+      "study": "Setio et al. (2017) IEEE TMI (LUNA16 Grand Challenge)",
+      "task": "Track 2: False Positive Reduction on candidates_V2",
+      "cohort": "10-Fold Cross-Validation across all 888 LIDC/LUNA16 scans",
+      "cpm_reported": 0.891,
+      "matching_protocol": "Official LUNA16 diameter-based matching (distance < nodule radius)",
+      "notes": "Top ensemble of multiple CAD and deep learning systems combined. Individual CAD algorithms scored CPM 0.772 to 0.839."
+    },
+    {
+      "study": "Dou et al. (2017) Medical Image Analysis",
+      "task": "3D Contextual DCNN False Positive Reduction",
+      "cohort": "10-Fold Cross-Validation on LUNA16 candidates_V2",
+      "cpm_reported": 0.839,
+      "matching_protocol": "Official LUNA16 radius matching",
+      "notes": "Multi-level contextual 3D CNN without multi-model ensemble averaging."
+    },
+    {
+      "study": "Ding et al. (2017) arXiv:1702.06370",
+      "task": "Deconvolutional 3D CNN False Positive Reduction",
+      "cohort": "10-Fold Cross-Validation on LUNA16",
+      "cpm_reported": 0.891,
+      "matching_protocol": "Official LUNA16 radius matching",
+      "notes": "Candidate generation using Faster R-CNN followed by 3D DCNN FP reduction."
+    },
+    {
+      "study": "Xie et al. (2019) IEEE Access",
+      "task": "Multi-view 2D/3D CNN False Positive Reduction",
+      "cohort": "10-Fold Cross-Validation on LUNA16 candidates_V2",
+      "cpm_reported": 0.887,
+      "matching_protocol": "Official LUNA16 radius matching",
+      "notes": "Multi-branch architecture combining 2D slices and 3D volumes."
+    }
+  ],
+  "essential_scientific_caveats": [
+    {
+      "caveat": "Internal vs. 10-Fold Average",
+      "description": "CLEAR3D-MSFv2 internal test (CPM = 0.9043) is evaluated on Subset 0 (Fold 0, 89 scans), whereas literature benchmarks report 10-fold cross-validation averages across all 888 scans. Fold 0 was historically exposed in earlier runs, so this result cannot be claimed as an unseen blind competition victory."
+    },
+    {
+      "caveat": "Fixed 5mm vs. Diameter Matching",
+      "description": "External validation on SPIE-AAPM uses fixed 5.0 mm Euclidean matching because LUNGx provides only single (x, y, z) biopsy coordinates without 3D segmentation or diameter annotations, unlike LUNA16 radius-based matching."
+    },
+    {
+      "caveat": "Ground Truth Incompleteness in External Cohort",
+      "description": "SPIE-AAPM LUNGx only annotates biopsy-confirmed diagnostic target nodules (1-2 per scan). Non-annotated incidental benign or malignant nodules are counted as false positives, biasing the apparent FP/scan upward."
+    },
+    {
+      "caveat": "MedicalNet Baseline Claim Retraction",
+      "description": "The prior comparison claiming an architectural CPM improvement from 0.0424 (MedicalNet) to 0.9043 is formally retracted as uncontrolled (differed across 6 distinct factors: model architecture, weights, candidate pool size 2,952 vs 472,507, input channels, 1x1 vs 5x4 TTA, and calibration)."
+    }
+  ]
+}

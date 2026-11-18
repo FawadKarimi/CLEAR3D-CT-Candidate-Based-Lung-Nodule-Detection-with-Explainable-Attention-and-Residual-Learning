@@ -1,0 +1,17 @@
+{
+  "scope": "exploratory repeatedly exposed sampled development; not full scan, not independent test",
+  "rows": 1060,
+  "positives": 265,
+  "old": {
+    "auc": 0.6619437522249911,
+    "accuracy_at_0_5": 0.5915094339622642,
+    "macro_f1_at_0_5": 0.5629423734882051
+  },
+  "rotating": {
+    "auc": 0.7201376527827222,
+    "accuracy_at_0_5": 0.6273584905660378,
+    "macro_f1_at_0_5": 0.5927514227438653
+  },
+  "threshold": 0.5,
+  "reference_release": "HOLD"
+}

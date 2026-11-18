@@ -1,0 +1,132 @@
+{
+  "full_dev_predictions_run004.csv": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/evaluation-full-dev-20261109/full_dev_predictions_run004.csv",
+    "size_bytes": 15648213,
+    "sha256": "0c9824d9da5f122d501865e6946afea200097b8c0723df96b17d64fde8b5c67f"
+  },
+  "full_dev_predictions_highres.csv": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/evaluation-full-dev-20261109/full_dev_predictions_highres.csv",
+    "size_bytes": 14824756,
+    "sha256": "5dcb55ef2af62bd7ff6bf713c572ec69a6012774b7c9977ca2d7ce9e59aef364"
+  },
+  "full_dev_predictions_medicalnet.csv": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/evaluation-full-dev-20261109/full_dev_predictions_medicalnet.csv",
+    "size_bytes": 14701748,
+    "sha256": "ce9507a850e6612a04ea2bc9e5fd9c956415d65859e21ea4c78b406640a27f34"
+  },
+  "metrics_summary.json": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/evaluation-full-dev-20261109/metrics_summary.json",
+    "size_bytes": 4780,
+    "sha256": "f6963d4bb13588c53bdf1ef194b53042b5b8f6d4d2af6ed00c0c9278ee7a1507"
+  },
+  "froc_and_bootstrap_comparison.json": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/evaluation-full-dev-20261109/froc_and_bootstrap_comparison.json",
+    "size_bytes": 8408,
+    "sha256": "46be426b6bbec48bcc11a0cbcb59e6fa4be4d8ac59f5c081401c69bd67d2c164"
+  },
+  "froc_three_models_comparison.png": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/evaluation-full-dev-20261109/froc_three_models_comparison.png",
+    "size_bytes": 182568,
+    "sha256": "90527f0a494e0ab98e826e00d7715b02e797aa43b41b93c5ac6d65923cc3bff3"
+  },
+  "run004_4view_scores.csv": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/clear3d-msf-official-dev-20261106-004/scores.csv",
+    "size_bytes": 15988153,
+    "sha256": "c6dfcd86e662ce0e52e55a89e49c5bc548918af77c62fbdd0c8b221e4259fa71"
+  },
+  "run004_4view_invocation.json": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/clear3d-msf-official-dev-20261106-004/invocation.json",
+    "size_bytes": 633,
+    "sha256": "e5079108b72415113a54cf394ec6bd141054af8b0ccb05ea8f01ded509fca237"
+  },
+  "run004_4view_CADAnalysis.txt": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/clear3d-msf-official-dev-eval-20261106-004/froc999999/CADAnalysis.txt",
+    "size_bytes": 549,
+    "sha256": "bda0ea6afcbee813f0e7b0cb0518ef29ed72751449bd60229881987adc09565e"
+  },
+  "run004_4view_froc_cap999999.txt": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/clear3d-msf-official-dev-eval-20261106-004/froc999999/froc_cap999999.txt",
+    "size_bytes": 721218,
+    "sha256": "b031f5663e81f97fccce97b5c25d1ae768d2a0aa088dc0557545a72660b843d7"
+  },
+  "clear3d_msf_task2_task3_evaluation_20261106_004.json": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/clear3d-msf-task2-task3-evaluation-20261106-004.json",
+    "size_bytes": 5474,
+    "sha256": "df05759a623c1d6e6adb1b12ceae96e4aa86c3e19f1e179d45a18d37d00ff2ea"
+  },
+  "run004_8view_predictions.json": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/clear3d-msf-ensemble-20261106-004/predictions.json",
+    "size_bytes": 39751,
+    "sha256": "17cbdb958be4b0e8e1cbfac0ccb3193d877fa10fcd5572031d85428430259012"
+  },
+  "run004_8view_predictions_detailed.json": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/clear3d-msf-ensemble-20261106-004/predictions-detailed.json",
+    "size_bytes": 85021,
+    "sha256": "b0b866d33f8655ac511c6492e92d17681c1428723b57af3280bd82ce82582b26"
+  },
+  "run004_8view_invocation.json": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/clear3d-msf-ensemble-20261106-004/invocation.json",
+    "size_bytes": 1059,
+    "sha256": "0bd335fd2d077ab82a85eab5e760f4d534b847d9f2993749e7da2741957e5a62"
+  },
+  "run004_8view_worker_result.json": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/clear3d-msf-ensemble-20261106-004/worker-result.json",
+    "size_bytes": 988,
+    "sha256": "49b561f58fd182cce91bb37d05174492e5a35d7f27ac744cbde10914b4432bc6"
+  },
+  "run004_8view_fit_oof_summary.json": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/clear3d-msf-ensemble-20261106-004/fit-oof-summary.json",
+    "size_bytes": 2048,
+    "sha256": "a54231394a671fceca9531b51276c999f92dc106aa98f62140cfc38e6ac2dff2"
+  },
+  "checkpoints/highres_best_checkpoint.pt": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/improvement-clear3d-highres-20261109/best_checkpoint.pt",
+    "size_bytes": 49464242,
+    "sha256": "431850a61fda7f6e97034d0743781908b87d8b7466c8e9abc3c7d774f2e96505"
+  },
+  "checkpoints/medicalnet_resnet18_best_checkpoint.pt": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/comparator-medicalnet-resnet18-20261109/best_checkpoint.pt",
+    "size_bytes": 398099210,
+    "sha256": "0571f7d9de9d7c77cd34858f0fc29fd28c3966c7a1c2ab71e7e2840c3124f8c7"
+  },
+  "selection-001.json": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/selection-001.json",
+    "size_bytes": 1123200,
+    "sha256": "8ab4cda286f59a69f942527a80fb6a97ed4271f9e4c902aa9ed06a9c50334001"
+  },
+  "balanced-candidate-classification-20261106-001.json": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/balanced-candidate-classification-20261106-001.json",
+    "size_bytes": 524800,
+    "sha256": "3e485ec412da5543999673b8cab25ca547af64efc35c93d0a62cf1fdbe012401"
+  },
+  "patient_series_mapping.json": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/paper-ablation-verify-package-20261107-004/reference/patient_series_mapping.json",
+    "size_bytes": 25770,
+    "sha256": "ad1ace33a76f44ca9990ca7e7bd8b0fd9d27740ac83008f04c48d58c069de40e"
+  },
+  "seriesuids.csv": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/clear3d-msf-official-dev-eval-20261106-004/seriesuids.csv",
+    "size_bytes": 9230,
+    "sha256": "edc352e21e049a5fe70200ae868006aa1a5fda2faf4424117b1a8074641e7dff"
+  },
+  "scripts/score_full_dev_cohort_20261109.py": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/score_full_dev_cohort_20261109.py",
+    "size_bytes": 10549,
+    "sha256": "349eff9e0eb8e44f94cbb46ca02f3b6a29b36312f3ae63d8fb56f6f825771ec1"
+  },
+  "scripts/evaluate_three_models_froc_bootstrap_20261109.py": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/evaluate_three_models_froc_bootstrap_20261109.py",
+    "size_bytes": 12184,
+    "sha256": "d1106a1c7b79931f5443b5361ff170398e3a3d39062066b24eaa359c63b9464d"
+  },
+  "scripts/train_clear3d_highres_improvement.py": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/train_clear3d_highres_improvement.py",
+    "size_bytes": 30668,
+    "sha256": "338c3f8e63dc58ae588abda6291363a83749792f43cdec0ab697e7f16d18a214"
+  },
+  "scripts/train_medicalnet_resnet18_comparator.py": {
+    "source_path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/train_medicalnet_resnet18_comparator.py",
+    "size_bytes": 21391,
+    "sha256": "cc24dbf10f8ae21088fa972284496a430a08afc802e74fbe43ac315c1613dbeb"
+  }
+}

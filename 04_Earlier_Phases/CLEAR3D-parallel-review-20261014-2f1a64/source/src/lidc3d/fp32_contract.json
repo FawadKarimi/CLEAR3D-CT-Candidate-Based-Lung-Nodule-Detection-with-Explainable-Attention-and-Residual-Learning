@@ -1,0 +1,391 @@
+{
+  "fixed": [
+    {
+      "counts": {
+        "ignored": 24,
+        "negative": 37355,
+        "positive": 1
+      },
+      "eligible": true,
+      "patient_id": "LIDC-IDRI-0196",
+      "proposal_count": 37380,
+      "proposal_sha256": "f81d7d3d8dc5f9057bb821afeff4510e1cf60c4cff2b2ce576792797e680a841",
+      "reason": "not_selected_rank",
+      "role": "train",
+      "scan_id": "scan_e2ef02265730531c459d",
+      "scan_rank": "0010f9c612ea28c77f456ea401f4354d1dcca597e51744e050cd4a83201c2d36",
+      "selected": false
+    },
+    {
+      "counts": {
+        "ignored": 46,
+        "negative": 42764,
+        "positive": 1
+      },
+      "eligible": true,
+      "patient_id": "LIDC-IDRI-0318",
+      "proposal_count": 42811,
+      "proposal_sha256": "86f517d142cb6be2fd4bee3b56bb5f4459e3461f6a68d163d9a24bcc27a02bb5",
+      "reason": "not_selected_rank",
+      "role": "train",
+      "scan_id": "scan_3ffbe7c95fa086f4a39e",
+      "scan_rank": "002b90bf27eaf3d96f0718c2d628fad9eb30d492e595ed039592702d34575e6e",
+      "selected": false
+    },
+    {
+      "counts": {
+        "ignored": 46,
+        "negative": 25140,
+        "positive": 1
+      },
+      "eligible": true,
+      "patient_id": "LIDC-IDRI-0006",
+      "proposal_count": 25187,
+      "proposal_sha256": "20fd7f62fb0e29f887da6975689a155e126beffe72416f3d4cf427a46194edc3",
+      "reason": "not_selected_rank",
+      "role": "train",
+      "scan_id": "scan_c5973537991d725f03ab",
+      "scan_rank": "00351e4c1381c5143009a132a091282897fdfa369691f3c83a5c1ea9c10c4c37",
+      "selected": false
+    },
+    {
+      "counts": {
+        "ignored": 47,
+        "negative": 73511,
+        "positive": 2
+      },
+      "eligible": true,
+      "patient_id": "LIDC-IDRI-0299",
+      "proposal_count": 73560,
+      "proposal_sha256": "790a492b1d16cc5e5b24f7f2c3e69e980e529a0e78a3bc6bb75aa71077df6361",
+      "reason": "not_selected_rank",
+      "role": "train",
+      "scan_id": "scan_aeeda85c3e8748887611",
+      "scan_rank": "00c0f00f37bb61474cc2b4c3753df2c3c51c765430b4a1784708672a79dfd926",
+      "selected": false
+    },
+    {
+      "counts": {
+        "ignored": 67,
+        "negative": 84721,
+        "positive": 1
+      },
+      "eligible": true,
+      "patient_id": "LIDC-IDRI-0895",
+      "proposal_count": 84789,
+      "proposal_sha256": "774617919c8ad95880f7fb50a007a4658316c5df0a32d00356e866dd98efe21f",
+      "reason": "not_selected_rank",
+      "role": "val",
+      "scan_id": "scan_328870d486386e3ce5cf",
+      "scan_rank": "04c2b140610ba4bf1e4b6c009366b65e4a185ccd4d8b06a704393de8d0106731",
+      "selected": false
+    },
+    {
+      "counts": {
+        "ignored": 36,
+        "negative": 60495,
+        "positive": 3
+      },
+      "eligible": true,
+      "patient_id": "LIDC-IDRI-0722",
+      "proposal_count": 60534,
+      "proposal_sha256": "bbf2a5bd1ae2ec53c0625aa8bff3146f5c14935476442042540fb9d57495ba3b",
+      "reason": "not_selected_rank",
+      "role": "val",
+      "scan_id": "scan_f885c18918d85b6b86ca",
+      "scan_rank": "0531f4c144de646bec11b67add351b5aa5bb5208d82da2e4e9b7ee9ced64cd24",
+      "selected": false
+    }
+  ],
+  "plan_zip_sha256": "4b1fcb34e79e162dcd15652a9313724cc7e7ed013009e94e8d336e8feab0d8d1",
+  "pool": [
+    {
+      "counts": {
+        "ignored": 24,
+        "negative": 37355,
+        "positive": 1
+      },
+      "eligible": true,
+      "patient_id": "LIDC-IDRI-0196",
+      "proposal_count": 37380,
+      "proposal_sha256": "f81d7d3d8dc5f9057bb821afeff4510e1cf60c4cff2b2ce576792797e680a841",
+      "reason": "not_selected_rank",
+      "role": "train",
+      "scan_id": "scan_e2ef02265730531c459d",
+      "scan_rank": "0010f9c612ea28c77f456ea401f4354d1dcca597e51744e050cd4a83201c2d36",
+      "selected": false
+    },
+    {
+      "counts": {
+        "ignored": 46,
+        "negative": 42764,
+        "positive": 1
+      },
+      "eligible": true,
+      "patient_id": "LIDC-IDRI-0318",
+      "proposal_count": 42811,
+      "proposal_sha256": "86f517d142cb6be2fd4bee3b56bb5f4459e3461f6a68d163d9a24bcc27a02bb5",
+      "reason": "not_selected_rank",
+      "role": "train",
+      "scan_id": "scan_3ffbe7c95fa086f4a39e",
+      "scan_rank": "002b90bf27eaf3d96f0718c2d628fad9eb30d492e595ed039592702d34575e6e",
+      "selected": false
+    },
+    {
+      "counts": {
+        "ignored": 46,
+        "negative": 25140,
+        "positive": 1
+      },
+      "eligible": true,
+      "patient_id": "LIDC-IDRI-0006",
+      "proposal_count": 25187,
+      "proposal_sha256": "20fd7f62fb0e29f887da6975689a155e126beffe72416f3d4cf427a46194edc3",
+      "reason": "not_selected_rank",
+      "role": "train",
+      "scan_id": "scan_c5973537991d725f03ab",
+      "scan_rank": "00351e4c1381c5143009a132a091282897fdfa369691f3c83a5c1ea9c10c4c37",
+      "selected": false
+    },
+    {
+      "counts": {
+        "ignored": 47,
+        "negative": 73511,
+        "positive": 2
+      },
+      "eligible": true,
+      "patient_id": "LIDC-IDRI-0299",
+      "proposal_count": 73560,
+      "proposal_sha256": "790a492b1d16cc5e5b24f7f2c3e69e980e529a0e78a3bc6bb75aa71077df6361",
+      "reason": "not_selected_rank",
+      "role": "train",
+      "scan_id": "scan_aeeda85c3e8748887611",
+      "scan_rank": "00c0f00f37bb61474cc2b4c3753df2c3c51c765430b4a1784708672a79dfd926",
+      "selected": false
+    },
+    {
+      "counts": {
+        "ignored": 19,
+        "negative": 80998,
+        "positive": 0
+      },
+      "eligible": false,
+      "patient_id": "LIDC-IDRI-0665",
+      "proposal_count": 81017,
+      "proposal_sha256": "100502796b19ff967cc31b14f4e5e3f4a0ec840dff41f2b61f37b114120ca960",
+      "reason": "insufficient_classes",
+      "role": "train",
+      "scan_id": "scan_e04aa951ee55ee7862e5",
+      "scan_rank": "0173ef821714adb337cb507957f1a8f1ee797f4ea464b2d60924e37cc8afe9d2",
+      "selected": false
+    },
+    {
+      "counts": {
+        "ignored": 10,
+        "negative": 18243,
+        "positive": 2
+      },
+      "eligible": true,
+      "patient_id": "LIDC-IDRI-0255",
+      "proposal_count": 18255,
+      "proposal_sha256": "07c428348e25a77081918bdc7346c346ded8ef5fea2dbc473820fe4ac8738dbd",
+      "reason": "not_selected_rank",
+      "role": "train",
+      "scan_id": "scan_e9a6c630885495a1e156",
+      "scan_rank": "01b893ac2023dd017f50013400e822e73ae0876ea0119329cf1e2d207e483aba",
+      "selected": false
+    },
+    {
+      "counts": {
+        "ignored": 52,
+        "negative": 24699,
+        "positive": 3
+      },
+      "eligible": true,
+      "patient_id": "LIDC-IDRI-0485",
+      "proposal_count": 24754,
+      "proposal_sha256": "7a8acfef4b4fa63aac12dd41ba2b907a13a06e157c466bd0b49de30a29e2db7c",
+      "reason": "not_selected_rank",
+      "role": "train",
+      "scan_id": "scan_3386dd59b61402a85ab2",
+      "scan_rank": "01de80d19e138713b761facf59c5ca82d0c5fa8ee05a9aa940e3b031a6484b4b",
+      "selected": false
+    },
+    {
+      "counts": {
+        "ignored": 40,
+        "negative": 27360,
+        "positive": 3
+      },
+      "eligible": true,
+      "patient_id": "LIDC-IDRI-0011",
+      "proposal_count": 27403,
+      "proposal_sha256": "2d4439b8832d5a69a8eda8cee438d2e559e5332d1daa3c757295e06737035423",
+      "reason": "not_selected_rank",
+      "role": "train",
+      "scan_id": "scan_f86f7c1d51e9e7141921",
+      "scan_rank": "01e2f29b66bdfbe43150cf9f8b1140763032f87d3c7048331e582e727ae7e076",
+      "selected": false
+    },
+    {
+      "counts": {
+        "ignored": 12,
+        "negative": 60296,
+        "positive": 0
+      },
+      "eligible": false,
+      "patient_id": "LIDC-IDRI-0932",
+      "proposal_count": 60308,
+      "proposal_sha256": "682f2580f28e5de6f2de5717350fe5673ec2780ec76c5b98ea66ac74d9b02d71",
+      "reason": "insufficient_classes",
+      "role": "train",
+      "scan_id": "scan_5edfa9613f270eaae94a",
+      "scan_rank": "01ec753a8773206297ca6af2052baf915acb1732b7dc639627ce35191b3adb48",
+      "selected": false
+    },
+    {
+      "counts": {
+        "ignored": 17,
+        "negative": 49048,
+        "positive": 1
+      },
+      "eligible": true,
+      "patient_id": "LIDC-IDRI-0010",
+      "proposal_count": 49066,
+      "proposal_sha256": "ff78908f2a94b0415d634727fcd573325f2f639e1740da276c1bc54c12a07bd3",
+      "reason": "not_selected_rank",
+      "role": "train",
+      "scan_id": "scan_62d1bce3a9980e7eb339",
+      "scan_rank": "01fc320eb920f76a48ff0ad132d88ba1d7125750c7e790c626ea1e6efa7bd99a",
+      "selected": false
+    },
+    {
+      "counts": {
+        "ignored": 3,
+        "negative": 61365,
+        "positive": 1
+      },
+      "eligible": true,
+      "patient_id": "LIDC-IDRI-0694",
+      "proposal_count": 61369,
+      "proposal_sha256": "f4e311e09afe8fb640e0985364aa9b31035ed1f84b118bb160e5583dfeb2103e",
+      "reason": "not_selected_rank",
+      "role": "train",
+      "scan_id": "scan_786987a82ce7e0172a06",
+      "scan_rank": "0233a3a82387d2bb295dab855c8309ec28fb6fb9cb11d7cfec0e18cefcecfdcc",
+      "selected": false
+    },
+    {
+      "counts": {
+        "ignored": 29,
+        "negative": 40213,
+        "positive": 0
+      },
+      "eligible": false,
+      "patient_id": "LIDC-IDRI-0897",
+      "proposal_count": 40242,
+      "proposal_sha256": "96be65ebb8b03d9abe72ccb8e3b01a57ac4bbbfbb7f39f9dad0d29bdb494af68",
+      "reason": "insufficient_classes",
+      "role": "train",
+      "scan_id": "scan_48bf8bc9c6dbf47795ef",
+      "scan_rank": "0331288253ff792e8a2107160d5b510e75f16f30c36cdd27bea6007fb54eea57",
+      "selected": false
+    },
+    {
+      "counts": {
+        "ignored": 45,
+        "negative": 29994,
+        "positive": 0
+      },
+      "eligible": false,
+      "patient_id": "LIDC-IDRI-0428",
+      "proposal_count": 30039,
+      "proposal_sha256": "41253e0ee9105718db67f02899d260b44f72fc10ea7c6132265a7ab895f18b27",
+      "reason": "insufficient_classes",
+      "role": "val",
+      "scan_id": "scan_3d24b9e14d70bc8c41c8",
+      "scan_rank": "02196f0e1bc08c84a163d8589c05524b325932af45b72e6581007142ff6aee9a",
+      "selected": false
+    },
+    {
+      "counts": {
+        "ignored": 67,
+        "negative": 84721,
+        "positive": 1
+      },
+      "eligible": true,
+      "patient_id": "LIDC-IDRI-0895",
+      "proposal_count": 84789,
+      "proposal_sha256": "774617919c8ad95880f7fb50a007a4658316c5df0a32d00356e866dd98efe21f",
+      "reason": "not_selected_rank",
+      "role": "val",
+      "scan_id": "scan_328870d486386e3ce5cf",
+      "scan_rank": "04c2b140610ba4bf1e4b6c009366b65e4a185ccd4d8b06a704393de8d0106731",
+      "selected": false
+    },
+    {
+      "counts": {
+        "ignored": 36,
+        "negative": 60495,
+        "positive": 3
+      },
+      "eligible": true,
+      "patient_id": "LIDC-IDRI-0722",
+      "proposal_count": 60534,
+      "proposal_sha256": "bbf2a5bd1ae2ec53c0625aa8bff3146f5c14935476442042540fb9d57495ba3b",
+      "reason": "not_selected_rank",
+      "role": "val",
+      "scan_id": "scan_f885c18918d85b6b86ca",
+      "scan_rank": "0531f4c144de646bec11b67add351b5aa5bb5208d82da2e4e9b7ee9ced64cd24",
+      "selected": false
+    },
+    {
+      "counts": {
+        "ignored": 38,
+        "negative": 46003,
+        "positive": 1
+      },
+      "eligible": true,
+      "patient_id": "LIDC-IDRI-0634",
+      "proposal_count": 46042,
+      "proposal_sha256": "6565a8efcd5ae1a78bcd5e11d5216c928dfacce12df950fad71addbad2cb0c38",
+      "reason": "not_selected_rank",
+      "role": "val",
+      "scan_id": "scan_723e3ad06052bdbcb678",
+      "scan_rank": "09a60bbd9742e6521d542e7a577553421eeb5195ae0dcc8cfa31b3bea0469caf",
+      "selected": false
+    },
+    {
+      "counts": {
+        "ignored": 29,
+        "negative": 34397,
+        "positive": 9
+      },
+      "eligible": true,
+      "patient_id": "LIDC-IDRI-0865",
+      "proposal_count": 34435,
+      "proposal_sha256": "c9556fca6b9ea7a5ad7fd67071b91b5ed73cd46162ff46319d208b3252450d2b",
+      "reason": "not_selected_rank",
+      "role": "val",
+      "scan_id": "scan_b747e66a03811977486d",
+      "scan_rank": "0c5dc6a3ecf70e19ed5ee595c3d431337f355e279f305664aada18277ec0703e",
+      "selected": false
+    },
+    {
+      "counts": {
+        "ignored": 34,
+        "negative": 33261,
+        "positive": 1
+      },
+      "eligible": true,
+      "patient_id": "LIDC-IDRI-0020",
+      "proposal_count": 33296,
+      "proposal_sha256": "688276a901d053b3f9273a15e06072f1d5201f7476b0599921f89ce8c404748c",
+      "reason": "not_selected_rank",
+      "role": "val",
+      "scan_id": "scan_15d28234cb5e0eba504d",
+      "scan_rank": "0c70e38c6f726d0f55bd0ffefdf1d6cd1395e45d84b75cba3f65cc36fcfc4780",
+      "selected": false
+    }
+  ]
+}

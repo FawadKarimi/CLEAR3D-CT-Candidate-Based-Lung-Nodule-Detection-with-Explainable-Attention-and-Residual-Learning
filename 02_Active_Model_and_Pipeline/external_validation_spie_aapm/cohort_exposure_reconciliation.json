@@ -1,0 +1,137 @@
+{
+  "title": "CLEAR3D-CT Definitive Cohort & Exposure Reconciliation Ledger",
+  "timestamp": "2026-11-09T05:24:56.358Z",
+  "cohorts": [
+    {
+      "cohort_id": "LIDC_TRAINING_FIT",
+      "dataset": "LIDC-IDRI / LUNA16 Folds 1-9",
+      "role": "Model Training (5-Fold Cross-Validation from Scratch)",
+      "patient_count": 799,
+      "scan_count": 799,
+      "nodule_count": 739,
+      "negative_candidates_mined": 472507,
+      "exposure_status": "TRAINING_DATA",
+      "notes": "Trained 100% from scratch with random initial weights (seed_all 100+fold). Zero pretrained weights used."
+    },
+    {
+      "cohort_id": "DEVELOPMENT_EXPLORATORY",
+      "dataset": "LUNA16 Development Cohort",
+      "role": "Iterative Hyperparameter Exploration & Ablation",
+      "patient_count": 142,
+      "scan_count": 142,
+      "nodule_count": 192,
+      "exposure_status": "REPEATEDLY_EXPOSED_DEVELOPMENT",
+      "notes": "Repeatedly used during pilot ablation runs (Runs 001-004, hard-negative mining, threshold tuning). All metrics labeled strictly exploratory."
+    },
+    {
+      "cohort_id": "INTERNAL_TEST_FOLD0",
+      "dataset": "LUNA16 Subset 0 (Fold 0)",
+      "role": "Internal Locked Test (False-Positive Reduction on candidates_V2)",
+      "patient_count": 89,
+      "scan_count": 89,
+      "nodule_count": 138,
+      "candidate_count": 79135,
+      "positives": 138,
+      "negatives": 78997,
+      "exposure_status": "PREVIOUSLY_EXPOSED_INTERNAL_TEST",
+      "cpm": 0.904337,
+      "cpm_95ci": [
+        0.845199,
+        0.953342
+      ],
+      "notes": "Comprises 6 previously reviewed exploratory patients and 83 confirmation patients. Evaluated locked once; zero parameter tuning or retraining permitted."
+    },
+    {
+      "cohort_id": "CONFIRMATION_COHORT_RESTRICTED",
+      "dataset": "LUNA16 Fold 0 Confirmation Subset",
+      "role": "Restricted Confirmation Cohort",
+      "patient_count": 83,
+      "scan_count": 83,
+      "exposure_status": "RESTRICTED_UNTOUCHED",
+      "notes": "Maintained under strict access restriction. Authorization unsettled. Not reopened or modified."
+    },
+    {
+      "cohort_id": "EXTERNAL_PILOT",
+      "dataset": "SPIE-AAPM LUNGx Challenge (CT001, CT002)",
+      "role": "External Technical Pilot & Geometry Sanity Check",
+      "patient_count": 2,
+      "scan_count": 2,
+      "nodule_count": 3,
+      "proposals_evaluated": 8000,
+      "exposure_status": "EXPOSED_TECHNICAL_PILOT",
+      "proposal_coverage": 0.333333,
+      "cpm_fixed_5mm": 0.333333,
+      "notes": "Used exclusively for pipeline integration, DICOM geometry verification, and overlay inspection. Reported separately from unexposed cases."
+    },
+    {
+      "cohort_id": "EXTERNAL_UNEXPOSED_TEST",
+      "dataset": "SPIE-AAPM LUNGx Challenge (CT003 - CT060)",
+      "role": "Independent External Evaluation",
+      "patient_count": 58,
+      "scan_count": 58,
+      "nodule_count": 70,
+      "proposals_evaluated": 232000,
+      "exposure_status": "CERTIFIED_UNEXPOSED_TEST",
+      "proposal_coverage": 0.671429,
+      "proposal_coverage_95ci": [
+        0.553806,
+        0.783784
+      ],
+      "cpm_fixed_5mm_ruleA": 0.427891,
+      "cpm_fixed_5mm_ruleA_95ci": [
+        0.346852,
+        0.519265
+      ],
+      "cpm_fixed_5mm_ruleB": 0.434014,
+      "cpm_fixed_5mm_ruleB_95ci": [
+        0.353131,
+        0.521586
+      ],
+      "sens_nat_cut": 0.557143,
+      "sens_nat_cut_95ci": [
+        0.442857,
+        0.671429
+      ],
+      "fp_per_scan_nat_cut": 2.655172,
+      "sens_half_cut_ruleB": 0.671429,
+      "fp_per_scan_half_cut": 17.224138,
+      "notes": "Evaluated with locked candidate cap=4,000, frozen 5-model ensemble, and Platt calibration. No threshold tuning."
+    },
+    {
+      "cohort_id": "EXTERNAL_FULL_TEST_COHORT",
+      "dataset": "SPIE-AAPM LUNGx Challenge (CT001 - CT060 Complete)",
+      "role": "Complete External Cohort Summary",
+      "patient_count": 60,
+      "scan_count": 60,
+      "nodule_count": 73,
+      "proposals_evaluated": 240000,
+      "exposure_status": "COMBINED_EXTERNAL_EVALUATION",
+      "proposal_coverage": 0.657534,
+      "proposal_coverage_95ci": [
+        0.546603,
+        0.774648
+      ],
+      "cpm_fixed_5mm_ruleA": 0.418787,
+      "cpm_fixed_5mm_ruleA_95ci": [
+        0.340134,
+        0.508954
+      ],
+      "cpm_fixed_5mm_ruleB": 0.424658,
+      "cpm_fixed_5mm_ruleB_95ci": [
+        0.341735,
+        0.512527
+      ],
+      "sens_nat_cut": 0.547945,
+      "fp_per_scan_nat_cut": 2.716667,
+      "sens_half_cut_ruleB": 0.657534,
+      "fp_per_scan_half_cut": 18,
+      "notes": "Includes both the 2 pilot scans and the 58 unexposed scans."
+    }
+  ],
+  "governance_restrictions": {
+    "reference_release": "HOLD",
+    "confirmation_cohort": "RESTRICTED_UNTOUCHED",
+    "internal_test_fold0": "FROZEN_NO_TUNING",
+    "medicalnet_baseline_cpm_claim": "RETRACTED_UNCONTROLLED_MULTIFACTOR"
+  }
+}

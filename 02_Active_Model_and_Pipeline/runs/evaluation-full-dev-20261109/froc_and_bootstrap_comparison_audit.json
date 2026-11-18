@@ -1,0 +1,419 @@
+{
+  "status": "PASS",
+  "scope": "Tasks 3 official development 142-scan LUNA16 FROC & patient-clustered bootstrap comparison (Corrected MedicalNet)",
+  "cohort": {
+    "scans": 142,
+    "patients": 142,
+    "total_ground_truth_nodules": 192,
+    "fp_grid": [
+      0.125,
+      0.25,
+      0.5,
+      1.0,
+      2.0,
+      4.0,
+      8.0
+    ]
+  },
+  "point_results": {
+    "Run 004 Ensemble": {
+      "cpm": 0.9129464287142858,
+      "sensitivities": [
+        0.760416667,
+        0.859375,
+        0.916666667,
+        0.9375,
+        0.963541667,
+        0.973958333,
+        0.979166667
+      ],
+      "cad_stats": {
+        "TP": 189,
+        "FP": 120912,
+        "FN": 3,
+        "total_nodules": 192,
+        "total_candidates": 122689,
+        "ignored_excluded": 1512,
+        "ignored_double": 76,
+        "sensitivity": 0.984375,
+        "avg_fp_per_scan": 851.4929577464789
+      }
+    },
+    "CLEAR3D-HighRes": {
+      "cpm": 0.8005952381428572,
+      "sensitivities": [
+        0.598958333,
+        0.6875,
+        0.791666667,
+        0.84375,
+        0.869791667,
+        0.895833333,
+        0.916666667
+      ],
+      "cad_stats": {
+        "TP": 189,
+        "FP": 120912,
+        "FN": 3,
+        "total_nodules": 192,
+        "total_candidates": 122689,
+        "ignored_excluded": 1512,
+        "ignored_double": 76,
+        "sensitivity": 0.984375,
+        "avg_fp_per_scan": 851.4929577464789
+      }
+    },
+    "MedicalNet ResNet-18": {
+      "cpm": 0.097470238,
+      "sensitivities": [
+        0.072916667,
+        0.078125,
+        0.078125,
+        0.083333333,
+        0.114583333,
+        0.125,
+        0.130208333
+      ],
+      "cad_stats": {
+        "TP": 189,
+        "FP": 120912,
+        "FN": 3,
+        "total_nodules": 192,
+        "total_candidates": 122689,
+        "ignored_excluded": 1512,
+        "ignored_double": 76,
+        "sensitivity": 0.984375,
+        "avg_fp_per_scan": 851.4929577464789
+      }
+    }
+  },
+  "bootstrap_stats": {
+    "Run 004 Ensemble": {
+      "cpm": {
+        "point": 0.9129464287142858,
+        "bootstrap_mean": 0.9155295939655893,
+        "bootstrap_se": 0.020611886297783898,
+        "ci95": [
+          0.8734298670404826,
+          0.9542544141252007
+        ]
+      },
+      "sensitivities_grid": [
+        {
+          "fp_rate": 0.125,
+          "point": 0.760416667,
+          "bootstrap_mean": 0.7719981979442694,
+          "bootstrap_se": 0.07011779514843881,
+          "ci95": [
+            0.6313612522882744,
+            0.888268156424581
+          ]
+        },
+        {
+          "fp_rate": 0.25,
+          "point": 0.859375,
+          "bootstrap_mean": 0.8642181574333361,
+          "bootstrap_se": 0.03736186645625602,
+          "ci95": [
+            0.7897080404726964,
+            0.9363355891719745
+          ]
+        },
+        {
+          "fp_rate": 0.5,
+          "point": 0.916666667,
+          "bootstrap_mean": 0.917334441334277,
+          "bootstrap_se": 0.026202300659960806,
+          "ci95": [
+            0.8646914961636829,
+            0.9651784394857397
+          ]
+        },
+        {
+          "fp_rate": 1.0,
+          "point": 0.9375,
+          "bootstrap_mean": 0.9387248769855134,
+          "bootstrap_se": 0.017496585334490198,
+          "ci95": [
+            0.9021662941893539,
+            0.972829759106933
+          ]
+        },
+        {
+          "fp_rate": 2.0,
+          "point": 0.963541667,
+          "bootstrap_mean": 0.9617931193023974,
+          "bootstrap_se": 0.013600745500514402,
+          "ci95": [
+            0.9325769545880149,
+            0.985076474065317
+          ]
+        },
+        {
+          "fp_rate": 4.0,
+          "point": 0.973958333,
+          "bootstrap_mean": 0.9748735182719246,
+          "bootstrap_se": 0.011317952338779995,
+          "ci95": [
+            0.9509763741562198,
+            0.9944459706959707
+          ]
+        },
+        {
+          "fp_rate": 8.0,
+          "point": 0.979166667,
+          "bootstrap_mean": 0.9797648464874078,
+          "bootstrap_se": 0.01031376894125754,
+          "ci95": [
+            0.9575446607788036,
+            0.995260663507109
+          ]
+        }
+      ]
+    },
+    "CLEAR3D-HighRes": {
+      "cpm": {
+        "point": 0.8005952381428572,
+        "bootstrap_mean": 0.7964257223714308,
+        "bootstrap_se": 0.030161157947465007,
+        "ci95": [
+          0.7354811532500274,
+          0.8515932117527863
+        ]
+      },
+      "sensitivities_grid": [
+        {
+          "fp_rate": 0.125,
+          "point": 0.598958333,
+          "bootstrap_mean": 0.5859186774680132,
+          "bootstrap_se": 0.051100110609057524,
+          "ci95": [
+            0.476120820668693,
+            0.6750031725888326
+          ]
+        },
+        {
+          "fp_rate": 0.25,
+          "point": 0.6875,
+          "bootstrap_mean": 0.677920171038543,
+          "bootstrap_se": 0.05033329005970724,
+          "ci95": [
+            0.5778807137290731,
+            0.7696984567483417
+          ]
+        },
+        {
+          "fp_rate": 0.5,
+          "point": 0.791666667,
+          "bootstrap_mean": 0.7829180364790352,
+          "bootstrap_se": 0.03812046070892712,
+          "ci95": [
+            0.7052481592582492,
+            0.8527831812060451
+          ]
+        },
+        {
+          "fp_rate": 1.0,
+          "point": 0.84375,
+          "bootstrap_mean": 0.8442215591923975,
+          "bootstrap_se": 0.031001597469746803,
+          "ci95": [
+            0.7810896360892169,
+            0.9034090909090909
+          ]
+        },
+        {
+          "fp_rate": 2.0,
+          "point": 0.869791667,
+          "bootstrap_mean": 0.8684440740664623,
+          "bootstrap_se": 0.03083061555739123,
+          "ci95": [
+            0.8076871657754011,
+            0.9261408492822967
+          ]
+        },
+        {
+          "fp_rate": 4.0,
+          "point": 0.895833333,
+          "bootstrap_mean": 0.8980828111268924,
+          "bootstrap_se": 0.028274714367027453,
+          "ci95": [
+            0.838687881429817,
+            0.9513944892473117
+          ]
+        },
+        {
+          "fp_rate": 8.0,
+          "point": 0.916666667,
+          "bootstrap_mean": 0.9174747272286731,
+          "bootstrap_se": 0.024500134771628906,
+          "ci95": [
+            0.8680834863376174,
+            0.9623706227358979
+          ]
+        }
+      ]
+    },
+    "MedicalNet ResNet-18": {
+      "cpm": {
+        "point": 0.097470238,
+        "bootstrap_mean": 0.09904219436262046,
+        "bootstrap_se": 0.01981027584618453,
+        "ci95": [
+          0.06310814504373177,
+          0.14035433888588875
+        ]
+      },
+      "sensitivities_grid": [
+        {
+          "fp_rate": 0.125,
+          "point": 0.072916667,
+          "bootstrap_mean": 0.07313958494234754,
+          "bootstrap_se": 0.017020454701500664,
+          "ci95": [
+            0.04201289818252883,
+            0.10778443113772455
+          ]
+        },
+        {
+          "fp_rate": 0.25,
+          "point": 0.078125,
+          "bootstrap_mean": 0.07790007330088272,
+          "bootstrap_se": 0.019104900961336328,
+          "ci95": [
+            0.042855233002291826,
+            0.11796052631578946
+          ]
+        },
+        {
+          "fp_rate": 0.5,
+          "point": 0.078125,
+          "bootstrap_mean": 0.07878691375738887,
+          "bootstrap_se": 0.01887950625686074,
+          "ci95": [
+            0.044762911108175936,
+            0.11796052631578946
+          ]
+        },
+        {
+          "fp_rate": 1.0,
+          "point": 0.083333333,
+          "bootstrap_mean": 0.09025686809890889,
+          "bootstrap_se": 0.020455608758978897,
+          "ci95": [
+            0.05293343653250774,
+            0.13019012237762237
+          ]
+        },
+        {
+          "fp_rate": 2.0,
+          "point": 0.114583333,
+          "bootstrap_mean": 0.11626208772857202,
+          "bootstrap_se": 0.02352188590079051,
+          "ci95": [
+            0.0732794400889781,
+            0.16591904700909435
+          ]
+        },
+        {
+          "fp_rate": 4.0,
+          "point": 0.125,
+          "bootstrap_mean": 0.12593228146353086,
+          "bootstrap_se": 0.02476227088049548,
+          "ci95": [
+            0.0807042685506388,
+            0.179826353421859
+          ]
+        },
+        {
+          "fp_rate": 8.0,
+          "point": 0.130208333,
+          "bootstrap_mean": 0.13101755124671235,
+          "bootstrap_se": 0.025833227761068858,
+          "ci95": [
+            0.08285424506899404,
+            0.1847251710309035
+          ]
+        }
+      ]
+    }
+  },
+  "paired_comparisons": {
+    "highres_vs_run004": {
+      "comparison": "CLEAR3D-HighRes minus Run 004 Ensemble",
+      "point_delta": -0.11235119057142862,
+      "bootstrap_mean_delta": -0.11910387159415843,
+      "bootstrap_se": 0.021393891629441768,
+      "paired_patient_ci95": [
+        -0.16196811387467314,
+        -0.07807734368924489
+      ]
+    },
+    "highres_vs_medicalnet": {
+      "comparison": "CLEAR3D-HighRes minus MedicalNet ResNet-18",
+      "point_delta": 0.7031250001428572,
+      "bootstrap_mean_delta": 0.6973835280088103,
+      "bootstrap_se": 0.03355693638482448,
+      "paired_patient_ci95": [
+        0.6282498122157022,
+        0.7587314597970335
+      ]
+    },
+    "run004_vs_medicalnet": {
+      "comparison": "Run 004 Ensemble minus MedicalNet ResNet-18",
+      "point_delta": 0.8154761907142858,
+      "bootstrap_mean_delta": 0.8164873996029689,
+      "bootstrap_se": 0.029014534421357083,
+      "paired_patient_ci95": [
+        0.7614402059306875,
+        0.8712755102040817
+      ]
+    }
+  },
+  "official_luna16_evaluator": {
+    "Run 004 Ensemble": {
+      "cpm": 0.9129464287142858,
+      "sensitivities": [
+        0.760416667,
+        0.859375,
+        0.916666667,
+        0.9375,
+        0.963541667,
+        0.973958333,
+        0.979166667
+      ],
+      "output_dir": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/evaluation-full-dev-20261109/official_luna16_eval_run004",
+      "cad_analysis_file": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/evaluation-full-dev-20261109/official_luna16_eval_run004/CADAnalysis.txt",
+      "froc_txt_file": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/evaluation-full-dev-20261109/official_luna16_eval_run004/froc_eval_run004.txt"
+    },
+    "CLEAR3D-HighRes": {
+      "cpm": 0.8005952381428572,
+      "sensitivities": [
+        0.598958333,
+        0.6875,
+        0.791666667,
+        0.84375,
+        0.869791667,
+        0.895833333,
+        0.916666667
+      ],
+      "output_dir": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/evaluation-full-dev-20261109/official_luna16_eval_highres",
+      "cad_analysis_file": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/evaluation-full-dev-20261109/official_luna16_eval_highres/CADAnalysis.txt",
+      "froc_txt_file": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/evaluation-full-dev-20261109/official_luna16_eval_highres/froc_eval_highres.txt"
+    },
+    "MedicalNet ResNet-18": {
+      "cpm": 0.097470238,
+      "sensitivities": [
+        0.072916667,
+        0.078125,
+        0.078125,
+        0.083333333,
+        0.114583333,
+        0.125,
+        0.130208333
+      ],
+      "output_dir": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/evaluation-full-dev-20261109/official_luna16_eval_medicalnet",
+      "cad_analysis_file": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/evaluation-full-dev-20261109/official_luna16_eval_medicalnet/CADAnalysis.txt",
+      "froc_txt_file": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/evaluation-full-dev-20261109/official_luna16_eval_medicalnet/froc_eval_medicalnet.txt"
+    }
+  }
+}

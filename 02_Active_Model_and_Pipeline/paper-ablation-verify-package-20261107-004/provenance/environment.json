@@ -1,0 +1,13 @@
+{
+  "platform": "Linux-5.4.0-216-generic-x86_64-with-glibc2.31",
+  "python_version": "3.10.17",
+  "python_executable": "/experiment-storage/chaidir/env/env-310-fawad/bin/python3",
+  "torch_version": "2.3.0+cu121",
+  "torch_cuda_available": true,
+  "torch_cuda_version": "12.1",
+  "gpu_device_name": "NVIDIA GeForce RTX 2080 Ti",
+  "gpu_device_count": 4,
+  "gpu_memory_total_bytes": 11546394624,
+  "numpy_version": "2.2.6",
+  "sklearn_version": "1.7.2"
+}

@@ -1,0 +1,1 @@
+{"lr_scale": 10, "lr_cnn": 0.001, "lr_head": 0.001, "lr_transformer": 0.0005, "min_lr": 9.999999999999999e-06, "class_weights": [1, 3]}

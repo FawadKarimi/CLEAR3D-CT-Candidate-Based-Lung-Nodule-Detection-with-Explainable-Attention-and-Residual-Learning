@@ -1,0 +1,179 @@
+{
+  "status": "PASS",
+  "task": "Step 2 Candidate Generation Head-to-Head Comparison",
+  "timestamp": "2026-11-09T06:19:16Z",
+  "scope": "Permitted 142 LUNA16 Development Scans (192 Target Nodules)",
+  "method_A_published_ensemble": {
+    "generator_name": "Published Automated 3D Proposal Ensemble (candidates_V2)",
+    "provenance": "Zenodo 3723295 (Setio et al. 2017: Murphy 2009 + van Ginneken 2010 + Jacobs 2014)",
+    "license": "Creative Commons Attribution 4.0 International (CC-BY 4.0)",
+    "training_provenance": "Unsupervised image-processing algorithms (shape-based Hessian, radial symmetry, blob detection); zero ground truth label leakage",
+    "coordinate_convention": "Cartesian LPS millimeters (identical to LUNA16/DICOM)",
+    "total_proposals": 122689,
+    "proposals_per_scan": 864.0,
+    "target_nodules_total": 192,
+    "coverage_strict_radius": {
+      "covered": 189,
+      "rate": 0.9844
+    },
+    "coverage_fixed_5mm": {
+      "covered": 190,
+      "rate": 0.9896
+    },
+    "coverage_max_radius_5mm": {
+      "covered": 190,
+      "rate": 0.9896
+    }
+  },
+  "method_B_multiscale_log": {
+    "generator_name": "Classical Multiscale Laplacian of Gaussian (LoG)",
+    "parameters": {
+      "sigmas_mm": [
+        1.0,
+        1.5,
+        2.0,
+        3.0
+      ],
+      "threshold": 0.005,
+      "nms_mm": 3.0,
+      "lung_mask_dilation_mm": 5
+    },
+    "caps_evaluated": {
+      "100": {
+        "cap": 100,
+        "proposals_per_scan": 100,
+        "total_nodules": 192,
+        "covered_strict_radius": 52,
+        "rate_strict_radius": 0.2708,
+        "covered_fixed_5mm": 52,
+        "rate_fixed_5mm": 0.2708,
+        "covered_max_radius_5mm": 52,
+        "rate_max_radius_5mm": 0.2708
+      },
+      "200": {
+        "cap": 200,
+        "proposals_per_scan": 200,
+        "total_nodules": 192,
+        "covered_strict_radius": 71,
+        "rate_strict_radius": 0.3698,
+        "covered_fixed_5mm": 71,
+        "rate_fixed_5mm": 0.3698,
+        "covered_max_radius_5mm": 71,
+        "rate_max_radius_5mm": 0.3698
+      },
+      "400": {
+        "cap": 400,
+        "proposals_per_scan": 400,
+        "total_nodules": 192,
+        "covered_strict_radius": 83,
+        "rate_strict_radius": 0.4323,
+        "covered_fixed_5mm": 83,
+        "rate_fixed_5mm": 0.4323,
+        "covered_max_radius_5mm": 84,
+        "rate_max_radius_5mm": 0.4375
+      },
+      "600": {
+        "cap": 600,
+        "proposals_per_scan": 600,
+        "total_nodules": 192,
+        "covered_strict_radius": 96,
+        "rate_strict_radius": 0.5,
+        "covered_fixed_5mm": 97,
+        "rate_fixed_5mm": 0.5052,
+        "covered_max_radius_5mm": 97,
+        "rate_max_radius_5mm": 0.5052
+      },
+      "800": {
+        "cap": 800,
+        "proposals_per_scan": 800,
+        "total_nodules": 192,
+        "covered_strict_radius": 112,
+        "rate_strict_radius": 0.5833,
+        "covered_fixed_5mm": 109,
+        "rate_fixed_5mm": 0.5677,
+        "covered_max_radius_5mm": 113,
+        "rate_max_radius_5mm": 0.5885
+      },
+      "1000": {
+        "cap": 1000,
+        "proposals_per_scan": 1000,
+        "total_nodules": 192,
+        "covered_strict_radius": 122,
+        "rate_strict_radius": 0.6354,
+        "covered_fixed_5mm": 117,
+        "rate_fixed_5mm": 0.6094,
+        "covered_max_radius_5mm": 123,
+        "rate_max_radius_5mm": 0.6406
+      },
+      "1200": {
+        "cap": 1200,
+        "proposals_per_scan": 1200,
+        "total_nodules": 192,
+        "covered_strict_radius": 129,
+        "rate_strict_radius": 0.6719,
+        "covered_fixed_5mm": 123,
+        "rate_fixed_5mm": 0.6406,
+        "covered_max_radius_5mm": 130,
+        "rate_max_radius_5mm": 0.6771
+      },
+      "1500": {
+        "cap": 1500,
+        "proposals_per_scan": 1500,
+        "total_nodules": 192,
+        "covered_strict_radius": 138,
+        "rate_strict_radius": 0.7188,
+        "covered_fixed_5mm": 132,
+        "rate_fixed_5mm": 0.6875,
+        "covered_max_radius_5mm": 141,
+        "rate_max_radius_5mm": 0.7344
+      },
+      "2000": {
+        "cap": 2000,
+        "proposals_per_scan": 2000,
+        "total_nodules": 192,
+        "covered_strict_radius": 151,
+        "rate_strict_radius": 0.7865,
+        "covered_fixed_5mm": 143,
+        "rate_fixed_5mm": 0.7448,
+        "covered_max_radius_5mm": 154,
+        "rate_max_radius_5mm": 0.8021
+      },
+      "3000": {
+        "cap": 3000,
+        "proposals_per_scan": 3000,
+        "total_nodules": 192,
+        "covered_strict_radius": 166,
+        "rate_strict_radius": 0.8646,
+        "covered_fixed_5mm": 157,
+        "rate_fixed_5mm": 0.8177,
+        "covered_max_radius_5mm": 170,
+        "rate_max_radius_5mm": 0.8854
+      },
+      "4000": {
+        "cap": 4000,
+        "proposals_per_scan": 4000,
+        "total_nodules": 192,
+        "covered_strict_radius": 174,
+        "rate_strict_radius": 0.9062,
+        "covered_fixed_5mm": 163,
+        "rate_fixed_5mm": 0.849,
+        "covered_max_radius_5mm": 177,
+        "rate_max_radius_5mm": 0.9219
+      }
+    },
+    "runtime_notes": "Streaming scale generation takes ~2.8s per scan on CPU (12 threads); memory footprint ~450 MB per 512x512x400 volume"
+  },
+  "comparative_insights": {
+    "coverage_at_matched_proposals": {
+      "density_point": "~800-864 proposals/scan",
+      "method_A_v2_coverage": "190/192 (98.96%) at 864 cands/scan",
+      "method_B_log_coverage": "113/192 (58.85%) at 800 cands/scan",
+      "absolute_gain": "+40.11% target coverage gain by Method A"
+    },
+    "density_required_for_90_percent_coverage": {
+      "method_A": "864 proposals/scan achieves 98.96% coverage",
+      "method_B": "Requires cap >= 3,500 proposals/scan to achieve 90% coverage"
+    },
+    "root_cause_of_external_gap": "Classical LoG struggles with non-spherical, juxta-pleural, and subsolid ground-glass nodules without multi-scale morphological filtering. The 3D proposal ensemble solves this via complementary multi-detector fusion."
+  }
+}

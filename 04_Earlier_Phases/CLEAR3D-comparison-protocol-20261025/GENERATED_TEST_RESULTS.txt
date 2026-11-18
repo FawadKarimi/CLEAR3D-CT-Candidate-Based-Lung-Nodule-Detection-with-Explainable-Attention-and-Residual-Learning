@@ -1,0 +1,13 @@
+test_candidate_must_belong_to_the_declared_series (test_protocol.EligibilityTests) ... ok
+test_faint_nodule_stays_eligible (test_protocol.EligibilityTests) ... ok
+test_outside_volume_is_ineligible (test_protocol.EligibilityTests) ... ok
+test_draft_population_cannot_launch (test_protocol.GateTests) ... ok
+test_cpm_requires_seven_points (test_protocol.MetricTests) ... ok
+test_partition_overlap_is_rejected (test_protocol.MetricTests) ... ok
+test_redesign_reported_f1_is_the_count_formula (test_protocol.MetricTests) ... ok
+test_zero_true_positives (test_protocol.MetricTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.001s
+
+OK

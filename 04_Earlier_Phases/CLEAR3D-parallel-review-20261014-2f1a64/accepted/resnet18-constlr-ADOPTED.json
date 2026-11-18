@@ -1,0 +1,128 @@
+{
+  "acknowledged_unresolved_holds": [
+    "reference_origin",
+    "excluded_reference_outliers",
+    "geometry_and_source_scope",
+    "protocol_evaluation_disclosure",
+    "prior_test_access",
+    "independent_reference_review"
+  ],
+  "attribution_limitation": "User instruction; authorship, signature and factual completeness are not independently authenticated.",
+  "budget": {
+    "depth_order": [
+      18,
+      10
+    ],
+    "generated_per_depth": 120,
+    "no_budget_transfer": true,
+    "research_per_depth": 780,
+    "total_seconds": 1800
+  },
+  "cap4000_policy": "NOT_ADOPTED",
+  "configuration_sha256": {
+    "10": "6bab7aa9d57941ff50d6fb824766a953d03309b0f8f519146c33e44078b33071",
+    "18": "4775888713faeaa0dcf88cbd8ba85f835d7fcb71eeaa9994cad427eedd492b4d"
+  },
+  "cuda_instrumentation_unmeasured": true,
+  "date": "2026-10-25",
+  "diagnostic_data": {
+    "accepted_label_evidence_sha256": "3fe76af6288b0b27f1c1a2e6d668914e715c25ed3076c8df34b5686f87bdb69b",
+    "cap4000_policy": "NOT_ADOPTED",
+    "inputs": {
+      "draw0": {
+        "bytes": 10772,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-label-adapter-review-20261013-a97f24/runs/label-selection-001/epoch-0-draws.json",
+        "sha256": "f1879b75a35490c9f9d09d3214055aafc43a8d4c99fe7b8860c45cb33e7f9066"
+      },
+      "draw1": {
+        "bytes": 10788,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-label-adapter-review-20261013-a97f24/runs/label-selection-001/epoch-1-draws.json",
+        "sha256": "4e5ca7eb21415c75b09816b838d42d5f991587d61ecc10ef425fd4225495f542"
+      },
+      "draw2": {
+        "bytes": 10783,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-label-adapter-review-20261013-a97f24/runs/label-selection-001/epoch-2-draws.json",
+        "sha256": "6fd356d936ce856d36e0b6ab87adeac0a98c49efe4c17e9caee0121c645c71d0"
+      },
+      "index": {
+        "bytes": 1308983296,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostics-launcher-review-20261013-7e3c92/runs/cap4000-index-001/metadata-index.sqlite",
+        "sha256": "211aa23cb0ff9c49ec820edaade08d080e6b47a4e058a8bf32c2091d6bdc229d"
+      },
+      "label_selection": {
+        "bytes": 5668,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-label-adapter-review-20261013-a97f24/runs/label-selection-001/selection.json",
+        "sha256": "edc8e79eed740c0fc7c5e9bb481da6bc499e2d310b4d7d567d25308dcd602ec8"
+      },
+      "manifest": {
+        "bytes": 383533,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostics-launcher-review-20261013-7e3c92/runs/cap4000-build-001/candidate-manifest.json",
+        "sha256": "824e08a51d537d15ce3be6407cbcd3e996f26889ecb75c5db9ebd512061ae332"
+      },
+      "parent_selection": {
+        "bytes": 4006320,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-matched-execution-20261013-4e9a7d/accepted-selection.json",
+        "sha256": "36b02a67d3ab06804792c5d5743236e61ab8f45aeb17fd9f73069087f7275cb8"
+      },
+      "preparation": {
+        "bytes": 1038673,
+        "path": "/experiment-storage/chaidir/fawad-dsai/LIDC3D/artifacts/luna16-development-image-exclusions-v1-20261007T070033Z-avEHgf/preparation.json",
+        "sha256": "47f5a6a740b405d758431e56f241993e48c93b330fa7859d93a7133378fa120a"
+      },
+      "sidecar": {
+        "bytes": 23318528,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-label-adapter-review-20261013-a97f24/runs/label-selection-001/labels.sqlite",
+        "sha256": "65c786e6c0be343efc6fa3e8fbb9377af36fc728306cb5f1de9ebd562810294e"
+      },
+      "validation": {
+        "bytes": 1580709,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-label-adapter-review-20261013-a97f24/runs/label-selection-001/validation-unchanged.json",
+        "sha256": "1e2004e9fe4c2c395fd4fcdffdba1224cb4ce92b4fc301767b95e8d1da495294"
+      }
+    },
+    "outputs": {
+      "10": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-training-review-20261013-6e91ab/runs/diagnostic-epochs10-001",
+      "18": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-training-review-20261013-6e91ab/runs/diagnostic-epochs18-001"
+    },
+    "reference_release": "HOLD",
+    "training_ready": false,
+    "unique_training_positives": 15
+  },
+  "endpoint": "final_epoch_2_loss_diagnostics_only",
+  "fp32_not_amp_coverage": true,
+  "instruction": "Additive ResNet18 diagnostic with a constant 10x group learning rate for all 3 epochs. The reviewed cosine schedule reached the floor on epoch 2. Not a resume. Reference HOLD. cap4000 NOT_ADOPTED. One validation report at probability 0.5.",
+  "label_guided_sampling": true,
+  "limits": {
+    "setup_seconds": 180,
+    "run_seconds": 1800,
+    "validation_seconds": 180,
+    "total_seconds": 1800,
+    "rss_bytes": 8589934592,
+    "allocator_bytes": 4294967296,
+    "gpu_bytes": 6442450944,
+    "sample_seconds": 1.0,
+    "min_ram_bytes": 34359738368,
+    "reserve_ram_bytes": 8589934592,
+    "min_gpu_bytes": 10737418240,
+    "min_disk_bytes": 21474836480
+  },
+  "no_positive_coverage_improvement": true,
+  "not_scientific_approval": true,
+  "pretraining_overlap_uncertain": true,
+  "prior_validation_exposure": true,
+  "recorded_server_utc": "2026-10-13T17:14:38.920035+00:00",
+  "reference_release": "HOLD",
+  "sampled_monitoring": true,
+  "sampling": {
+    "max_epoch_rows": 65536,
+    "max_source_rows": 283200,
+    "negative_draws": 720,
+    "policy": "positive-cycle-negative-hash-v1",
+    "positive_draws": 240
+  },
+  "scope": "cap4000-fixed12-diagnostic-three-epoch-v1",
+  "source_binding_sha256": "adb44927810502300f8931421ab867c27054b4c081d0f2061b55127349047310",
+  "status": "ADOPTED",
+  "supplied_by": "Fawad Karimi",
+  "unique_training_positives": 15
+}

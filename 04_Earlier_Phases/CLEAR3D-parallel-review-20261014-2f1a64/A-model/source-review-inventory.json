@@ -1,0 +1,57 @@
+[
+  {
+    "path": "accepted/source/src/lidc3d/models.py",
+    "bytes": 12043,
+    "sha256": "8a318ce226a02c5a00cef3b764aa2b71399dfd38c0f9439ed66214b1870cf92d"
+  },
+  {
+    "path": "accepted/source/src/lidc3d/medicalnet_adapter.py",
+    "bytes": 5861,
+    "sha256": "d6663afeaf7158462c78ded8b8f1acfccaabfc2555acf2e32247c6fff205ec9c"
+  },
+  {
+    "path": "accepted/source/src/lidc3d/medicalnet_vendor.py",
+    "bytes": 8189,
+    "sha256": "b2027785ff2fcfb86147c75509d0abc272edeb820bfca6ce9ba56cd122b768ca"
+  },
+  {
+    "path": "accepted/source/src/lidc3d/data.py",
+    "bytes": 2317,
+    "sha256": "af1c5d23ebe78af35b2e4ed1eb31508bc110096eb742c3bcd11183600b889b88"
+  },
+  {
+    "path": "accepted/source/src/lidc3d/geometry.py",
+    "bytes": 3217,
+    "sha256": "e7844480f5859a71d53866a286b7cc1f0062c19a4d334ce738a02fc879e7a711"
+  },
+  {
+    "path": "accepted/source/src/lidc3d/training.py",
+    "bytes": 17160,
+    "sha256": "5a199435c98f7170a108b74d987ba4db105cde86b478e6ec06ad10116473e132"
+  },
+  {
+    "path": "accepted/source/src/lidc3d/optimization.py",
+    "bytes": 12219,
+    "sha256": "97c3e903c0967cd72d040f327b689690def38c6f112907996832489a1a625b74"
+  },
+  {
+    "path": "accepted/source/src/lidc3d/diagnostics.py",
+    "bytes": 5594,
+    "sha256": "ff4ca03ce8adbe193eef3a4201df1aaa847a7be31d3e3d3f001ab67eaf089e34"
+  },
+  {
+    "path": "accepted/source/src/lidc3d/medicalnet_contract.py",
+    "bytes": 4834,
+    "sha256": "987e894c849cadd48748432510360b66bad405cac6128adf854baf232bad023b"
+  },
+  {
+    "path": "accepted/source/src/lidc3d/medicalnet_finetuning.py",
+    "bytes": 5136,
+    "sha256": "450a12ce81bcf7a17733205f72d80df38cd0d87be184c67a10d38e5f64dec77b"
+  },
+  {
+    "path": "accepted/source/src/lidc3d/scoped_epochs.py",
+    "bytes": 12819,
+    "sha256": "56fde4166383a538df70eafa8f26bb90ebde52ed4f4cdaafa098bc0669eab4b2"
+  }
+]

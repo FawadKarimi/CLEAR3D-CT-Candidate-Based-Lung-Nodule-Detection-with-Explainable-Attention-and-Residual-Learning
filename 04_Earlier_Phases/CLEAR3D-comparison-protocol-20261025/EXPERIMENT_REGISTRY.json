@@ -1,0 +1,20 @@
+{
+  "inspection": "2026-10-25 read-only; checkpoints not deserialized",
+  "historical_zip_sha256_supplied_not_recomputed": "446915a67d7faff15b9ba4e00eb0d2ed1a0121125a850136e57d247e23f443fa",
+  "runs": [
+    {"id": "fixed16-001", "utc": "2026-10-24T17:04:54Z", "state": "complete"},
+    {"id": "resnet18-budget1800-001", "state": "FAIL", "error": "Stage failed; later stages NOT_RUN", "worker_exit": 1},
+    {"id": "resnet18-budget1800-002", "state": "FAIL", "error": "Stage failed; later stages NOT_RUN", "worker_exit": 0},
+    {"id": "resnet18-lr10x-002", "utc": "2026-10-24T18:37:19Z", "state": "PASS", "updates": 180, "skips": 0, "checkpoint_commit_sha256": "48d70fb4762414cd8dc9df20541462d63febafdb2404cde45ef9ba1ae3c1c407"},
+    {"id": "resnet18-constlr-001", "utc": "2026-10-24T19:07:28Z", "state": "PASS", "updates": 180, "skips": 0, "checkpoint_commit_sha256": "30e06743904d4d353873d3efb5cb0dfc8436fb79c5a864bca401ca63bf901c74"},
+    {"id": "balanced-nofit-002", "state": "finished", "validation_384_pos_f1": 0.026490066225165563},
+    {"id": "pretrain-depth10-001", "state": "finished", "note": "later depth-10 run; October 14 zip still says ResNet10 NOT_RUN"},
+    {"id": "pretrain-depth18-001", "state": "finished", "best_step": 180},
+    {"id": "frozen-clean10-001", "state": "finished", "validation_384": "all 384 predicted positive"},
+    {"id": "zuo18-001", "state": "finished", "note": "not a Zuo 2020 reproduction", "validation_384": "TP 0 FP 0 FN 15 TN 369"},
+    {"id": "luna-expand-001", "state": "finished", "saved_epoch": 2, "validation_384": "TP 4 FP 0 FN 11 TN 369", "best_state_sha256": "83fbd3c5f556e9afa2b08a3b1238da8311293b517b3ab0ae6792dbe7ca839b57"},
+    {"id": "multibranch-001", "state": "finished", "saved_epoch": 5, "validation_at_cut": "TP 4 FP 1 FN 11 TN 368", "best_state_sha256": "01a1fc9f5401ee9bf0592ceaea93469f63ee82a02dbd4dc9cd31d32d8183294b"},
+    {"id": "med48-001", "state": "finished", "saved_epoch": 7, "validation_384": "TP 5 FP 139 FN 10 TN 230"},
+    {"id": "redesign-001", "utc": "2026-10-25T10:02:54Z", "state": "finished", "source_sha256": "d0477b881b200d9ed39349af6ae233ae36548f98e097454b9bfe5bc938a54dc6", "best_state_sha256": "07b4ddba6c0c30909525afc6718056f317360d9fab74ecfa1178426e4efb43b7", "named_test_f1": 0.8641975308641974, "predictions_saved": false, "scientific_acceptance": false}
+  ]
+}

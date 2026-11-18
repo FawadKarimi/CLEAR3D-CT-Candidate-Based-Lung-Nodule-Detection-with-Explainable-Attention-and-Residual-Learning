@@ -1,0 +1,118 @@
+{
+  "smoke": false,
+  "confirmation": "closed",
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.030934371818555143
+    },
+    {
+      "epoch": 2,
+      "loss": 0.007976546921206517
+    },
+    {
+      "epoch": 3,
+      "loss": 0.00691721391130189
+    },
+    {
+      "epoch": 4,
+      "loss": 0.005223178441647991
+    }
+  ],
+  "checkpoint": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-comparison-protocol-20261025/runs/phase-finish-s1/wang_s1.pt",
+  "detection_development": {
+    "patients": 142,
+    "scans": 142,
+    "nodules": 192,
+    "marks": 28400,
+    "block": 96,
+    "seconds": 10162.30970287323,
+    "models": {
+      "spot": {
+        "sensitivity": [
+          0.0,
+          0.0,
+          0.005208333333333333,
+          0.005208333333333333,
+          0.005208333333333333,
+          0.010416666666666666,
+          0.020833333333333332
+        ],
+        "cpm": 0.006696428571428571,
+        "coverage_at_retained_marks": 0.08854166666666667,
+        "marks": 28400,
+        "nodules": 192,
+        "scans": 142
+      },
+      "zuo": {
+        "sensitivity": [
+          0.015625,
+          0.03125,
+          0.036458333333333336,
+          0.041666666666666664,
+          0.052083333333333336,
+          0.06770833333333333,
+          0.08333333333333333
+        ],
+        "cpm": 0.046875,
+        "coverage_at_retained_marks": 0.08854166666666667,
+        "marks": 28400,
+        "nodules": 192,
+        "scans": 142
+      },
+      "wang": {
+        "sensitivity": [
+          0.020833333333333332,
+          0.026041666666666668,
+          0.026041666666666668,
+          0.026041666666666668,
+          0.026041666666666668,
+          0.026041666666666668,
+          0.026041666666666668
+        ],
+        "cpm": 0.025297619047619044,
+        "coverage_at_retained_marks": 0.08854166666666667,
+        "marks": 28400,
+        "nodules": 192,
+        "scans": 142
+      },
+      "clear": {
+        "sensitivity": [
+          0.020833333333333332,
+          0.020833333333333332,
+          0.026041666666666668,
+          0.036458333333333336,
+          0.036458333333333336,
+          0.036458333333333336,
+          0.036458333333333336
+        ],
+        "cpm": 0.030505952380952384,
+        "coverage_at_retained_marks": 0.08854166666666667,
+        "marks": 28400,
+        "nodules": 192,
+        "scans": 142
+      },
+      "ablation": {
+        "sensitivity": [
+          0.020833333333333332,
+          0.020833333333333332,
+          0.026041666666666668,
+          0.026041666666666668,
+          0.026041666666666668,
+          0.026041666666666668,
+          0.03125
+        ],
+        "cpm": 0.025297619047619048,
+        "coverage_at_retained_marks": 0.08854166666666667,
+        "marks": 28400,
+        "nodules": 192,
+        "scans": 142
+      }
+    }
+  },
+  "departures": [
+    "Wang stage-1 ASCRM is a disclosed attention residual stand-in.",
+    "Detector block size is 96 cubed.",
+    "Track 2 numbers in this file are development-only."
+  ]
+}
