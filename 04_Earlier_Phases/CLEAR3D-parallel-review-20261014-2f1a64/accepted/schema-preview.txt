@@ -1,0 +1,245 @@
+{
+  "activation_sample": {
+    "epoch": 0,
+    "full_tensor_retained": false,
+    "kind": "activation_sample",
+    "microbatch": 0,
+    "module": "encoder",
+    "statistics": [
+      {
+        "max": 1.5693044662475586,
+        "mean": 0.0754338594889532,
+        "min": -1.5664973258972168,
+        "nonfinite_count": 0,
+        "rms": 0.47981146747974734,
+        "sample_count": 256,
+        "zeros": 0
+      },
+      {
+        "max": 1.2760286331176758,
+        "mean": -0.06921502449858963,
+        "min": -1.5357446670532227,
+        "nonfinite_count": 0,
+        "rms": 0.5287383028231546,
+        "sample_count": 256,
+        "zeros": 0
+      },
+      {
+        "max": 1.026540756225586,
+        "mean": -0.003537970426123138,
+        "min": -1.2882421016693115,
+        "nonfinite_count": 0,
+        "rms": 0.3401362004567554,
+        "sample_count": 256,
+        "zeros": 0
+      }
+    ]
+  },
+  "class_losses": {
+    "classes": {
+      "0": {
+        "count": 2,
+        "positive_probability": {
+          "max": 0.4048292609374953,
+          "mean": 0.39934165571056524,
+          "min": 0.3938540504836351,
+          "nonfinite_count": 0,
+          "rms": 0.3993793582507516,
+          "sample_count": 2,
+          "zeros": 0
+        },
+        "unweighted_loss_sum": 1.0195413827896118,
+        "weighted_loss_sum": 1.0195413827896118
+      },
+      "1": {
+        "count": 0,
+        "positive_probability": {
+          "max": null,
+          "mean": null,
+          "min": null,
+          "nonfinite_count": 0,
+          "rms": null,
+          "sample_count": 0,
+          "zeros": 0
+        },
+        "unweighted_loss_sum": 0.0,
+        "weighted_loss_sum": 0.0
+      }
+    },
+    "epoch": 0,
+    "kind": "class_losses",
+    "microbatch": 0
+  },
+  "optimizer_boundary": {
+    "actual_updates": 1,
+    "clip_limit": 1,
+    "clipping_applied": true,
+    "counters": {
+      "boundaries": 1,
+      "consecutive_skips": 0,
+      "optimizer_updates": 1,
+      "policy": {
+        "max_consecutive_skips": 8,
+        "max_total_skips": 16,
+        "require_update_each_epoch": true,
+        "version": "bounded-amp-v1"
+      },
+      "scale_changes": 0,
+      "scaler_update_calls": 1,
+      "skipped_updates": 0
+    },
+    "denominator": 24.0,
+    "epoch": 0,
+    "families_sampled": {
+      "encoder": {
+        "before_squared_sum": 448.3115889326753,
+        "changed_values": 1238,
+        "delta_squared_sum": 1.1097687554317803e-05,
+        "sample_count": 1728
+      },
+      "head_bridge_other": {
+        "before_squared_sum": 160.65028010517238,
+        "changed_values": 525,
+        "delta_squared_sum": 5.1692246154812515e-06,
+        "sample_count": 578
+      },
+      "transformer": {
+        "before_squared_sum": 484.3924131291785,
+        "changed_values": 2880,
+        "delta_squared_sum": 7.031260759432519e-06,
+        "sample_count": 2880
+      }
+    },
+    "gradient_norm_after_clip": 0.9999995231628418,
+    "gradient_norm_before_clip": 1.9847866296768188,
+    "groups": [
+      {
+        "index": 0,
+        "lr": 0.0001,
+        "parameter_tensors": 37,
+        "weight_decay": 0.0001
+      },
+      {
+        "index": 1,
+        "lr": 0.0001,
+        "parameter_tensors": 17,
+        "weight_decay": 0.0
+      },
+      {
+        "index": 2,
+        "lr": 5e-05,
+        "parameter_tensors": 30,
+        "weight_decay": 0.0001
+      },
+      {
+        "index": 3,
+        "lr": 5e-05,
+        "parameter_tensors": 60,
+        "weight_decay": 0.0
+      },
+      {
+        "index": 4,
+        "lr": 0.0001,
+        "parameter_tensors": 7,
+        "weight_decay": 0.0001
+      },
+      {
+        "index": 5,
+        "lr": 0.0001,
+        "parameter_tensors": 12,
+        "weight_decay": 0.0
+      }
+    ],
+    "kind": "optimizer_boundary",
+    "microbatch": 7,
+    "parameter_changes_are_sampled": true,
+    "status": "UPDATED"
+  },
+  "epoch-checkpoints/2751f24f9ec7459591cdac9a86ab74dd/commit.json": {
+    "binding": {
+      "candidate_label_adapter": "cap4000-fixed12-reference-selection-v1",
+      "candidate_manifest_sha256": "824e08a51d537d15ce3be6407cbcd3e996f26889ecb75c5db9ebd512061ae332",
+      "cap4000_policy": "NOT_ADOPTED",
+      "checkpoint_sha256": "38b3a17444c5c18a795355a868e6a2d9ce9318054067f5373d337f55c0f61da3",
+      "config_hash": "bf463e3675b7f55c0a6234d9af9f229922c52094c00191fa60cac1d822310b1f",
+      "depth": 18,
+      "diagnostic_data_sha256": "1d39dcb5c088f6098f60401e1722849bd177eb8389d97835236ed26b82e4d348",
+      "diagnostics_sha256": "f4f04343f99fd8b148c12b6cfb59d7fa4e25599811b4223ff9e85a51abf33bcb",
+      "disposition_sha256": "efdca7e14aef4835cef59bf2314629fbcc2f0d2d7a923659be5ab026962c1961",
+      "draw_plan_sha256": [
+        "f1879b75a35490c9f9d09d3214055aafc43a8d4c99fe7b8860c45cb33e7f9066",
+        "4e5ca7eb21415c75b09816b838d42d5f991587d61ecc10ef425fd4225495f542",
+        "6fd356d936ce856d36e0b6ab87adeac0a98c49efe4c17e9caee0121c645c71d0"
+      ],
+      "endpoint": "final_epoch",
+      "label_selection_sha256": "edc8e79eed740c0fc7c5e9bb481da6bc499e2d310b4d7d567d25308dcd602ec8",
+      "label_sidecar_sha256": "65c786e6c0be343efc6fa3e8fbb9377af36fc728306cb5f1de9ebd562810294e",
+      "metadata_index_sha256": "211aa23cb0ff9c49ec820edaade08d080e6b47a4e058a8bf32c2091d6bdc229d",
+      "parent_selection_sha256": "36b02a67d3ab06804792c5d5743236e61ab8f45aeb17fd9f73069087f7275cb8",
+      "precision": "FP32",
+      "preparation_sha256": "47f5a6a740b405d758431e56f241993e48c93b330fa7859d93a7133378fa120a",
+      "provenance_sha256": "25f383670084192398baba04f3be50fc2f01d4054eadb6aa497c8a9351691bfb",
+      "reference_release": "HOLD",
+      "run_id": "08cd1aa8b4fa4adc93a47bf861dabcb8",
+      "sampling_sha256": "941bc47b196c465f399d6437f335b9ab03d2981fe41b4099b292a026322697f4",
+      "schema": "scoped-epoch-identity-v1",
+      "scope": "cap4000-fixed12-diagnostic-three-epoch-v1",
+      "seed": 17,
+      "selection_sha256": "edc8e79eed740c0fc7c5e9bb481da6bc499e2d310b4d7d567d25308dcd602ec8",
+      "source_binding_sha256": "adb44927810502300f8931421ab867c27054b4c081d0f2061b55127349047310",
+      "transfer": {
+        "amp": false,
+        "backbones": [
+          18,
+          10
+        ],
+        "bn_affine_trainable": true,
+        "bridge_seed": 2718,
+        "bridges": [
+          [
+            64,
+            32
+          ],
+          [
+            128,
+            64
+          ],
+          [
+            512,
+            128
+          ]
+        ],
+        "checkpoint_sha256": "38b3a17444c5c18a795355a868e6a2d9ce9318054067f5373d337f55c0f61da3",
+        "depth": 18,
+        "execution_protocol": "scoped-epoch-commit-v1",
+        "frozen_bn_statistics": true,
+        "maxpool_backward": "27 fixed offsets; first-order only",
+        "no_resume": false,
+        "precision": "FP32",
+        "pyramid": "layer1,layer2,layer4; nonoverlap mean2 last scale",
+        "reference_release": "HOLD",
+        "seed": 17,
+        "selection_sha256": "36b02a67d3ab06804792c5d5743236e61ab8f45aeb17fd9f73069087f7275cb8",
+        "shortcut_A": "forward-preserving gradient restoration",
+        "strict_determinism": true,
+        "version": "medicalnet-guarded-v1"
+      },
+      "unchanged_validation_sha256": "1e2004e9fe4c2c395fd4fcdffdba1224cb4ce92b4fc301767b95e8d1da495294"
+    },
+    "epoch": -1,
+    "parent": null,
+    "schema": "scoped-epoch-commit-v1",
+    "state_sha256": "39e479154ecec7057288117624d82045a856c043d092e653deaf59392477aa1a",
+    "status": "COMMITTED"
+  },
+  "sampling_keys": [
+    "epoch",
+    "negative_draws",
+    "policy",
+    "positive_draws",
+    "seed",
+    "source_index_sha256",
+    "source_indices",
+    "unique_positive_sources"
+  ]
+}

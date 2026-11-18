@@ -1,0 +1,238 @@
+{
+  "cohort": {
+    "name": "HOLD_Subset0",
+    "scans": 89,
+    "patients": 89,
+    "candidates": 79135,
+    "positives": 138,
+    "negatives": 78997,
+    "patient_overlap_with_dev": 0
+  },
+  "frozen_inner_fit": {
+    "optimizer_success": true,
+    "optimizer_message": "Optimization terminated successfully.",
+    "T_0": 0.619431633780125,
+    "b_0": 2.757011387178962,
+    "tau_raw_0_star": 0.91705227,
+    "tau_cal_0_star": 0.360871273377924,
+    "inner_fold1_metrics": {
+      "raw_at_0.5": {
+        "threshold": 0.5,
+        "TP": 110,
+        "FP": 366,
+        "TN": 63902,
+        "FN": 8,
+        "N": 64386,
+        "positives": 118,
+        "negatives": 64268,
+        "sensitivity": 0.9322033898305084,
+        "precision": 0.23109243697478993,
+        "specificity": 0.9943050974046181,
+        "accuracy": 0.9941912838194639,
+        "positive_f1": 0.37037037037037035,
+        "negative_f1": 0.997082182589836,
+        "macro_f1": 0.6837262764801032,
+        "targets_98pct_achieved": {
+          "sensitivity_ge_0.98": false,
+          "precision_ge_0.98": false,
+          "specificity_ge_0.98": true,
+          "accuracy_ge_0.98": true,
+          "positive_f1_ge_0.98": false
+        }
+      },
+      "raw_at_tau_raw_star": {
+        "threshold": 0.91705227,
+        "TP": 87,
+        "FP": 42,
+        "TN": 64226,
+        "FN": 31,
+        "N": 64386,
+        "positives": 118,
+        "negatives": 64268,
+        "sensitivity": 0.7372881355932204,
+        "precision": 0.6744186046511628,
+        "specificity": 0.9993464865874152,
+        "accuracy": 0.9988662131519275,
+        "positive_f1": 0.7044534412955465,
+        "negative_f1": 0.9994320171172923,
+        "macro_f1": 0.8519427292064194,
+        "targets_98pct_achieved": {
+          "sensitivity_ge_0.98": false,
+          "precision_ge_0.98": false,
+          "specificity_ge_0.98": true,
+          "accuracy_ge_0.98": true,
+          "positive_f1_ge_0.98": false
+        }
+      },
+      "cal_at_0.5": {
+        "threshold": 0.5,
+        "TP": 72,
+        "FP": 27,
+        "TN": 64241,
+        "FN": 46,
+        "N": 64386,
+        "positives": 118,
+        "negatives": 64268,
+        "sensitivity": 0.6101694915254238,
+        "precision": 0.7272727272727273,
+        "specificity": 0.999579884234767,
+        "accuracy": 0.9988662131519275,
+        "positive_f1": 0.663594470046083,
+        "negative_f1": 0.9994321496635681,
+        "macro_f1": 0.8315133098548255,
+        "targets_98pct_achieved": {
+          "sensitivity_ge_0.98": false,
+          "precision_ge_0.98": false,
+          "specificity_ge_0.98": true,
+          "accuracy_ge_0.98": true,
+          "positive_f1_ge_0.98": false
+        }
+      },
+      "cal_at_tau_cal_star": {
+        "threshold": 0.360871273377924,
+        "TP": 87,
+        "FP": 42,
+        "TN": 64226,
+        "FN": 31,
+        "N": 64386,
+        "positives": 118,
+        "negatives": 64268,
+        "sensitivity": 0.7372881355932204,
+        "precision": 0.6744186046511628,
+        "specificity": 0.9993464865874152,
+        "accuracy": 0.9988662131519275,
+        "positive_f1": 0.7044534412955465,
+        "negative_f1": 0.9994320171172923,
+        "macro_f1": 0.8519427292064194,
+        "targets_98pct_achieved": {
+          "sensitivity_ge_0.98": false,
+          "precision_ge_0.98": false,
+          "specificity_ge_0.98": true,
+          "accuracy_ge_0.98": true,
+          "positive_f1_ge_0.98": false
+        }
+      }
+    }
+  },
+  "arm_e_hold_8view": {
+    "roc_auc": 0.999260199387502,
+    "pr_auc": 0.822571201612541,
+    "metrics": {
+      "raw_at_0.5": {
+        "threshold": 0.5,
+        "TP": 133,
+        "FP": 370,
+        "TN": 78627,
+        "FN": 5,
+        "N": 79135,
+        "positives": 138,
+        "negatives": 78997,
+        "sensitivity": 0.9637681159420289,
+        "precision": 0.2644135188866799,
+        "specificity": 0.9953162778333354,
+        "accuracy": 0.9952612623996967,
+        "positive_f1": 0.41497659906396256,
+        "negative_f1": 0.9976209961364977,
+        "macro_f1": 0.7062987976002302,
+        "targets_98pct_achieved": {
+          "sensitivity_ge_0.98": false,
+          "precision_ge_0.98": false,
+          "specificity_ge_0.98": true,
+          "accuracy_ge_0.98": true,
+          "positive_f1_ge_0.98": false
+        }
+      },
+      "raw_at_tau_raw_star": {
+        "threshold": 0.91705227,
+        "TP": 105,
+        "FP": 35,
+        "TN": 78962,
+        "FN": 33,
+        "N": 79135,
+        "positives": 138,
+        "negatives": 78997,
+        "sensitivity": 0.7608695652173914,
+        "precision": 0.75,
+        "specificity": 0.9995569452004507,
+        "accuracy": 0.9991407089151451,
+        "positive_f1": 0.7553956834532374,
+        "negative_f1": 0.9995695984606816,
+        "macro_f1": 0.8774826409569595,
+        "targets_98pct_achieved": {
+          "sensitivity_ge_0.98": false,
+          "precision_ge_0.98": false,
+          "specificity_ge_0.98": true,
+          "accuracy_ge_0.98": true,
+          "positive_f1_ge_0.98": false
+        }
+      },
+      "cal_at_0.5": {
+        "threshold": 0.5,
+        "TP": 92,
+        "FP": 17,
+        "TN": 78980,
+        "FN": 46,
+        "N": 79135,
+        "positives": 138,
+        "negatives": 78997,
+        "sensitivity": 0.6666666666666666,
+        "precision": 0.8440366972477065,
+        "specificity": 0.9997848019545046,
+        "accuracy": 0.9992038920831491,
+        "positive_f1": 0.7449392712550608,
+        "negative_f1": 0.9996013238579194,
+        "macro_f1": 0.8722702975564901,
+        "targets_98pct_achieved": {
+          "sensitivity_ge_0.98": false,
+          "precision_ge_0.98": false,
+          "specificity_ge_0.98": true,
+          "accuracy_ge_0.98": true,
+          "positive_f1_ge_0.98": false
+        }
+      },
+      "cal_at_tau_cal_star": {
+        "threshold": 0.360871273377924,
+        "TP": 105,
+        "FP": 35,
+        "TN": 78962,
+        "FN": 33,
+        "N": 79135,
+        "positives": 138,
+        "negatives": 78997,
+        "sensitivity": 0.7608695652173914,
+        "precision": 0.75,
+        "specificity": 0.9995569452004507,
+        "accuracy": 0.9991407089151451,
+        "positive_f1": 0.7553956834532374,
+        "negative_f1": 0.9995695984606816,
+        "macro_f1": 0.8774826409569595,
+        "targets_98pct_achieved": {
+          "sensitivity_ge_0.98": false,
+          "precision_ge_0.98": false,
+          "specificity_ge_0.98": true,
+          "accuracy_ge_0.98": true,
+          "positive_f1_ge_0.98": false
+        }
+      }
+    },
+    "froc": {
+      "scans": 89,
+      "cpm": 0.8749999998571428,
+      "froc": {
+        "0.125": 0.732142857,
+        "0.25": 0.758928571,
+        "0.5": 0.8125,
+        "1.0": 0.910714286,
+        "2.0": 0.946428571,
+        "4.0": 0.964285714,
+        "8.0": 1.0
+      },
+      "official_bootstrap": {
+        "cpm_mean": 0.8758060007058239,
+        "cpm_lower_bound": 0.8035551480821906,
+        "cpm_upper_bound": 0.9340083514285714
+      }
+    }
+  },
+  "elapsed_sec": 1287.9092144966125
+}

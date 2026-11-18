@@ -1,0 +1,1 @@
+{"gpu": {"driver": "535.230.02", "free_bytes": 10959716352, "model": "NVIDIA GeForce RTX 2080 Ti", "processes": [{"gpu_bytes": 253755392, "pid": 3340885}, {"gpu_bytes": 322961408, "pid": 3477966}], "total_bytes": 11811160064, "uuid": "GPU-ca0a8f46-9b8e-e098-a97b-e0420b412e90"}, "utc": "2026-11-02T03:05:48.677901+00:00"}

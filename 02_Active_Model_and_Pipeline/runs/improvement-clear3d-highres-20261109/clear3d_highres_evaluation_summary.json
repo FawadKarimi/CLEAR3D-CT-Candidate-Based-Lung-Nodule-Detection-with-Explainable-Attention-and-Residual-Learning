@@ -1,0 +1,69 @@
+{
+  "model_name": "CLEAR3D-HighRes-Intervention",
+  "checkpoint_sha256": "7a5287c6dac08afd322439786b331d72aa10097ff5b72ef2272a92379eca2cd5",
+  "best_checkpoint_sha256": "431850a61fda7f6e97034d0743781908b87d8b7466c8e9abc3c7d774f2e96505",
+  "training_epochs": 6,
+  "batch_size": 32,
+  "training_time_seconds": 605.2457835674286,
+  "parameter_count": 4102798,
+  "latency_ms_per_cand": 25.818217025612885,
+  "dev_1060": {
+    "total": 1060,
+    "positives": 265,
+    "negatives": 795,
+    "pr_auc": 0.9815453083038669,
+    "roc_auc": 0.9900557731102408,
+    "threshold_0_5": {
+      "threshold": 0.5,
+      "total": 1060,
+      "TP": 254,
+      "TN": 771,
+      "FP": 24,
+      "FN": 11,
+      "accuracy": 0.9669811320754716,
+      "recall": 0.9584905660377359,
+      "precision": 0.9136690647482014,
+      "specificity": 0.969811320754717,
+      "f1_positive": 0.9355432780847146,
+      "f1_negative": 0.9778059606848446,
+      "macro_f1": 0.9566746193847796
+    },
+    "best_threshold": {
+      "threshold": 0.59,
+      "total": 1060,
+      "TP": 254,
+      "TN": 775,
+      "FP": 20,
+      "FN": 11,
+      "accuracy": 0.970754716981132,
+      "recall": 0.9584905660377359,
+      "precision": 0.927007299270073,
+      "specificity": 0.9748427672955975,
+      "f1_positive": 0.9424860853432282,
+      "f1_negative": 0.9803921568627451,
+      "macro_f1": 0.9614391211029867
+    }
+  },
+  "dev_20scans": {
+    "total": 18678,
+    "positives": 125,
+    "negatives": 18553,
+    "pr_auc": 0.7403746476760599,
+    "roc_auc": 0.9903118633105158,
+    "threshold_0_5": {
+      "threshold": 0.5,
+      "total": 18678,
+      "TP": 118,
+      "TN": 17990,
+      "FP": 563,
+      "FN": 7,
+      "accuracy": 0.9694828140057822,
+      "recall": 0.944,
+      "precision": 0.17327459618208516,
+      "specificity": 0.9696545033148278,
+      "f1_positive": 0.29280397022332505,
+      "f1_negative": 0.9844049247606019,
+      "macro_f1": 0.6386044474919634
+    }
+  }
+}

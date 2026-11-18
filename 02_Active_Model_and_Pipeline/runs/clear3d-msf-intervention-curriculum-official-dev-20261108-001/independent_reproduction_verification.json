@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "row_alignment": {
+    "total_rows": 122689,
+    "mismatches": 0,
+    "series_count": 142,
+    "aligned": true
+  },
+  "pr_auc_reproduced": {
+    "raw_unfiltered_122689": {
+      "baseline": 0.7810626124338222,
+      "curriculum": 0.7812915501126483,
+      "delta": 0.00022893767882603555,
+      "matches_reported": true
+    },
+    "challenge_rule_121177": {
+      "baseline": 0.8998063313578869,
+      "curriculum": 0.9133818018809522,
+      "delta": 0.013575470523065292,
+      "matches_reported": true
+    }
+  },
+  "cpm_reproduced": {
+    "baseline_cpm_point": 0.9040178571428573,
+    "curriculum_cpm_point": 0.9010416666666669,
+    "delta_cpm": -0.0029761904761904656,
+    "matches_reported": true
+  },
+  "file_hashes": {
+    "baseline_checkpoint": "739d1d7883d66922f568be4cdc66f491bdabe8eb9e1c2c22ecb8c5bf7b8f5494",
+    "curriculum_checkpoint": "ae70317774a76870dc93f3a3e8707e69b4c06ca76424f545e7df2d96a548acc3",
+    "baseline_scores_csv": "39c9bded3d5a942937b97dcc575ad6e90432e5e7b2e32525b5908e918768a3fd",
+    "curriculum_scores_csv": "eef5b7b8f6004dc6a53d48b0bd9b20ce44333975947454cb337a95d4020e5937"
+  }
+}

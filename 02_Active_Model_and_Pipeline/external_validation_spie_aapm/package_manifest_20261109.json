@@ -1,0 +1,95 @@
+{
+  "package_name": "clear3d-pilot-investigation-and-test-technical-pilot-package-20261109.zip",
+  "package_sha256": "1f3de51d67d3e64a611c83568d50e5e0f9c51d8873000147b67c10cffa77bac6",
+  "file_count": 22,
+  "manifest": {
+    "external_validation_spie_aapm/audit_misses_and_generate_overlays.py": {
+      "size_bytes": 12116,
+      "sha256": "e8c02af572e7f0aec3693039a329679d79dbb520807a8d0fceb1912d4f18d938"
+    },
+    "external_validation_spie_aapm/pilot_audit_overlays/audit_misses_summary.json": {
+      "size_bytes": 16585,
+      "sha256": "d05854ed5dc39dc1bfccd75b847a15a4b96601648af179a6abb3c26ec9803964"
+    },
+    "external_validation_spie_aapm/pilot_audit_overlays/all_ten_cases_overlay_grid.png": {
+      "size_bytes": 1388553,
+      "sha256": "f7de01af510a8d94057a724b4ae02c0cf5383fb00bde613c5e8ddb0cd512dfe7"
+    },
+    "external_validation_spie_aapm/audit_and_reproduce_metrics.py": {
+      "size_bytes": 9045,
+      "sha256": "03c7a41019e172143d7d9f21b9adf5c873b9c7b1a6093a7ce8f8bfb5e7921cbf"
+    },
+    "external_validation_spie_aapm/metrics_reproduction_audit.json": {
+      "size_bytes": 4782,
+      "sha256": "83d85098e6a9a226a42ed624ba2e81b9e73e1d6135540a85f92ec429a1fa0f36"
+    },
+    "dev_cap_coverage_analysis.py": {
+      "size_bytes": 2696,
+      "sha256": "98f03da65b97e16d8d255ae9306f01b5f2dc5dad18d1457710b17dcb7a0e2834"
+    },
+    "dev_candidate_cap_coverage.json": {
+      "size_bytes": 1964,
+      "sha256": "3e86244bf801d74bac660656dfecda3fe4a606ae7822e1db341c333d76f110e0"
+    },
+    "external_validation_spie_aapm/test_ground_truth.json": {
+      "size_bytes": 15223,
+      "sha256": "cd60610a5b06483add740d9b7aa909f8f726f2151c6a59dce491b2c8f78f3bad"
+    },
+    "external_validation_spie_aapm/tcia_series_list.json": {
+      "size_bytes": 66373,
+      "sha256": "d813b6fb41fbd9a2fbf1fd271941c1c70a523b8a2967f874b502eac21ebcb05e"
+    },
+    "external_validation_spie_aapm/run_test_cohort_technical_pilot.py": {
+      "size_bytes": 11437,
+      "sha256": "aee29ee8aaa75a45d28f6a4e51440fc32bae95172a88be9fae53f492f903a8b4"
+    },
+    "external_validation_spie_aapm/test_cohort_technical_pilot_summary.json": {
+      "size_bytes": 3645,
+      "sha256": "b52a6ec22cc074e81dd4b7152d98290622ee7920d8367f8eb3e1c2e4e334ea5c"
+    },
+    "primary_reference_system_binding.json": {
+      "size_bytes": 3760,
+      "sha256": "cc9dbf3a4f4750263bdbc6bf0a3dff86c8b4e00b050cc5a04c5550966b6ea1b1"
+    },
+    "external_validation_spie_aapm/pilot_audit_overlays/overlay_CT-Training-BE001.png": {
+      "size_bytes": 116514,
+      "sha256": "aa199f768357b933dbd6f7d8a91216451abf0d20e12e3a76b0ac5dc0287a71fe"
+    },
+    "external_validation_spie_aapm/pilot_audit_overlays/overlay_CT-Training-BE002.png": {
+      "size_bytes": 119208,
+      "sha256": "e771263446d76a72ec1ed4dff9a09c0fc51e7cba9fbff9c5c9b12025a486b0e1"
+    },
+    "external_validation_spie_aapm/pilot_audit_overlays/overlay_CT-Training-BE006.png": {
+      "size_bytes": 115498,
+      "sha256": "ffbf1c87b9d4e1f13c21369891f8feef68de2cd1bd0181b3b65d1d69d469ff94"
+    },
+    "external_validation_spie_aapm/pilot_audit_overlays/overlay_CT-Training-BE007.png": {
+      "size_bytes": 124900,
+      "sha256": "e7af62fa1f6a3ae06a9a424db84f63228505208e8f1ff9509d0d298225acfb07"
+    },
+    "external_validation_spie_aapm/pilot_audit_overlays/overlay_CT-Training-BE010.png": {
+      "size_bytes": 124928,
+      "sha256": "721adf45fb56d0478c8fcea7b30f18d495ea246aa04b4dad1e2b06777623f229"
+    },
+    "external_validation_spie_aapm/pilot_audit_overlays/overlay_CT-Training-LC001.png": {
+      "size_bytes": 127919,
+      "sha256": "a7d34a479c9cd97d83b58fcec8cca876c1d13b62cabcf792b53e57b84d0f9ed6"
+    },
+    "external_validation_spie_aapm/pilot_audit_overlays/overlay_CT-Training-LC002.png": {
+      "size_bytes": 128055,
+      "sha256": "1c497344a4c03f2cd6783be18e1ce2a43ac3f7f81626e04c79bac58de92b1aa4"
+    },
+    "external_validation_spie_aapm/pilot_audit_overlays/overlay_CT-Training-LC003.png": {
+      "size_bytes": 121646,
+      "sha256": "d3aac6f2e5c63d0af4f16e8cf32540a0f12170ed5a902d0f6080f5af5185d208"
+    },
+    "external_validation_spie_aapm/pilot_audit_overlays/overlay_CT-Training-LC008.png": {
+      "size_bytes": 117583,
+      "sha256": "d2770b761d66e2a2ddcb4e20285c1322a3ae8c982891bc3e5f0fedcb96aedf74"
+    },
+    "external_validation_spie_aapm/pilot_audit_overlays/overlay_CT-Training-LC009.png": {
+      "size_bytes": 130225,
+      "sha256": "743042e5f3d08059d52801c5a56393818efba1436dbdc25b25193bfd5d88f943"
+    }
+  }
+}

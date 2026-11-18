@@ -1,3 +1,29 @@
+# CLEAR3D-CT: Candidate-Based Lung Nodule Detection with Explainable Attention and Residual Learning
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+
+This repository consolidates the active **CLEAR3D-CT** two-stage 3D lung nodule detection codebase, Phase-1 **LIDC3D** preparation & provenance pipeline, earlier benchmark comparisons, external SPIE-AAPM LUNGx validation scripts, official LUNA16 FROC evaluation tooling, and journal manuscript/audit packages.
+
+## Repository Layout
+
+- **`01_Paper_and_Manuscripts/`** – Journal submission and verification package (`journal_package_20261117/`): double-blind JIIM manuscript & Title Page (`.docx`), CMIG highlights, JOIV camera-ready `.docx`, cover letter, 300-DPI figures (`fig1`–`fig4`), editorial/literature audit reports (`.md`), and programmatic build & check scripts (`build_jiim_package.py`, `build_joiv_docx.py`, `verify_package.py`), alongside `legacy_drafts_and_templates/`.
+- **`02_Active_Model_and_Pipeline/`** – Active **CLEAR3D-MSFv2** and baseline detector codebase (`clear3d_msf_model_20261106_002.py`, `clear3d_fineonly_model_20261107_001.py`, `loader.py`, 10-fold CV & holdout evaluation scripts), `external_validation_spie_aapm/` scripts/metrics, `paper-ablation-verify-package-20261107-004/` official LUNA16 FROC evaluator, and lightweight JSON/CSV metric summaries in `runs/`.
+- **`03_Phase1_LIDC3D/LIDC3D/`** – Updated Phase-1 `lidc3d` package (`src/lidc3d/`, `scripts/`, `configs/`, `docs/`, `tests/`), synchronized alongside the original root-level Phase-1 snapshot preserved from `main`.
+- **`04_Earlier_Phases/`** – Earlier Phase-2 comparison protocols (`CLEAR3D-comparison-protocol-20261025/` for ZuoNet / WangNet / ClearNet baselines), `CLEAR3D-parallel-review-20261014-2f1a64/`, and `CLEAR3D-broader-loader-root/`.
+
+## Data, Checkpoints, and Excluded Artifacts
+
+Large binary assets are kept outside Git via `.gitignore`:
+- Raw CT DICOM/MHD volumes (`LIDC-IDRI`, `LUNA16`, `SPIE-AAPM LUNGx`) and prepared `.npy`/`.npz` 3D patch tensors
+- Trained PyTorch checkpoints (`*.pt`, `*.pth`, `*.ckpt`)
+- Multi-megabyte candidate pools, per-scan prediction dumps (`*scores*.csv`, `*pooled_oof_predictions*.csv`, `*.jsonl`), local server symlinks (`06_Shared_Data_Links/`), and raw archive bundles (`05_Historical_Archives_and_Reviews/`, `_archive_v2/`)
+
+All scripts accept or configure dataset/checkpoint roots via CLI arguments or environment/path settings on the local workstation.
+
+---
+
+## Original Root Phase-1 LIDC3D Documentation (`main`)
+
 # Independent "CLEAR3D-CT: Candidate-Based Lung Nodule Detection with Explainable Attention and Residual Learning in a Two-Stage 3D CT Framework" research implementation
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)

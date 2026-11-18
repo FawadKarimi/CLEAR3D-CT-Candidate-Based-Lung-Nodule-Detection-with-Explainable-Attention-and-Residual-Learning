@@ -1,0 +1,209 @@
+{
+  "candidates": {
+    "cap": 400,
+    "gaussian_mode": "reflect",
+    "gaussian_truncate": 4,
+    "nms_mm": 3,
+    "sigmas_mm": [
+      1,
+      1.5,
+      2,
+      3
+    ],
+    "threshold": null,
+    "threshold_search": [
+      0.005,
+      0.01,
+      0.02,
+      0.04,
+      0.08
+    ]
+  },
+  "diagnostic_data": {
+    "accepted_label_evidence_sha256": "3fe76af6288b0b27f1c1a2e6d668914e715c25ed3076c8df34b5686f87bdb69b",
+    "cap4000_policy": "NOT_ADOPTED",
+    "inputs": {
+      "draw0": {
+        "bytes": 10772,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-label-adapter-review-20261013-a97f24/runs/label-selection-001/epoch-0-draws.json",
+        "sha256": "f1879b75a35490c9f9d09d3214055aafc43a8d4c99fe7b8860c45cb33e7f9066"
+      },
+      "draw1": {
+        "bytes": 10788,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-label-adapter-review-20261013-a97f24/runs/label-selection-001/epoch-1-draws.json",
+        "sha256": "4e5ca7eb21415c75b09816b838d42d5f991587d61ecc10ef425fd4225495f542"
+      },
+      "draw2": {
+        "bytes": 10783,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-label-adapter-review-20261013-a97f24/runs/label-selection-001/epoch-2-draws.json",
+        "sha256": "6fd356d936ce856d36e0b6ab87adeac0a98c49efe4c17e9caee0121c645c71d0"
+      },
+      "index": {
+        "bytes": 1308983296,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostics-launcher-review-20261013-7e3c92/runs/cap4000-index-001/metadata-index.sqlite",
+        "sha256": "211aa23cb0ff9c49ec820edaade08d080e6b47a4e058a8bf32c2091d6bdc229d"
+      },
+      "label_selection": {
+        "bytes": 5668,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-label-adapter-review-20261013-a97f24/runs/label-selection-001/selection.json",
+        "sha256": "edc8e79eed740c0fc7c5e9bb481da6bc499e2d310b4d7d567d25308dcd602ec8"
+      },
+      "manifest": {
+        "bytes": 383533,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostics-launcher-review-20261013-7e3c92/runs/cap4000-build-001/candidate-manifest.json",
+        "sha256": "824e08a51d537d15ce3be6407cbcd3e996f26889ecb75c5db9ebd512061ae332"
+      },
+      "parent_selection": {
+        "bytes": 4006320,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-matched-execution-20261013-4e9a7d/accepted-selection.json",
+        "sha256": "36b02a67d3ab06804792c5d5743236e61ab8f45aeb17fd9f73069087f7275cb8"
+      },
+      "preparation": {
+        "bytes": 1038673,
+        "path": "/experiment-storage/chaidir/fawad-dsai/LIDC3D/artifacts/luna16-development-image-exclusions-v1-20261007T070033Z-avEHgf/preparation.json",
+        "sha256": "47f5a6a740b405d758431e56f241993e48c93b330fa7859d93a7133378fa120a"
+      },
+      "sidecar": {
+        "bytes": 23318528,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-label-adapter-review-20261013-a97f24/runs/label-selection-001/labels.sqlite",
+        "sha256": "65c786e6c0be343efc6fa3e8fbb9377af36fc728306cb5f1de9ebd562810294e"
+      },
+      "validation": {
+        "bytes": 1580709,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-label-adapter-review-20261013-a97f24/runs/label-selection-001/validation-unchanged.json",
+        "sha256": "1e2004e9fe4c2c395fd4fcdffdba1224cb4ce92b4fc301767b95e8d1da495294"
+      }
+    },
+    "outputs": {
+      "10": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-training-review-20261013-6e91ab/runs/diagnostic-epochs10-001",
+      "18": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-training-review-20261013-6e91ab/runs/diagnostic-epochs18-001"
+    },
+    "reference_release": "HOLD",
+    "training_ready": false,
+    "unique_training_positives": 15
+  },
+  "diagnostics": {
+    "activation_hooks": 8,
+    "activation_values": 256,
+    "max_log_bytes": 67108864,
+    "parameter_values_per_tensor": 32,
+    "parameter_values_total": 16384,
+    "version": "bounded-scalars-v1"
+  },
+  "evaluation": {
+    "bootstrap_repetitions": 2000,
+    "bootstrap_seed": 2026,
+    "fp_budgets": [
+      0.125,
+      0.25,
+      0.5,
+      1,
+      2,
+      4,
+      8
+    ],
+    "operating_fp_budget": 1,
+    "permutation_repetitions": 10000,
+    "permutation_seed": 2027
+  },
+  "evidence_status": "PENDING_VERIFIED_EXPERIMENT",
+  "geometry": {
+    "coordinate_aware_spacing_mm": 1.0,
+    "max_interpolation_gap_mm": 1.25,
+    "orientation_atol": 0.0001,
+    "position_atol_mm": 0.1,
+    "spacing_atol_mm": 0.1,
+    "spacing_rtol": 0.01
+  },
+  "medicalnet": {
+    "checkpoint": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-guarded-review-20261013-b17e4c/weights/resnet_10.pth",
+    "checkpoint_sha256": "2824951eaef30e115929b89bec72342380b08d14792bda1449974ac849e497c0",
+    "depth": 10,
+    "provenance": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-guarded-review-20261013-b17e4c/official-provenance.json",
+    "provenance_sha256": "25f383670084192398baba04f3be50fc2f01d4054eadb6aa497c8a9351691bfb"
+  },
+  "model": {
+    "dropout": 0.1,
+    "embed_dim": 128,
+    "ff_dim": 256,
+    "fusion": "hierarchical",
+    "head_dropout": 0.3,
+    "heads": 4,
+    "kind": "hybrid",
+    "layers": 2,
+    "patch_size": 48,
+    "positional_encoding": true,
+    "scales": [
+      0,
+      1,
+      2
+    ],
+    "width": 16
+  },
+  "preprocess": {
+    "mask_air_hu": -400,
+    "mask_dilation_mm": 5,
+    "mask_min_component_mm3": 10000,
+    "spacing_mm": 1.0,
+    "window_hu": [
+      -1000,
+      400
+    ]
+  },
+  "project": "independent_lidc3d",
+  "schema_version": 1,
+  "training": {
+    "accumulation": 8,
+    "alignment_weight": 0,
+    "amp": false,
+    "class_weights": [
+      1,
+      3
+    ],
+    "clip_grad_norm": 1,
+    "lr_cnn": 0.0001,
+    "lr_head": 0.0001,
+    "lr_transformer": 5e-05,
+    "max_epochs": 3,
+    "microbatch": 2,
+    "min_delta": 0.001,
+    "min_lr": 1e-06,
+    "patience": 3,
+    "seeds": [
+      17
+    ],
+    "warmup_epochs": 1,
+    "weight_decay": 0.0001
+  },
+  "training_sampling": {
+    "max_epoch_rows": 65536,
+    "max_source_rows": 283200,
+    "negative_draws": 720,
+    "policy": "positive-cycle-negative-hash-v1",
+    "positive_draws": 240
+  },
+  "xai": {
+    "blur_sigma_mm": 3,
+    "ig_atol": 0.0001,
+    "ig_intervals": [
+      64,
+      128,
+      256
+    ],
+    "ig_rtol": 0.01,
+    "mixture_weights": [
+      0.4,
+      0.35,
+      0.25
+    ],
+    "perturbation_block": 4,
+    "perturbation_steps": 21,
+    "seed": 2026,
+    "stability_repetitions": 5,
+    "top_fractions": [
+      0.05,
+      0.1,
+      0.2
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "smoke": true,
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.4081316148415984
+    }
+  ],
+  "dev_patients": [
+    "LIDC-IDRI-0186",
+    "LIDC-IDRI-0362"
+  ],
+  "marks": 35,
+  "nodules": 2,
+  "scans": 2,
+  "spot": {
+    "sensitivity": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "cpm": 0.0,
+    "coverage_at_retained_marks": 0.0,
+    "marks": 35,
+    "nodules": 2,
+    "scans": 2
+  }
+}

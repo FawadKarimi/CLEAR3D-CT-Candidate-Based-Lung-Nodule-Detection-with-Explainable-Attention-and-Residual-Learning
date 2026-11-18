@@ -1,0 +1,305 @@
+{
+  "accepted_failure_zip_sha256": "446915a67d7faff15b9ba4e00eb0d2ed1a0121125a850136e57d247e23f443fa",
+  "configuration": {
+    "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-parallel-review-20261014-2f1a64/accepted/configuration-resnet18.json",
+    "sha256": "4775888713faeaa0dcf88cbd8ba85f835d7fcb71eeaa9994cad427eedd492b4d"
+  },
+  "current_split": {
+    "bytes": 17804,
+    "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-comparison-protocol-20261025/runs/phase-cf/split.json",
+    "sha256": "2ffc30511188ca27686d7c2d5a73fa2723f822a42a62a9c159987c7e0d54ede1"
+  },
+  "gpu_uuid": "GPU-ca0a8f46-9b8e-e098-a97b-e0420b412e90",
+  "indices": [
+    27942,
+    36041,
+    27956,
+    20756,
+    19275,
+    28178,
+    39540,
+    45206,
+    18404,
+    2971,
+    42206,
+    33331,
+    345,
+    25022,
+    27079,
+    41408
+  ],
+  "interpreter": "/experiment-storage/chaidir/fawad-dsai/LIDC3D-offline-cpu-20261007T181841Z-IIGwzD/env/bin/python",
+  "interpreter_sha256": "f0b2ab0592687aa9a0674f7d5f04ec6e46777eceec63b04dec80ae4e7237f539",
+  "limits": {
+    "allocator_bytes": 4294967296,
+    "gpu_bytes": 6442450944,
+    "min_disk_bytes": 21474836480,
+    "min_gpu_bytes": 10737418240,
+    "min_ram_bytes": 34359738368,
+    "reserve_ram_bytes": 8589934592,
+    "rss_bytes": 8589934592,
+    "run_seconds": 900,
+    "sample_seconds": 1.0,
+    "setup_seconds": 120,
+    "total_seconds": 900,
+    "validation_seconds": 60
+  },
+  "new_sources": {
+    "D-long/fit_selection.py": "3317196fb7347471eef2390b9deca5366baf99e8578df75f13f47f15b59f7dbb",
+    "D-long/fixed_batch_fit.py": "38a43481d2efd334cb2f0d9c1de9681316a94510521c64e78e5207699313f972"
+  },
+  "output": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-parallel-review-20261014-2f1a64/runs/fixed16-current-fit-long-001",
+  "parent_binding": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-parallel-review-20261014-2f1a64/accepted/training-binding.json",
+  "parent_binding_sha256": "adb44927810502300f8931421ab867c27054b4c081d0f2061b55127349047310",
+  "parent_inputs": {
+    "draw0": {
+      "bytes": 10772,
+      "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-label-adapter-review-20261013-a97f24/runs/label-selection-001/epoch-0-draws.json",
+      "sha256": "f1879b75a35490c9f9d09d3214055aafc43a8d4c99fe7b8860c45cb33e7f9066"
+    },
+    "draw1": {
+      "bytes": 10788,
+      "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-label-adapter-review-20261013-a97f24/runs/label-selection-001/epoch-1-draws.json",
+      "sha256": "4e5ca7eb21415c75b09816b838d42d5f991587d61ecc10ef425fd4225495f542"
+    },
+    "draw2": {
+      "bytes": 10783,
+      "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-label-adapter-review-20261013-a97f24/runs/label-selection-001/epoch-2-draws.json",
+      "sha256": "6fd356d936ce856d36e0b6ab87adeac0a98c49efe4c17e9caee0121c645c71d0"
+    },
+    "index": {
+      "bytes": 1308983296,
+      "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostics-launcher-review-20261013-7e3c92/runs/cap4000-index-001/metadata-index.sqlite",
+      "sha256": "211aa23cb0ff9c49ec820edaade08d080e6b47a4e058a8bf32c2091d6bdc229d"
+    },
+    "label_selection": {
+      "bytes": 5668,
+      "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-label-adapter-review-20261013-a97f24/runs/label-selection-001/selection.json",
+      "sha256": "edc8e79eed740c0fc7c5e9bb481da6bc499e2d310b4d7d567d25308dcd602ec8"
+    },
+    "manifest": {
+      "bytes": 383533,
+      "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostics-launcher-review-20261013-7e3c92/runs/cap4000-build-001/candidate-manifest.json",
+      "sha256": "824e08a51d537d15ce3be6407cbcd3e996f26889ecb75c5db9ebd512061ae332"
+    },
+    "parent_selection": {
+      "bytes": 4006320,
+      "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-matched-execution-20261013-4e9a7d/accepted-selection.json",
+      "sha256": "36b02a67d3ab06804792c5d5743236e61ab8f45aeb17fd9f73069087f7275cb8"
+    },
+    "preparation": {
+      "bytes": 1038673,
+      "path": "/experiment-storage/chaidir/fawad-dsai/LIDC3D/artifacts/luna16-development-image-exclusions-v1-20261007T070033Z-avEHgf/preparation.json",
+      "sha256": "47f5a6a740b405d758431e56f241993e48c93b330fa7859d93a7133378fa120a"
+    },
+    "sidecar": {
+      "bytes": 23318528,
+      "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-label-adapter-review-20261013-a97f24/runs/label-selection-001/labels.sqlite",
+      "sha256": "65c786e6c0be343efc6fa3e8fbb9377af36fc728306cb5f1de9ebd562810294e"
+    },
+    "validation": {
+      "bytes": 1580709,
+      "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-label-adapter-review-20261013-a97f24/runs/label-selection-001/validation-unchanged.json",
+      "sha256": "1e2004e9fe4c2c395fd4fcdffdba1224cb4ce92b4fc301767b95e8d1da495294"
+    }
+  },
+  "pins": [
+    [
+      "cloudpickle",
+      "3.1.2"
+    ],
+    [
+      "exceptiongroup",
+      "1.3.1"
+    ],
+    [
+      "filelock",
+      "4.0.12"
+    ],
+    [
+      "fsspec",
+      "2026.9.0"
+    ],
+    [
+      "imageio",
+      "2.38.0"
+    ],
+    [
+      "iniconfig",
+      "2.3.1"
+    ],
+    [
+      "jinja2",
+      "3.1.6"
+    ],
+    [
+      "joblib",
+      "1.6.0"
+    ],
+    [
+      "lazy-loader",
+      "0.6"
+    ],
+    [
+      "markupsafe",
+      "3.0.4"
+    ],
+    [
+      "mpmath",
+      "1.3.0"
+    ],
+    [
+      "networkx",
+      "3.4.2"
+    ],
+    [
+      "numpy",
+      "2.2.6"
+    ],
+    [
+      "nvidia-cublas-cu11",
+      "11.11.3.6"
+    ],
+    [
+      "nvidia-cuda-cupti-cu11",
+      "11.8.87"
+    ],
+    [
+      "nvidia-cuda-nvrtc-cu11",
+      "11.8.89"
+    ],
+    [
+      "nvidia-cuda-runtime-cu11",
+      "11.8.89"
+    ],
+    [
+      "nvidia-cudnn-cu11",
+      "9.1.0.70"
+    ],
+    [
+      "nvidia-cufft-cu11",
+      "10.9.0.58"
+    ],
+    [
+      "nvidia-curand-cu11",
+      "10.3.0.86"
+    ],
+    [
+      "nvidia-cusolver-cu11",
+      "11.4.1.48"
+    ],
+    [
+      "nvidia-cusparse-cu11",
+      "11.7.5.86"
+    ],
+    [
+      "nvidia-nccl-cu11",
+      "2.21.5"
+    ],
+    [
+      "nvidia-nvtx-cu11",
+      "11.8.86"
+    ],
+    [
+      "packaging",
+      "26.3"
+    ],
+    [
+      "pillow",
+      "12.3.0"
+    ],
+    [
+      "pip",
+      "25.2"
+    ],
+    [
+      "pluggy",
+      "1.6.0"
+    ],
+    [
+      "pydicom",
+      "3.0.2"
+    ],
+    [
+      "pygments",
+      "2.21.0"
+    ],
+    [
+      "pytest",
+      "8.4.2"
+    ],
+    [
+      "pyyaml",
+      "6.0.3"
+    ],
+    [
+      "scikit-image",
+      "0.25.2"
+    ],
+    [
+      "scikit-learn",
+      "1.7.2"
+    ],
+    [
+      "scipy",
+      "1.15.3"
+    ],
+    [
+      "setuptools",
+      "80.9.0"
+    ],
+    [
+      "sympy",
+      "1.14.0"
+    ],
+    [
+      "threadpoolctl",
+      "3.7.0"
+    ],
+    [
+      "tifffile",
+      "2025.5.10"
+    ],
+    [
+      "tomli",
+      "2.5.0"
+    ],
+    [
+      "torch",
+      "2.7.1+cu118"
+    ],
+    [
+      "triton",
+      "3.3.1"
+    ],
+    [
+      "typing-extensions",
+      "4.16.0"
+    ],
+    [
+      "wheel",
+      "0.45.1"
+    ]
+  ],
+  "policy": {
+    "accumulation": 8,
+    "augmentation": false,
+    "cap4000_policy": "NOT_ADOPTED",
+    "depth": 18,
+    "learning_rate": "constant-parent-epoch0-group-rates",
+    "microbatch": 2,
+    "negatives": 12,
+    "order": "positive-first-fixed",
+    "positives": 4,
+    "precision": "FP32",
+    "reference_release": "HOLD",
+    "resume": false,
+    "scope": "clear3d-fixed16-current-fit-long-v1",
+    "seed": 17,
+    "updates": 120,
+    "validation": false
+  },
+  "root": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-parallel-review-20261014-2f1a64",
+  "scope": "clear3d-fixed16-train-only-overfit-v1",
+  "source_count": 133
+}

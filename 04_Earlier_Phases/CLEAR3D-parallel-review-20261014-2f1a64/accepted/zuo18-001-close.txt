@@ -1,0 +1,13 @@
+Training is closed.
+
+zuo18-001 was the one allowed additive 18^3 3D CNN trained from scratch on 9 audit-pass positives, 8 jittered copies each, and 504 training negatives. LIDC-IDRI-0694 was excluded from the gradient. Gaussian noise was 0.125. Class weights were 0.25 and 1.75. The optimizer was SGD at learning rate 0.01 with momentum 0.9. The checkpoint is epoch 4, selected only by hold-out FP+FN = 6+1 = 7. Epochs 5 through 9 were worse.
+
+Its one validation read at threshold 0.5 on the fixed 384 rows was TP 0, FP 0, FN 15, TN 369, accuracy 0.9609, and positive F1 0. That matches the all-negative baseline.
+
+The best honest non-baseline point on that slice and threshold remains the MedicalNet ResNet-18 full fine-tune at step 180: TP 13, FN 2, FP 143, TN 226, accuracy 0.6224, macro F1 0.455, positive F1 0.152. That point does not meet FP below 143 with FN at most 2. Its accuracy and macro F1 sit below the all-negative figures 0.9609 and 0.490.
+
+MedicalNet ResNet-10 lost to ResNet-18 on the check patient. The frozen head on the 10 clean crops called every patch positive: TP 15, FP 369, accuracy 0.0391.
+
+Accuracy 0.9783 and positive F1 about 0.91 are Zuo et al. figures on a subset of about 1,320 positives and 9,400 negatives, where all-negative accuracy is about 0.877. On these 384 rows, accuracy above 0.9783 allows at most 8 errors, and positive F1 about 0.91 allows about 1 false positive and 1 false negative. Nine training nodules did not put the 15 validation positives above the 369 negatives at threshold 0.5. Another job chosen from these reads would fit the slice.
+
+Reference release stays HOLD. cap4000 stays NOT_ADOPTED. diagnostic-epochs18-001 stays untouched. The 133-file parent stays unedited. Deployment is not supported. A Q1 detection claim is not supported.

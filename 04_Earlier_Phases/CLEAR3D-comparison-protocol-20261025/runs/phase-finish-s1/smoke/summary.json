@@ -1,0 +1,106 @@
+{
+  "smoke": true,
+  "confirmation": "closed",
+  "history": [
+    {
+      "epoch": 1,
+      "loss": 0.5100957711537679
+    }
+  ],
+  "checkpoint": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-comparison-protocol-20261025/runs/phase-finish-s1/smoke/wang_s1.pt",
+  "detection_development": {
+    "patients": 2,
+    "scans": 2,
+    "nodules": 2,
+    "marks": 400,
+    "block": 96,
+    "seconds": 26.6898934841156,
+    "models": {
+      "spot": {
+        "sensitivity": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "cpm": 0.0,
+        "coverage_at_retained_marks": 0.0,
+        "marks": 400,
+        "nodules": 2,
+        "scans": 2
+      },
+      "zuo": {
+        "sensitivity": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "cpm": 0.0,
+        "coverage_at_retained_marks": 0.0,
+        "marks": 400,
+        "nodules": 2,
+        "scans": 2
+      },
+      "wang": {
+        "sensitivity": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "cpm": 0.0,
+        "coverage_at_retained_marks": 0.0,
+        "marks": 400,
+        "nodules": 2,
+        "scans": 2
+      },
+      "clear": {
+        "sensitivity": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "cpm": 0.0,
+        "coverage_at_retained_marks": 0.0,
+        "marks": 400,
+        "nodules": 2,
+        "scans": 2
+      },
+      "ablation": {
+        "sensitivity": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "cpm": 0.0,
+        "coverage_at_retained_marks": 0.0,
+        "marks": 400,
+        "nodules": 2,
+        "scans": 2
+      }
+    }
+  },
+  "departures": [
+    "Wang stage-1 ASCRM is a disclosed attention residual stand-in.",
+    "Detector block size is 96 cubed.",
+    "Track 2 numbers in this file are development-only."
+  ]
+}

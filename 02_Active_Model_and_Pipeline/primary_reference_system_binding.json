@@ -1,0 +1,112 @@
+{
+  "system_name": "CLEAR3D-MSFv2 5-Model Ensemble (Official Reference)",
+  "system_role": "PRIMARY_REFERENCE_SYSTEM",
+  "reference_release": "HOLD",
+  "architecture": "CLEAR3DMSFv2",
+  "model_code": {
+    "path": "clear3d_msf_model_20261106_002.py",
+    "sha256": "e83899960b095eab9f92fe104f13e3380c9c5bc48e6ebc82b173003a520914e7"
+  },
+  "checkpoints": {
+    "fold-0": {
+      "path": "runs/clear3d-msf-ensemble-20261106-004/checkpoints/fold-0.pt",
+      "sha256": "739d1d7883d66922f568be4cdc66f491bdabe8eb9e1c2c22ecb8c5bf7b8f5494"
+    },
+    "fold-1": {
+      "path": "runs/clear3d-msf-ensemble-20261106-004/checkpoints/fold-1.pt",
+      "sha256": "547c56eef21b55569e611a5d2a05f0418c59b8258b0ac45d1e1d814a4623d6e4"
+    },
+    "fold-2": {
+      "path": "runs/clear3d-msf-ensemble-20261106-004/checkpoints/fold-2.pt",
+      "sha256": "9e93f0474463b3a15953391ec7adf1ac0ed6d3ed7a3d80712aef240022625290"
+    },
+    "fold-3": {
+      "path": "runs/clear3d-msf-ensemble-20261106-004/checkpoints/fold-3.pt",
+      "sha256": "2ad01868acb7a3a008b8f26584f556dffb9b05d4dccb7f137039ad09f6782758"
+    },
+    "fold-4": {
+      "path": "runs/clear3d-msf-ensemble-20261106-004/checkpoints/fold-4.pt",
+      "sha256": "90d4fb48ecba46ef95e9a55563ba7d4c7aa0d19236f922d96f2f80431901727a"
+    }
+  },
+  "preprocessing_contract": {
+    "target_spacing_mm": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "coordinate_convention": "LPS_millimeter_Cartesian",
+    "hu_clip_range": [
+      -1000,
+      400
+    ],
+    "patch_extraction": {
+      "large_crop_voxels": [
+        51,
+        51,
+        51
+      ],
+      "separable_filter": [
+        0.25,
+        0.5,
+        0.25
+      ],
+      "stride": 2,
+      "downsampled_coarse_voxels": [
+        27,
+        27,
+        27
+      ],
+      "center_fine_crop_voxels": [
+        27,
+        27,
+        27
+      ],
+      "normalization": "valid_voxel_zscore_per_patch"
+    }
+  },
+  "inference_contract": {
+    "tta": "4-view (Identity, X_flip, YZ_flip, XYZ_flip)",
+    "aggregation": "pre_sigmoid_logit_average_across_5_folds",
+    "sigmoid": true
+  },
+  "calibration_contract": {
+    "method": "Platt_scaling_and_natural_prevalence_thresholding",
+    "source": "100% fit-only 5-fold patient-disjoint OOF (zero dev access)",
+    "scale_oof": 1.7000000000000002,
+    "bias_oof": 4.175479443210625,
+    "nat_cut_oof": 0.9999467134475708
+  },
+  "internal_test_record": {
+    "cohort": "LUNA16 fold 0 (89 scans, 89 patients)",
+    "exposure_status": "PREVIOUSLY_EXPOSED_INTERNAL_TEST",
+    "cpm_score": 0.9043367347142857,
+    "tuning_prohibited": true,
+    "model_selection_prohibited": true
+  },
+  "secondary_comparators": {
+    "single_fold_baseline": {
+      "name": "CLEAR3D-MSFv2 Fold-0 Baseline",
+      "checkpoint": "runs/clear3d-msf-ensemble-20261106-004/checkpoints/fold-0.pt",
+      "sha256": "739d1d7883d66922f568be4cdc66f491bdabe8eb9e1c2c22ecb8c5bf7b8f5494",
+      "role": "SECONDARY_SINGLE_FOLD_BASELINE"
+    },
+    "intervention_hardprior": {
+      "name": "Hard-Prior 60% Static Weighting",
+      "checkpoint": "runs/clear3d-msf-intervention-hardprior-fold0-20261108-001/checkpoints/fold-0.pt",
+      "sha256": "d541e90f6905ef8b415013a9c51fd53c8a23ada5135409605221b10362f06755",
+      "status": "EXPLORATORY_NOT_ADOPTED"
+    },
+    "intervention_curriculum": {
+      "name": "Gradual Hard-Negative Curriculum",
+      "checkpoint": "runs/clear3d-msf-intervention-curriculum-fold0-20261108-001/checkpoints/fold-0.pt",
+      "sha256": "ae70317774a76870dc93f3a3e8707e69b4c06ca76424f545e7df2d96a548acc3",
+      "status": "EXPLORATORY_NOT_ADOPTED"
+    }
+  },
+  "restrictions": {
+    "reference_release": "HOLD",
+    "confirmation_cohort": "83 patients strictly restricted / untouched",
+    "manuscript_writing": "DEFERRED"
+  }
+}

@@ -1,0 +1,417 @@
+{
+  "cap4000_policy": "NOT_ADOPTED",
+  "diagnostic_data": {
+    "accepted_label_evidence_sha256": "3fe76af6288b0b27f1c1a2e6d668914e715c25ed3076c8df34b5686f87bdb69b",
+    "cap4000_policy": "NOT_ADOPTED",
+    "inputs": {
+      "draw0": {
+        "bytes": 10772,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-label-adapter-review-20261013-a97f24/runs/label-selection-001/epoch-0-draws.json",
+        "sha256": "f1879b75a35490c9f9d09d3214055aafc43a8d4c99fe7b8860c45cb33e7f9066"
+      },
+      "draw1": {
+        "bytes": 10788,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-label-adapter-review-20261013-a97f24/runs/label-selection-001/epoch-1-draws.json",
+        "sha256": "4e5ca7eb21415c75b09816b838d42d5f991587d61ecc10ef425fd4225495f542"
+      },
+      "draw2": {
+        "bytes": 10783,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-label-adapter-review-20261013-a97f24/runs/label-selection-001/epoch-2-draws.json",
+        "sha256": "6fd356d936ce856d36e0b6ab87adeac0a98c49efe4c17e9caee0121c645c71d0"
+      },
+      "index": {
+        "bytes": 1308983296,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostics-launcher-review-20261013-7e3c92/runs/cap4000-index-001/metadata-index.sqlite",
+        "sha256": "211aa23cb0ff9c49ec820edaade08d080e6b47a4e058a8bf32c2091d6bdc229d"
+      },
+      "label_selection": {
+        "bytes": 5668,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-label-adapter-review-20261013-a97f24/runs/label-selection-001/selection.json",
+        "sha256": "edc8e79eed740c0fc7c5e9bb481da6bc499e2d310b4d7d567d25308dcd602ec8"
+      },
+      "manifest": {
+        "bytes": 383533,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostics-launcher-review-20261013-7e3c92/runs/cap4000-build-001/candidate-manifest.json",
+        "sha256": "824e08a51d537d15ce3be6407cbcd3e996f26889ecb75c5db9ebd512061ae332"
+      },
+      "parent_selection": {
+        "bytes": 4006320,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-matched-execution-20261013-4e9a7d/accepted-selection.json",
+        "sha256": "36b02a67d3ab06804792c5d5743236e61ab8f45aeb17fd9f73069087f7275cb8"
+      },
+      "preparation": {
+        "bytes": 1038673,
+        "path": "/experiment-storage/chaidir/fawad-dsai/LIDC3D/artifacts/luna16-development-image-exclusions-v1-20261007T070033Z-avEHgf/preparation.json",
+        "sha256": "47f5a6a740b405d758431e56f241993e48c93b330fa7859d93a7133378fa120a"
+      },
+      "sidecar": {
+        "bytes": 23318528,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-label-adapter-review-20261013-a97f24/runs/label-selection-001/labels.sqlite",
+        "sha256": "65c786e6c0be343efc6fa3e8fbb9377af36fc728306cb5f1de9ebd562810294e"
+      },
+      "validation": {
+        "bytes": 1580709,
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-label-adapter-review-20261013-a97f24/runs/label-selection-001/validation-unchanged.json",
+        "sha256": "1e2004e9fe4c2c395fd4fcdffdba1224cb4ce92b4fc301767b95e8d1da495294"
+      }
+    },
+    "outputs": {
+      "10": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-training-review-20261013-6e91ab/runs/diagnostic-epochs10-001",
+      "18": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-training-review-20261013-6e91ab/runs/diagnostic-epochs18-001"
+    },
+    "reference_release": "HOLD",
+    "training_ready": false,
+    "unique_training_positives": 15
+  },
+  "epoch_budget": {
+    "depth_order": [
+      18,
+      10
+    ],
+    "generated_per_depth": 120,
+    "no_budget_transfer": true,
+    "research_per_depth": 780,
+    "total_seconds": 1800
+  },
+  "epoch_configs": {
+    "10": {
+      "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-training-review-20261013-6e91ab/configuration-resnet10.json",
+      "sha256": "6bab7aa9d57941ff50d6fb824766a953d03309b0f8f519146c33e44078b33071"
+    },
+    "18": {
+      "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-training-review-20261013-6e91ab/configuration-resnet18.json",
+      "sha256": "4775888713faeaa0dcf88cbd8ba85f835d7fcb71eeaa9994cad427eedd492b4d"
+    }
+  },
+  "interpreter": "/experiment-storage/chaidir/fawad-dsai/LIDC3D-offline-cpu-20261007T181841Z-IIGwzD/env/bin/python",
+  "interpreter_sha256": "f0b2ab0592687aa9a0674f7d5f04ec6e46777eceec63b04dec80ae4e7237f539",
+  "parent_binding_sha256": "7dbf6802b265b3500772eb59ed568329b7f7f97bf02449606388ad0a2e288a59",
+  "pins": [
+    [
+      "cloudpickle",
+      "3.1.2"
+    ],
+    [
+      "exceptiongroup",
+      "1.3.1"
+    ],
+    [
+      "filelock",
+      "4.0.12"
+    ],
+    [
+      "fsspec",
+      "2026.9.0"
+    ],
+    [
+      "imageio",
+      "2.38.0"
+    ],
+    [
+      "iniconfig",
+      "2.3.1"
+    ],
+    [
+      "jinja2",
+      "3.1.6"
+    ],
+    [
+      "joblib",
+      "1.6.0"
+    ],
+    [
+      "lazy-loader",
+      "0.6"
+    ],
+    [
+      "markupsafe",
+      "3.0.4"
+    ],
+    [
+      "mpmath",
+      "1.3.0"
+    ],
+    [
+      "networkx",
+      "3.4.2"
+    ],
+    [
+      "numpy",
+      "2.2.6"
+    ],
+    [
+      "nvidia-cublas-cu11",
+      "11.11.3.6"
+    ],
+    [
+      "nvidia-cuda-cupti-cu11",
+      "11.8.87"
+    ],
+    [
+      "nvidia-cuda-nvrtc-cu11",
+      "11.8.89"
+    ],
+    [
+      "nvidia-cuda-runtime-cu11",
+      "11.8.89"
+    ],
+    [
+      "nvidia-cudnn-cu11",
+      "9.1.0.70"
+    ],
+    [
+      "nvidia-cufft-cu11",
+      "10.9.0.58"
+    ],
+    [
+      "nvidia-curand-cu11",
+      "10.3.0.86"
+    ],
+    [
+      "nvidia-cusolver-cu11",
+      "11.4.1.48"
+    ],
+    [
+      "nvidia-cusparse-cu11",
+      "11.7.5.86"
+    ],
+    [
+      "nvidia-nccl-cu11",
+      "2.21.5"
+    ],
+    [
+      "nvidia-nvtx-cu11",
+      "11.8.86"
+    ],
+    [
+      "packaging",
+      "26.3"
+    ],
+    [
+      "pillow",
+      "12.3.0"
+    ],
+    [
+      "pip",
+      "25.2"
+    ],
+    [
+      "pluggy",
+      "1.6.0"
+    ],
+    [
+      "pydicom",
+      "3.0.2"
+    ],
+    [
+      "pygments",
+      "2.21.0"
+    ],
+    [
+      "pytest",
+      "8.4.2"
+    ],
+    [
+      "pyyaml",
+      "6.0.3"
+    ],
+    [
+      "scikit-image",
+      "0.25.2"
+    ],
+    [
+      "scikit-learn",
+      "1.7.2"
+    ],
+    [
+      "scipy",
+      "1.15.3"
+    ],
+    [
+      "setuptools",
+      "80.9.0"
+    ],
+    [
+      "sympy",
+      "1.14.0"
+    ],
+    [
+      "threadpoolctl",
+      "3.7.0"
+    ],
+    [
+      "tifffile",
+      "2025.5.10"
+    ],
+    [
+      "tomli",
+      "2.5.0"
+    ],
+    [
+      "torch",
+      "2.7.1+cu118"
+    ],
+    [
+      "triton",
+      "3.3.1"
+    ],
+    [
+      "typing-extensions",
+      "4.16.0"
+    ],
+    [
+      "wheel",
+      "0.45.1"
+    ]
+  ],
+  "reference_release": "HOLD",
+  "reused_qualifications": {
+    "10": {
+      "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-scoped-epochs-review-20261013-d4b6e2/runs/generated-resume10-001/acceptance.json",
+      "sha256": "de5c10097d026284cf659b1059ce9be601b63812a7b2bf77ac2b402d8afbf243",
+      "source_binding_sha256": "b35c30b781771ca9af702df2cdb6f99d2b6ad78ed281f4e8ba554e62608e1acc"
+    },
+    "18": {
+      "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-scoped-epochs-review-20261013-d4b6e2/runs/generated-resume18-001/acceptance.json",
+      "sha256": "73e7d61817ef5e8d794ab51c11eb0b70eef47857322b25fd7fbed29bd3e227e1",
+      "source_binding_sha256": "b35c30b781771ca9af702df2cdb6f99d2b6ad78ed281f4e8ba554e62608e1acc"
+    }
+  },
+  "schema": "lidc3d-user-watchdog-v1",
+  "source_root": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-training-review-20261013-6e91ab/work",
+  "sources": {
+    ".gitignore": "146fbda43f136d0d656119e2359d185c8156bc857b8d22537b9395614e08fb25",
+    "README.md": "4e59711086b16c8216d91139ed8b49883713ed5dd30eee79f856d506f9a5756a",
+    "configs/reference.yaml": "b449f9ca0ace5c725dc653631a88b26f8dfcfe5322488b4f590feff975e49388",
+    "configs/source_audit.yaml": "a9209bf8bc990e1eaefd8799278975f334b21ffa2ca9d3c887f239e0361951ec",
+    "docs/Artifact_Contract.md": "ed69e65d15443f221cc053079b8873edb3527035f34c690acf42a475a74b1fbb",
+    "docs/Experiment_Design.md": "170842189c700a1830519f15c2c4110223054c7ffcd9d7c3b3383d870a4a558d",
+    "docs/Implementation_Decisions.md": "53b3ee7eade52a31a466571015e15a7442d40460c90030c06bf6cdb1b4343a6b",
+    "docs/Source_Audit.md": "532f8d3c83a0a19138806d3a3b8b62b63a420749b5c7d9d0a8de8bdaad519a50",
+    "docs/reviews/image-equivalence-derivative-v1.md": "aad1ed63ee30518d04b928ac53e7f6ce26d9bd48ebd16641d3cb1fcff0660d08",
+    "docs/reviews/source-audit/HANDOFF.md": "349819947282cdd7b0b54b12b4edb9cbc61e817a67e59a47675efbb2604c82d4",
+    "docs/streaming-proposals.md": "cbf26db58a4310600d3e371832306376acfa0908fbe85ee272e76366d421071f",
+    "pyproject.toml": "71339f2de0e539b24a3e64c7724a0113b40352cf561de8eaa56ec0be9cab30f3",
+    "scripts/cap4000_command.sh": "d4ec7af176de418c9076e3c5ef4edeb11a6a56debb49cd0727a95264998d2233",
+    "scripts/cap4000_controller.py": "b99edf9667c86105e1985db7b5b6a1dcf8c7eb29cb3fd2154b51628f5d560a97",
+    "scripts/cap4000_label_selection.py": "f6b7b378ebb0cf888044a27e1cc4e8004b037f57bc63bd42f769376cab8744dc",
+    "scripts/cap4000_review.py": "696fda420f0623131d9e667a8af95692c0683bbab832aafddb09db33434ee830",
+    "scripts/cohort_watchdog.py": "45c96a1fc586c1ccec41b4dd329eed9b771fa950c98a1db1a84535f53eb79604",
+    "scripts/cohort_worker.py": "1b4392e03b6a29dbff824361c2ec4501bd17669db961d19cab504cff186b9b24",
+    "scripts/commission_cuda.py": "2659579abe81b1d2900499d41b727c1b6bb9edf338447a44e7339f9d05abc08d",
+    "scripts/diagnostic_training_watchdog.py": "95812a184da7ec95385fe0fb2ecde1d6edc96b49c8e5950489110fd8a32c6c50",
+    "scripts/diagnostic_training_worker.py": "b06b398cdd1b999290e5685cfc1bb81e1583dd3f85171c0ac37a7bfa2faa738c",
+    "scripts/engineering_watchdog.py": "703ecebfe3e6bc5842938183fcdf837cfbd6cdbf55fa5f76bd5db0bf6eaeb422",
+    "scripts/engineering_worker.py": "97d336b9ba0c3aa89de2a5ed0bbd72688e0e77fc8b49548457c49c455b4d020d",
+    "scripts/fp32_engineering_watchdog.py": "9d6ef8107104d69cc28ac5c66fb33502060fc1346cae2b573c71b3b296e68408",
+    "scripts/fp32_engineering_worker.py": "d60f332af02d2de4bd295d839c25bc658f85ce99004a056fcd3cbdeb3593e6a3",
+    "scripts/generate_configs.py": "dcf99268ac506d206bd47af370ad79209bd060254c6bcafa32505c569093841f",
+    "scripts/make_wheel_lock.py": "54ef85b7b27a6f29c60be037bb53f0c22c0a19a93c932064a0b819544d2d81b0",
+    "scripts/medicalnet_finetuning_plan.py": "a60b76db34ed6f55b78724e9ca4e5554ceb9bb58c8604de2e862b9cdd491a836",
+    "scripts/medicalnet_watchdog.py": "4fb75fd219d48d2a202786f9c36b151c3485b05da347e1af9bb822a72af05019",
+    "scripts/medicalnet_worker.py": "69377b58e7c3b60aff8a4013fa20cca235d55380a4582aadea29a91f405ff186",
+    "scripts/migrate_image_exclusions.py": "fffb240df7c964680ecf4fd348283f715cd48939450861f417dfe03353843424",
+    "scripts/mixed_engineering_watchdog.py": "562a044bde4a6a2a44342cc94e098b8ec6a700550a3401de412fa4061e0c5cf2",
+    "scripts/mixed_engineering_worker.py": "0cd3a881d34e55e199263a3ebdb993b1695e3f4a7a52e573362b8cf040cfb663",
+    "scripts/pilot_supervisor.py": "96c803cf8a5f453574635cfcb6857557493670a48dc1b7b700571cf15667852b",
+    "scripts/pilot_worker.py": "bb3e72223011816568cba57f40852300228f98748fa213ad53364e7e74080bee",
+    "scripts/positive_engineering_watchdog.py": "344aa9f9e82db8e977ebb8d3cbb9997c4ae742a0ae7d80bfa8cf73030d941a6a",
+    "scripts/positive_engineering_worker.py": "2a8c475d901eadcd92471b95a53df94720fcae062ea9019274ce520147d107f3",
+    "scripts/scoped_epochs_watchdog.py": "a1a192f3a030ca56975f589f63327cbe96e6f86d04ca2b365ed4588006d024a0",
+    "scripts/scoped_epochs_worker.py": "ce6ba3c508df9672bafff144092d86df829e6c78047b03135c16ec01219d5c93",
+    "scripts/user_watchdog.py": "492e729ec525579491b210c628043264aba526578222ce7832703b35fdd925da",
+    "scripts/validate_streaming_pilot.py": "a791638cc9e11cf4a0a7a88679779fadd59e942e730fdb2be50dc35a23eacb38",
+    "scripts/watchdog_fault_driver.py": "df442d665e58854f613034c2e7c5a9197e7a08b3d797de4cafb204654fef3ab7",
+    "scripts/watchdog_generated_worker.py": "cec2636a3218cadaebd61f26c276e7838fa8ce1c1113c50b907e844ba9983fbe",
+    "src/lidc3d/MedicalNet-LICENSE": "3dca9a898552631f35f9cc2eb8b284cabd54f27f00e474eb3ea2ed0669656fea",
+    "src/lidc3d/__init__.py": "979f022a72302a2d67719baa21c6a6efe45c93c31f08049557a0b762660dc697",
+    "src/lidc3d/accounting.py": "f0c4a4493830aea84b437f42bd1b2934822bf99de76e0d083f40c1465c53929a",
+    "src/lidc3d/candidate_regression.py": "ed6271e7b1fa025aa06566475e30adcaa560ad1679cf1599556c5c74e50bbbf8",
+    "src/lidc3d/candidates.py": "46737a1edf3e716886bac076d791146713452f57e1c01db9c69904deb1c26ae7",
+    "src/lidc3d/cap4000.py": "dad0b2825a3f1c376375319a6bf873ab928a88d3432bb7a21cbbd9263f0c4662",
+    "src/lidc3d/cap4000_index.py": "60b3c89820c033f32435b093ff09dd4c7162ef53436a6cf0b1c97cf4d0261a62",
+    "src/lidc3d/cap4000_labels.py": "da9610df5b76c8240b24b60edfa9fc88c6f545abbae0f3ac19934bdcba727c73",
+    "src/lidc3d/checkpoints.py": "c0f42fe4c030b358b5658f28f84286f711acac7f6a1897eead065d23ad71d223",
+    "src/lidc3d/cli.py": "7af34aaca6adc730bb3e3129e6f52f647b4b47977be7c81043d8466c61cb0525",
+    "src/lidc3d/data.py": "af1c5d23ebe78af35b2e4ed1eb31508bc110096eb742c3bcd11183600b889b88",
+    "src/lidc3d/derivative.py": "e737525f691fb74b19d4a906e2c06ab06098cd5c2d4de3495fbbb7745b61a314",
+    "src/lidc3d/diagnostic_training.py": "37f99f17beede720a7bd1f94e0015d0ba80cfa298236b9d1fcd20a7fe5b2d1d5",
+    "src/lidc3d/diagnostic_training_contract.json": "9615283849ca23edee501cf2a2b6484866138425a27bd364a21d1d9f7c9149f7",
+    "src/lidc3d/diagnostics.py": "ff4ca03ce8adbe193eef3a4201df1aaa847a7be31d3e3d3f001ab67eaf089e34",
+    "src/lidc3d/diagnostics_policy.py": "df463fb29db671aead36d2cb073479baa0c8c8fbd100c2de43a3e40dc3fcabe4",
+    "src/lidc3d/engineering.py": "910983ad49a3520bc032a00c9c1c57bf56b428e351e555f45f00354ee081510f",
+    "src/lidc3d/epoch_evidence.py": "d679809069c62ab75faf0cd1632fa550fabe2aabc34780b661a7ff44d96974e7",
+    "src/lidc3d/evaluation.py": "aa379945cbe51410eaf91a28829cd92fcf10a6c03fea8f3e1bd9a2fbc95c1590",
+    "src/lidc3d/explain_runner.py": "bb87fc6bf89adbd1dfda067eb3cc595478a44699e814295a6624a090dfd32953",
+    "src/lidc3d/fp32_contract.json": "de991bbd61127d213ad31cb0b6f27eaf404544dea29f0bdd373b3b5adb97ae51",
+    "src/lidc3d/fp32_engineering.py": "96aa29c7e7b6f8e3f22cb7c4f57900f7fd1af9db61b5733bb61e69fa1e658de7",
+    "src/lidc3d/fp32_optimization.py": "c6c068926e2d60ab8a37695bc98c665f7f14c75b8e3046a40e96a311d296f5fb",
+    "src/lidc3d/geometry.py": "e7844480f5859a71d53866a286b7cc1f0062c19a4d334ce738a02fc879e7a711",
+    "src/lidc3d/hash_inventory.py": "df3928c9b9d1115b2d7466eff2f090c08f16cec2582300b1d40c1bdf3ee95418",
+    "src/lidc3d/indexed.py": "4ec5aa926a0f3ea098984a176615863ee00ead1bea507983b1ecf9f23c1e4cb6",
+    "src/lidc3d/ingest.py": "9c5beae12e4cb48ad2f15903708e9b45d1af2f42c7193f370ff2aef0474829cc",
+    "src/lidc3d/luna16.py": "68ca902ae65faa254f2208a1775d574e9d2cec3f44d36784dc23cbd79d340218",
+    "src/lidc3d/medicalnet_adapter.py": "d6663afeaf7158462c78ded8b8f1acfccaabfc2555acf2e32247c6fff205ec9c",
+    "src/lidc3d/medicalnet_contract.py": "987e894c849cadd48748432510360b66bad405cac6128adf854baf232bad023b",
+    "src/lidc3d/medicalnet_finetuning.py": "450a12ce81bcf7a17733205f72d80df38cd0d87be184c67a10d38e5f64dec77b",
+    "src/lidc3d/medicalnet_qualification.py": "019dca33a25e3e7309696f28bf6f53fd93869585d59a26d1d7fa65c3e8d80920",
+    "src/lidc3d/medicalnet_vendor.py": "b2027785ff2fcfb86147c75509d0abc272edeb820bfca6ce9ba56cd122b768ca",
+    "src/lidc3d/metadata_index.py": "9fb9c3f7376b1dc83465ae7eac740f79374ac7978c39709a71a794467602e576",
+    "src/lidc3d/mixed_contract.json": "8a1a918ecf2d6dbdc933b4485daef88e780772f46060ed667c5e94e6f2ca04f8",
+    "src/lidc3d/mixed_engineering.py": "463dd97c8fba1a17726cd9d7625042b0746fcea93970fb578799ee51fda411ad",
+    "src/lidc3d/mixed_optimization.py": "546a828bb2792088db1cac2153ba2555034afb2fa8fc61a93d797cc9601c2f0e",
+    "src/lidc3d/models.py": "8a318ce226a02c5a00cef3b764aa2b71399dfd38c0f9439ed66214b1870cf92d",
+    "src/lidc3d/optimization.py": "97c3e903c0967cd72d040f327b689690def38c6f112907996832489a1a625b74",
+    "src/lidc3d/pipeline.py": "97c297621913160aa290e37cdbfb53fffbf3935ce86c37f083af9a241a83550c",
+    "src/lidc3d/positive_engineering.py": "d1381a3b71a687e41762c418042c1861a59299ebcd94dd02fba7217ed1481f55",
+    "src/lidc3d/positive_optimization.py": "551c3f13a68bd8967ea6a9528276b01dd4508770c5ea77cdbb442b0f9ddb6980",
+    "src/lidc3d/preparation_regression.py": "ac59baecd210a7b20fd85e44d3e15c6bf965d12594c37cae6f0102e24f2d8f7d",
+    "src/lidc3d/provenance.py": "2d7f58a977a273bd786a32005ae7b359b267d2e9fd91bfb2242a3c54ed9d10fc",
+    "src/lidc3d/references.py": "98776ceba1005906d7fb19712266cf76b60d322223d6e2be3866ce26689b4234",
+    "src/lidc3d/scoped_epoch_checkpoints.py": "7548e87a415052cb8c51f591604d5a870174599cd5bfefdc2acce38977a24ce6",
+    "src/lidc3d/scoped_epochs.py": "56fde4166383a538df70eafa8f26bb90ebde52ed4f4cdaafa098bc0669eab4b2",
+    "src/lidc3d/scoped_epochs_contract.py": "384fb36825c80280f9bdfa1cbcfb1ee42c228b93f3761a3bc3458d9c85b0a34f",
+    "src/lidc3d/source_audit.py": "24b0ff64f40e2edf368c9dd51074a9be96c81af8d07dc3d2e9833705266aa3b8",
+    "src/lidc3d/splits.py": "d4b4288b555e3ea660d7db3778a27efa0dfa3d0ddd7e91f3c1f78ff0717fc0bc",
+    "src/lidc3d/streaming_selection.py": "1c3a8286afda5dbca1cb496f23a16bd7d0db335fc734a3c636e6ffb8c579d323",
+    "src/lidc3d/training.py": "5a199435c98f7170a108b74d987ba4db105cde86b478e6ec06ad10116473e132",
+    "src/lidc3d/xai.py": "e4b11d04abc209342930d018a47f49f61bffbf93f736a30df079a0dbbeee0b5f",
+    "tests/conftest.py": "bc71731b89a578d5c77a6403b364937e2791feafeec8c6da1fb2c08a3ed34a80",
+    "tests/test_amp_overflow.py": "8ca1fed5c65af8914109a0037c8a9d335d646738b48b732d1d397dc5f50a43db",
+    "tests/test_candidate_nms.py": "c97bf68f17f52db499b5c0324e569482ddcaf61392a4fb1238f828458f5bc096",
+    "tests/test_candidate_regression.py": "c280beae97ee7c9ff278f7caac129e8f97fe4f47103a353bfd8c78d2bfdc2d74",
+    "tests/test_cap4000_labels.py": "aa0db4929ab0b453ba44f27282a70b93f7a8e87c99a3378e4c8e23c9c51e2669",
+    "tests/test_checkpoint_sets.py": "52e103d5b47269bba505acbd8901ffebe760371ad9daa96a482de660ce1a9b5e",
+    "tests/test_cohort_integration.py": "5774a795af0841532c9c2c2ecd1d78b2095b3f511d62787a6d354c57cbcc021c",
+    "tests/test_commission_cuda.py": "aafd9055d2d967874c668223f23bf9c7066b64aa88b9bda3bbc4d2c6561d4523",
+    "tests/test_commission_shared_gpu.py": "fb6b1b304cef7fef2a2634b7ea33203f8cb3c33363224b74abeceda5ee8f350a",
+    "tests/test_deterministic_fusion.py": "ee34ba4aa9f55b081508dc73b8693d0cf76287135fccef1c6e785c8c6fedbf40",
+    "tests/test_diagnostic_training.py": "917da0438ae71f44d4f930a95030148d087b06834e46306234910cad87429acc",
+    "tests/test_diagnostics_launcher.py": "192facc307b896fe69f12ec9092ced1a3436d329d93df335cb288b54d34c7993",
+    "tests/test_engineering_adapter.py": "c9153ed4247f7688cc31f03c445c9908220ddf875032f263c94f35dc45a8fe60",
+    "tests/test_evaluation.py": "e010137cbddc9056499c9396fdbbf40eb7f08c38c77bd7945111b7aaef45f2e4",
+    "tests/test_exclusion_derivative.py": "a23776573a419fb7327511fd63e906e5cbd0bfa8681b86e4c49ea83eb4a5257c",
+    "tests/test_fp32_engineering.py": "056b08ab5605764c10d4b8c3d9c16eec7d6a562f9dac8b7281ef006b694bec1c",
+    "tests/test_geometry_and_data.py": "b00f2e784c5773a09dd9ce434d3796af057cee2af56d4346dd2bf224a02686ea",
+    "tests/test_hash_inventory.py": "86456b8e7abc6ae473ab9528e62c279a8b765fbfeff353a4faf272ef208eea06",
+    "tests/test_ingest_and_guards.py": "f83b512f55824aca972329a312f07ae8c6e144e1aa8d1cacef8a31f9f84fb1fd",
+    "tests/test_ingest_irregular.py": "35a24e9790ba19e9ad39db28d0376165bef9319db36369e61baf07fac1c4a613",
+    "tests/test_loss_cap4000.py": "d34fbe076eac5b7f6f5bae0d8d0fae2cd7e01f6390d1bb3cbb3445e1090efbae",
+    "tests/test_luna16.py": "1fedd8fbf5707420f362406245e9a21dbdb89799ebc0ec9773fdc7be9d74e24d",
+    "tests/test_medicalnet_adapter.py": "0901f46e75896363751c652aa71020392d5853e13ad11e6a6ec64ead1e9e3656",
+    "tests/test_medicalnet_epochs.py": "551e14195f54e927ec745399f79458edd6f1dc6430a767fadd6ce9d3fc9ebdc6",
+    "tests/test_medicalnet_guarded.py": "52ff17df5413fb265f589ea2535e6072dcb9c448e7476c3bc8d17fdc4eae08d3",
+    "tests/test_mixed_engineering.py": "b1274f8e7188792566cb3be68cd5e5e71074d39e1c1783f59d5048517149a7c8",
+    "tests/test_models_xai.py": "3e648bfc29fdb17cedf95d3edde2f0ea2766140c174a7c47eeab23bc2a031064",
+    "tests/test_pilot_supervisor.py": "70ea41b85f0080ddcd3f2bb7a03b8caa9966e39174b4437d3d1ed551087d19a8",
+    "tests/test_positive_engineering.py": "a9108867260d03322226442ecb71830838bad56207253e9ccc2083d612f5de45",
+    "tests/test_preparation_regression.py": "c219aa803970510253a4e05180a5643a9977c56f82bc4ade6e2b553b3a818957",
+    "tests/test_prepare_resume.py": "04d56ba75f8e7f7a8ae1d798690ce37c3dfc99316664974dedadd48fc9807daa",
+    "tests/test_scoped_epochs.py": "fa727928121bdfc617daa1db87e9898e2586f12f939ef85746d789156ac583ef",
+    "tests/test_source_audit.py": "ec0c8bda79a8f81e8774ab9872ea8084a6c7fc599342bbc02cf156e924915dce",
+    "tests/test_user_watchdog.py": "0c97292e98ba2ff727f97953e4eefe27e4ab0dbf82d2793f7226b8bff762c87f",
+    "tests/test_validation_completeness.py": "d2fa3f3bcd2a4409bcba4172c5e9491b07418510e5cba6df1e3ee5d05bef04ac",
+    "tests/test_watchdog_fault_driver.py": "0116c5c9a5bfbcc45e1c690f2d1e65283b76ace5676fca354723b1c749498d57",
+    "tests/test_wheel_lock.py": "3a5e19e2958cf814a8dbcb459765532fbefbd2fc01519bed5b9166653cc3df1b"
+  }
+}

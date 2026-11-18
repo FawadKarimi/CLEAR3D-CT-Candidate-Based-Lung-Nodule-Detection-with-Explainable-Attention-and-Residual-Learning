@@ -1,0 +1,70 @@
+{
+  "model_name": "MedicalNet-ResNet18-FineTuned",
+  "checkpoint_sha256": "58f9b7f26f383478ec22c85eb39b7859b4a143065297c5f57831c518b9f5d594",
+  "best_checkpoint_sha256": "0571f7d9de9d7c77cd34858f0fc29fd28c3966c7a1c2ab71e7e2840c3124f8c7",
+  "pretrained_weights_sha256": "38b3a17444c5c18a795355a868e6a2d9ce9318054067f5373d337f55c0f61da3",
+  "training_epochs": 6,
+  "batch_size": 32,
+  "training_time_seconds": 980.812956571579,
+  "parameter_count": 33161026,
+  "latency_ms_per_cand": 21.815971608431834,
+  "dev_1060": {
+    "total": 1060,
+    "positives": 265,
+    "negatives": 795,
+    "pr_auc": 0.6458259036439385,
+    "roc_auc": 0.778815711403821,
+    "threshold_0_5": {
+      "threshold": 0.5,
+      "total": 1060,
+      "TP": 150,
+      "TN": 653,
+      "FP": 142,
+      "FN": 115,
+      "accuracy": 0.7575471698113208,
+      "recall": 0.5660377358490566,
+      "precision": 0.5136986301369864,
+      "specificity": 0.8213836477987422,
+      "f1_positive": 0.5385996409335727,
+      "f1_negative": 0.835572616762636,
+      "macro_f1": 0.6870861288481043
+    },
+    "best_threshold": {
+      "threshold": 0.54,
+      "total": 1060,
+      "TP": 143,
+      "TN": 681,
+      "FP": 114,
+      "FN": 122,
+      "accuracy": 0.7773584905660378,
+      "recall": 0.539622641509434,
+      "precision": 0.556420233463035,
+      "specificity": 0.8566037735849057,
+      "f1_positive": 0.5478927203065134,
+      "f1_negative": 0.8523153942428036,
+      "macro_f1": 0.7001040572746584
+    }
+  },
+  "dev_20scans": {
+    "total": 18678,
+    "positives": 125,
+    "negatives": 18553,
+    "pr_auc": 0.34300117470066127,
+    "roc_auc": 0.8520187570743276,
+    "threshold_0_5": {
+      "threshold": 0.5,
+      "total": 18678,
+      "TP": 87,
+      "TN": 15194,
+      "FP": 3359,
+      "FN": 38,
+      "accuracy": 0.8181282792590213,
+      "recall": 0.696,
+      "precision": 0.025246662797446313,
+      "specificity": 0.8189511130275428,
+      "f1_positive": 0.048725847101652196,
+      "f1_negative": 0.8994524197128904,
+      "macro_f1": 0.47408913340727127
+    }
+  }
+}

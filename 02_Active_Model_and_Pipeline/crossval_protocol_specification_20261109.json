@@ -1,0 +1,257 @@
+{
+  "protocol_id": "CLEAR3D-LUNA16-BROADER-CV-20261109",
+  "timestamp": "2026-11-09T19:35:00+07:00",
+  "status": "FROZEN_SPECIFICATION",
+  "scope": "Broader internal LUNA16 cross-validation with prior-exposure limitations; reference_release HOLD",
+  "cohort_inventory": {
+    "total_official_luna16_scans": 888,
+    "total_official_luna16_patients": 887,
+    "quarantined_confirmation_patients": 83,
+    "quarantined_confirmation_scans": 83,
+    "quarantined_confirmation_subset": 1,
+    "quarantined_confirmation_status": "HOLD / UNSETTLED (Zero access strictly enforced)",
+    "excluded_reviewed_patients": 6,
+    "excluded_duplicate_volume_scans": 2,
+    "excluded_duplicate_volume_details": [
+      {
+        "patient": "LIDC-IDRI-0138",
+        "subset": 4,
+        "scan": "scan_6ed2b75c6884e97fa7de",
+        "pixel_hash": "a6a85e433f7e8dad082f7ec8019a1f252288eefa0574ea104f8e017fa4d4ae09"
+      },
+      {
+        "patient": "LIDC-IDRI-0029",
+        "subset": 3,
+        "scan": "scan_c32a1a3ce4c68dae6b44",
+        "pixel_hash": "a6a85e433f7e8dad082f7ec8019a1f252288eefa0574ea104f8e017fa4d4ae09"
+      }
+    ],
+    "multi_scan_patients_handled": [
+      {
+        "patient": "LIDC-IDRI-0332",
+        "scans": [
+          "scan_665438f18e9c119dcafb",
+          "scan_5cb2a613be3a72f304cf"
+        ],
+        "official_subsets": [
+          2,
+          6
+        ],
+        "disjoint_resolution": "Both scans bound strictly to Fold 2"
+      }
+    ],
+    "authorized_permitted_patients": 796,
+    "authorized_permitted_scans": 797,
+    "authorized_subsets": [
+      0,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "authorized_candidates_total": 682787,
+    "authorized_candidates_pos": 1387,
+    "authorized_candidates_neg": 681400
+  },
+  "fold_partitions": {
+    "stratified_10fold_patient_disjoint": {
+      "n_folds": 10,
+      "seed": 17,
+      "per_fold_summary": {
+        "0": {
+          "patients": 80,
+          "scans": 80,
+          "nodules": 109
+        },
+        "1": {
+          "patients": 80,
+          "scans": 80,
+          "nodules": 104
+        },
+        "2": {
+          "patients": 80,
+          "scans": 80,
+          "nodules": 101
+        },
+        "3": {
+          "patients": 80,
+          "scans": 80,
+          "nodules": 102
+        },
+        "4": {
+          "patients": 80,
+          "scans": 80,
+          "nodules": 103
+        },
+        "5": {
+          "patients": 80,
+          "scans": 80,
+          "nodules": 106
+        },
+        "6": {
+          "patients": 79,
+          "scans": 79,
+          "nodules": 106
+        },
+        "7": {
+          "patients": 79,
+          "scans": 79,
+          "nodules": 112
+        },
+        "8": {
+          "patients": 79,
+          "scans": 79,
+          "nodules": 105
+        },
+        "9": {
+          "patients": 79,
+          "scans": 80,
+          "nodules": 110
+        }
+      }
+    },
+    "official_9subset_patient_consolidated": {
+      "n_subsets": 9,
+      "subsets": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "per_subset_summary": {
+        "0": {
+          "patients": 89,
+          "scans": 89,
+          "nodules": 112
+        },
+        "2": {
+          "patients": 89,
+          "scans": 90,
+          "nodules": 130
+        },
+        "3": {
+          "patients": 88,
+          "scans": 88,
+          "nodules": 119
+        },
+        "4": {
+          "patients": 88,
+          "scans": 88,
+          "nodules": 128
+        },
+        "5": {
+          "patients": 89,
+          "scans": 89,
+          "nodules": 108
+        },
+        "6": {
+          "patients": 88,
+          "scans": 88,
+          "nodules": 127
+        },
+        "7": {
+          "patients": 89,
+          "scans": 89,
+          "nodules": 111
+        },
+        "8": {
+          "patients": 88,
+          "scans": 88,
+          "nodules": 118
+        },
+        "9": {
+          "patients": 88,
+          "scans": 88,
+          "nodules": 105
+        }
+      }
+    }
+  },
+  "model_specification": {
+    "architecture": "CLEAR3DMSFv2 (Exact Center-Symmetric Multi-Scale 3D SE-ResNet + Cross-Scale Multi-Head Attention)",
+    "source_file": "clear3d_msf_model_20261106_002.py",
+    "source_sha256": "e83899960b095eab9f92fe104f13e3380c9c5bc48e6ebc82b173003a520914e7",
+    "input_scales": [
+      {
+        "scale": 1,
+        "fov_mm": 21,
+        "grid": "21x21x21 @ 1.0mm",
+        "role": "Focal core micro-texture & spiculation"
+      },
+      {
+        "scale": 2,
+        "fov_mm": 33,
+        "grid": "33x33x33 @ 1.0mm",
+        "role": "Fine margin & peritumoral rim"
+      },
+      {
+        "scale": 3,
+        "fov_mm": 50,
+        "grid": "25x25x25 @ 2.0mm",
+        "role": "Anatomical context, parenchyma & vessels"
+      }
+    ],
+    "tta_inference": "4-view (Identity, X-flip, YZ-rot180, XYZ-rot180)",
+    "training_recipe": {
+      "epochs": 22,
+      "steps_per_epoch": 125,
+      "batch_size": 32,
+      "total_updates": 2750,
+      "optimizer": "AdamW (lr=3e-4, weight_decay=1e-2, cosine schedule)",
+      "precision": "torch.amp.autocast('cuda', dtype=torch.float16)",
+      "thermal_pacing_sleep_sec": 0.035,
+      "duty_cycle_gpu_target": "RTX 2080 Ti (<80C, <2.0 GB VRAM)"
+    }
+  },
+  "evaluated_historical_standards": {
+    "run004_frozen_ensemble": {
+      "checkpoints": [
+        {
+          "fold": 0,
+          "sha256": "739d1d7883d66922f568be4cdc66f491bdabe8eb9e1c2c22ecb8c5bf7b8f5494"
+        },
+        {
+          "fold": 1,
+          "sha256": "547c56eef21b55569e611a5d2a05f0418c59b8258b0ac45d1e1d814a4623d6e4"
+        },
+        {
+          "fold": 2,
+          "sha256": "9e93f0474463b3a15953391ec7adf1ac0ed6d3ed7a3d80712aef240022625290"
+        },
+        {
+          "fold": 3,
+          "sha256": "2ad01868acb7a3a008b8f26584f556dffb9b05d4dccb7f137039ad09f6782758"
+        },
+        {
+          "fold": 4,
+          "sha256": "90d4fb48ecba46ef95e9a55563ba7d4c7aa0d19236f922d96f2f80431901727a"
+        }
+      ],
+      "training_cohort": "Subsets 2-9 Fit Cohort (565 patients, zero Subset 0 exposure)",
+      "subset0_test_cpm": 0.904337,
+      "subset0_test_cpm_95ci": [
+        0.845199,
+        0.953342
+      ],
+      "full_dev_142scans_cpm": 0.912946,
+      "full_dev_142scans_cpm_95ci": [
+        0.865225,
+        0.951433
+      ]
+    }
+  },
+  "reference_files_sha256": {
+    "annotations.csv": "db9adb75b381f3e95b1f601d9b63f2e42bd6536ab5a06dc539c5ec8a4005cec7",
+    "annotations_excluded.csv": "73a5c139257294fe45a68620ed1b2cf383ba8b22af1501d2f498abbd6b802c25",
+    "candidates_V2.csv": "8c168d9113f97a3cfd609d18703c50a62067f8f61fe4833be1650a02baa43c82"
+  }
+}

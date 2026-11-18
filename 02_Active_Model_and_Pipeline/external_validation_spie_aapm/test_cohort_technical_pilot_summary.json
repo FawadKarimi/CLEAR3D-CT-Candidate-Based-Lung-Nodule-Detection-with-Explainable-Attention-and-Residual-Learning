@@ -1,0 +1,135 @@
+{
+  "status": "PASS",
+  "title": "CLEAR3D-MSFv2 SPIE-AAPM Test Cohort Technical Pilot",
+  "timestamp": "2026-11-08T17:11:20Z",
+  "patients_evaluated": 2,
+  "total_targets": 3,
+  "results": [
+    {
+      "patient_id": "LUNGx-CT001",
+      "slice_count": 313,
+      "shape_1mm": [
+        313,
+        351,
+        351
+      ],
+      "targets": [
+        {
+          "nodule_index": 1,
+          "instance_number": 142,
+          "pixel_xy": [
+            135,
+            303
+          ],
+          "gt_lps": [
+            -80.7142265,
+            161.4979439,
+            -188.5
+          ],
+          "zyx_voxel": [
+            171,
+            206,
+            92
+          ],
+          "target_voxel_hu": -125.35885620117188,
+          "in_lung_mask": true,
+          "min_candidate_distance_mm": 1.4676275631312257,
+          "uncapped_proposal_rank": 10723,
+          "proposal_log_response": 0.2106959968805313,
+          "detected_within_5mm_uncapped": true,
+          "detected_within_5mm_cap400": false,
+          "detected_within_5mm_cap1500": false,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        }
+      ],
+      "timing": {
+        "ingest_s": 2.5029892921447754,
+        "resample_s": 5.687011957168579,
+        "mask_s": 8.694321632385254,
+        "gen_s": 26.767024040222168,
+        "infer_s": 14.387104749679565,
+        "total_scan_s": 58.24568009376526
+      }
+    },
+    {
+      "patient_id": "LUNGx-CT002",
+      "slice_count": 272,
+      "shape_1mm": [
+        272,
+        350,
+        350
+      ],
+      "targets": [
+        {
+          "nodule_index": 1,
+          "instance_number": 205,
+          "pixel_xy": [
+            330,
+            348
+          ],
+          "gt_lps": [
+            76.759765625,
+            192.029296875,
+            -253.500031
+          ],
+          "zyx_voxel": [
+            67,
+            237,
+            224
+          ],
+          "target_voxel_hu": 203.88107299804688,
+          "in_lung_mask": true,
+          "min_candidate_distance_mm": 6.483450729497112,
+          "uncapped_proposal_rank": 4057,
+          "proposal_log_response": 0.2782226800918579,
+          "detected_within_5mm_uncapped": false,
+          "detected_within_5mm_cap400": false,
+          "detected_within_5mm_cap1500": false,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        },
+        {
+          "nodule_index": 2,
+          "instance_number": 150,
+          "pixel_xy": [
+            364,
+            212
+          ],
+          "gt_lps": [
+            99.935546875,
+            99.326171875,
+            -198.5
+          ],
+          "zyx_voxel": [
+            122,
+            144,
+            247
+          ],
+          "target_voxel_hu": 172.99923706054688,
+          "in_lung_mask": true,
+          "min_candidate_distance_mm": 1.161415321202643,
+          "uncapped_proposal_rank": 4,
+          "proposal_log_response": 0.6045454740524292,
+          "detected_within_5mm_uncapped": true,
+          "detected_within_5mm_cap400": true,
+          "detected_within_5mm_cap1500": true,
+          "model_prob_calibrated": 0.9999959468841553,
+          "model_prob_raw": 0.9922106266021729,
+          "classifier_rank_in_scan": 1
+        }
+      ],
+      "timing": {
+        "ingest_s": 2.181767225265503,
+        "resample_s": 4.806747674942017,
+        "mask_s": 6.538670778274536,
+        "gen_s": 20.229379177093506,
+        "infer_s": 14.024648666381836,
+        "total_scan_s": 48.04154944419861
+      }
+    }
+  ],
+  "reference_release": "HOLD"
+}

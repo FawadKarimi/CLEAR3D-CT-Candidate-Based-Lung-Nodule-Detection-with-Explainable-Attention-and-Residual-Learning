@@ -1,0 +1,6 @@
+nohup: ignoring input
+187cbf2b987afad82296805019b4f1b29d50b7b016b0d13df38d6d16e3e22527  /experiment-storage/chaidir/fawad-dsai/CLEAR3D-parallel-review-20261014-2f1a64/runs/zuo18-001/best-state.pt
+83fbd3c5f556e9afa2b08a3b1238da8311293b517b3ab0ae6792dbe7ca839b57  /experiment-storage/chaidir/fawad-dsai/CLEAR3D-parallel-review-20261014-2f1a64/runs/luna-expand-001/best-state.pt
+01a1fc9f5401ee9bf0592ceaea93469f63ee82a02dbd4dc9cd31d32d8183294b  /experiment-storage/chaidir/fawad-dsai/CLEAR3D-parallel-review-20261014-2f1a64/runs/multibranch-001/best-state.pt
+07b4ddba6c0c30909525afc6718056f317360d9fab74ecfa1178426e4efb43b7  /experiment-storage/chaidir/fawad-dsai/CLEAR3D-parallel-review-20261014-2f1a64/runs/redesign-001/best-state.pt
+91cd2a98ae89a363b35d514dc872d2e580da580744139c405eb1722e33108c61  /experiment-storage/chaidir/fawad-dsai/CLEAR3D-parallel-review-20261014-2f1a64/runs/balanced-nofit-002/head-state.pt

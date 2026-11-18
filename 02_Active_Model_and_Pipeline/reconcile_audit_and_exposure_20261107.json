@@ -1,0 +1,348 @@
+{
+  "audit_1_cohort_intersections": {
+    "split_json_sha256": "2ffc30511188ca27686d7c2d5a73fa2723f822a42a62a9c159987c7e0d54ede1",
+    "ledger_json_sha256": "d33aabd8fa432ce385b27f7e88429b41cf49aeb57eba9d8bdcab48f9faf458b3",
+    "scans_jsonl_sha256": "49d9df4826a505622359743d6b21519b6b31b98b6758c70619252071e18a3abf",
+    "counts": {
+      "confirm_patients": 83,
+      "confirm_series": 83,
+      "confirm_scans": 83,
+      "reviewed_patients": 6,
+      "reviewed_series": 6,
+      "reviewed_scans": 6,
+      "val_89_patients": 89,
+      "val_89_series": 89,
+      "val_89_scans": 89
+    },
+    "intersections": {
+      "confirm_intersect_reviewed_patients": 0,
+      "confirm_intersect_reviewed_series": 0,
+      "confirm_intersect_reviewed_scans": 0,
+      "confirm_subset_of_89_val": true,
+      "reviewed_subset_of_89_val": true,
+      "union_equals_89_val": true,
+      "val_89_minus_confirm": [
+        "LIDC-IDRI-0020",
+        "LIDC-IDRI-0428",
+        "LIDC-IDRI-0634",
+        "LIDC-IDRI-0722",
+        "LIDC-IDRI-0865",
+        "LIDC-IDRI-0895"
+      ]
+    },
+    "exposure_history": {
+      "reviewed_six_patients": [
+        "LIDC-IDRI-0020",
+        "LIDC-IDRI-0428",
+        "LIDC-IDRI-0634",
+        "LIDC-IDRI-0722",
+        "LIDC-IDRI-0865",
+        "LIDC-IDRI-0895"
+      ],
+      "reviewed_prior_exposure": "Evaluated in historical 384-row exploratory slice per EXPOSURE_AND_SPLIT_LEDGER.json",
+      "confirm_83_status": "UNSETTLED",
+      "prepared_artifact_status": "All 89 scans pre-processed offline during luna16-prepare-development-fold0-v1",
+      "pristine_status": "Neither group is pristine; 6 were evaluated previously, and 83 have UNSETTLED authorization while all 89 were prepared offline."
+    }
+  },
+  "audit_2_geometry_and_calibration": {
+    "preparation_json_sha256": "0d5fcc5ce4bd45358c92a6fd630a3fe0c02ec14c383f3060cfd8dfb17a41d5f6",
+    "preparation_config": {
+      "coordinate_aware_spacing_mm": 1.0,
+      "preprocess_spacing_mm": 1.0
+    },
+    "geom_sample_count": 10,
+    "sample_affine_diagonal": [
+      [
+        0.0,
+        0.0,
+        1.0,
+        -129.399994
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        -81.5
+      ],
+      [
+        1.0,
+        0.0,
+        0.0,
+        -301.570007
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "checkpoints": [
+      {
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/clear3d-msf-ensemble-20261106-004/checkpoints/fold-0.pt",
+        "sha256": "739d1d7883d66922f568be4cdc66f491bdabe8eb9e1c2c22ecb8c5bf7b8f5494",
+        "fold": 0,
+        "use_ema": true,
+        "scale_oof": 1.7000000000000002,
+        "bias_oof": 4.175479443210625,
+        "nat_cut_oof": 0.9999467134475708,
+        "sample_param_shapes": {
+          "scale_emb": [
+            1,
+            3,
+            160
+          ],
+          "f1_stem.0.weight": [
+            32,
+            3,
+            2,
+            2,
+            2
+          ],
+          "f1_stem.1.weight": [
+            32
+          ],
+          "f1_stem.1.bias": [
+            32
+          ],
+          "f1_stem.3.conv1.weight": [
+            32,
+            32,
+            3,
+            3,
+            3
+          ]
+        }
+      },
+      {
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/clear3d-msf-ensemble-20261106-004/checkpoints/fold-1.pt",
+        "sha256": "547c56eef21b55569e611a5d2a05f0418c59b8258b0ac45d1e1d814a4623d6e4",
+        "fold": 1,
+        "use_ema": true,
+        "scale_oof": 1.7000000000000002,
+        "bias_oof": 4.175479443210625,
+        "nat_cut_oof": 0.9999467134475708,
+        "sample_param_shapes": {
+          "scale_emb": [
+            1,
+            3,
+            160
+          ],
+          "f1_stem.0.weight": [
+            32,
+            3,
+            2,
+            2,
+            2
+          ],
+          "f1_stem.1.weight": [
+            32
+          ],
+          "f1_stem.1.bias": [
+            32
+          ],
+          "f1_stem.3.conv1.weight": [
+            32,
+            32,
+            3,
+            3,
+            3
+          ]
+        }
+      },
+      {
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/clear3d-msf-ensemble-20261106-004/checkpoints/fold-2.pt",
+        "sha256": "9e93f0474463b3a15953391ec7adf1ac0ed6d3ed7a3d80712aef240022625290",
+        "fold": 2,
+        "use_ema": true,
+        "scale_oof": 1.7000000000000002,
+        "bias_oof": 4.175479443210625,
+        "nat_cut_oof": 0.9999467134475708,
+        "sample_param_shapes": {
+          "scale_emb": [
+            1,
+            3,
+            160
+          ],
+          "f1_stem.0.weight": [
+            32,
+            3,
+            2,
+            2,
+            2
+          ],
+          "f1_stem.1.weight": [
+            32
+          ],
+          "f1_stem.1.bias": [
+            32
+          ],
+          "f1_stem.3.conv1.weight": [
+            32,
+            32,
+            3,
+            3,
+            3
+          ]
+        }
+      },
+      {
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/clear3d-msf-ensemble-20261106-004/checkpoints/fold-3.pt",
+        "sha256": "2ad01868acb7a3a008b8f26584f556dffb9b05d4dccb7f137039ad09f6782758",
+        "fold": 3,
+        "use_ema": true,
+        "scale_oof": 1.7000000000000002,
+        "bias_oof": 4.175479443210625,
+        "nat_cut_oof": 0.9999467134475708,
+        "sample_param_shapes": {
+          "scale_emb": [
+            1,
+            3,
+            160
+          ],
+          "f1_stem.0.weight": [
+            32,
+            3,
+            2,
+            2,
+            2
+          ],
+          "f1_stem.1.weight": [
+            32
+          ],
+          "f1_stem.1.bias": [
+            32
+          ],
+          "f1_stem.3.conv1.weight": [
+            32,
+            32,
+            3,
+            3,
+            3
+          ]
+        }
+      },
+      {
+        "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-broader-loader-20261028/v2/runs/clear3d-msf-ensemble-20261106-004/checkpoints/fold-4.pt",
+        "sha256": "90d4fb48ecba46ef95e9a55563ba7d4c7aa0d19236f922d96f2f80431901727a",
+        "fold": 4,
+        "use_ema": true,
+        "scale_oof": 1.7000000000000002,
+        "bias_oof": 4.175479443210625,
+        "nat_cut_oof": 0.9999467134475708,
+        "sample_param_shapes": {
+          "scale_emb": [
+            1,
+            3,
+            160
+          ],
+          "f1_stem.0.weight": [
+            32,
+            3,
+            2,
+            2,
+            2
+          ],
+          "f1_stem.1.weight": [
+            32
+          ],
+          "f1_stem.1.bias": [
+            32
+          ],
+          "f1_stem.3.conv1.weight": [
+            32,
+            32,
+            3,
+            3,
+            3
+          ]
+        }
+      }
+    ],
+    "fit_oof_summary_sha256": "a54231394a671fceca9531b51276c999f92dc106aa98f62140cfc38e6ac2dff2",
+    "fit_oof_summary_values": {
+      "scale_oof": 1.7000000000000002,
+      "bias_oof": 4.175479443210625,
+      "oof_natural_prevalence_threshold": 0.9999467134475708
+    },
+    "scoring_script_trace": {
+      "script": "score_clear3d_msf_official_dev_20261106_004.py",
+      "script_sha256": "ca70a02552c67864199b8ae1645b7e809a60487c4711700cb7e85f0275ac1463",
+      "line_188_190": "scale_oof = float(ck['scale_oof']), bias_oof = float(ck['bias_oof']), nat_cut_oof = float(ck['nat_cut_oof'])",
+      "line_247": "lo_sum = lo_sum + (scale_oof * lo_m + bias_oof)",
+      "applied_scale": 1.7000000000000002,
+      "applied_bias": 4.175479443210625
+    },
+    "reconciliation_notes": {
+      "spacing": "Prepared volumes are 1.0 mm isometric (continuous coordinate affine diagonal is [1.0, 1.0, 1.0]). The 0.75 mm description was an unverified assumption imported from external LUNA16 literature.",
+      "calibration": "The scoring run strictly used scale=1.7000000000000002 and bias=4.175479443210625 stored in all 5 fold checkpoints from fit-OOF Platt calibration. Values 0.933836 / -2.062025 belonged to an earlier exploratory single-fold experiment (pretrained18-zscore-dev-001) and were incorrectly conflated."
+    }
+  },
+  "audit_3_evaluator_matching_rule": {
+    "evaluator_path": "/experiment-storage/chaidir/fawad-dsai/LIDC3D/artifacts/reference-release-review-20261005T103915Z-4c86a294/official-code/evaluationScript/noduleCADEvaluationLUNA16.py",
+    "evaluator_sha256": "5c22276353294a6e9de40e7ec8f63f8efa83252c34110b0c0f3c00cbe6b1dcd8",
+    "code_excerpt_lines_256_285": "            # A nodule is marked as detected when the center of mass of the candidate is within a distance R of\n            # the center of the nodule. In order to ensure that the CAD mark is displayed within the nodule on the\n            # CT scan, we set R to be the radius of the nodule size.\n            diameter = float(noduleAnnot.diameter_mm)\n            if diameter < 0.0:\n              diameter = 10.0\n            radiusSquared = pow((diameter / 2.0), 2.0)\n\n            found = False\n            noduleMatches = []\n            for key, candidate in candidates.iteritems():\n                x2 = float(candidate.coordX)\n                y2 = float(candidate.coordY)\n                z2 = float(candidate.coordZ)\n                dist = math.pow(x - x2, 2.) + math.pow(y - y2, 2.) + math.pow(z - z2, 2.)\n                if dist < radiusSquared:\n                    if (noduleAnnot.state == \"Included\"):\n                        found = True\n                        noduleMatches.append(candidate)\n                        if key not in candidates2.keys():\n                            print \"This is strange: CAD mark %s detected two nodules! Check for overlapping nodule annotations, SeriesUID: %s, nodule Annot ID: %s\" % (str(candidate.id), seriesuid, str(noduleAnnot.id))\n                        else:\n                            del candidates2[key]\n                    elif (noduleAnnot.state == \"Excluded\"): # an excluded nodule\n                        if bOtherNodulesAsIrrelevant: #    delete marks on excluded nodules so they don't count as false positives\n                            if key in candidates2.keys():\n                                irrelevantCandidates += 1\n                                ignoredCADMarksList.append(\"%s,%s,%s,%s,%s,%s,%.9f\" % (seriesuid, -1, candidate.coordX, candidate.coordY, candidate.coordZ, str(candidate.id), float(candidate.CADprobability)))\n                                del candidates2[key]\n            if len(noduleMatches) > 1: # double detection\n",
+    "included_nodule_radius": "R = diameter / 2.0 (Strictly half of nodule diameter; no minimum radius floor).",
+    "excluded_finding_fallback": "If diameter < 0.0, fallback diameter = 10.0 mm -> R = 5.0 mm. If diameter >= 0.0, R = diameter / 2.0.",
+    "reconciliation_note": "The description max(d/2, 5 mm) is mathematically and factually incorrect. It conflates the excluded-finding negative diameter fallback (10 mm / 2 = 5 mm) with the included nodule matching rule (strictly d/2)."
+  },
+  "audit_4_no_mining_and_bootstrap": {
+    "train_msf_sha256": "b479ea29341791b8457b39f4241832bf7fe2cfd5320d513e27a69202a05769e8",
+    "train_nomining_sha256": "48047c1f8172fafdce9e91127724cf1f206750b133bdfcdb47d9fc5be2931325",
+    "comparison": {
+      "clean_fit_negatives_pool": 472507,
+      "full_model_run004": {
+        "positives": 984,
+        "random_negatives": 15744,
+        "scout_mined_hard_negatives": 11808,
+        "total_bank_examples": 28536,
+        "batch_composition": "10 positives + 12 hard negatives + 10 random negatives (batch size 32)",
+        "updates": "22 epochs * 125 steps = 2,750 updates per fold"
+      },
+      "no_mining_control_b": {
+        "positives": 984,
+        "random_negatives": 15744,
+        "scout_mined_hard_negatives": 0,
+        "total_bank_examples": 16728,
+        "batch_composition": "10 positives + 22 random negatives (batch size 32)",
+        "updates": "22 epochs * 125 steps = 2,750 updates"
+      }
+    },
+    "correction_of_pool_description": "The no-mining control B did NOT train on 28,536 examples. It trained on 16,728 examples (984 positives + 15,744 random negatives) with 22 random negatives per batch, skipping hard-negative mining entirely while matching update count at 2,750 steps.",
+    "bootstrap_interpretation_correction": {
+      "replicate_proportion_value": "88.50% (1,770 / 2,000 resamples)",
+      "interpretation": "The proportion of bootstrap replicates where delta > 0 is an empirical sample statistic (bootstrap quantile), NOT a Bayesian posterior probability of true superiority. Because the 95% percentile bootstrap CI [-0.0147, +0.0511] spans zero, the two-sided null hypothesis H0: delta = 0 cannot be rejected (p approx 0.23 > 0.05). There is no statistically significant difference established."
+    }
+  },
+  "audit_5_lndb_dataset_facts": {
+    "dataset_name": "LNDb (Lung Nodule Database)",
+    "zenodo_record_id": "7153205",
+    "zenodo_doi": "10.5281/zenodo.7153205",
+    "zenodo_version": "4 (October 2022)",
+    "license": "Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)",
+    "institution": "Centro Hospitalar e Universit\u00e1rio de S\u00e3o Jo\u00e3o (CHUSJ), Porto, Portugal",
+    "downloadable_cts": "294 thoracic CT scans in MetaImage (.mhd / .raw) format",
+    "accessible_annotations": [
+      "chars_trainNodules.csv (manual radiologist annotations: coordinates, diameter, textures)",
+      "allNods.csv (comprehensive list of all image and text reported nodules)",
+      "report.csv (tabular data extracted from clinical radiology reports)",
+      "LNDbAcqParams.csv (CT acquisition parameters: kVp, slice thickness, kernel)",
+      "rad2Fleischner.csv (radiologist nodules mapped to Fleischner guidelines)",
+      "text2Fleischner.csv (text-reported findings mapped to Fleischner guidelines)",
+      "segmentation masks for nodules and non-nodule findings (.mhd/.raw)"
+    ],
+    "estimated_download_size": "~30.3 GB across split RAR archives (data0.rar to data4.rar, ~4.2 GB each)",
+    "prior_use_and_overlap": "Zero patient or imaging center overlap with LIDC-IDRI (US NCI multi-center) or MedicalNet pre-training datasets",
+    "available_candidate_generators": [
+      "LNDb Grand Challenge baseline (open-source at github.com/pedroRASilva/LNDb)",
+      "LUNA16 candidate proposal scout / U-Net",
+      "CLEAR3D Stage-1 candidate proposal network"
+    ],
+    "protocol_distinction": {
+      "candidate_classification_track1": "Evaluates false-positive reduction on candidate lists generated by a specified candidate generator. Must evaluate against all candidate coordinates (true nodules and natural background candidates).",
+      "end_to_end_detection_track2": "Evaluates complete CAD pipeline from raw CT volumes to final detections, scoring FROC and CPM. Candidate proposal misses directly penalize upper-bound sensitivity.",
+      "ground_truth_centered_limitation": "Evaluating solely on ground-truth-centered positive patches measures local classifier sensitivity on known nodules, but provides zero measurement of false-positive rate per scan and does NOT establish detection readiness or external CAD performance."
+    }
+  }
+}

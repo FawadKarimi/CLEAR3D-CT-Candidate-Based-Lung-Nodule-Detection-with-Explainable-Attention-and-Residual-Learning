@@ -1,0 +1,16 @@
+
+************************************************************
+CAD Analysis: baseline_dev708_pooled_oof_predictions
+************************************************************
+
+Candidate detection results:
+    True positives: 926
+    False positives: 64694
+    False negatives: 20
+    True negatives: 0
+    Total number of candidates: 70726
+    Total number of nodules: 946
+    Ignored candidates on excluded nodules: 4791
+    Ignored candidates which were double detections on a nodule: 315
+    Sensitivity: 0.978858351
+    Average number of candidates per scan: 99.895480226

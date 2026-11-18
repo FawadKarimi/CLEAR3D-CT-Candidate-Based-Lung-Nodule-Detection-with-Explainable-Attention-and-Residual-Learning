@@ -1,0 +1,5 @@
+{"epoch": 0, "monotonic": 12473789.363650788, "phase": "training"}
+{"epoch": 0, "monotonic": 12473974.240797155, "phase": "validation"}
+{"epoch": 1, "monotonic": 12473981.402219577, "phase": "training"}
+{"epoch": 1, "monotonic": 12474295.257054623, "phase": "validation"}
+{"epoch": 2, "monotonic": 12474314.533718972, "phase": "training"}

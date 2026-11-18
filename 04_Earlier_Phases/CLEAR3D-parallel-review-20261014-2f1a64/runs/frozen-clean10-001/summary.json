@@ -1,0 +1,31 @@
+{
+  "stop": "budget",
+  "depth": 18,
+  "hold_patient": "LIDC-IDRI-0694",
+  "fit_pos": 9,
+  "check_pos": 1,
+  "best_step": 120,
+  "best_check": {
+    "acc": 0.1111111111111111,
+    "macro": 0.09999999999999999,
+    "pos_f1": 0.19999999999999998,
+    "pos_precision": 0.1111111111111111,
+    "pos_recall": 1.0,
+    "tp": 1,
+    "fp": 8,
+    "fn": 0,
+    "n": 9
+  },
+  "best_train": {
+    "acc": 0.2,
+    "macro": 0.16666666666666669,
+    "pos_f1": 0.33333333333333337,
+    "pos_precision": 0.2,
+    "pos_recall": 1.0,
+    "tp": 9,
+    "fp": 36,
+    "fn": 0,
+    "n": 45
+  },
+  "threshold": 0.5
+}

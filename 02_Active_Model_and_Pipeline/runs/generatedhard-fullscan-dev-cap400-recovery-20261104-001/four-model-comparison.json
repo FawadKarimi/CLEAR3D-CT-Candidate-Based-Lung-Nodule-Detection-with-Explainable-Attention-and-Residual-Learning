@@ -1,0 +1,67 @@
+{
+  "scope": "exploratory repeatedly used development set; same top-400 candidates; not independent test or approved benchmark",
+  "reference_release": "HOLD",
+  "fp_per_scan": [
+    0.125,
+    0.25,
+    0.5,
+    1,
+    2,
+    4,
+    8
+  ],
+  "results": {
+    "original_pretrained_resnet18": {
+      "sensitivity": [
+        0.010416667,
+        0.010416667,
+        0.010416667,
+        0.015625,
+        0.020833333,
+        0.020833333,
+        0.041666667
+      ],
+      "mean_seven_operating_points": 0.018601190571428568,
+      "froc_sha256": "0acf7d8e793ac798113f65b765ae4374e0f124acb0c8cc54f3a9487c91c3e5c0"
+    },
+    "zuo_like_comparator": {
+      "sensitivity": [
+        0.026041667,
+        0.026041667,
+        0.036458333,
+        0.041666667,
+        0.052083333,
+        0.0625,
+        0.088541667
+      ],
+      "mean_seven_operating_points": 0.04761904771428572,
+      "froc_sha256": "5cf096fa76610a0859311218805994986f0ac9e1710cd2aa2d2be699d1206fa8"
+    },
+    "generated_negative_resnet18": {
+      "sensitivity": [
+        0.020833333,
+        0.036458333,
+        0.046875,
+        0.0625,
+        0.088541667,
+        0.109375,
+        0.166666667
+      ],
+      "mean_seven_operating_points": 0.07589285714285714,
+      "froc_sha256": "28293b97a5fcff209aea7e5e551de074f98481f18aeaf713d13594fe9d2e56f3"
+    },
+    "generated_hard_negative_resnet18": {
+      "sensitivity": [
+        0.026041667,
+        0.046875,
+        0.078125,
+        0.109375,
+        0.140625,
+        0.145833333,
+        0.171875
+      ],
+      "mean_seven_operating_points": 0.10267857142857142,
+      "froc_sha256": "844da0abf2913c2f864d519c727aa96e65909b72f93cad8c2225dcde69c8e3b2"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "status": "scoring_only",
+  "scope": "official candidates on repeatedly exposed development only; not independent test",
+  "scans": 8,
+  "rows": 6079,
+  "seconds": 71.25681989826262,
+  "checkpoint_sha256": "c2c077cad6ea3a2eaa1515b6b3bbf9189a6efe9723d29d3e014a23c5c08fc98b",
+  "reference_release": "HOLD",
+  "device": "cuda"
+}

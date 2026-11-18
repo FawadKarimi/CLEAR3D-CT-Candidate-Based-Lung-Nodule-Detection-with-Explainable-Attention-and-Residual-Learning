@@ -1,0 +1,600 @@
+{
+  "status": "PASS",
+  "task": "CLEAR3D-MSFv2 Independent External Evaluation on SPIE-AAPM Lung CT Cohort",
+  "dataset": {
+    "collection": "SPIE-AAPM Lung CT Challenge",
+    "doi": "10.7937/K9/TCIA.2015.UZLSU3FL",
+    "license": "CC-BY 3.0",
+    "cohort_role": "External Validation Calibration Set",
+    "patient_count": 10,
+    "target_nodule_count": 10,
+    "overlap_with_lidc_luna16": "UNKNOWN / UNVERIFIED"
+  },
+  "primary_reference_system": {
+    "name": "CLEAR3D-MSFv2 5-Model Ensemble (Official Reference)",
+    "reference_release": "HOLD",
+    "checkpoints": {
+      "fold-0": {
+        "path": "runs/clear3d-msf-ensemble-20261106-004/checkpoints/fold-0.pt",
+        "sha256": "739d1d7883d66922f568be4cdc66f491bdabe8eb9e1c2c22ecb8c5bf7b8f5494"
+      },
+      "fold-1": {
+        "path": "runs/clear3d-msf-ensemble-20261106-004/checkpoints/fold-1.pt",
+        "sha256": "547c56eef21b55569e611a5d2a05f0418c59b8258b0ac45d1e1d814a4623d6e4"
+      },
+      "fold-2": {
+        "path": "runs/clear3d-msf-ensemble-20261106-004/checkpoints/fold-2.pt",
+        "sha256": "9e93f0474463b3a15953391ec7adf1ac0ed6d3ed7a3d80712aef240022625290"
+      },
+      "fold-3": {
+        "path": "runs/clear3d-msf-ensemble-20261106-004/checkpoints/fold-3.pt",
+        "sha256": "2ad01868acb7a3a008b8f26584f556dffb9b05d4dccb7f137039ad09f6782758"
+      },
+      "fold-4": {
+        "path": "runs/clear3d-msf-ensemble-20261106-004/checkpoints/fold-4.pt",
+        "sha256": "90d4fb48ecba46ef95e9a55563ba7d4c7aa0d19236f922d96f2f80431901727a"
+      }
+    },
+    "calibration_contract": {
+      "method": "Platt_scaling_and_natural_prevalence_thresholding",
+      "source": "100% fit-only 5-fold patient-disjoint OOF (zero dev access)",
+      "scale_oof": 1.7000000000000002,
+      "bias_oof": 4.175479443210625,
+      "nat_cut_oof": 0.9999467134475708
+    }
+  },
+  "timing_seconds": {
+    "scoring_seconds": 587.9610254764557,
+    "total_pipeline_seconds": 866.7712452411652
+  },
+  "proposal_generator": {
+    "algorithm": "Multiscale Laplacian of Gaussian (LoG) 3D Blob Detector",
+    "parameters": {
+      "threshold": 0.005,
+      "sigmas_mm": [
+        1.0,
+        1.5,
+        2.0,
+        3.0
+      ],
+      "nms_mm": 3.0,
+      "cap": 400
+    },
+    "learned_weights": false,
+    "coverage_summary": {
+      "total_nodules": 10,
+      "nodules_detected_within_5mm": 3,
+      "proposal_coverage_rate": 0.3,
+      "per_nodule": [
+        {
+          "patient_id": "CT-Training-LC001",
+          "nodule_id": "CT-TRAINING-LC001:nodule:001",
+          "diagnosis": "malignant",
+          "gt_lps": [
+            -85.851227,
+            183.1366835,
+            -207.5
+          ],
+          "proposals_generated": 400,
+          "min_distance_mm": 0.3779183319514945,
+          "detected_within_5mm": true,
+          "proposal_rank": 349,
+          "proposal_log_response": 0.5289536714553833
+        },
+        {
+          "patient_id": "CT-Training-LC002",
+          "nodule_id": "CT-TRAINING-LC002:nodule:001",
+          "diagnosis": "malignant",
+          "gt_lps": [
+            -89.25075949999999,
+            196.27289960000002,
+            -345.0
+          ],
+          "proposals_generated": 400,
+          "min_distance_mm": 13.664515947199654,
+          "detected_within_5mm": false,
+          "proposal_rank": null,
+          "proposal_log_response": 0.5265463590621948
+        },
+        {
+          "patient_id": "CT-Training-LC003",
+          "nodule_id": "CT-TRAINING-LC003:nodule:001",
+          "diagnosis": "malignant",
+          "gt_lps": [
+            79.35677150000001,
+            108.9453125,
+            1595.5
+          ],
+          "proposals_generated": 400,
+          "min_distance_mm": 1.4373726166386014,
+          "detected_within_5mm": true,
+          "proposal_rank": 375,
+          "proposal_log_response": 0.48284685611724854
+        },
+        {
+          "patient_id": "CT-Training-LC008",
+          "nodule_id": "CT-TRAINING-LC008:nodule:001",
+          "diagnosis": "malignant",
+          "gt_lps": [
+            -89.27734375,
+            165.764372825,
+            212.5
+          ],
+          "proposals_generated": 400,
+          "min_distance_mm": 24.97387711776381,
+          "detected_within_5mm": false,
+          "proposal_rank": null,
+          "proposal_log_response": 0.5260130763053894
+        },
+        {
+          "patient_id": "CT-Training-LC009",
+          "nodule_id": "CT-TRAINING-LC009:nodule:001",
+          "diagnosis": "malignant",
+          "gt_lps": [
+            -99.15625,
+            162.37791585,
+            -92.3999939
+          ],
+          "proposals_generated": 400,
+          "min_distance_mm": 14.66989719341166,
+          "detected_within_5mm": false,
+          "proposal_rank": null,
+          "proposal_log_response": 0.4518983066082001
+        },
+        {
+          "patient_id": "CT-Training-BE001",
+          "nodule_id": "CT-TRAINING-BE001:nodule:001",
+          "diagnosis": "benign",
+          "gt_lps": [
+            106.22627600000001,
+            165.54640965,
+            -343.000031
+          ],
+          "proposals_generated": 400,
+          "min_distance_mm": 31.049196890796974,
+          "detected_within_5mm": false,
+          "proposal_rank": null,
+          "proposal_log_response": 0.5936200618743896
+        },
+        {
+          "patient_id": "CT-Training-BE002",
+          "nodule_id": "CT-TRAINING-BE002:nodule:001",
+          "diagnosis": "benign",
+          "gt_lps": [
+            -69.580078125,
+            99.333984375,
+            -159.5
+          ],
+          "proposals_generated": 400,
+          "min_distance_mm": 1.168762142101059,
+          "detected_within_5mm": true,
+          "proposal_rank": 227,
+          "proposal_log_response": 0.35759875178337097
+        },
+        {
+          "patient_id": "CT-Training-BE006",
+          "nodule_id": "CT-TRAINING-BE006:nodule:001",
+          "diagnosis": "benign",
+          "gt_lps": [
+            139.854136,
+            134.77082065,
+            -144.000031
+          ],
+          "proposals_generated": 400,
+          "min_distance_mm": 16.411011678787187,
+          "detected_within_5mm": false,
+          "proposal_rank": null,
+          "proposal_log_response": 0.5709452033042908
+        },
+        {
+          "patient_id": "CT-Training-BE007",
+          "nodule_id": "CT-TRAINING-BE007:nodule:001",
+          "diagnosis": "benign",
+          "gt_lps": [
+            88.75,
+            72.849609375,
+            -223.300003
+          ],
+          "proposals_generated": 400,
+          "min_distance_mm": 14.528970256528433,
+          "detected_within_5mm": false,
+          "proposal_rank": null,
+          "proposal_log_response": 0.573237419128418
+        },
+        {
+          "patient_id": "CT-Training-BE010",
+          "nodule_id": "CT-TRAINING-BE010:nodule:001",
+          "diagnosis": "benign",
+          "gt_lps": [
+            -102.744072125,
+            178.909622175,
+            -352.699982
+          ],
+          "proposals_generated": 400,
+          "min_distance_mm": 24.27131031097056,
+          "detected_within_5mm": false,
+          "proposal_rank": null,
+          "proposal_log_response": 0.5723844766616821
+        }
+      ]
+    }
+  },
+  "classifier_froc": {
+    "grid_fp_rates": [
+      0.125,
+      0.25,
+      0.5,
+      1.0,
+      2.0,
+      4.0,
+      8.0
+    ],
+    "sensitivities": [
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3,
+      0.3
+    ],
+    "cpm": 0.3,
+    "target_count": 10,
+    "scan_count": 10,
+    "total_fps": 3997,
+    "cpm_bootstrap_95ci": [
+      0.0,
+      0.3
+    ],
+    "cpm_bootstrap_mean": 0.19328571428571428
+  },
+  "candidate_discrimination": {
+    "at_nat_cut_oof": {
+      "total_candidates": 4000,
+      "positives": 3,
+      "negatives": 3997,
+      "threshold": 0.9999467134475708,
+      "TP": 3,
+      "TN": 3994,
+      "FP": 3,
+      "FN": 0,
+      "accuracy": 0.99925,
+      "macro_f1": 0.8331456221582614,
+      "f1_positive": 0.6666666666666666,
+      "f1_negative": 0.9996245776498561,
+      "precision_positive": 0.5,
+      "recall_positive": 1.0,
+      "specificity_negative": 0.9992494370778083,
+      "f1_positive_95ci": [
+        0.0,
+        1.0
+      ],
+      "recall_positive_95ci": [
+        0.0,
+        1.0
+      ],
+      "precision_positive_95ci": [
+        0.0,
+        1.0
+      ]
+    },
+    "at_fixed_05": {
+      "total_candidates": 4000,
+      "positives": 3,
+      "negatives": 3997,
+      "threshold": 0.5,
+      "TP": 3,
+      "TN": 3984,
+      "FP": 13,
+      "FN": 0,
+      "accuracy": 0.99675,
+      "macro_f1": 0.6570803025606868,
+      "f1_positive": 0.3157894736842105,
+      "f1_negative": 0.9983711314371633,
+      "precision_positive": 0.1875,
+      "recall_positive": 1.0,
+      "specificity_negative": 0.9967475606705029,
+      "f1_positive_95ci": [
+        0.0,
+        0.7699999999999994
+      ],
+      "recall_positive_95ci": [
+        0.0,
+        1.0
+      ],
+      "precision_positive_95ci": [
+        0.0,
+        0.6260416666666657
+      ]
+    },
+    "pr_auc": 0.9166666666666666,
+    "roc_auc": 0.9999166041197565
+  },
+  "per_scan_diagnostics": [
+    {
+      "patient_id": "CT-Training-LC001",
+      "diagnosis": "malignant",
+      "slices": 285,
+      "raw_shape": [
+        285,
+        512,
+        512
+      ],
+      "resampled_shape": [
+        285,
+        361,
+        361
+      ],
+      "proposals": 400,
+      "min_dist_mm": 0.3779183319514945,
+      "nodule_detected": true,
+      "nodule_rank_in_scan": 1,
+      "nodule_cal_prob": 0.9999953508377075,
+      "nodule_raw_prob": 0.9915462136268616,
+      "timing": {
+        "resample_sec": 5.489896059036255,
+        "mask_sec": 9.51393723487854,
+        "proposal_sec": 24.914875984191895,
+        "infer_sec": 4.152251720428467,
+        "total_sec": 46.87228775024414
+      }
+    },
+    {
+      "patient_id": "CT-Training-LC002",
+      "diagnosis": "malignant",
+      "slices": 366,
+      "raw_shape": [
+        366,
+        512,
+        512
+      ],
+      "resampled_shape": [
+        366,
+        351,
+        351
+      ],
+      "proposals": 400,
+      "min_dist_mm": 13.664515947199654,
+      "nodule_detected": false,
+      "nodule_rank_in_scan": null,
+      "nodule_cal_prob": null,
+      "nodule_raw_prob": null,
+      "timing": {
+        "resample_sec": 6.724446058273315,
+        "mask_sec": 12.21377444267273,
+        "proposal_sec": 29.905071258544922,
+        "infer_sec": 3.7566747665405273,
+        "total_sec": 55.79540991783142
+      }
+    },
+    {
+      "patient_id": "CT-Training-LC003",
+      "diagnosis": "malignant",
+      "slices": 413,
+      "raw_shape": [
+        413,
+        512,
+        512
+      ],
+      "resampled_shape": [
+        413,
+        435,
+        435
+      ],
+      "proposals": 400,
+      "min_dist_mm": 1.4373726166386014,
+      "nodule_detected": true,
+      "nodule_rank_in_scan": 1,
+      "nodule_cal_prob": 0.9999969005584717,
+      "nodule_raw_prob": 0.9932928085327148,
+      "timing": {
+        "resample_sec": 11.228668928146362,
+        "mask_sec": 27.068599224090576,
+        "proposal_sec": 53.36247897148132,
+        "infer_sec": 3.7750134468078613,
+        "total_sec": 99.77944159507751
+      }
+    },
+    {
+      "patient_id": "CT-Training-LC008",
+      "diagnosis": "malignant",
+      "slices": 376,
+      "raw_shape": [
+        376,
+        512,
+        512
+      ],
+      "resampled_shape": [
+        376,
+        280,
+        280
+      ],
+      "proposals": 400,
+      "min_dist_mm": 24.97387711776381,
+      "nodule_detected": false,
+      "nodule_rank_in_scan": null,
+      "nodule_cal_prob": null,
+      "nodule_raw_prob": null,
+      "timing": {
+        "resample_sec": 4.395598888397217,
+        "mask_sec": 6.050283432006836,
+        "proposal_sec": 19.236830234527588,
+        "infer_sec": 3.77127742767334,
+        "total_sec": 37.15584468841553
+      }
+    },
+    {
+      "patient_id": "CT-Training-LC009",
+      "diagnosis": "malignant",
+      "slices": 281,
+      "raw_shape": [
+        281,
+        512,
+        512
+      ],
+      "resampled_shape": [
+        281,
+        340,
+        340
+      ],
+      "proposals": 400,
+      "min_dist_mm": 14.66989719341166,
+      "nodule_detected": false,
+      "nodule_rank_in_scan": null,
+      "nodule_cal_prob": null,
+      "nodule_raw_prob": null,
+      "timing": {
+        "resample_sec": 4.7025721073150635,
+        "mask_sec": 6.024275541305542,
+        "proposal_sec": 17.952673196792603,
+        "infer_sec": 3.7396140098571777,
+        "total_sec": 34.79924535751343
+      }
+    },
+    {
+      "patient_id": "CT-Training-BE001",
+      "diagnosis": "benign",
+      "slices": 251,
+      "raw_shape": [
+        251,
+        512,
+        512
+      ],
+      "resampled_shape": [
+        251,
+        363,
+        363
+      ],
+      "proposals": 400,
+      "min_dist_mm": 31.049196890796974,
+      "nodule_detected": false,
+      "nodule_rank_in_scan": null,
+      "nodule_cal_prob": null,
+      "nodule_raw_prob": null,
+      "timing": {
+        "resample_sec": 4.7634804248809814,
+        "mask_sec": 6.044366359710693,
+        "proposal_sec": 21.48649311065674,
+        "infer_sec": 3.7629506587982178,
+        "total_sec": 38.24881958961487
+      }
+    },
+    {
+      "patient_id": "CT-Training-BE002",
+      "diagnosis": "benign",
+      "slices": 350,
+      "raw_shape": [
+        350,
+        512,
+        512
+      ],
+      "resampled_shape": [
+        350,
+        482,
+        482
+      ],
+      "proposals": 400,
+      "min_dist_mm": 1.168762142101059,
+      "nodule_detected": true,
+      "nodule_rank_in_scan": 1,
+      "nodule_cal_prob": 0.9999960660934448,
+      "nodule_raw_prob": 0.992343008518219,
+      "timing": {
+        "resample_sec": 11.446370124816895,
+        "mask_sec": 22.904539346694946,
+        "proposal_sec": 51.297585010528564,
+        "infer_sec": 3.765455484390259,
+        "total_sec": 92.657794713974
+      }
+    },
+    {
+      "patient_id": "CT-Training-BE006",
+      "diagnosis": "benign",
+      "slices": 389,
+      "raw_shape": [
+        389,
+        512,
+        512
+      ],
+      "resampled_shape": [
+        389,
+        335,
+        335
+      ],
+      "proposals": 400,
+      "min_dist_mm": 16.411011678787187,
+      "nodule_detected": false,
+      "nodule_rank_in_scan": null,
+      "nodule_cal_prob": null,
+      "nodule_raw_prob": null,
+      "timing": {
+        "resample_sec": 6.371885299682617,
+        "mask_sec": 10.04248332977295,
+        "proposal_sec": 28.79004979133606,
+        "infer_sec": 3.769179105758667,
+        "total_sec": 52.354493379592896
+      }
+    },
+    {
+      "patient_id": "CT-Training-BE007",
+      "diagnosis": "benign",
+      "slices": 341,
+      "raw_shape": [
+        341,
+        512,
+        512
+      ],
+      "resampled_shape": [
+        341,
+        384,
+        384
+      ],
+      "proposals": 400,
+      "min_dist_mm": 14.528970256528433,
+      "nodule_detected": false,
+      "nodule_rank_in_scan": null,
+      "nodule_cal_prob": null,
+      "nodule_raw_prob": null,
+      "timing": {
+        "resample_sec": 7.245910167694092,
+        "mask_sec": 16.72267174720764,
+        "proposal_sec": 47.78913354873657,
+        "infer_sec": 3.7685000896453857,
+        "total_sec": 78.52564764022827
+      }
+    },
+    {
+      "patient_id": "CT-Training-BE010",
+      "diagnosis": "benign",
+      "slices": 353,
+      "raw_shape": [
+        353,
+        512,
+        512
+      ],
+      "resampled_shape": [
+        353,
+        362,
+        362
+      ],
+      "proposals": 400,
+      "min_dist_mm": 24.27131031097056,
+      "nodule_detected": false,
+      "nodule_rank_in_scan": null,
+      "nodule_cal_prob": null,
+      "nodule_raw_prob": null,
+      "timing": {
+        "resample_sec": 6.714029312133789,
+        "mask_sec": 10.651967763900757,
+        "proposal_sec": 27.601847171783447,
+        "infer_sec": 3.771969795227051,
+        "total_sec": 51.73954701423645
+      }
+    }
+  ],
+  "hashes": {
+    "scores_csv_sha256": "dcb25fabbc965968e25d681b40fc72c6b9f49e497f096863e176f177e59fd0ad",
+    "ground_truth_json_sha256": "09f07d8fa7c44059121e9e11add5ce3cb54bc8ce4a50bf426eca0d6579210c42",
+    "reference_binding_json_sha256": "cc9dbf3a4f4750263bdbc6bf0a3dff86c8b4e00b050cc5a04c5550966b6ea1b1"
+  }
+}

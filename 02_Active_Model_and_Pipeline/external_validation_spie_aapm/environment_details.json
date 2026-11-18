@@ -1,0 +1,37 @@
+{
+  "system": {
+    "os": "Linux-5.4.0-216-generic-x86_64-with-glibc2.31",
+    "python_version": "3.10.17 (main, Apr  9 2025, 08:54:15) [GCC 9.4.0]",
+    "python_implementation": "CPython",
+    "architecture": [
+      "64bit",
+      "ELF"
+    ],
+    "processor": "x86_64",
+    "node": "dsai-server"
+  },
+  "pytorch": {
+    "version": "2.3.0+cu121",
+    "cuda_available": true,
+    "cuda_version": "12.1",
+    "cudnn_version": 8902,
+    "device_count": 4,
+    "device_names": [
+      "NVIDIA GeForce RTX 2080 Ti",
+      "NVIDIA GeForce RTX 2080 Ti",
+      "NVIDIA GeForce RTX 2080 Ti",
+      "NVIDIA GeForce RTX 2080 Ti"
+    ]
+  },
+  "packages": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "pydicom": "3.0.2"
+  },
+  "hardware_allocation": {
+    "evaluation_gpu": "cuda:1 (NVIDIA GeForce RTX 2080 Ti)",
+    "memory_allocated_mib": 2372,
+    "precision": "fp16_autocast_cuda1",
+    "cpu_workers": 3
+  }
+}

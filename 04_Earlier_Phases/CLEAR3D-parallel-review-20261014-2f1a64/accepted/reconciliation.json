@@ -1,0 +1,278 @@
+{
+  "backbones": {
+    "10": {
+      "status": "NOT_RUN"
+    },
+    "18": {
+      "acceptance": {
+        "budget": {
+          "depth_order": [
+            18,
+            10
+          ],
+          "generated_per_depth": 120,
+          "no_budget_transfer": true,
+          "research_per_depth": 780,
+          "total_seconds": 1800
+        },
+        "cleanup": {
+          "scope": "owned direct worker only; no descendant cleanup promise",
+          "signals": [],
+          "worker_exit": -15
+        },
+        "depth": 18,
+        "diagnostic_scope": "cap4000-fixed12-diagnostic-three-epoch-v1",
+        "error": "ValueError('Stage failed; later stages NOT_RUN')",
+        "mode": "research",
+        "reference_release": "HOLD",
+        "source_binding_sha256": "adb44927810502300f8931421ab867c27054b4c081d0f2061b55127349047310",
+        "stages": {
+          "research": "FAIL"
+        },
+        "status": "FAIL",
+        "throughput_scope": "shared GPU engineering only",
+        "wall_seconds": 780.9593397621065
+      },
+      "checkpoint_chain": [
+        {
+          "epoch": 1,
+          "parent": {
+            "commit_sha256": "004c914b9c89af54ef3dbcc25820a19016e0dd63752cf82d171e06ff7a76e779",
+            "generation": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-training-review-20261013-6e91ab/runs/diagnostic-epochs18-001/research/state/epoch-checkpoints/d18eaa14342c47a2813f45eac27ec7ce"
+          },
+          "sha256": "6f75a47eb101af59c0798c03d7792ececcfb346291bf9d3e68d16484fcb768e0"
+        },
+        {
+          "epoch": 0,
+          "parent": {
+            "commit_sha256": "23032fb415ed39c4a503e4543671c33886e400407018c8db8c10b27854829559",
+            "generation": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-training-review-20261013-6e91ab/runs/diagnostic-epochs18-001/research/state/epoch-checkpoints/2751f24f9ec7459591cdac9a86ab74dd"
+          },
+          "sha256": "004c914b9c89af54ef3dbcc25820a19016e0dd63752cf82d171e06ff7a76e779"
+        },
+        {
+          "epoch": -1,
+          "parent": null,
+          "sha256": "23032fb415ed39c4a503e4543671c33886e400407018c8db8c10b27854829559"
+        }
+      ],
+      "clipped_boundaries": 98,
+      "controller_exit": 1,
+      "diagnostic_counts": {
+        "activation_sample": 6125,
+        "class_losses": 1225,
+        "complete_validation_diagnostics": 2,
+        "optimizer_boundary": 153
+      },
+      "gradient_norm_range": [
+        0.6022562980651855,
+        2.864670753479004
+      ],
+      "group_learning_rates": {
+        "0": {
+          "0": [
+            0.0001
+          ],
+          "1": [
+            0.0001
+          ],
+          "2": [
+            5e-05
+          ],
+          "3": [
+            5e-05
+          ],
+          "4": [
+            0.0001
+          ],
+          "5": [
+            0.0001
+          ]
+        },
+        "1": {
+          "0": [
+            5.05e-05
+          ],
+          "1": [
+            5.05e-05
+          ],
+          "2": [
+            2.5500000000000003e-05
+          ],
+          "3": [
+            2.5500000000000003e-05
+          ],
+          "4": [
+            5.05e-05
+          ],
+          "5": [
+            5.05e-05
+          ]
+        },
+        "2": {
+          "0": [
+            1e-06
+          ],
+          "1": [
+            1e-06
+          ],
+          "2": [
+            1e-06
+          ],
+          "3": [
+            1e-06
+          ],
+          "4": [
+            1e-06
+          ],
+          "5": [
+            1e-06
+          ]
+        }
+      },
+      "independent_reconciliation": "FAILED_EXECUTION_PRESERVED",
+      "owned_worker_absent": true,
+      "resources": {
+        "no_observed_descendants": true,
+        "peak_owned_gpu": 1098907648,
+        "peak_rss": 2287816704,
+        "samples": 673,
+        "usable_gpu_samples": 665
+      },
+      "sampled_changed_values": {
+        "encoder": 180184,
+        "head_bridge_other": 78411,
+        "transformer": 436165
+      },
+      "shell": {
+        "elapsed_seconds": 784.8712556902319,
+        "exit_status": 1
+      },
+      "status": "OBSERVED",
+      "training_class_statistics": {
+        "0:0": {
+          "count": 720,
+          "mean_positive_probability": 0.47572447603650586,
+          "mean_unweighted_loss": 0.6495091824067963,
+          "probability_sum": 342.5216227462842,
+          "unweighted_loss_sum": 467.6466113328934,
+          "weighted_loss_sum": 467.6466113328934
+        },
+        "0:1": {
+          "count": 240,
+          "mean_positive_probability": 0.47793701161498287,
+          "mean_unweighted_loss": 0.7428593354920546,
+          "probability_sum": 114.70488278759589,
+          "unweighted_loss_sum": 178.2862405180931,
+          "weighted_loss_sum": 534.8587215542793
+        },
+        "1:0": {
+          "count": 720,
+          "mean_positive_probability": 0.481303509417539,
+          "mean_unweighted_loss": 0.65917906028529,
+          "probability_sum": 346.5385267806281,
+          "unweighted_loss_sum": 474.60892340540886,
+          "weighted_loss_sum": 474.60892340540886
+        },
+        "1:1": {
+          "count": 240,
+          "mean_positive_probability": 0.47666407031480595,
+          "mean_unweighted_loss": 0.743735383450985,
+          "probability_sum": 114.39937687555343,
+          "unweighted_loss_sum": 178.4964920282364,
+          "weighted_loss_sum": 535.4894760847092
+        },
+        "2:0": {
+          "count": 400,
+          "mean_positive_probability": 0.48852721864735055,
+          "mean_unweighted_loss": 0.6727847181260586,
+          "probability_sum": 195.4108874589402,
+          "unweighted_loss_sum": 269.11388725042343,
+          "weighted_loss_sum": 269.11388725042343
+        },
+        "2:1": {
+          "count": 130,
+          "mean_positive_probability": 0.48480614234379266,
+          "mean_unweighted_loss": 0.7263113026435558,
+          "probability_sum": 63.024798504693045,
+          "unweighted_loss_sum": 94.42046934366226,
+          "weighted_loss_sum": 283.2614080309868
+        }
+      },
+      "validation_diagnostics": [
+        {
+          "classes": {
+            "0": {
+              "count": 369,
+              "probability_max": 0.4806023935285962,
+              "probability_mean": 0.4760485559525951,
+              "probability_min": 0.47293535264074715,
+              "probability_sum": 175.6619171465076,
+              "unweighted_loss_sum": 238.50764706604994,
+              "weighted_loss_sum": 238.50764706604994
+            },
+            "1": {
+              "count": 15,
+              "probability_max": 0.47765621292519445,
+              "probability_mean": 0.47607041827065266,
+              "probability_min": 0.47449791224975735,
+              "probability_sum": 7.14105627405979,
+              "unweighted_loss_sum": 11.132859959527387,
+              "weighted_loss_sum": 33.398579878582154
+            }
+          },
+          "epoch": 0,
+          "kind": "complete_validation_diagnostics",
+          "not_model_quality_acceptance": true,
+          "rows": 384
+        },
+        {
+          "classes": {
+            "0": {
+              "count": 369,
+              "probability_max": 0.4906475780452549,
+              "probability_mean": 0.486666225614585,
+              "probability_min": 0.48340992387443243,
+              "probability_sum": 179.57983725178187,
+              "unweighted_loss_sum": 246.06191495683183,
+              "weighted_loss_sum": 246.06191495683183
+            },
+            "1": {
+              "count": 15,
+              "probability_max": 0.48879213093191337,
+              "probability_mean": 0.48671430849122393,
+              "probability_min": 0.4852779698948883,
+              "probability_sum": 7.300714627368359,
+              "unweighted_loss_sum": 10.801188429965407,
+              "weighted_loss_sum": 32.40356528989623
+            }
+          },
+          "epoch": 1,
+          "kind": "complete_validation_diagnostics",
+          "not_model_quality_acceptance": true,
+          "rows": 384
+        }
+      ]
+    }
+  },
+  "cap4000_policy": "NOT_ADOPTED",
+  "post_bindings": {
+    "inputs": "UNCHANGED",
+    "pins": 44,
+    "source_files": 133
+  },
+  "reference_release": "HOLD",
+  "sequence": {
+    "cap4000_policy": "NOT_ADOPTED",
+    "error": "AssertionError('Shell failure; no retry')",
+    "reference_release": "HOLD",
+    "runs": {
+      "10": "NOT_RUN",
+      "18": {
+        "shell_exit": 1
+      }
+    },
+    "status": "FAIL",
+    "traceback": "Traceback (most recent call last):\n  File \"/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-execution-20261014-0aa068/execute.py\", line 48, in <module>\n    assert code==0,'Shell failure; no retry'\nAssertionError: Shell failure; no retry\n"
+  }
+}

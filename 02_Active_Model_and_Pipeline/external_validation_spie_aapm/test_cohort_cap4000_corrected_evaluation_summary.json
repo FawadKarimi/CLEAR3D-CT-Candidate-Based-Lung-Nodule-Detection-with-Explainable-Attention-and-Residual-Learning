@@ -1,0 +1,500 @@
+{
+  "status": "PASS",
+  "task": "CLEAR3D-MSFv2 SPIE-AAPM Corrected Evaluation Package (Cap=4000)",
+  "timestamp": "2026-11-09T05:26:35Z",
+  "froc_implementation": "100% Un-subsampled vectorized O(N log N) evaluating all candidate scores (zero threshold downsampling)",
+  "bootstrap_fix_applied": "Distinct identity per sampled patient copy and target (verified on synthetic double-sampling test)",
+  "dicom_geometry_audit": "Verified exact 0.000000 mm equivalence to strict DICOM standard across all 60 scans and 73 targets",
+  "rules_compared": {
+    "rule_A_closest_proposal": {
+      "technical_pilot_scans": {
+        "cohort_name": "Technical_Pilot_2scans",
+        "scan_count": 2,
+        "nodule_count": 3,
+        "proposals_evaluated": 8000,
+        "proposal_coverage": {
+          "covered_nodules": 1,
+          "total_nodules": 3,
+          "rate": 0.3333333333333333,
+          "bootstrap_95ci": {
+            "mean": 0.2896666666666667,
+            "std": 0.17836884381652657,
+            "ci_95": [
+              0.0,
+              0.5
+            ]
+          }
+        },
+        "operating_points": {
+          "natural_prevalence_cut": {
+            "threshold": 0.9999467134475708,
+            "true_positives": 1,
+            "nodule_sensitivity": 0.3333333333333333,
+            "total_false_positives": 9,
+            "fp_per_scan": 4.5,
+            "bootstrap_95ci": {
+              "mean": 0.2896666666666667,
+              "std": 0.17836884381652657,
+              "ci_95": [
+                0.0,
+                0.5
+              ]
+            }
+          },
+          "half_cut": {
+            "threshold": 0.5,
+            "true_positives": 1,
+            "nodule_sensitivity": 0.3333333333333333,
+            "total_false_positives": 81,
+            "fp_per_scan": 40.5,
+            "bootstrap_95ci": {
+              "mean": 0.2896666666666667,
+              "std": 0.17836884381652657,
+              "ci_95": [
+                0.0,
+                0.5
+              ]
+            }
+          }
+        },
+        "froc_cpm_fixed_5mm": {
+          "cpm": 0.3333333333333333,
+          "grid_fp_rates": [
+            0.125,
+            0.25,
+            0.5,
+            1.0,
+            2.0,
+            4.0,
+            8.0
+          ],
+          "sensitivities": [
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333
+          ],
+          "bootstrap_95ci": {
+            "mean": 0.2896666666666667,
+            "std": 0.17836884381652657,
+            "ci_95": [
+              0.0,
+              0.5
+            ]
+          }
+        }
+      },
+      "unexposed_test_scans": {
+        "cohort_name": "Unexposed_Test_58scans",
+        "scan_count": 58,
+        "nodule_count": 70,
+        "proposals_evaluated": 232000,
+        "proposal_coverage": {
+          "covered_nodules": 47,
+          "total_nodules": 70,
+          "rate": 0.6714285714285714,
+          "bootstrap_95ci": {
+            "mean": 0.6718013231072832,
+            "std": 0.0576136694322944,
+            "ci_95": [
+              0.5538059701492538,
+              0.7837837837837838
+            ]
+          }
+        },
+        "operating_points": {
+          "natural_prevalence_cut": {
+            "threshold": 0.9999467134475708,
+            "true_positives": 39,
+            "nodule_sensitivity": 0.5571428571428572,
+            "total_false_positives": 154,
+            "fp_per_scan": 2.6551724137931036,
+            "bootstrap_95ci": {
+              "mean": 0.5576669501615846,
+              "std": 0.05800158058983358,
+              "ci_95": [
+                0.44285714285714284,
+                0.6714285714285714
+              ]
+            }
+          },
+          "half_cut": {
+            "threshold": 0.5,
+            "true_positives": 45,
+            "nodule_sensitivity": 0.6428571428571429,
+            "total_false_positives": 999,
+            "fp_per_scan": 17.224137931034484,
+            "bootstrap_95ci": {
+              "mean": 0.6430928615832617,
+              "std": 0.05783427114031773,
+              "ci_95": [
+                0.529390756302521,
+                0.7567567567567568
+              ]
+            }
+          }
+        },
+        "froc_cpm_fixed_5mm": {
+          "cpm": 0.427891156462585,
+          "grid_fp_rates": [
+            0.125,
+            0.25,
+            0.5,
+            1.0,
+            2.0,
+            4.0,
+            8.0
+          ],
+          "sensitivities": [
+            0.15238095238095237,
+            0.30952380952380953,
+            0.3761904761904762,
+            0.42857142857142855,
+            0.5142857142857142,
+            0.6,
+            0.6142857142857143
+          ],
+          "bootstrap_95ci": {
+            "mean": 0.4297548527366746,
+            "std": 0.04467681458737937,
+            "ci_95": [
+              0.34685202205882354,
+              0.5192648423005566
+            ]
+          }
+        }
+      },
+      "full_test_cohort": {
+        "cohort_name": "Full_Test_60scans",
+        "scan_count": 60,
+        "nodule_count": 73,
+        "proposals_evaluated": 240000,
+        "proposal_coverage": {
+          "covered_nodules": 48,
+          "total_nodules": 73,
+          "rate": 0.6575342465753424,
+          "bootstrap_95ci": {
+            "mean": 0.6607548885474656,
+            "std": 0.058862391499758124,
+            "ci_95": [
+              0.5466029411764706,
+              0.7746478873239436
+            ]
+          }
+        },
+        "operating_points": {
+          "natural_prevalence_cut": {
+            "threshold": 0.9999467134475708,
+            "true_positives": 40,
+            "nodule_sensitivity": 0.547945205479452,
+            "total_false_positives": 163,
+            "fp_per_scan": 2.716666666666667,
+            "bootstrap_95ci": {
+              "mean": 0.5471759367112127,
+              "std": 0.05784527037507287,
+              "ci_95": [
+                0.4347683066361556,
+                0.6578947368421053
+              ]
+            }
+          },
+          "half_cut": {
+            "threshold": 0.5,
+            "true_positives": 46,
+            "nodule_sensitivity": 0.6301369863013698,
+            "total_false_positives": 1080,
+            "fp_per_scan": 18.0,
+            "bootstrap_95ci": {
+              "mean": 0.6314137767809688,
+              "std": 0.05825258857212261,
+              "ci_95": [
+                0.5205342465753424,
+                0.7467499999999999
+              ]
+            }
+          }
+        },
+        "froc_cpm_fixed_5mm": {
+          "cpm": 0.41878669275929553,
+          "grid_fp_rates": [
+            0.125,
+            0.25,
+            0.5,
+            1.0,
+            2.0,
+            4.0,
+            8.0
+          ],
+          "sensitivities": [
+            0.1506849315068493,
+            0.3013698630136986,
+            0.3698630136986301,
+            0.410958904109589,
+            0.5068493150684932,
+            0.589041095890411,
+            0.6027397260273972
+          ],
+          "bootstrap_95ci": {
+            "mean": 0.41992878566193714,
+            "std": 0.04308410364742729,
+            "ci_95": [
+              0.3401336590974418,
+              0.5089540009041591
+            ]
+          }
+        }
+      }
+    },
+    "rule_B_highest_scoring_proposal": {
+      "technical_pilot_scans": {
+        "cohort_name": "Technical_Pilot_2scans",
+        "scan_count": 2,
+        "nodule_count": 3,
+        "proposals_evaluated": 8000,
+        "proposal_coverage": {
+          "covered_nodules": 1,
+          "total_nodules": 3,
+          "rate": 0.3333333333333333,
+          "bootstrap_95ci": {
+            "mean": 0.2896666666666667,
+            "std": 0.17836884381652657,
+            "ci_95": [
+              0.0,
+              0.5
+            ]
+          }
+        },
+        "operating_points": {
+          "natural_prevalence_cut": {
+            "threshold": 0.9999467134475708,
+            "true_positives": 1,
+            "nodule_sensitivity": 0.3333333333333333,
+            "total_false_positives": 9,
+            "fp_per_scan": 4.5,
+            "bootstrap_95ci": {
+              "mean": 0.2896666666666667,
+              "std": 0.17836884381652657,
+              "ci_95": [
+                0.0,
+                0.5
+              ]
+            }
+          },
+          "half_cut": {
+            "threshold": 0.5,
+            "true_positives": 1,
+            "nodule_sensitivity": 0.3333333333333333,
+            "total_false_positives": 81,
+            "fp_per_scan": 40.5,
+            "bootstrap_95ci": {
+              "mean": 0.2896666666666667,
+              "std": 0.17836884381652657,
+              "ci_95": [
+                0.0,
+                0.5
+              ]
+            }
+          }
+        },
+        "froc_cpm_fixed_5mm": {
+          "cpm": 0.3333333333333333,
+          "grid_fp_rates": [
+            0.125,
+            0.25,
+            0.5,
+            1.0,
+            2.0,
+            4.0,
+            8.0
+          ],
+          "sensitivities": [
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333,
+            0.3333333333333333
+          ],
+          "bootstrap_95ci": {
+            "mean": 0.2896666666666667,
+            "std": 0.17836884381652657,
+            "ci_95": [
+              0.0,
+              0.5
+            ]
+          }
+        }
+      },
+      "unexposed_test_scans": {
+        "cohort_name": "Unexposed_Test_58scans",
+        "scan_count": 58,
+        "nodule_count": 70,
+        "proposals_evaluated": 232000,
+        "proposal_coverage": {
+          "covered_nodules": 47,
+          "total_nodules": 70,
+          "rate": 0.6714285714285714,
+          "bootstrap_95ci": {
+            "mean": 0.6718013231072832,
+            "std": 0.0576136694322944,
+            "ci_95": [
+              0.5538059701492538,
+              0.7837837837837838
+            ]
+          }
+        },
+        "operating_points": {
+          "natural_prevalence_cut": {
+            "threshold": 0.9999467134475708,
+            "true_positives": 39,
+            "nodule_sensitivity": 0.5571428571428572,
+            "total_false_positives": 154,
+            "fp_per_scan": 2.6551724137931036,
+            "bootstrap_95ci": {
+              "mean": 0.5576669501615846,
+              "std": 0.05800158058983358,
+              "ci_95": [
+                0.44285714285714284,
+                0.6714285714285714
+              ]
+            }
+          },
+          "half_cut": {
+            "threshold": 0.5,
+            "true_positives": 47,
+            "nodule_sensitivity": 0.6714285714285714,
+            "total_false_positives": 999,
+            "fp_per_scan": 17.224137931034484,
+            "bootstrap_95ci": {
+              "mean": 0.6718013231072832,
+              "std": 0.0576136694322944,
+              "ci_95": [
+                0.5538059701492538,
+                0.7837837837837838
+              ]
+            }
+          }
+        },
+        "froc_cpm_fixed_5mm": {
+          "cpm": 0.4340136054421769,
+          "grid_fp_rates": [
+            0.125,
+            0.25,
+            0.5,
+            1.0,
+            2.0,
+            4.0,
+            8.0
+          ],
+          "sensitivities": [
+            0.16666666666666666,
+            0.30952380952380953,
+            0.3761904761904762,
+            0.44285714285714284,
+            0.5285714285714286,
+            0.6,
+            0.6142857142857143
+          ],
+          "bootstrap_95ci": {
+            "mean": 0.4352646536845847,
+            "std": 0.04420093576054752,
+            "ci_95": [
+              0.3531310961884754,
+              0.5215859798430221
+            ]
+          }
+        }
+      },
+      "full_test_cohort": {
+        "cohort_name": "Full_Test_60scans",
+        "scan_count": 60,
+        "nodule_count": 73,
+        "proposals_evaluated": 240000,
+        "proposal_coverage": {
+          "covered_nodules": 48,
+          "total_nodules": 73,
+          "rate": 0.6575342465753424,
+          "bootstrap_95ci": {
+            "mean": 0.6607548885474656,
+            "std": 0.058862391499758124,
+            "ci_95": [
+              0.5466029411764706,
+              0.7746478873239436
+            ]
+          }
+        },
+        "operating_points": {
+          "natural_prevalence_cut": {
+            "threshold": 0.9999467134475708,
+            "true_positives": 40,
+            "nodule_sensitivity": 0.547945205479452,
+            "total_false_positives": 163,
+            "fp_per_scan": 2.716666666666667,
+            "bootstrap_95ci": {
+              "mean": 0.5471759367112127,
+              "std": 0.05784527037507287,
+              "ci_95": [
+                0.4347683066361556,
+                0.6578947368421053
+              ]
+            }
+          },
+          "half_cut": {
+            "threshold": 0.5,
+            "true_positives": 48,
+            "nodule_sensitivity": 0.6575342465753424,
+            "total_false_positives": 1080,
+            "fp_per_scan": 18.0,
+            "bootstrap_95ci": {
+              "mean": 0.6607548885474656,
+              "std": 0.058862391499758124,
+              "ci_95": [
+                0.5466029411764706,
+                0.7746478873239436
+              ]
+            }
+          }
+        },
+        "froc_cpm_fixed_5mm": {
+          "cpm": 0.4246575342465753,
+          "grid_fp_rates": [
+            0.125,
+            0.25,
+            0.5,
+            1.0,
+            2.0,
+            4.0,
+            8.0
+          ],
+          "sensitivities": [
+            0.1643835616438356,
+            0.3013698630136986,
+            0.3698630136986301,
+            0.4246575342465753,
+            0.5205479452054794,
+            0.589041095890411,
+            0.6027397260273972
+          ],
+          "bootstrap_95ci": {
+            "mean": 0.42536146968598176,
+            "std": 0.04310046751985881,
+            "ci_95": [
+              0.3417345100202243,
+              0.5125265596745028
+            ]
+          }
+        }
+      }
+    }
+  },
+  "governance": {
+    "reference_release": "HOLD",
+    "confirmation_cohort_83pts": "RESTRICTED_UNTOUCHED",
+    "internal_test_fold0": "FROZEN_NO_TUNING",
+    "medicalnet_baseline_cpm_claim": "RETRACTED_UNCONTROLLED_MULTIFACTOR"
+  }
+}

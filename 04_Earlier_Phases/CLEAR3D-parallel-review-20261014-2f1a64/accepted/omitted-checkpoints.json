@@ -1,0 +1,20 @@
+[
+  {
+    "bytes": 136373517,
+    "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-training-review-20261013-6e91ab/runs/diagnostic-epochs18-001/research/state/epoch-checkpoints/2751f24f9ec7459591cdac9a86ab74dd/state.pt",
+    "reason": "Large tensor bytes retained on server; independent tensor comparison/resume requires original bytes.",
+    "sha256": "39e479154ecec7057288117624d82045a856c043d092e653deaf59392477aa1a"
+  },
+  {
+    "bytes": 408966267,
+    "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-training-review-20261013-6e91ab/runs/diagnostic-epochs18-001/research/state/epoch-checkpoints/88e42e59270f4e6194e166c89e69199e/state.pt",
+    "reason": "Large tensor bytes retained on server; independent tensor comparison/resume requires original bytes.",
+    "sha256": "9087cfeffc816cb2bfc2bad754af35146a405c5cca15f3d25d9a640e8fcc4370"
+  },
+  {
+    "bytes": 408966267,
+    "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-training-review-20261013-6e91ab/runs/diagnostic-epochs18-001/research/state/epoch-checkpoints/d18eaa14342c47a2813f45eac27ec7ce/state.pt",
+    "reason": "Large tensor bytes retained on server; independent tensor comparison/resume requires original bytes.",
+    "sha256": "1b1e840947a1b2f5998cadcf056b4a68c1d9fa83b822b1fd4451eaf4e1cfac53"
+  }
+]

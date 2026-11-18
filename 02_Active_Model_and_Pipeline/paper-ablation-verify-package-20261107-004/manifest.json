@@ -1,0 +1,225 @@
+{
+  "package_name": "paper-ablation-verify-package-20261107-004",
+  "created_at": "2026-11-07T15:32:00+07:00",
+  "governance": {
+    "reference_release": "HOLD",
+    "cap4000": "NOT_ADOPTED",
+    "test_fold0": "UNTOUCHED_BLIND_HOLD",
+    "scope": "exploratory development cohort Fold 0 ablation verification"
+  },
+  "file_count": 53,
+  "files": {
+    "README.md": {
+      "bytes": 7897,
+      "sha256": "dbb39b095c0812153133689745c5f91b9287bfb2eec792601a776a4e75fcb166"
+    },
+    "bootstrap/bootstrap_results.json": {
+      "bytes": 3540,
+      "sha256": "59c0b23942fb0ee4142c976de2df9b0f17b5bef33d4d39aebf4d0d48e24b7008"
+    },
+    "bootstrap/precomputed_scan_matches.npz": {
+      "bytes": 1305319,
+      "sha256": "f1b71aa6f1b57fb64977ea3a0a59e55fdb98776dbe462a8a61c776c37ba9f0ac"
+    },
+    "bootstrap/run_paired_bootstrap.py": {
+      "bytes": 13626,
+      "sha256": "5f5bad7e6462fd7feab8ace5eb708f4261fc012470e3c9bc0eeb77eb10c67f1e"
+    },
+    "evaluator/NoduleFinding.py": {
+      "bytes": 672,
+      "sha256": "075b8dadecdedc36e83682ff2d7469c64c9d54098446e109dc406c653c32094e"
+    },
+    "evaluator/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "evaluator/csvTools.py": {
+      "bytes": 793,
+      "sha256": "d8fcfe979a6cdeb603086327c9fba736127bbdc37ad855840670ef833ec53f0a"
+    },
+    "evaluator/noduleCADEvaluationLUNA16.py": {
+      "bytes": 22552,
+      "sha256": "b502e46c4c2a9b9d5413338392bb5673a525a2d38c74905cd000feeb4c18b848"
+    },
+    "evaluator/regenerate_froc_curves.py": {
+      "bytes": 4913,
+      "sha256": "07af9c924238f4ffdaae819fcc862937c087afa266896c37dd28e704f89d7052"
+    },
+    "evaluator/tools/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "evaluator/tools/csvTools.py": {
+      "bytes": 793,
+      "sha256": "d8fcfe979a6cdeb603086327c9fba736127bbdc37ad855840670ef833ec53f0a"
+    },
+    "froc_outputs/control_a_fineonly/CADAnalysis.txt": {
+      "bytes": 556,
+      "sha256": "ef67a74a19ae2ae97600e4d19d53504f95617c907a9a146ed88964e2288c1318"
+    },
+    "froc_outputs/control_a_fineonly/froc_curve.txt": {
+      "bytes": 194308,
+      "sha256": "a2fc619db14be5c0ca0d35d62896b65c090c2edefd4e306293e02277b03bd6c5"
+    },
+    "froc_outputs/control_a_fineonly/seriesuids.csv": {
+      "bytes": 9230,
+      "sha256": "edc352e21e049a5fe70200ae868006aa1a5fda2faf4424117b1a8074641e7dff"
+    },
+    "froc_outputs/control_b_nomining/CADAnalysis.txt": {
+      "bytes": 552,
+      "sha256": "6231343851c35d7da0d59a3a36cbbbb6d1f9a03e7c9467424aabc54da963fa55"
+    },
+    "froc_outputs/control_b_nomining/froc_curve.txt": {
+      "bytes": 188539,
+      "sha256": "784c2ec0de8e9fe86c96e0e2c82acdc6d4026623cbf2c21a87bd939a4698f516"
+    },
+    "froc_outputs/control_b_nomining/seriesuids.csv": {
+      "bytes": 9230,
+      "sha256": "edc352e21e049a5fe70200ae868006aa1a5fda2faf4424117b1a8074641e7dff"
+    },
+    "froc_outputs/fold0_baseline/CADAnalysis.txt": {
+      "bytes": 552,
+      "sha256": "6231343851c35d7da0d59a3a36cbbbb6d1f9a03e7c9467424aabc54da963fa55"
+    },
+    "froc_outputs/fold0_baseline/froc_curve.txt": {
+      "bytes": 169182,
+      "sha256": "7843e7791131be2628778cb87a2a4bef1b00b993b1a1763389b4de8eeaceaf78"
+    },
+    "froc_outputs/fold0_baseline/seriesuids.csv": {
+      "bytes": 9230,
+      "sha256": "edc352e21e049a5fe70200ae868006aa1a5fda2faf4424117b1a8074641e7dff"
+    },
+    "predictions/control_a_fineonly_scores.csv": {
+      "bytes": 15978913,
+      "sha256": "0afb983ecd66a07de2fde28e428c5f7243643a904cf104657b9c719ee2e5f9ba"
+    },
+    "predictions/control_b_nomining_scores.csv": {
+      "bytes": 16013176,
+      "sha256": "bb90835d9905fe77a03e11382681cd26ad160ec5c426ca34a9a247e303b9ec24"
+    },
+    "predictions/fold0_baseline_scores.csv": {
+      "bytes": 15989066,
+      "sha256": "39c9bded3d5a942937b97dcc575ad6e90432e5e7b2e32525b5908e918768a3fd"
+    },
+    "provenance/checkpoint_hashes.json": {
+      "bytes": 1109,
+      "sha256": "5838faf3b8992257307c297ce3219c87d312778e931ec1f4564493c2b6b55e2c"
+    },
+    "provenance/configs_and_logs/control_a_fineonly/dev_eval/invocation.json": {
+      "bytes": 633,
+      "sha256": "27c15511cf938ca03dab0579fe3430d5e844063ee99830abc5cc145937d18999"
+    },
+    "provenance/configs_and_logs/control_a_fineonly/dev_eval/summary.json": {
+      "bytes": 2897,
+      "sha256": "2c85108b5ebdfdd1bc54fe20edda0e06c9082c8043474d7dce7e118b480391e2"
+    },
+    "provenance/configs_and_logs/control_a_fineonly/dev_eval/watchdog-result.json": {
+      "bytes": 3344,
+      "sha256": "e315d3b6ad4c150c8499effd431fbc6bba72105f2b4173729773bd49dfc2dd77"
+    },
+    "provenance/configs_and_logs/control_a_fineonly/dev_eval/worker-result.json": {
+      "bytes": 2897,
+      "sha256": "2c85108b5ebdfdd1bc54fe20edda0e06c9082c8043474d7dce7e118b480391e2"
+    },
+    "provenance/configs_and_logs/control_a_fineonly/dev_eval/worker.log": {
+      "bytes": 28609,
+      "sha256": "847522d0c3e097e9f6ceb437045b68d6984fe1d935235fc2c368a3dfd97601e9"
+    },
+    "provenance/configs_and_logs/control_a_fineonly/train/fit-oof-summary.json": {
+      "bytes": 1265,
+      "sha256": "dabda84754dc15fc68d50c2cf227a516628bd48a91dc682bcb43d2277d576950"
+    },
+    "provenance/configs_and_logs/control_a_fineonly/train/invocation.json": {
+      "bytes": 1059,
+      "sha256": "f82c65fe15db32da41a05162b197636258b75719482d40402542613fe9d8ee59"
+    },
+    "provenance/configs_and_logs/control_a_fineonly/train/worker-result.json": {
+      "bytes": 716,
+      "sha256": "ee370463a3329f8659db4ffde99a82d5871960208767eed9a837deb4e629d5eb"
+    },
+    "provenance/configs_and_logs/control_a_fineonly/train/worker.log": {
+      "bytes": 1914,
+      "sha256": "d540e1d6d1e13bb2ded3e8b99445614f2d38c25b4ff76ceb22c4dd1a79dac197"
+    },
+    "provenance/configs_and_logs/control_b_nomining/dev_eval/invocation.json": {
+      "bytes": 633,
+      "sha256": "0496979c24fd8e32d7c2aa872ec53f783112b4cd52f97189e09eecf75059734c"
+    },
+    "provenance/configs_and_logs/control_b_nomining/dev_eval/summary.json": {
+      "bytes": 3470,
+      "sha256": "7f4af676c4ad935c1e525c2245359caab590fa102408378fd3bd37fa109cb46c"
+    },
+    "provenance/configs_and_logs/control_b_nomining/dev_eval/watchdog-result.json": {
+      "bytes": 502,
+      "sha256": "f27304629d8004e1beab61aeb7fd32f6b127605f0c477459c6f9f10f4b162043"
+    },
+    "provenance/configs_and_logs/control_b_nomining/dev_eval/worker-result.json": {
+      "bytes": 3470,
+      "sha256": "7f4af676c4ad935c1e525c2245359caab590fa102408378fd3bd37fa109cb46c"
+    },
+    "provenance/configs_and_logs/control_b_nomining/dev_eval/worker.log": {
+      "bytes": 647,
+      "sha256": "a09d0c760be446263f88a0cbab018fda1942abfc66c002ae798bf07080d945f2"
+    },
+    "provenance/configs_and_logs/control_b_nomining/train/fit-oof-summary.json": {
+      "bytes": 1236,
+      "sha256": "af812e1785a883489318736fe7c9950690f7b0c8da5d8d4e64ff9213403e63e1"
+    },
+    "provenance/configs_and_logs/control_b_nomining/train/invocation.json": {
+      "bytes": 1059,
+      "sha256": "a49e2e2130a67ab3b45b0a19dc16163370777413b7e2a8ec2f4934f730f89c88"
+    },
+    "provenance/configs_and_logs/control_b_nomining/train/worker-result.json": {
+      "bytes": 716,
+      "sha256": "734c4ff94b1829f202856d6317c124ab2d6f3ea554657caa84f6587cec5f2773"
+    },
+    "provenance/configs_and_logs/control_b_nomining/train/worker.log": {
+      "bytes": 1888,
+      "sha256": "280d2bd62f3a0e4f0059f88a6da96bc5d196b827758c902f88f190cf529ea81f"
+    },
+    "provenance/configs_and_logs/fold0_baseline/invocation.json": {
+      "bytes": 633,
+      "sha256": "9c4f84c6d33958361144dbdf50e51c9bd8b7bf408f6c0fbf7a39d3c19de782cf"
+    },
+    "provenance/configs_and_logs/fold0_baseline/summary.json": {
+      "bytes": 429,
+      "sha256": "2ae15e63389b896c2a387c76e4d9af6119cc9a5e593d29d2f2a7c5b2ef41b1f1"
+    },
+    "provenance/configs_and_logs/fold0_baseline/watchdog-result.json": {
+      "bytes": 428,
+      "sha256": "39526d34ad6ac2888da3a9694a0f9552c64fd21c2530f698c9d5755e39e82f34"
+    },
+    "provenance/configs_and_logs/fold0_baseline/worker.log": {
+      "bytes": 1234,
+      "sha256": "1da5ca5a71d3846fb91bdc7fdf401b3d578e8b2ff1a7fd4d5b76c80b353d2ff7"
+    },
+    "provenance/environment.json": {
+      "bytes": 453,
+      "sha256": "6470026d77f5451ca10ef23864cb26646fa5a6fcd654494bc6013d0c62c97765"
+    },
+    "provenance/provenance_audit.md": {
+      "bytes": 3307,
+      "sha256": "16b34c6a63af9c2f4145c91a9afa61d616f5ff919e8e2de333903ba94496738a"
+    },
+    "reference/annotations.csv": {
+      "bytes": 136986,
+      "sha256": "db9adb75b381f3e95b1f601d9b63f2e42bd6536ab5a06dc539c5ec8a4005cec7"
+    },
+    "reference/annotations_excluded.csv": {
+      "bytes": 3534875,
+      "sha256": "73a5c139257294fe45a68620ed1b2cf383ba8b22af1501d2f498abbd6b802c25"
+    },
+    "reference/patient_series_mapping.json": {
+      "bytes": 25770,
+      "sha256": "ad1ace33a76f44ca9990ca7e7bd8b0fd9d27740ac83008f04c48d58c069de40e"
+    },
+    "reference/seriesuids.csv": {
+      "bytes": 9230,
+      "sha256": "edc352e21e049a5fe70200ae868006aa1a5fda2faf4424117b1a8074641e7dff"
+    },
+    "verify_package.py": {
+      "bytes": 5368,
+      "sha256": "6f624691df41c8b0b665d61f08036e2ca9ed951079d0078f9bb82837ab71f2a8"
+    }
+  }
+}

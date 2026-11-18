@@ -1,0 +1,20 @@
+status: DRAFT
+gpu_execution: forbidden_until_population_and_budget_are_ADOPTED
+primary_endpoints:
+  track1: positive_f1_at_development_threshold
+  track2: cpm
+executed_now:
+  - generated_verification
+not_executed:
+  - development_smoke
+  - baseline_zuo
+  - baseline_wang_stage2
+  - clear3d_candidate
+  - ablation
+  - confirmation
+maximum_training_trials_after_adoption: 4
+confirmation_reads_allowed: 0
+execution_20261025:
+  evaluation_population: ADOPTED
+  gpu_budget: ADOPTED
+  gpu_execution: smoke_then_four_trials

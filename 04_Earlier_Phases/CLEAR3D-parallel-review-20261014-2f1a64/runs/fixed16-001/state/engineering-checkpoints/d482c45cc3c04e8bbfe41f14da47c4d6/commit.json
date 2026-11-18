@@ -1,0 +1,16 @@
+{
+  "binding": {
+    "binding_sha256": "7293e9f5e967799ab5393d30ec0bc081e27f44883b2ce2317e5aa3b84b045ea1",
+    "config_hash": "bf463e3675b7f55c0a6234d9af9f229922c52094c00191fa60cac1d822310b1f",
+    "disposition_sha256": "8813d85bd27458758171099dc1d94eb4a33ed3d8c61cc40534e4284cb8651a2f",
+    "reference_release": "HOLD",
+    "run_output": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-parallel-review-20261014-2f1a64/runs/fixed16-001",
+    "scope": "clear3d-fixed16-train-only-overfit-v1",
+    "selection_sha256": "6dded34b1dd5bd32f0da41450abfd3e2498221d0e1d0c1381f80dccfa9cb6682"
+  },
+  "parent_commit": "9c84ba09bfb14cd9b08e0c141b2842e134ba1995650d50888bd46a2858a06a65",
+  "schema": "engineering-checkpoint-v1",
+  "stage": "TRAINED",
+  "state_sha256": "9bf4c9929d03d8179d6a49f773303819cfce68263e0371c61dc4443e7e7bfc27",
+  "status": "COMMITTED"
+}

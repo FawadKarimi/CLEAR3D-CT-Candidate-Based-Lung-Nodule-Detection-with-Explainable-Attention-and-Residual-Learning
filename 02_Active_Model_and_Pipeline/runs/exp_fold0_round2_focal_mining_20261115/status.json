@@ -1,0 +1,6 @@
+{
+  "stage": "failed",
+  "updated_at": "2026-11-15 11:57:59",
+  "pid": 3621023,
+  "error": "module 'run_fold0_focal_experiment' has no attribute 'V2'"
+}

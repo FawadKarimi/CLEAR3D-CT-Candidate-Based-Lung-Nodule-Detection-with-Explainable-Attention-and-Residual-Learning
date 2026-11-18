@@ -1,0 +1,6 @@
+{
+  "stage": "failed",
+  "updated_at": "2026-11-15 05:41:04",
+  "pid": 3599103,
+  "error": "CUDA out of memory. Tried to allocate 2.00 GiB. GPU "
+}

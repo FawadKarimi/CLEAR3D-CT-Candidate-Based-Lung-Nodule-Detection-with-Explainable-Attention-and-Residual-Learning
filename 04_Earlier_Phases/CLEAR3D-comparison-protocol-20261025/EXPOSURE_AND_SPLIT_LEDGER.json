@@ -1,0 +1,21 @@
+{
+  "decision": "DRAFT",
+  "untouched_test_claimed": false,
+  "prepared_train_scans": 710,
+  "prepared_train_patients": 709,
+  "prepared_val_scans": 89,
+  "prepared_val_patients": 89,
+  "prepared_test_scans": 0,
+  "reviewed_384_patients": ["LIDC-IDRI-0020", "LIDC-IDRI-0428", "LIDC-IDRI-0634", "LIDC-IDRI-0722", "LIDC-IDRI-0865", "LIDC-IDRI-0895"],
+  "other_prepared_val_patients": 83,
+  "other_prepared_val_authorization": "UNSETTLED",
+  "absent_luna_series_authorization": "UNSETTLED",
+  "redesign_recompute_file": "redesign-split-recompute.json",
+  "redesign_counts": {"train": [251, 431], "validation": [54, 95], "named_test": [54, 86]},
+  "patient_and_series_overlap_across_redesign_splits": [],
+  "reviewed_six_inside_redesign": [],
+  "stop_pool_patients_also_in_redesign_named_test": ["LIDC-IDRI-0042", "LIDC-IDRI-0054", "LIDC-IDRI-0080", "LIDC-IDRI-0090"],
+  "hold_patient_0694_split": "redesign train",
+  "named_test_status": "already read; development evidence only",
+  "redesign_per_candidate_predictions_saved": false
+}

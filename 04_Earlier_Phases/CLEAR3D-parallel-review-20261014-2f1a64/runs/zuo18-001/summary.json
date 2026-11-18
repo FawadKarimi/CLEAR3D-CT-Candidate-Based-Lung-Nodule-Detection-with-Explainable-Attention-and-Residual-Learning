@@ -1,0 +1,17 @@
+{
+  "stop_epoch": 4,
+  "hold": "LIDC-IDRI-0694",
+  "hold_fp": 6,
+  "hold_fn": 1,
+  "val": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 15,
+    "tn": 369,
+    "acc": 0.9609375,
+    "pos_f1": 0.0,
+    "precision": 0.0,
+    "recall": 0.0
+  },
+  "threshold": 0.5
+}

@@ -1,0 +1,139 @@
+{
+  "status": "PASS",
+  "task": "LUNA16 False-Positive Reduction on supplied candidates_V2",
+  "cohort": "test-fold0 (89 scans, 89 patients)",
+  "scope": "Internal LUNA16 subset 0 evaluation; prior-exposure uncertainty acknowledged; not external clinical validation",
+  "authorization": "Recorded as user report of supervisor confirmation; no written signature/authority fabricated",
+  "other_prepared_val_authorization": "UNSETTLED",
+  "runtime_seconds": {
+    "scoring_seconds": 3781.1549758911133,
+    "total_seconds": 3855.248997926712
+  },
+  "model": {
+    "ensemble": "Run 004 (5 checkpoints: fold-0.pt .. fold-4.pt)",
+    "scale_oof": 1.7000000000000002,
+    "bias_oof": 4.175479443210625,
+    "nat_cut_oof": 0.9999467134475708,
+    "tta": "4-view (Identity, X, YZ, XYZ)",
+    "aggregation": "pre-sigmoid average across models"
+  },
+  "froc": {
+    "fp_per_scan_grid": [
+      0.125,
+      0.25,
+      0.5,
+      1.0,
+      2.0,
+      4.0,
+      8.0
+    ],
+    "sensitivities": [
+      0.776785714,
+      0.821428571,
+      0.875,
+      0.928571429,
+      0.955357143,
+      0.982142857,
+      0.991071429
+    ],
+    "cpm": 0.9043367347142857,
+    "series_count": 89,
+    "bootstrap_1000_mean_sensitivities": [
+      0.779999614,
+      0.8213738545701308,
+      0.876833022,
+      0.927670181,
+      0.9512378997981269,
+      0.978613802688684,
+      0.991675317
+    ],
+    "bootstrap_1000_lower_bound_sensitivities": [
+      0.688073397,
+      0.740157485,
+      0.800000012,
+      0.876106203,
+      0.9005903169788326,
+      0.945945919,
+      0.965517223
+    ],
+    "bootstrap_1000_upper_bound_sensitivities": [
+      0.864077687,
+      0.901785731,
+      0.941747546,
+      0.974576294,
+      0.9912058711006273,
+      1.0,
+      1.0
+    ],
+    "cpm_bootstrap_mean": 0.9039148130081346,
+    "cpm_bootstrap_95ci": [
+      0.8451986508541189,
+      0.9533418755858039
+    ]
+  },
+  "candidate_metrics_nat_cut": {
+    "total_candidates": 79135,
+    "positives": 138,
+    "negatives": 78997,
+    "threshold": 0.9999467134475708,
+    "TP": 118,
+    "TN": 78903,
+    "FP": 94,
+    "FN": 20,
+    "accuracy": 0.9985594237695078,
+    "macro_f1": 0.8367819148936171,
+    "f1_positive": 0.6742857142857143,
+    "f1_negative": 0.9992781155015198,
+    "precision_positive": 0.5566037735849056,
+    "recall_positive": 0.855072463768116,
+    "specificity_negative": 0.998810081395496,
+    "f1_positive_95ci": [
+      0.6052312940470835,
+      0.7411502865733345
+    ],
+    "recall_positive_95ci": [
+      0.7837628326000419,
+      0.9208680424081788
+    ],
+    "precision_positive_95ci": [
+      0.4768811881188119,
+      0.640025641025641
+    ]
+  },
+  "candidate_metrics_05": {
+    "total_candidates": 79135,
+    "positives": 138,
+    "negatives": 78997,
+    "threshold": 0.5,
+    "TP": 136,
+    "TN": 78094,
+    "FP": 903,
+    "FN": 2,
+    "accuracy": 0.9885638465912681,
+    "macro_f1": 0.6126675440527328,
+    "f1_positive": 0.23109600679694137,
+    "f1_negative": 0.9942390813085242,
+    "precision_positive": 0.13089509143407121,
+    "recall_positive": 0.9855072463768116,
+    "specificity_negative": 0.9885691861716268,
+    "f1_positive_95ci": [
+      0.17723069631283112,
+      0.28600770162686046
+    ],
+    "recall_positive_95ci": [
+      0.962402468435239,
+      1.0
+    ],
+    "precision_positive_95ci": [
+      0.09750533239797439,
+      0.16725214218770917
+    ]
+  },
+  "hashes": {
+    "scores_csv_sha256": "0e4840ee80a1cbcaa71d71573caa0f6cd12c82ec846d7f12ef92c031268883ff",
+    "test_manifest_sha256": "d9238e7f554a391c11628d34d3b9a56db3c8bd41583da75bccf57c2582a6d6b5",
+    "candidates_v2_sha256": "8c168d9113f97a3cfd609d18703c50a62067f8f61fe4833be1650a02baa43c82",
+    "annotations_sha256": "db9adb75b381f3e95b1f601d9b63f2e42bd6536ab5a06dc539c5ec8a4005cec7",
+    "annotations_excluded_sha256": "73a5c139257294fe45a68620ed1b2cf383ba8b22af1501d2f498abbd6b802c25"
+  }
+}

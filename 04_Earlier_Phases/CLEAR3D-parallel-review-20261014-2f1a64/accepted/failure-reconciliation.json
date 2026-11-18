@@ -1,0 +1,38 @@
+{
+  "outcome": "FAIL_FIXED_BUDGET",
+  "literal_watchdog_reason": "RuntimeError: EXTERNAL_TERMINATION",
+  "interpretation": "The reviewed controller stop predicate includes its fixed deadline; observed termination at 780.44 seconds and controller completion at 780.96 seconds. No manual signal was sent by the assistant.",
+  "actual_updates": 153,
+  "skipped_updates": 0,
+  "epochs": {
+    "0": {
+      "planned_indices_verified": 960,
+      "completed_optimizer_boundaries": 60,
+      "draws_in_completed_updates": 960
+    },
+    "1": {
+      "planned_indices_verified": 960,
+      "completed_optimizer_boundaries": 60,
+      "draws_in_completed_updates": 960
+    },
+    "2": {
+      "planned_indices_verified": 960,
+      "completed_optimizer_boundaries": 33,
+      "draws_in_completed_updates": 528
+    }
+  },
+  "forward_diagnostic_rows": 2450,
+  "rows_in_completed_updates": 2448,
+  "partial_boundary": "Two additional rows have forward loss diagnostics but no committed optimizer boundary; do not count them as an update.",
+  "validation_complete_epochs": [
+    0,
+    1
+  ],
+  "validation_rows_each": 384,
+  "final_epoch_2_endpoint": "NOT_REACHED",
+  "resnet10": "NOT_RUN",
+  "checkpoint_tensor_hashes_and_ancestry": "PASS through epoch 1",
+  "next_action": "Independent review of budget failure; no retry/resume or changed settings authorized. Instrumentation overhead and shared-device effects are not separately measured.",
+  "reference_release": "HOLD",
+  "cap4000_policy": "NOT_ADOPTED"
+}

@@ -1,0 +1,329 @@
+{
+  "smoke": false,
+  "seconds": 1159.1337397098541,
+  "models": {
+    "wang_aniso": {
+      "status": "scored_on_development",
+      "history": [
+        {
+          "epoch": 1,
+          "loss": 0.5400621270442881
+        },
+        {
+          "epoch": 2,
+          "loss": 0.4926169155453279
+        },
+        {
+          "epoch": 3,
+          "loss": 0.5351734819208703
+        },
+        {
+          "epoch": 4,
+          "loss": 0.5310710049196472
+        },
+        {
+          "epoch": 5,
+          "loss": 0.52384881178538
+        },
+        {
+          "epoch": 6,
+          "loss": 0.5180037482603779
+        },
+        {
+          "epoch": 7,
+          "loss": 0.5084268830232019
+        },
+        {
+          "epoch": 8,
+          "loss": 0.5005426220595837
+        }
+      ],
+      "dev": {
+        "tp": 49,
+        "fp": 565,
+        "fn": 216,
+        "tn": 121859,
+        "precision": 0.07980456026058631,
+        "recall": 0.18490566037735848,
+        "specificity": 0.995384891851271,
+        "accuracy": 0.9936343111444383,
+        "f1": 0.11149032992036403,
+        "n": 122689,
+        "positives": 265,
+        "negatives": 122424,
+        "auc": 0.7491589082915053,
+        "pr_auc": 0.09775313772382443,
+        "threshold": 0.5198162460327148,
+        "skipped_outside": 0
+      },
+      "gradients_missing": [],
+      "nonzero_gradient_values": 43653,
+      "parameter_count": 46082,
+      "scheduler": null,
+      "checkpoint": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-comparison-protocol-20261025/runs/phase-finish-dev/wang_aniso.pt",
+      "note": "Stage-2 input is 32x48x48 with center 16x24x24 and 8x12x12. Adam at 0.0001, unweighted cross-entropy, three negatives per positive."
+    },
+    "zuo_stride": {
+      "status": "scored_on_development",
+      "history": [
+        {
+          "epoch": 1,
+          "loss": 0.6041970451672872
+        },
+        {
+          "epoch": 2,
+          "loss": 0.5073485952324983
+        },
+        {
+          "epoch": 3,
+          "loss": 0.5246306046601233
+        },
+        {
+          "epoch": 4,
+          "loss": 0.4675952653453602
+        },
+        {
+          "epoch": 5,
+          "loss": 0.421403999190505
+        },
+        {
+          "epoch": 6,
+          "loss": 0.40141913637034293
+        },
+        {
+          "epoch": 7,
+          "loss": 0.3564102177364313
+        },
+        {
+          "epoch": 8,
+          "loss": 0.3257403018604207
+        }
+      ],
+      "dev": {
+        "tp": 164,
+        "fp": 450,
+        "fn": 101,
+        "tn": 121974,
+        "precision": 0.2671009771986971,
+        "recall": 0.6188679245283019,
+        "specificity": 0.99632425014703,
+        "accuracy": 0.9955089698342965,
+        "f1": 0.37315130830489196,
+        "n": 122689,
+        "positives": 265,
+        "negatives": 122424,
+        "auc": 0.9634258420164254,
+        "pr_auc": 0.42313105857374056,
+        "threshold": 0.72375628709793,
+        "skipped_outside": 0
+      },
+      "gradients_missing": [],
+      "nonzero_gradient_values": 198368,
+      "parameter_count": 278018,
+      "scheduler": null,
+      "checkpoint": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-comparison-protocol-20261025/runs/phase-finish-dev/zuo_stride.pt",
+      "note": "Shallow pool stride 4, next pool stride 2, center 18 cube, bias 0.2. Eight epochs, not the paper's fifteen. Negatives remain the seeded draw."
+    },
+    "clear_aug": {
+      "status": "scored_on_development",
+      "history": [
+        {
+          "epoch": 1,
+          "loss": 0.6470038873877951
+        },
+        {
+          "epoch": 2,
+          "loss": 0.6255283549549134
+        },
+        {
+          "epoch": 3,
+          "loss": 0.6561584367257792
+        },
+        {
+          "epoch": 4,
+          "loss": 0.6431243339689766
+        },
+        {
+          "epoch": 5,
+          "loss": 0.6261229982705621
+        },
+        {
+          "epoch": 6,
+          "loss": 0.6300012540768801
+        },
+        {
+          "epoch": 7,
+          "loss": 0.6221892918513073
+        },
+        {
+          "epoch": 8,
+          "loss": 0.62640634142771
+        }
+      ],
+      "dev": {
+        "tp": 64,
+        "fp": 550,
+        "fn": 201,
+        "tn": 121874,
+        "precision": 0.10423452768729642,
+        "recall": 0.24150943396226415,
+        "specificity": 0.99550741684637,
+        "accuracy": 0.9938788318431155,
+        "f1": 0.14562002275312858,
+        "n": 122689,
+        "positives": 265,
+        "negatives": 122424,
+        "auc": 0.761429840492492,
+        "pr_auc": 0.20080374942450224,
+        "threshold": 0.6303799891471862,
+        "skipped_outside": 0
+      },
+      "gradients_missing": [],
+      "nonzero_gradient_values": 35505,
+      "parameter_count": 36098,
+      "scheduler": null,
+      "checkpoint": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-comparison-protocol-20261025/runs/phase-finish-dev/clear_aug.pt",
+      "note": "Existing CLEAR3D candidate with flips, 90-degree rotation, translation of at most 2 voxels, and intensity scale 0.9 to 1.1."
+    },
+    "clear_focal": {
+      "status": "scored_on_development",
+      "history": [
+        {
+          "epoch": 1,
+          "loss": 0.1035053629155566
+        },
+        {
+          "epoch": 2,
+          "loss": 0.09333174721133418
+        },
+        {
+          "epoch": 3,
+          "loss": 0.09781066546352898
+        },
+        {
+          "epoch": 4,
+          "loss": 0.09534502093021463
+        },
+        {
+          "epoch": 5,
+          "loss": 0.09371330785920949
+        },
+        {
+          "epoch": 6,
+          "loss": 0.09398212043068759
+        },
+        {
+          "epoch": 7,
+          "loss": 0.09360139598933662
+        },
+        {
+          "epoch": 8,
+          "loss": 0.09188482701414968
+        }
+      ],
+      "dev": {
+        "tp": 56,
+        "fp": 558,
+        "fn": 209,
+        "tn": 121866,
+        "precision": 0.09120521172638436,
+        "recall": 0.21132075471698114,
+        "specificity": 0.9954420701823172,
+        "accuracy": 0.9937484208038211,
+        "f1": 0.1274175199089875,
+        "n": 122689,
+        "positives": 265,
+        "negatives": 122424,
+        "auc": 0.6218660109807055,
+        "pr_auc": 0.17345968349584434,
+        "threshold": 0.34313002824783323,
+        "skipped_outside": 0
+      },
+      "gradients_missing": [],
+      "nonzero_gradient_values": 35788,
+      "parameter_count": 36098,
+      "scheduler": null,
+      "checkpoint": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-comparison-protocol-20261025/runs/phase-finish-dev/clear_focal.pt",
+      "note": "Focal loss gamma 2 without class weights. The 7-to-1 draw is unchanged, so the class weight is not stacked on the focal term."
+    },
+    "clear_lr": {
+      "status": "scored_on_development",
+      "history": [
+        {
+          "epoch": 1,
+          "loss": 0.692425963597569
+        },
+        {
+          "epoch": 2,
+          "loss": 0.6766071716944376
+        },
+        {
+          "epoch": 3,
+          "loss": 0.6706691500617237
+        },
+        {
+          "epoch": 4,
+          "loss": 0.6609127881323419
+        },
+        {
+          "epoch": 5,
+          "loss": 0.6482966911744296
+        },
+        {
+          "epoch": 6,
+          "loss": 0.6571305349348037
+        },
+        {
+          "epoch": 7,
+          "loss": 0.6523769374300794
+        },
+        {
+          "epoch": 8,
+          "loss": 0.6413361634907684
+        }
+      ],
+      "dev": {
+        "tp": 59,
+        "fp": 555,
+        "fn": 206,
+        "tn": 121869,
+        "precision": 0.09609120521172639,
+        "recall": 0.22264150943396227,
+        "specificity": 0.995466575181337,
+        "accuracy": 0.9937973249435564,
+        "f1": 0.1342434584755404,
+        "n": 122689,
+        "positives": 265,
+        "negatives": 122424,
+        "auc": 0.6677358860452816,
+        "pr_auc": 0.1695266400692786,
+        "threshold": 0.7305768442153929,
+        "skipped_outside": 0
+      },
+      "gradients_missing": [],
+      "nonzero_gradient_values": 35888,
+      "parameter_count": 36098,
+      "scheduler": null,
+      "checkpoint": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-comparison-protocol-20261025/runs/phase-finish-dev/clear_lr.pt",
+      "note": "Same augmented CLEAR3D objective at learning rate 0.001. The original run used 0.01."
+    }
+  },
+  "confirmation": "closed",
+  "paired_development": {
+    "clear_aug_minus_zuo": {
+      "mean": -0.2737154109511865,
+      "low": -0.3319324329770751,
+      "high": -0.20943407588261798
+    },
+    "clear_aug_minus_wang": {
+      "mean": -0.08459497510242774,
+      "low": -0.12236807749676591,
+      "high": -0.050834264396963355
+    },
+    "clear_aug_minus_clear": {
+      "mean": -0.023499056766274215,
+      "low": -0.0466418487000569,
+      "high": 0.0011907247346184789
+    }
+  }
+}

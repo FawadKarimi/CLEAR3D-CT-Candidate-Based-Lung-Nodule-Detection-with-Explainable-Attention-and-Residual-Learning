@@ -1,0 +1,92 @@
+{
+  "CT-TRAINING-LC001": {
+    "patient_id": "CT-TRAINING-LC001",
+    "nodule_id": "CT-TRAINING-LC001:nodule:001",
+    "pixel_x_1based": 120,
+    "pixel_y_1based": 325,
+    "instance_number": 135,
+    "diagnosis": "malignant",
+    "malignant": true
+  },
+  "CT-TRAINING-LC002": {
+    "patient_id": "CT-TRAINING-LC002",
+    "nodule_id": "CT-TRAINING-LC002:nodule:001",
+    "pixel_x_1based": 139,
+    "pixel_y_1based": 359,
+    "instance_number": 70,
+    "diagnosis": "malignant",
+    "malignant": true
+  },
+  "CT-TRAINING-LC003": {
+    "patient_id": "CT-TRAINING-LC003",
+    "nodule_id": "CT-TRAINING-LC003:nodule:001",
+    "pixel_x_1based": 375,
+    "pixel_y_1based": 323,
+    "instance_number": 70,
+    "diagnosis": "malignant",
+    "malignant": true
+  },
+  "CT-TRAINING-LC008": {
+    "patient_id": "CT-TRAINING-LC008",
+    "nodule_id": "CT-TRAINING-LC008:nodule:001",
+    "pixel_x_1based": 95,
+    "pixel_y_1based": 328,
+    "instance_number": 65,
+    "diagnosis": "malignant",
+    "malignant": true
+  },
+  "CT-TRAINING-LC009": {
+    "patient_id": "CT-TRAINING-LC009",
+    "nodule_id": "CT-TRAINING-LC009:nodule:001",
+    "pixel_x_1based": 145,
+    "pixel_y_1based": 299,
+    "instance_number": 63,
+    "diagnosis": "malignant",
+    "malignant": true
+  },
+  "CT-TRAINING-BE001": {
+    "patient_id": "CT-TRAINING-BE001",
+    "nodule_id": "CT-TRAINING-BE001:nodule:001",
+    "pixel_x_1based": 405,
+    "pixel_y_1based": 296,
+    "instance_number": 169,
+    "diagnosis": "benign",
+    "malignant": false
+  },
+  "CT-TRAINING-BE002": {
+    "patient_id": "CT-TRAINING-BE002",
+    "nodule_id": "CT-TRAINING-BE002:nodule:001",
+    "pixel_x_1based": 184,
+    "pixel_y_1based": 268,
+    "instance_number": 117,
+    "diagnosis": "benign",
+    "malignant": false
+  },
+  "CT-TRAINING-BE006": {
+    "patient_id": "CT-TRAINING-BE006",
+    "nodule_id": "CT-TRAINING-BE006:nodule:001",
+    "pixel_x_1based": 449,
+    "pixel_y_1based": 266,
+    "instance_number": 241,
+    "diagnosis": "benign",
+    "malignant": false
+  },
+  "CT-TRAINING-BE007": {
+    "patient_id": "CT-TRAINING-BE007",
+    "nodule_id": "CT-TRAINING-BE007:nodule:001",
+    "pixel_x_1based": 385,
+    "pixel_y_1based": 206,
+    "instance_number": 194,
+    "diagnosis": "benign",
+    "malignant": false
+  },
+  "CT-TRAINING-BE010": {
+    "patient_id": "CT-TRAINING-BE010",
+    "nodule_id": "CT-TRAINING-BE010:nodule:001",
+    "pixel_x_1based": 120,
+    "pixel_y_1based": 336,
+    "instance_number": 69,
+    "diagnosis": "benign",
+    "malignant": false
+  }
+}

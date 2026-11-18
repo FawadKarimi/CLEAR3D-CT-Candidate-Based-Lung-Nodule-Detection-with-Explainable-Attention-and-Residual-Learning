@@ -1,0 +1,16 @@
+
+************************************************************
+CAD Analysis: clear3d_msf_test0
+************************************************************
+
+Candidate detection results:
+    True positives: 112
+    False positives: 78247
+    False negatives: 0
+    True negatives: 0
+    Total number of candidates: 79135
+    Total number of nodules: 112
+    Ignored candidates on excluded nodules: 750
+    Ignored candidates which were double detections on a nodule: 26
+    Sensitivity: 1.000000000
+    Average number of candidates per scan: 889.157303371

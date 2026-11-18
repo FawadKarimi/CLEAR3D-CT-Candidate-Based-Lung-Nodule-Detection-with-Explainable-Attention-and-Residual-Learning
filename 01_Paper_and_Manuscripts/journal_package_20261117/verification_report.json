@@ -1,0 +1,75 @@
+{
+  "fig1_clear3d_architecture.png": {
+    "px": [
+      2775,
+      1294
+    ],
+    "bytes": 470282
+  },
+  "fig2_froc_comparison.png": {
+    "px": [
+      2254,
+      1474
+    ],
+    "bytes": 311825
+  },
+  "fig3_pr_and_calibration.png": {
+    "px": [
+      3154,
+      1324
+    ],
+    "bytes": 392396
+  },
+  "fig4_dev708_10fold_paired.png": {
+    "px": [
+      2582,
+      1294
+    ],
+    "bytes": 161475
+  },
+  "JIIM_DoubleBlind": {
+    "file": "CLEAR3D_CT_JIIM_DoubleBlind_Manuscript.docx",
+    "bytes": 1262498,
+    "embeds": 4,
+    "tables": 7,
+    "paras": 542,
+    "sect_prs": 1,
+    "leaks": [],
+    "abs_words": 234,
+    "ref_count": 42,
+    "cited_count": 42,
+    "years_2020_2025": 30,
+    "pct_2020_2025": 71.43,
+    "years_2020_2026": 33,
+    "pct_2020_2026": 78.57,
+    "body_words_excl_refs": 6063
+  },
+  "JIIM_TitlePage": {
+    "file": "JIIM_Title_Page_and_Declarations.docx",
+    "bytes": 16757,
+    "paras": 20
+  },
+  "JOIV_Manuscript": {
+    "file": "CLEAR3D_CT_JOIV_Manuscript.docx",
+    "bytes": 2179493,
+    "embeds": 5,
+    "tables": 7,
+    "paras": 560,
+    "sect_prs": 18,
+    "hdrs": [],
+    "ftrs": [],
+    "hyperlinks": [],
+    "abs_words": 235,
+    "ref_count": 42,
+    "cited_count": 42,
+    "years_2020_2025": 30,
+    "pct_2020_2025": 71.43,
+    "years_2020_2026": 33,
+    "pct_2020_2026": 78.57,
+    "body_words_excl_refs": 6075
+  },
+  "pandoc_CLEAR3D_CT_JIIM_DoubleBlind_Manuscript.docx_chars": 57245,
+  "pandoc_JIIM_Title_Page_and_Declarations.docx_chars": 4320,
+  "pandoc_CLEAR3D_CT_JOIV_Manuscript.docx_chars": 57513,
+  "numeric_truth_assertions": "ALL_13_STRINGS_VERIFIED_IN_BOTH_DOCX"
+}

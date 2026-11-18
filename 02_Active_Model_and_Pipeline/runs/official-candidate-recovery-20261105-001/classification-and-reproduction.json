@@ -1,0 +1,19 @@
+{
+  "scope": "exploratory official candidate classification; unfiltered candidate labels; development already exposed; not final test",
+  "rows": 122689,
+  "positive_labels": 265,
+  "threshold": 0.5,
+  "counts": {
+    "tp": 178,
+    "tn": 69258,
+    "fp": 53166,
+    "fn": 87
+  },
+  "accuracy": 0.5659513077782035,
+  "macro_f1": 0.3644736005219154,
+  "f1_positive": 0.006640676005894533,
+  "f1_negative": 0.7223065250379362,
+  "sample_overlap": 1060,
+  "sample_max_probability_difference": 1.1920928955078125e-07,
+  "reference_release": "HOLD"
+}

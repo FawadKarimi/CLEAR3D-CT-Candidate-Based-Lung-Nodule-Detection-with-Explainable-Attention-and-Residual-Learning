@@ -1,0 +1,716 @@
+{
+  "meta": {
+    "scope": "Development-only threshold comparison on 142 official dev series (122,689 candidates)",
+    "baseline_threshold": 0.9999467134475708,
+    "baseline_threshold_description": "Calibrated fit-set natural prevalence threshold (nat_cut_oof)",
+    "dev_selected_threshold": 0.99999,
+    "dev_selected_threshold_description": "Development-selected empirical threshold maximizing development Pos F1. NOT calibrated, NOT independently validated.",
+    "exposure_notice": "The development cohort was repeatedly exposed during exploratory ablation rounds. test-fold0 was NOT accessed or used for this comparison.",
+    "patient_count": 142,
+    "series_count": 142,
+    "total_candidates": 122689,
+    "excluded_matches_count": 1512,
+    "clean_candidates_count": 121177
+  },
+  "threshold_sweep_raw_122689": [
+    {
+      "threshold": 0.5,
+      "total_candidates": 122689,
+      "positives": 265,
+      "negatives": 122424,
+      "confusion_matrix": {
+        "TP": 263,
+        "TN": 120850,
+        "FP": 1574,
+        "FN": 2
+      },
+      "accuracy": 0.987154512629494,
+      "precision": 0.1431682090364725,
+      "recall": 0.9924528301886792,
+      "specificity": 0.9871430438476115,
+      "f1_positive": 0.25023786869647957,
+      "f1_negative": 0.9935217612917016,
+      "macro_f1": 0.6218798149940905,
+      "fp_per_scan": 11.084507042253522
+    },
+    {
+      "threshold": 0.9,
+      "total_candidates": 122689,
+      "positives": 265,
+      "negatives": 122424,
+      "confusion_matrix": {
+        "TP": 260,
+        "TN": 121474,
+        "FP": 950,
+        "FN": 5
+      },
+      "accuracy": 0.992216091092111,
+      "precision": 0.21487603305785125,
+      "recall": 0.9811320754716981,
+      "specificity": 0.99224008364373,
+      "f1_positive": 0.3525423728813559,
+      "f1_negative": 0.9960845090056293,
+      "macro_f1": 0.6743134409434925,
+      "fp_per_scan": 6.690140845070423
+    },
+    {
+      "threshold": 0.99,
+      "total_candidates": 122689,
+      "positives": 265,
+      "negatives": 122424,
+      "confusion_matrix": {
+        "TP": 256,
+        "TN": 121805,
+        "FP": 619,
+        "FN": 9
+      },
+      "accuracy": 0.9948813667076918,
+      "precision": 0.2925714285714286,
+      "recall": 0.9660377358490566,
+      "specificity": 0.9949438018689146,
+      "f1_positive": 0.44912280701754387,
+      "f1_negative": 0.9974287375428885,
+      "macro_f1": 0.7232757722802162,
+      "fp_per_scan": 4.359154929577465
+    },
+    {
+      "threshold": 0.999,
+      "total_candidates": 122689,
+      "positives": 265,
+      "negatives": 122424,
+      "confusion_matrix": {
+        "TP": 249,
+        "TN": 122020,
+        "FP": 404,
+        "FN": 16
+      },
+      "accuracy": 0.99657671021852,
+      "precision": 0.38131699846860645,
+      "recall": 0.939622641509434,
+      "specificity": 0.9966999934653336,
+      "f1_positive": 0.5424836601307189,
+      "f1_negative": 0.9982819275137037,
+      "macro_f1": 0.7703827938222113,
+      "fp_per_scan": 2.8450704225352115
+    },
+    {
+      "threshold": 0.9999,
+      "total_candidates": 122689,
+      "positives": 265,
+      "negatives": 122424,
+      "confusion_matrix": {
+        "TP": 241,
+        "TN": 122160,
+        "FP": 264,
+        "FN": 24
+      },
+      "accuracy": 0.9976526012926994,
+      "precision": 0.4772277227722772,
+      "recall": 0.909433962264151,
+      "specificity": 0.9978435600862576,
+      "f1_positive": 0.625974025974026,
+      "f1_negative": 0.9988226059654631,
+      "macro_f1": 0.8123983159697445,
+      "fp_per_scan": 1.8591549295774648
+    },
+    {
+      "threshold": 0.9999467,
+      "total_candidates": 122689,
+      "positives": 265,
+      "negatives": 122424,
+      "confusion_matrix": {
+        "TP": 235,
+        "TN": 122209,
+        "FP": 215,
+        "FN": 30
+      },
+      "accuracy": 0.9980030809608034,
+      "precision": 0.5222222222222223,
+      "recall": 0.8867924528301887,
+      "specificity": 0.998243808403581,
+      "f1_positive": 0.6573426573426573,
+      "f1_negative": 0.9989986225951615,
+      "macro_f1": 0.8281706399689094,
+      "fp_per_scan": 1.5140845070422535
+    },
+    {
+      "threshold": 0.99998,
+      "total_candidates": 122689,
+      "positives": 265,
+      "negatives": 122424,
+      "confusion_matrix": {
+        "TP": 223,
+        "TN": 122274,
+        "FP": 150,
+        "FN": 42
+      },
+      "accuracy": 0.9984350675284663,
+      "precision": 0.5978552278820375,
+      "recall": 0.8415094339622642,
+      "specificity": 0.99877475004901,
+      "f1_positive": 0.6990595611285266,
+      "f1_negative": 0.9992154939936259,
+      "macro_f1": 0.8491375275610762,
+      "fp_per_scan": 1.056338028169014
+    },
+    {
+      "threshold": 0.99999,
+      "total_candidates": 122689,
+      "positives": 265,
+      "negatives": 122424,
+      "confusion_matrix": {
+        "TP": 202,
+        "TN": 122327,
+        "FP": 97,
+        "FN": 63
+      },
+      "accuracy": 0.9986958896070552,
+      "precision": 0.6755852842809364,
+      "recall": 0.7622641509433963,
+      "specificity": 0.9992076716983598,
+      "f1_positive": 0.7163120567375887,
+      "f1_negative": 0.9993464426054065,
+      "macro_f1": 0.8578292496714977,
+      "fp_per_scan": 0.6830985915492958
+    },
+    {
+      "threshold": 0.999995,
+      "total_candidates": 122689,
+      "positives": 265,
+      "negatives": 122424,
+      "confusion_matrix": {
+        "TP": 148,
+        "TN": 122396,
+        "FP": 28,
+        "FN": 117
+      },
+      "accuracy": 0.9988181499563938,
+      "precision": 0.8409090909090909,
+      "recall": 0.5584905660377358,
+      "specificity": 0.9997712866758152,
+      "f1_positive": 0.671201814058957,
+      "f1_negative": 0.9994080110395734,
+      "macro_f1": 0.8353049125492652,
+      "fp_per_scan": 0.19718309859154928
+    }
+  ],
+  "threshold_sweep_clean_121177": [
+    {
+      "threshold": 0.5,
+      "total_candidates": 121177,
+      "positives": 265,
+      "negatives": 120912,
+      "confusion_matrix": {
+        "TP": 263,
+        "TN": 119988,
+        "FP": 924,
+        "FN": 2
+      },
+      "accuracy": 0.9923582858133144,
+      "precision": 0.22156697556866048,
+      "recall": 0.9924528301886792,
+      "specificity": 0.99235807860262,
+      "f1_positive": 0.3622589531680441,
+      "f1_negative": 0.9961561132742776,
+      "macro_f1": 0.6792075332211608,
+      "fp_per_scan": 6.507042253521127
+    },
+    {
+      "threshold": 0.9,
+      "total_candidates": 121177,
+      "positives": 265,
+      "negatives": 120912,
+      "confusion_matrix": {
+        "TP": 260,
+        "TN": 120473,
+        "FP": 439,
+        "FN": 5
+      },
+      "accuracy": 0.9963359383381335,
+      "precision": 0.3719599427753934,
+      "recall": 0.9811320754716981,
+      "specificity": 0.9963692602884743,
+      "f1_positive": 0.5394190871369294,
+      "f1_negative": 0.9981606528853723,
+      "macro_f1": 0.7687898700111508,
+      "fp_per_scan": 3.091549295774648
+    },
+    {
+      "threshold": 0.99,
+      "total_candidates": 121177,
+      "positives": 265,
+      "negatives": 120912,
+      "confusion_matrix": {
+        "TP": 256,
+        "TN": 120691,
+        "FP": 221,
+        "FN": 9
+      },
+      "accuracy": 0.9981019500400241,
+      "precision": 0.5366876310272537,
+      "recall": 0.9660377358490566,
+      "specificity": 0.9981722244276829,
+      "f1_positive": 0.6900269541778976,
+      "f1_negative": 0.9990480605267951,
+      "macro_f1": 0.8445375073523463,
+      "fp_per_scan": 1.556338028169014
+    },
+    {
+      "threshold": 0.999,
+      "total_candidates": 121177,
+      "positives": 265,
+      "negatives": 120912,
+      "confusion_matrix": {
+        "TP": 249,
+        "TN": 120795,
+        "FP": 117,
+        "FN": 16
+      },
+      "accuracy": 0.9989024319796661,
+      "precision": 0.680327868852459,
+      "recall": 0.939622641509434,
+      "specificity": 0.9990323541087733,
+      "f1_positive": 0.7892234548335975,
+      "f1_negative": 0.9994497834297936,
+      "macro_f1": 0.8943366191316955,
+      "fp_per_scan": 0.823943661971831
+    },
+    {
+      "threshold": 0.9999,
+      "total_candidates": 121177,
+      "positives": 265,
+      "negatives": 120912,
+      "confusion_matrix": {
+        "TP": 241,
+        "TN": 120852,
+        "FP": 60,
+        "FN": 24
+      },
+      "accuracy": 0.9993067991450523,
+      "precision": 0.8006644518272426,
+      "recall": 0.909433962264151,
+      "specificity": 0.9995037713378325,
+      "f1_positive": 0.8515901060070671,
+      "f1_negative": 0.9996525882177776,
+      "macro_f1": 0.9256213471124224,
+      "fp_per_scan": 0.4225352112676056
+    },
+    {
+      "threshold": 0.9999467,
+      "total_candidates": 121177,
+      "positives": 265,
+      "negatives": 120912,
+      "confusion_matrix": {
+        "TP": 235,
+        "TN": 120868,
+        "FP": 44,
+        "FN": 30
+      },
+      "accuracy": 0.9993893230563555,
+      "precision": 0.8422939068100358,
+      "recall": 0.8867924528301887,
+      "specificity": 0.9996360989810772,
+      "f1_positive": 0.8639705882352942,
+      "f1_negative": 0.9996939746081634,
+      "macro_f1": 0.9318322814217288,
+      "fp_per_scan": 0.30985915492957744
+    },
+    {
+      "threshold": 0.99998,
+      "total_candidates": 121177,
+      "positives": 265,
+      "negatives": 120912,
+      "confusion_matrix": {
+        "TP": 223,
+        "TN": 120887,
+        "FP": 25,
+        "FN": 42
+      },
+      "accuracy": 0.9994470897942679,
+      "precision": 0.8991935483870968,
+      "recall": 0.8415094339622642,
+      "specificity": 0.9997932380574301,
+      "f1_positive": 0.8693957115009746,
+      "f1_negative": 0.9997229584727155,
+      "macro_f1": 0.9345593349868451,
+      "fp_per_scan": 0.176056338028169
+    },
+    {
+      "threshold": 0.99999,
+      "total_candidates": 121177,
+      "positives": 265,
+      "negatives": 120912,
+      "confusion_matrix": {
+        "TP": 202,
+        "TN": 120898,
+        "FP": 14,
+        "FN": 63
+      },
+      "accuracy": 0.9993645658829646,
+      "precision": 0.9351851851851852,
+      "recall": 0.7622641509433963,
+      "specificity": 0.9998842133121609,
+      "f1_positive": 0.83991683991684,
+      "f1_negative": 0.9996816511144279,
+      "macro_f1": 0.9197992455156339,
+      "fp_per_scan": 0.09859154929577464
+    },
+    {
+      "threshold": 0.999995,
+      "total_candidates": 121177,
+      "positives": 265,
+      "negatives": 120912,
+      "confusion_matrix": {
+        "TP": 148,
+        "TN": 120908,
+        "FP": 4,
+        "FN": 117
+      },
+      "accuracy": 0.99900146067323,
+      "precision": 0.9736842105263158,
+      "recall": 0.5584905660377358,
+      "specificity": 0.9999669180891888,
+      "f1_positive": 0.709832134292566,
+      "f1_negative": 0.999499869800816,
+      "macro_f1": 0.854666002046691,
+      "fp_per_scan": 0.028169014084507043
+    }
+  ],
+  "raw_population_122689": {
+    "nat_cut_oof_baseline": {
+      "point_estimates": {
+        "threshold": 0.9999467134475708,
+        "total_candidates": 122689,
+        "positives": 265,
+        "negatives": 122424,
+        "confusion_matrix": {
+          "TP": 235,
+          "TN": 122209,
+          "FP": 215,
+          "FN": 30
+        },
+        "accuracy": 0.9980030809608034,
+        "precision": 0.5222222222222223,
+        "recall": 0.8867924528301887,
+        "specificity": 0.998243808403581,
+        "f1_positive": 0.6573426573426573,
+        "f1_negative": 0.9989986225951615,
+        "macro_f1": 0.8281706399689094,
+        "fp_per_scan": 1.5140845070422535
+      },
+      "bootstrap_1000_ci": {
+        "accuracy": {
+          "mean": 0.9980010460228453,
+          "std": 0.00019655329516841938,
+          "ci_95": [
+            0.9975896377768759,
+            0.9983658861723999
+          ]
+        },
+        "precision": {
+          "mean": 0.5222143013803807,
+          "std": 0.030898783071623068,
+          "ci_95": [
+            0.4600829074319786,
+            0.5829827096517016
+          ]
+        },
+        "recall": {
+          "mean": 0.8853988257436278,
+          "std": 0.02808325387180717,
+          "ci_95": [
+            0.8308650110987792,
+            0.9377597971415399
+          ]
+        },
+        "specificity": {
+          "mean": 0.9982451395369176,
+          "std": 0.0001994194078021971,
+          "ci_95": [
+            0.9978324968410215,
+            0.9986060473048811
+          ]
+        },
+        "f1_positive": {
+          "mean": 0.6562104031836016,
+          "std": 0.02501091724696215,
+          "ci_95": [
+            0.6053860622818709,
+            0.7041873100563845
+          ]
+        },
+        "macro_f1": {
+          "mean": 0.8276039975310537,
+          "std": 0.012537008359406507,
+          "ci_95": [
+            0.8020884156960018,
+            0.8516037976745512
+          ]
+        },
+        "fp_per_scan": {
+          "mean": 1.5138309859154928,
+          "std": 0.17215749168728825,
+          "ci_95": [
+            1.204225352112676,
+            1.8735915492957742
+          ]
+        }
+      }
+    },
+    "dev_selected_0_9999900": {
+      "point_estimates": {
+        "threshold": 0.99999,
+        "total_candidates": 122689,
+        "positives": 265,
+        "negatives": 122424,
+        "confusion_matrix": {
+          "TP": 202,
+          "TN": 122327,
+          "FP": 97,
+          "FN": 63
+        },
+        "accuracy": 0.9986958896070552,
+        "precision": 0.6755852842809364,
+        "recall": 0.7622641509433963,
+        "specificity": 0.9992076716983598,
+        "f1_positive": 0.7163120567375887,
+        "f1_negative": 0.9993464426054065,
+        "macro_f1": 0.8578292496714977,
+        "fp_per_scan": 0.6830985915492958
+      },
+      "bootstrap_1000_ci": {
+        "accuracy": {
+          "mean": 0.9986960154619537,
+          "std": 0.00013364255600399545,
+          "ci_95": [
+            0.9984217164194902,
+            0.9989560516595688
+          ]
+        },
+        "precision": {
+          "mean": 0.6762323016304417,
+          "std": 0.03529110845360468,
+          "ci_95": [
+            0.6059174997488194,
+            0.7440334913894171
+          ]
+        },
+        "recall": {
+          "mean": 0.7602215381395107,
+          "std": 0.035278201809740346,
+          "ci_95": [
+            0.6879824104234528,
+            0.8247916666666666
+          ]
+        },
+        "specificity": {
+          "mean": 0.9992114240844108,
+          "std": 0.00011928438108889046,
+          "ci_95": [
+            0.9989656394161234,
+            0.9994195405527714
+          ]
+        },
+        "f1_positive": {
+          "mean": 0.7149450132528844,
+          "std": 0.02597197751084273,
+          "ci_95": [
+            0.6631171388268485,
+            0.7650103460480819
+          ]
+        },
+        "macro_f1": {
+          "mean": 0.8571457579230234,
+          "std": 0.013007136575856896,
+          "ci_95": [
+            0.831164042457148,
+            0.8822304250890128
+          ]
+        },
+        "fp_per_scan": {
+          "mean": 0.6801971830985915,
+          "std": 0.102447304059723,
+          "ci_95": [
+            0.5,
+            0.9084507042253521
+          ]
+        }
+      }
+    }
+  },
+  "clean_exclusion_filtered_121177": {
+    "nat_cut_oof_baseline": {
+      "point_estimates": {
+        "threshold": 0.9999467134475708,
+        "total_candidates": 121177,
+        "positives": 265,
+        "negatives": 120912,
+        "confusion_matrix": {
+          "TP": 235,
+          "TN": 120868,
+          "FP": 44,
+          "FN": 30
+        },
+        "accuracy": 0.9993893230563555,
+        "precision": 0.8422939068100358,
+        "recall": 0.8867924528301887,
+        "specificity": 0.9996360989810772,
+        "f1_positive": 0.8639705882352942,
+        "f1_negative": 0.9996939746081634,
+        "macro_f1": 0.9318322814217288,
+        "fp_per_scan": 0.30985915492957744
+      },
+      "bootstrap_1000_ci": {
+        "accuracy": {
+          "mean": 0.9993874075376956,
+          "std": 9.72263289034915e-05,
+          "ci_95": [
+            0.9991756087419155,
+            0.9995624884245194
+          ]
+        },
+        "precision": {
+          "mean": 0.8429879202576067,
+          "std": 0.024188093880865683,
+          "ci_95": [
+            0.7936337425595238,
+            0.8908483797521974
+          ]
+        },
+        "recall": {
+          "mean": 0.8853988257436278,
+          "std": 0.02808325387180717,
+          "ci_95": [
+            0.8308650110987792,
+            0.9377597971415399
+          ]
+        },
+        "specificity": {
+          "mean": 0.9996375709974902,
+          "std": 7.102400247106056e-05,
+          "ci_95": [
+            0.9994930537385321,
+            0.9997723047710555
+          ]
+        },
+        "f1_positive": {
+          "mean": 0.8632646077959533,
+          "std": 0.018170065772187875,
+          "ci_95": [
+            0.8264982168367608,
+            0.895579663101787
+          ]
+        },
+        "macro_f1": {
+          "mean": 0.9314788093167287,
+          "std": 0.009105292519139718,
+          "ci_95": [
+            0.9130694828950492,
+            0.947669703317777
+          ]
+        },
+        "fp_per_scan": {
+          "mean": 0.3089859154929578,
+          "std": 0.06151021416914027,
+          "ci_95": [
+            0.19014084507042253,
+            0.43661971830985913
+          ]
+        }
+      }
+    },
+    "dev_selected_0_9999900": {
+      "point_estimates": {
+        "threshold": 0.99999,
+        "total_candidates": 121177,
+        "positives": 265,
+        "negatives": 120912,
+        "confusion_matrix": {
+          "TP": 202,
+          "TN": 120898,
+          "FP": 14,
+          "FN": 63
+        },
+        "accuracy": 0.9993645658829646,
+        "precision": 0.9351851851851852,
+        "recall": 0.7622641509433963,
+        "specificity": 0.9998842133121609,
+        "f1_positive": 0.83991683991684,
+        "f1_negative": 0.9996816511144279,
+        "macro_f1": 0.9197992455156339,
+        "fp_per_scan": 0.09859154929577464
+      },
+      "bootstrap_1000_ci": {
+        "accuracy": {
+          "mean": 0.9993637721752574,
+          "std": 9.539645049378424e-05,
+          "ci_95": [
+            0.9991757001993564,
+            0.9995382448859711
+          ]
+        },
+        "precision": {
+          "mean": 0.9370070418399622,
+          "std": 0.023601249991647772,
+          "ci_95": [
+            0.8879586460907268,
+            0.9789660699973284
+          ]
+        },
+        "recall": {
+          "mean": 0.7602215381395107,
+          "std": 0.035278201809740346,
+          "ci_95": [
+            0.6879824104234528,
+            0.8247916666666666
+          ]
+        },
+        "specificity": {
+          "mean": 0.9998870600303967,
+          "std": 4.585190416468783e-05,
+          "ci_95": [
+            0.999791351609634,
+            0.9999665966569937
+          ]
+        },
+        "f1_positive": {
+          "mean": 0.8387939055438111,
+          "std": 0.023059750604159917,
+          "ci_95": [
+            0.7904399723863345,
+            0.8796630006245144
+          ]
+        },
+        "macro_f1": {
+          "mean": 0.919237578695833,
+          "std": 0.011549065461475314,
+          "ci_95": [
+            0.8949994744616965,
+            0.9397149210122147
+          ]
+        },
+        "fp_per_scan": {
+          "mean": 0.09627464788732394,
+          "std": 0.03914552970054946,
+          "ci_95": [
+            0.028169014084507043,
+            0.176056338028169
+          ]
+        }
+      }
+    }
+  },
+  "false_positive_breakdown_nat_cut_oof": {
+    "total_fps": 215,
+    "matching_excluded_annotations": 171,
+    "matching_excluded_percentage": 79.53488372093022,
+    "remaining_non_matching_fps": 44,
+    "scientific_note": "Matching excluded annotations are verified spatial coordinate matches to annotations_excluded.csv (non-nodules and sub-3mm nodules). They must NOT be claimed as confirmed clinical abnormalities without medical image review. Non-matching FPs must NOT be labeled as vessels without anatomical image confirmation."
+  },
+  "false_positive_breakdown_dev_selected_0_9999900": {
+    "total_fps": 97,
+    "matching_excluded_annotations": 83,
+    "matching_excluded_percentage": 85.56701030927834,
+    "remaining_non_matching_fps": 14
+  }
+}

@@ -1,0 +1,1422 @@
+{
+  "status": "PASS",
+  "task": "CLEAR3D-MSFv2 SPIE-AAPM Independent Test Evaluation (Cap=4000)",
+  "timestamp": "2026-11-08T22:41:11Z",
+  "protocol_sha256": "32c9a44783794d4955902d2eceb6ccedca2aa7fe8e0980acdb5219850a117f25",
+  "selection_basis": "Cap 4,000 selected strictly from 142 LUNA16 Dev scans (92.19% sensitivity)",
+  "evaluation_rule": "Fixed Euclidean distance < 5.0 mm matching (closest proposal TP, duplicate hits ignored)",
+  "annotation_caveat": "Target annotations in SPIE-AAPM LUNGx are incomplete for full scan CAD (only primary biopsy-proven nodule), so false positives include unannotated genuine nodules and granulomas.",
+  "cohort_results": {
+    "technical_pilot_scans": {
+      "cohort_name": "Technical_Pilot_2scans",
+      "scan_count": 2,
+      "nodule_count": 3,
+      "proposals_evaluated": 8000,
+      "proposal_coverage": {
+        "covered_nodules": 1,
+        "total_nodules": 3,
+        "rate": 0.3333333333333333,
+        "bootstrap_95ci": {
+          "mean": 0.2896666666666667,
+          "std": 0.17836884381652657,
+          "ci_95": [
+            0.0,
+            0.5
+          ]
+        }
+      },
+      "operating_points": {
+        "natural_prevalence_cut": {
+          "threshold": 0.9999467134475708,
+          "true_positives": 1,
+          "nodule_sensitivity": 0.3333333333333333,
+          "total_false_positives": 9,
+          "fp_per_scan": 4.5,
+          "bootstrap_95ci": {
+            "mean": 0.2896666666666667,
+            "std": 0.17836884381652657,
+            "ci_95": [
+              0.0,
+              0.5
+            ]
+          }
+        },
+        "half_cut": {
+          "threshold": 0.5,
+          "true_positives": 1,
+          "nodule_sensitivity": 0.3333333333333333,
+          "total_false_positives": 81,
+          "fp_per_scan": 40.5,
+          "bootstrap_95ci": {
+            "mean": 0.2896666666666667,
+            "std": 0.17836884381652657,
+            "ci_95": [
+              0.0,
+              0.5
+            ]
+          }
+        }
+      },
+      "froc_cpm_fixed_5mm": {
+        "cpm": 0.3333333333333333,
+        "grid_fp_rates": [
+          0.125,
+          0.25,
+          0.5,
+          1.0,
+          2.0,
+          4.0,
+          8.0
+        ],
+        "sensitivities": [
+          0.3333333333333333,
+          0.3333333333333333,
+          0.3333333333333333,
+          0.3333333333333333,
+          0.3333333333333333,
+          0.3333333333333333,
+          0.3333333333333333
+        ],
+        "bootstrap_95ci": {
+          "mean": 0.2321666666666667,
+          "std": 0.13673280919776024,
+          "ci_95": [
+            0.0,
+            0.3333333333333333
+          ]
+        }
+      }
+    },
+    "unexposed_test_scans": {
+      "cohort_name": "Unexposed_Test_58scans",
+      "scan_count": 58,
+      "nodule_count": 70,
+      "proposals_evaluated": 232000,
+      "proposal_coverage": {
+        "covered_nodules": 47,
+        "total_nodules": 70,
+        "rate": 0.6714285714285714,
+        "bootstrap_95ci": {
+          "mean": 0.6718013231072832,
+          "std": 0.0576136694322944,
+          "ci_95": [
+            0.5538059701492538,
+            0.7837837837837838
+          ]
+        }
+      },
+      "operating_points": {
+        "natural_prevalence_cut": {
+          "threshold": 0.9999467134475708,
+          "true_positives": 39,
+          "nodule_sensitivity": 0.5571428571428572,
+          "total_false_positives": 154,
+          "fp_per_scan": 2.6551724137931036,
+          "bootstrap_95ci": {
+            "mean": 0.5576669501615846,
+            "std": 0.05800158058983358,
+            "ci_95": [
+              0.44285714285714284,
+              0.6714285714285714
+            ]
+          }
+        },
+        "half_cut": {
+          "threshold": 0.5,
+          "true_positives": 45,
+          "nodule_sensitivity": 0.6428571428571429,
+          "total_false_positives": 999,
+          "fp_per_scan": 17.224137931034484,
+          "bootstrap_95ci": {
+            "mean": 0.6430928615832617,
+            "std": 0.05783427114031773,
+            "ci_95": [
+              0.529390756302521,
+              0.7567567567567568
+            ]
+          }
+        }
+      },
+      "froc_cpm_fixed_5mm": {
+        "cpm": 0.427891156462585,
+        "grid_fp_rates": [
+          0.125,
+          0.25,
+          0.5,
+          1.0,
+          2.0,
+          4.0,
+          8.0
+        ],
+        "sensitivities": [
+          0.15238095238095237,
+          0.30952380952380953,
+          0.3761904761904762,
+          0.42857142857142855,
+          0.5142857142857142,
+          0.6,
+          0.6142857142857143
+        ],
+        "bootstrap_95ci": {
+          "mean": 0.27332162204069144,
+          "std": 0.02961784951870907,
+          "ci_95": [
+            0.21427914915966387,
+            0.3316528901480854
+          ]
+        }
+      }
+    },
+    "full_test_cohort": {
+      "cohort_name": "Full_Test_60scans",
+      "scan_count": 60,
+      "nodule_count": 73,
+      "proposals_evaluated": 240000,
+      "proposal_coverage": {
+        "covered_nodules": 48,
+        "total_nodules": 73,
+        "rate": 0.6575342465753424,
+        "bootstrap_95ci": {
+          "mean": 0.6607548885474656,
+          "std": 0.058862391499758124,
+          "ci_95": [
+            0.5466029411764706,
+            0.7746478873239436
+          ]
+        }
+      },
+      "operating_points": {
+        "natural_prevalence_cut": {
+          "threshold": 0.9999467134475708,
+          "true_positives": 40,
+          "nodule_sensitivity": 0.547945205479452,
+          "total_false_positives": 163,
+          "fp_per_scan": 2.716666666666667,
+          "bootstrap_95ci": {
+            "mean": 0.5471759367112127,
+            "std": 0.05784527037507287,
+            "ci_95": [
+              0.4347683066361556,
+              0.6578947368421053
+            ]
+          }
+        },
+        "half_cut": {
+          "threshold": 0.5,
+          "true_positives": 46,
+          "nodule_sensitivity": 0.6301369863013698,
+          "total_false_positives": 1080,
+          "fp_per_scan": 18.0,
+          "bootstrap_95ci": {
+            "mean": 0.6314137767809688,
+            "std": 0.05825258857212261,
+            "ci_95": [
+              0.5205342465753424,
+              0.7467499999999999
+            ]
+          }
+        }
+      },
+      "froc_cpm_fixed_5mm": {
+        "cpm": 0.41878669275929553,
+        "grid_fp_rates": [
+          0.125,
+          0.25,
+          0.5,
+          1.0,
+          2.0,
+          4.0,
+          8.0
+        ],
+        "sensitivities": [
+          0.1506849315068493,
+          0.3013698630136986,
+          0.3698630136986301,
+          0.410958904109589,
+          0.5068493150684932,
+          0.589041095890411,
+          0.6027397260273972
+        ],
+        "bootstrap_95ci": {
+          "mean": 0.26734098636252895,
+          "std": 0.029761353682039554,
+          "ci_95": [
+            0.2112441023964641,
+            0.3269451990421258
+          ]
+        }
+      }
+    }
+  },
+  "per_scan_diagnostics": {
+    "LUNGx-CT001": {
+      "patient_id": "LUNGx-CT001",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "135, 303",
+          "instance_number": 142,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        }
+      ]
+    },
+    "LUNGx-CT002": {
+      "patient_id": "LUNGx-CT002",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "330, 348",
+          "instance_number": 205,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        },
+        {
+          "nodule_index": 2,
+          "spreadsheet_pos_str": "364, 212",
+          "instance_number": 150,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 1.16,
+          "proposal_rank": 4,
+          "model_prob_calibrated": 0.99999595,
+          "model_prob_raw": 0.99221063,
+          "classifier_rank_in_scan": 1
+        }
+      ]
+    },
+    "LUNGx-CT003": {
+      "patient_id": "LUNGx-CT003",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "374, 374",
+          "instance_number": 146,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 4.0,
+          "proposal_rank": 105,
+          "model_prob_calibrated": 0.99999678,
+          "model_prob_raw": 0.99317271,
+          "classifier_rank_in_scan": 1
+        }
+      ]
+    },
+    "LUNGx-CT004": {
+      "patient_id": "LUNGx-CT004",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "197, 290",
+          "instance_number": 41,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 2.08,
+          "proposal_rank": 1470,
+          "model_prob_calibrated": 0.99999654,
+          "model_prob_raw": 0.99289095,
+          "classifier_rank_in_scan": 2
+        },
+        {
+          "nodule_index": 2,
+          "spreadsheet_pos_str": "328, 242",
+          "instance_number": 80,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        }
+      ]
+    },
+    "LUNGx-CT005": {
+      "patient_id": "LUNGx-CT005",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "333, 356",
+          "instance_number": 42,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 1.32,
+          "proposal_rank": 14,
+          "model_prob_calibrated": 0.9999969,
+          "model_prob_raw": 0.9932974,
+          "classifier_rank_in_scan": 1
+        },
+        {
+          "nodule_index": 2,
+          "spreadsheet_pos_str": "164, 420",
+          "instance_number": 138,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 1.32,
+          "proposal_rank": 678,
+          "model_prob_calibrated": 0.99997056,
+          "model_prob_raw": 0.9753983,
+          "classifier_rank_in_scan": 2
+        }
+      ]
+    },
+    "LUNGx-CT006": {
+      "patient_id": "LUNGx-CT006",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "381, 284",
+          "instance_number": 50,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        }
+      ]
+    },
+    "LUNGx-CT007": {
+      "patient_id": "LUNGx-CT007",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "170, 355",
+          "instance_number": 188,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        }
+      ]
+    },
+    "LUNGx-CT008": {
+      "patient_id": "LUNGx-CT008",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "172, 208",
+          "instance_number": 139,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 2.59,
+          "proposal_rank": 2228,
+          "model_prob_calibrated": 0.99996328,
+          "model_prob_raw": 0.97210824,
+          "classifier_rank_in_scan": 5
+        }
+      ]
+    },
+    "LUNGx-CT009": {
+      "patient_id": "LUNGx-CT009",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "175, 209",
+          "instance_number": 164,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 1.4,
+          "proposal_rank": 2,
+          "model_prob_calibrated": 0.99999666,
+          "model_prob_raw": 0.99307066,
+          "classifier_rank_in_scan": 1
+        }
+      ]
+    },
+    "LUNGx-CT010": {
+      "patient_id": "LUNGx-CT010",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "164, 163",
+          "instance_number": 139,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 1.89,
+          "proposal_rank": 85,
+          "model_prob_calibrated": 0.99999654,
+          "model_prob_raw": 0.99283981,
+          "classifier_rank_in_scan": 1
+        }
+      ]
+    },
+    "LUNGx-CT011": {
+      "patient_id": "LUNGx-CT011",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "179, 335",
+          "instance_number": 56,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        }
+      ]
+    },
+    "LUNGx-CT012": {
+      "patient_id": "LUNGx-CT012",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "131, 360",
+          "instance_number": 88,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 0.73,
+          "proposal_rank": 1508,
+          "model_prob_calibrated": 0.99977475,
+          "model_prob_raw": 0.92300445,
+          "classifier_rank_in_scan": 3
+        }
+      ]
+    },
+    "LUNGx-CT013": {
+      "patient_id": "LUNGx-CT013",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "373, 240",
+          "instance_number": 91,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 2.84,
+          "proposal_rank": 3729,
+          "model_prob_calibrated": 0.06219324,
+          "model_prob_raw": 0.01708668,
+          "classifier_rank_in_scan": 18
+        }
+      ]
+    },
+    "LUNGx-CT014": {
+      "patient_id": "LUNGx-CT014",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "163, 212",
+          "instance_number": 204,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        }
+      ]
+    },
+    "LUNGx-CT015": {
+      "patient_id": "LUNGx-CT015",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "353, 413",
+          "instance_number": 124,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 3.58,
+          "proposal_rank": 1589,
+          "model_prob_calibrated": 0.99998748,
+          "model_prob_raw": 0.98500478,
+          "classifier_rank_in_scan": 1
+        }
+      ]
+    },
+    "LUNGx-CT016": {
+      "patient_id": "LUNGx-CT016",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "344, 358",
+          "instance_number": 62,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 4.93,
+          "proposal_rank": 2254,
+          "model_prob_calibrated": 0.9999963,
+          "model_prob_raw": 0.99257761,
+          "classifier_rank_in_scan": 1
+        },
+        {
+          "nodule_index": 2,
+          "spreadsheet_pos_str": "204, 295",
+          "instance_number": 55,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 1.55,
+          "proposal_rank": 74,
+          "model_prob_calibrated": 0.99999571,
+          "model_prob_raw": 0.9919762,
+          "classifier_rank_in_scan": 2
+        }
+      ]
+    },
+    "LUNGx-CT017": {
+      "patient_id": "LUNGx-CT017",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "354, 355",
+          "instance_number": 178,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 0.95,
+          "proposal_rank": 2068,
+          "model_prob_calibrated": 0.99999523,
+          "model_prob_raw": 0.99144661,
+          "classifier_rank_in_scan": 1
+        },
+        {
+          "nodule_index": 2,
+          "spreadsheet_pos_str": "376, 283",
+          "instance_number": 153,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 0.91,
+          "proposal_rank": 736,
+          "model_prob_calibrated": 0.99978656,
+          "model_prob_raw": 0.92521918,
+          "classifier_rank_in_scan": 4
+        }
+      ]
+    },
+    "LUNGx-CT018": {
+      "patient_id": "LUNGx-CT018",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "116, 242",
+          "instance_number": 137,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        }
+      ]
+    },
+    "LUNGx-CT019": {
+      "patient_id": "LUNGx-CT019",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "128, 362",
+          "instance_number": 131,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        }
+      ]
+    },
+    "LUNGx-CT020": {
+      "patient_id": "LUNGx-CT020",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "379, 285",
+          "instance_number": 179,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        }
+      ]
+    },
+    "LUNGx-CT021": {
+      "patient_id": "LUNGx-CT021",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "296, 267",
+          "instance_number": 76,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        }
+      ]
+    },
+    "LUNGx-CT022": {
+      "patient_id": "LUNGx-CT022",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "159, 355",
+          "instance_number": 68,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        }
+      ]
+    },
+    "LUNGx-CT023": {
+      "patient_id": "LUNGx-CT023",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "332, 277",
+          "instance_number": 61,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 3.67,
+          "proposal_rank": 801,
+          "model_prob_calibrated": 0.99812895,
+          "model_prob_raw": 0.77514452,
+          "classifier_rank_in_scan": 4
+        }
+      ]
+    },
+    "LUNGx-CT024": {
+      "patient_id": "LUNGx-CT024",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "107, 284",
+          "instance_number": 197,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        }
+      ]
+    },
+    "LUNGx-CT025": {
+      "patient_id": "LUNGx-CT025",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "134, 300",
+          "instance_number": 214,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        }
+      ]
+    },
+    "LUNGx-CT026": {
+      "patient_id": "LUNGx-CT026",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "427, 316",
+          "instance_number": 138,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 3.57,
+          "proposal_rank": 3102,
+          "model_prob_calibrated": 0.69076914,
+          "model_prob_raw": 0.12095801,
+          "classifier_rank_in_scan": 8
+        }
+      ]
+    },
+    "LUNGx-CT027": {
+      "patient_id": "LUNGx-CT027",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "357, 250",
+          "instance_number": 97,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 1.32,
+          "proposal_rank": 2847,
+          "model_prob_calibrated": 0.99999619,
+          "model_prob_raw": 0.99252492,
+          "classifier_rank_in_scan": 1
+        }
+      ]
+    },
+    "LUNGx-CT028": {
+      "patient_id": "LUNGx-CT028",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "117, 312",
+          "instance_number": 135,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 1.7,
+          "proposal_rank": 1012,
+          "model_prob_calibrated": 0.99999702,
+          "model_prob_raw": 0.99350607,
+          "classifier_rank_in_scan": 1
+        }
+      ]
+    },
+    "LUNGx-CT029": {
+      "patient_id": "LUNGx-CT029",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "179, 369",
+          "instance_number": 73,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 4.54,
+          "proposal_rank": 3113,
+          "model_prob_calibrated": 0.99988711,
+          "model_prob_raw": 0.9473747,
+          "classifier_rank_in_scan": 3
+        },
+        {
+          "nodule_index": 2,
+          "spreadsheet_pos_str": "353, 277",
+          "instance_number": 79,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 1.94,
+          "proposal_rank": 2998,
+          "model_prob_calibrated": 0.99997735,
+          "model_prob_raw": 0.97888994,
+          "classifier_rank_in_scan": 2
+        }
+      ]
+    },
+    "LUNGx-CT030": {
+      "patient_id": "LUNGx-CT030",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "118, 310",
+          "instance_number": 104,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 1.38,
+          "proposal_rank": 46,
+          "model_prob_calibrated": 0.99999666,
+          "model_prob_raw": 0.99311358,
+          "classifier_rank_in_scan": 1
+        }
+      ]
+    },
+    "LUNGx-CT031": {
+      "patient_id": "LUNGx-CT031",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "130, 230",
+          "instance_number": 70,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 3.42,
+          "proposal_rank": 2803,
+          "model_prob_calibrated": 0.99998915,
+          "model_prob_raw": 0.98615545,
+          "classifier_rank_in_scan": 1
+        }
+      ]
+    },
+    "LUNGx-CT032": {
+      "patient_id": "LUNGx-CT032",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "392, 341",
+          "instance_number": 239,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        }
+      ]
+    },
+    "LUNGx-CT033": {
+      "patient_id": "LUNGx-CT033",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "188, 312",
+          "instance_number": 113,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 1.96,
+          "proposal_rank": 2686,
+          "model_prob_calibrated": 0.82820463,
+          "model_prob_raw": 0.17786261,
+          "classifier_rank_in_scan": 9
+        }
+      ]
+    },
+    "LUNGx-CT034": {
+      "patient_id": "LUNGx-CT034",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "128, 274",
+          "instance_number": 150,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        }
+      ]
+    },
+    "LUNGx-CT035": {
+      "patient_id": "LUNGx-CT035",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "154, 355",
+          "instance_number": 268,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        },
+        {
+          "nodule_index": 2,
+          "spreadsheet_pos_str": "454, 300",
+          "instance_number": 215,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 1.22,
+          "proposal_rank": 733,
+          "model_prob_calibrated": 0.99999654,
+          "model_prob_raw": 0.99296498,
+          "classifier_rank_in_scan": 1
+        }
+      ]
+    },
+    "LUNGx-CT036": {
+      "patient_id": "LUNGx-CT036",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "150, 392",
+          "instance_number": 220,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 1.48,
+          "proposal_rank": 716,
+          "model_prob_calibrated": 0.99999607,
+          "model_prob_raw": 0.99239701,
+          "classifier_rank_in_scan": 1
+        }
+      ]
+    },
+    "LUNGx-CT037": {
+      "patient_id": "LUNGx-CT037",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "374, 315",
+          "instance_number": 62,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        }
+      ]
+    },
+    "LUNGx-CT038": {
+      "patient_id": "LUNGx-CT038",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "184, 249",
+          "instance_number": 197,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 1.1,
+          "proposal_rank": 3082,
+          "model_prob_calibrated": 0.99999642,
+          "model_prob_raw": 0.99276227,
+          "classifier_rank_in_scan": 1
+        }
+      ]
+    },
+    "LUNGx-CT039": {
+      "patient_id": "LUNGx-CT039",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "149, 380",
+          "instance_number": 242,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 4.5,
+          "proposal_rank": 3881,
+          "model_prob_calibrated": 0.99999535,
+          "model_prob_raw": 0.99158341,
+          "classifier_rank_in_scan": 1
+        }
+      ]
+    },
+    "LUNGx-CT040": {
+      "patient_id": "LUNGx-CT040",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "336, 353",
+          "instance_number": 189,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        }
+      ]
+    },
+    "LUNGx-CT041": {
+      "patient_id": "LUNGx-CT041",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "107, 292",
+          "instance_number": 172,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 1.43,
+          "proposal_rank": 109,
+          "model_prob_calibrated": 0.99999726,
+          "model_prob_raw": 0.99383885,
+          "classifier_rank_in_scan": 1
+        }
+      ]
+    },
+    "LUNGx-CT042": {
+      "patient_id": "LUNGx-CT042",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "326, 391",
+          "instance_number": 178,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 1.06,
+          "proposal_rank": 1131,
+          "model_prob_calibrated": 0.99999642,
+          "model_prob_raw": 0.99273843,
+          "classifier_rank_in_scan": 1
+        }
+      ]
+    },
+    "LUNGx-CT043": {
+      "patient_id": "LUNGx-CT043",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "394, 162",
+          "instance_number": 177,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 1.61,
+          "proposal_rank": 5,
+          "model_prob_calibrated": 0.99999726,
+          "model_prob_raw": 0.99377811,
+          "classifier_rank_in_scan": 1
+        },
+        {
+          "nodule_index": 2,
+          "spreadsheet_pos_str": "440, 289",
+          "instance_number": 230,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 0.82,
+          "proposal_rank": 27,
+          "model_prob_calibrated": 0.99999559,
+          "model_prob_raw": 0.99183261,
+          "classifier_rank_in_scan": 3
+        }
+      ]
+    },
+    "LUNGx-CT044": {
+      "patient_id": "LUNGx-CT044",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "136, 298",
+          "instance_number": 90,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 1.63,
+          "proposal_rank": 3202,
+          "model_prob_calibrated": 0.99999666,
+          "model_prob_raw": 0.99302483,
+          "classifier_rank_in_scan": 2
+        }
+      ]
+    },
+    "LUNGx-CT045": {
+      "patient_id": "LUNGx-CT045",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "314, 216",
+          "instance_number": 148,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        }
+      ]
+    },
+    "LUNGx-CT046": {
+      "patient_id": "LUNGx-CT046",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "309, 211",
+          "instance_number": 61,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 4.62,
+          "proposal_rank": 3577,
+          "model_prob_calibrated": 0.99997866,
+          "model_prob_raw": 0.9795751,
+          "classifier_rank_in_scan": 5
+        }
+      ]
+    },
+    "LUNGx-CT047": {
+      "patient_id": "LUNGx-CT047",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "199, 306",
+          "instance_number": 53,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 2.47,
+          "proposal_rank": 1415,
+          "model_prob_calibrated": 0.99999201,
+          "model_prob_raw": 0.98845845,
+          "classifier_rank_in_scan": 1
+        },
+        {
+          "nodule_index": 2,
+          "spreadsheet_pos_str": "236, 276",
+          "instance_number": 67,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 2.52,
+          "proposal_rank": 1869,
+          "model_prob_calibrated": 0.99996901,
+          "model_prob_raw": 0.97466063,
+          "classifier_rank_in_scan": 5
+        }
+      ]
+    },
+    "LUNGx-CT048": {
+      "patient_id": "LUNGx-CT048",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "368, 312",
+          "instance_number": 115,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        }
+      ]
+    },
+    "LUNGx-CT049": {
+      "patient_id": "LUNGx-CT049",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "398, 296",
+          "instance_number": 71,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 1.12,
+          "proposal_rank": 2990,
+          "model_prob_calibrated": 0.99999642,
+          "model_prob_raw": 0.99274266,
+          "classifier_rank_in_scan": 1
+        }
+      ]
+    },
+    "LUNGx-CT050": {
+      "patient_id": "LUNGx-CT050",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "385, 316",
+          "instance_number": 41,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 1.74,
+          "proposal_rank": 246,
+          "model_prob_calibrated": 0.99999666,
+          "model_prob_raw": 0.99304235,
+          "classifier_rank_in_scan": 1
+        }
+      ]
+    },
+    "LUNGx-CT051": {
+      "patient_id": "LUNGx-CT051",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "303, 297",
+          "instance_number": 77,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        }
+      ]
+    },
+    "LUNGx-CT052": {
+      "patient_id": "LUNGx-CT052",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "135, 202",
+          "instance_number": 124,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 4.63,
+          "proposal_rank": 328,
+          "model_prob_calibrated": 0.99999714,
+          "model_prob_raw": 0.99370402,
+          "classifier_rank_in_scan": 1
+        },
+        {
+          "nodule_index": 2,
+          "spreadsheet_pos_str": "342, 341",
+          "instance_number": 50,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 2.68,
+          "proposal_rank": 3583,
+          "model_prob_calibrated": 0.999982,
+          "model_prob_raw": 0.98147649,
+          "classifier_rank_in_scan": 7
+        }
+      ]
+    },
+    "LUNGx-CT053": {
+      "patient_id": "LUNGx-CT053",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "195, 303",
+          "instance_number": 213,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 3.68,
+          "proposal_rank": 1380,
+          "model_prob_calibrated": 0.99999714,
+          "model_prob_raw": 0.99358433,
+          "classifier_rank_in_scan": 1
+        }
+      ]
+    },
+    "LUNGx-CT054": {
+      "patient_id": "LUNGx-CT054",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "196, 336",
+          "instance_number": 180,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 3.49,
+          "proposal_rank": 3454,
+          "model_prob_calibrated": 0.37300685,
+          "model_prob_raw": 0.05943163,
+          "classifier_rank_in_scan": 30
+        },
+        {
+          "nodule_index": 2,
+          "spreadsheet_pos_str": "174, 208",
+          "instance_number": 149,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 1.17,
+          "proposal_rank": 173,
+          "model_prob_calibrated": 0.99999654,
+          "model_prob_raw": 0.99290413,
+          "classifier_rank_in_scan": 1
+        }
+      ]
+    },
+    "LUNGx-CT055": {
+      "patient_id": "LUNGx-CT055",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "223, 193",
+          "instance_number": 125,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 3.86,
+          "proposal_rank": 1893,
+          "model_prob_calibrated": 0.99999416,
+          "model_prob_raw": 0.9903971,
+          "classifier_rank_in_scan": 2
+        }
+      ]
+    },
+    "LUNGx-CT056": {
+      "patient_id": "LUNGx-CT056",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "209, 308",
+          "instance_number": 56,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        },
+        {
+          "nodule_index": 2,
+          "spreadsheet_pos_str": "374, 218",
+          "instance_number": 98,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 2.12,
+          "proposal_rank": 1008,
+          "model_prob_calibrated": 0.99999702,
+          "model_prob_raw": 0.9935481,
+          "classifier_rank_in_scan": 2
+        }
+      ]
+    },
+    "LUNGx-CT057": {
+      "patient_id": "LUNGx-CT057",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "396, 353",
+          "instance_number": 169,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 1.74,
+          "proposal_rank": 340,
+          "model_prob_calibrated": 0.99999738,
+          "model_prob_raw": 0.9938823,
+          "classifier_rank_in_scan": 1
+        }
+      ]
+    },
+    "LUNGx-CT058": {
+      "patient_id": "LUNGx-CT058",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "377, 234",
+          "instance_number": 157,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 2.67,
+          "proposal_rank": 1009,
+          "model_prob_calibrated": 0.99999166,
+          "model_prob_raw": 0.98816001,
+          "classifier_rank_in_scan": 1
+        }
+      ]
+    },
+    "LUNGx-CT059": {
+      "patient_id": "LUNGx-CT059",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "75, 288",
+          "instance_number": 235,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        },
+        {
+          "nodule_index": 2,
+          "spreadsheet_pos_str": "371, 207",
+          "instance_number": 258,
+          "detected_within_5mm_cap4000": false,
+          "min_candidate_distance_mm": null,
+          "proposal_rank": null,
+          "model_prob_calibrated": null,
+          "model_prob_raw": null,
+          "classifier_rank_in_scan": null
+        }
+      ]
+    },
+    "LUNGx-CT060": {
+      "patient_id": "LUNGx-CT060",
+      "proposals_generated": 4000,
+      "targets": [
+        {
+          "nodule_index": 1,
+          "spreadsheet_pos_str": "192, 298",
+          "instance_number": 133,
+          "detected_within_5mm_cap4000": true,
+          "min_candidate_distance_mm": 4.06,
+          "proposal_rank": 3311,
+          "model_prob_calibrated": 0.9999963,
+          "model_prob_raw": 0.9925614,
+          "classifier_rank_in_scan": 3
+        }
+      ]
+    }
+  },
+  "governance": {
+    "reference_release": "HOLD",
+    "confirmation_cohort": "83 patients strictly restricted / untouched",
+    "internal_test_fold0": "Untouched / zero retraining",
+    "manuscript_writing": "DEFERRED"
+  }
+}

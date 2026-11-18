@@ -1,0 +1,70 @@
+{
+  "utc": "2026-10-13T17:15:18.565990+00:00",
+  "CLEAR3D-diagnostic-execution-20261014-0aa068/adoption-record.json": {
+    "bounded_technical_acceptance_zip_sha256": "69ebbab6a43763726fba461d0d69f53d4c0d7b82877f0f91fa792c9e79f0339e",
+    "draft_sha256": "1c8e07698819bf1c1a4b3f7340119b7ba5a3bfea0d6ff0aa33c9d712606bbc48",
+    "path": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-training-review-20261013-6e91ab/ADOPTED-training-disposition.json",
+    "sha256": "efdca7e14aef4835cef59bf2314629fbcc2f0d2d7a923659be5ab026962c1961"
+  },
+  "CLEAR3D-diagnostic-execution-20261014-0aa068/shell-18-identity.json": {
+    "pid": 1034725,
+    "rss_bytes": 4096,
+    "start_ticks": 1247375842
+  },
+  "CLEAR3D-diagnostic-execution-20261014-0aa068/preflight-18.json": {
+    "disk": 13125780746240,
+    "gpu": {
+      "driver": "535.230.02",
+      "free_bytes": 10959716352,
+      "model": "NVIDIA GeForce RTX 2080 Ti",
+      "processes": [
+        {
+          "gpu_bytes": 253755392,
+          "pid": 3340885
+        },
+        {
+          "gpu_bytes": 322961408,
+          "pid": 3477966
+        }
+      ],
+      "total_bytes": 11811160064,
+      "uuid": "GPU-ca0a8f46-9b8e-e098-a97b-e0420b412e90"
+    },
+    "imports": {
+      "contract": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-training-review-20261013-6e91ab/work/src/lidc3d/diagnostic_training.py",
+      "controller": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-training-review-20261013-6e91ab/work/scripts/diagnostic_training_watchdog.py"
+    },
+    "pins": 44,
+    "ram": 98899603456,
+    "request": {
+      "acknowledge_sampled_risk": true,
+      "acknowledge_shared_gpu_permission": true,
+      "binding": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-training-review-20261013-6e91ab/training-binding.json",
+      "binding_sha256": "adb44927810502300f8931421ab867c27054b4c081d0f2061b55127349047310",
+      "depth": 18,
+      "disposition": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-training-review-20261013-6e91ab/ADOPTED-training-disposition.json",
+      "disposition_sha256": "efdca7e14aef4835cef59bf2314629fbcc2f0d2d7a923659be5ab026962c1961",
+      "mode": "research",
+      "out": "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-training-review-20261013-6e91ab/runs/diagnostic-epochs18-001"
+    },
+    "server_utc": "2026-10-13T17:14:42.561764+00:00",
+    "source_files": 133,
+    "status": "PASS"
+  },
+  "CLEAR3D-diagnostic-execution-20261014-0aa068/invocation-18.json": {
+    "argv": [
+      "bash",
+      "/experiment-storage/chaidir/fawad-dsai/CLEAR3D-diagnostic-training-review-20261013-6e91ab/proposed-resnet18.sh",
+      "efdca7e14aef4835cef59bf2314629fbcc2f0d2d7a923659be5ab026962c1961"
+    ],
+    "server_utc": "2026-10-13T17:14:42.613909+00:00"
+  },
+  "CLEAR3D-diagnostic-training-review-20261013-6e91ab/runs/diagnostic-epochs18-001/research/phase.json": {
+    "name": "training"
+  },
+  "CLEAR3D-diagnostic-training-review-20261013-6e91ab/runs/diagnostic-epochs18-001/research/epoch-phase.json": {
+    "epoch": 0,
+    "monotonic": 12473789.363650788,
+    "phase": "training"
+  }
+}

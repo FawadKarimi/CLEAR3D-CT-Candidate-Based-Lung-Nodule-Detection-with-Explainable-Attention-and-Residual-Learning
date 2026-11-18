@@ -1,0 +1,168 @@
+{
+  "package_name": "clear3d_definitive_evidence_package_20261109.zip",
+  "status": "DEFINITIVE_MANUSCRIPT_EVIDENCE_PACKAGE",
+  "timestamp": "2026-11-09T12:26:00Z",
+  "reproduction_command": "python3 reproduce_entire_evidence_package.py",
+  "governance": {
+    "reference_release": "HOLD",
+    "confirmation_cohort_83pts": "RESTRICTED_UNTOUCHED",
+    "internal_test_fold0": "FROZEN_NO_TUNING",
+    "medicalnet_baseline_cpm_claim": "RETRACTED_UNCONTROLLED_MULTIFACTOR",
+    "manuscript_writing": "DEFERRED"
+  },
+  "key_results_summary": {
+    "internal_test_fold0": {
+      "cohort": "LUNA16 Subset 0 (89 scans, 138 nodules, 79,135 candidates)",
+      "froc_cpm": 0.9043,
+      "froc_cpm_95ci": [
+        0.8452,
+        0.9533
+      ],
+      "sens_nat_cut": 0.8551,
+      "precision_nat_cut": 0.5566,
+      "specificity_nat_cut": 0.9988
+    },
+    "external_independent_test": {
+      "cohort": "SPIE-AAPM LUNGx (58 unexposed scans, 70 nodules, 232,000 candidates)",
+      "candidate_cap": 4000,
+      "matching_rule": "Fixed 5.0 mm Euclidean radius",
+      "proposal_coverage": 0.6714,
+      "proposal_coverage_95ci": [
+        0.5538,
+        0.7838
+      ],
+      "rule_A_closest_cpm": 0.4279,
+      "rule_A_closest_cpm_95ci": [
+        0.3469,
+        0.5193
+      ],
+      "rule_B_highest_scoring_cpm": 0.434,
+      "rule_B_highest_scoring_cpm_95ci": [
+        0.3531,
+        0.5216
+      ],
+      "sens_nat_cut": 0.5571,
+      "fp_per_scan_nat_cut": 2.655,
+      "sens_half_cut_ruleB": 0.6714,
+      "covered_nodule_retrieval_at_half_cut": 1.0,
+      "fp_per_scan_half_cut": 17.224
+    }
+  },
+  "files": {
+    "primary_reference_system_binding.json": {
+      "sha256": "cc9dbf3a4f4750263bdbc6bf0a3dff86c8b4e00b050cc5a04c5550966b6ea1b1",
+      "size_bytes": 3760
+    },
+    "clear3d_msf_model_20261106_002.py": {
+      "sha256": "e83899960b095eab9f92fe104f13e3380c9c5bc48e6ebc82b173003a520914e7",
+      "size_bytes": 8354
+    },
+    "train_clear3d_msf_ensemble_20261106_004.py": {
+      "sha256": "b479ea29341791b8457b39f4241832bf7fe2cfd5320d513e27a69202a05769e8",
+      "size_bytes": 44831
+    },
+    "cohort_exposure_reconciliation.json": {
+      "sha256": "c216019b91131fda5368dd04146fd6388e3e252f73976d9d277d9ae0e20f0f7d",
+      "size_bytes": 4881
+    },
+    "published_benchmarks_comparison.json": {
+      "sha256": "25032ca87bc164710112c66b966cdd9a6705efca2ebadda7c32b05dab0c70da2",
+      "size_bytes": 5040
+    },
+    "reconcile_audit_and_exposure_20261107.json": {
+      "sha256": "96879b9a730ab208c0a95b1847154319f0f772ce5ddb5562c3804ae7a291fa86",
+      "size_bytes": 15368
+    },
+    "internal_test_report_fold0.json": {
+      "sha256": "8086e9c771f4d9255af9f747c189dad7871677f3dd58a074a96e23e72b57762c",
+      "size_bytes": 3878
+    },
+    "internal_patient_clustered_bootstrap_ci.json": {
+      "sha256": "eacf850d1e2838f11d267ab8b47f69075677808c694c0f80d55f59c25b53a1e1",
+      "size_bytes": 955
+    },
+    "internal_reproduce_metrics.py": {
+      "sha256": "43a729afa35e50c764a23e6cc572bcaa6eb634433f9032e191e03a524f91221a",
+      "size_bytes": 3680
+    },
+    "frozen_evaluation_protocol_cap4000.json": {
+      "sha256": "32c9a44783794d4955902d2eceb6ccedca2aa7fe8e0980acdb5219850a117f25",
+      "size_bytes": 4712
+    },
+    "test_ground_truth.json": {
+      "sha256": "cd60610a5b06483add740d9b7aa909f8f726f2151c6a59dce491b2c8f78f3bad",
+      "size_bytes": 15223
+    },
+    "portable_target_geometry.csv": {
+      "sha256": "03b05b92862d4b3a5d6a67f218ab0579f56a2581b14870c2f7775ec2c3d29712",
+      "size_bytes": 10290
+    },
+    "portable_target_geometry.json": {
+      "sha256": "93c2dc3f06b48806406b5012b75506ee0736357d7702fd4df85c71be6c74621a",
+      "size_bytes": 48544
+    },
+    "test_cohort_cap4000_corrected_evaluation_summary.json": {
+      "sha256": "60cf509912eeee456902f73609f033dc24273e2c01089d6e4babc97cb70921f2",
+      "size_bytes": 14445
+    },
+    "test_cohort_cap4000_evaluation_summary_original_preserved.json": {
+      "sha256": "711d80d6e53f66e21fecebbaa01868913fd80d49e01baf8873b404c2874ee658",
+      "size_bytes": 42154
+    },
+    "froc_test_cohort_cap4000_corrected.png": {
+      "sha256": "9c71719ea591e785ea71b5fde55d278f1d6be64201f00d4e4caea63cee1b426c",
+      "size_bytes": 488881
+    },
+    "froc_test_cohort_cap4000_original.png": {
+      "sha256": "ee40d2c8863ca01a197b391ccb81e27addacdf7092492f30a7b8de782490104f",
+      "size_bytes": 337228
+    },
+    "environment_details.json": {
+      "sha256": "03390b63f61d8a2778d276ec64db04d76cd39aa323dfef2e99204c2687506b37",
+      "size_bytes": 908
+    },
+    "eval_cap4000.log": {
+      "sha256": "49e947f4b924335c687d097188ffacff9ae6a2780f09df2239f3b8f048c5ab9d",
+      "size_bytes": 12267
+    },
+    "reproduce_entire_evidence_package.py": {
+      "sha256": "42eae2fc0d23ff8da78363ead4e77e600b5adf45e452f09c9dbe47df474dcb8e",
+      "size_bytes": 4239
+    },
+    "test_patient_clustered_bootstrap_fix.py": {
+      "sha256": "cbfcbc182e766789c9465e5a82767774701decb66a96ddb80b38fdaf8f4d3d9b",
+      "size_bytes": 5151
+    },
+    "test_froc_unsubsampled_validation.py": {
+      "sha256": "791c26ba1cb36d54a8c9d1403a13f73afdfacb7be5d79156435abb7a6d5f1820",
+      "size_bytes": 7954
+    },
+    "audit_dicom_geometry.py": {
+      "sha256": "10aa6a8b3ea0477e5dc0f26b4c4590f4e13059da96d909a08dd25ce65dcd8a6a",
+      "size_bytes": 3140
+    },
+    "audit_slice_ordering.py": {
+      "sha256": "f5d4dccabbdfb57f28a227f9959a590ac1d1ccb26866a35ebbc7fecd2b24f6ca",
+      "size_bytes": 1967
+    },
+    "compare_matching_rules.py": {
+      "sha256": "aee5eab98fc89ad24db01238e4255a68b7ed1f801950f0b39d4e99901e9189c6",
+      "size_bytes": 6930
+    },
+    "recompute_and_compare_all_metrics.py": {
+      "sha256": "f9019db53b444af2be7dfeadf3cac3c4498b4629d8de3f788dc0238642ea10ec",
+      "size_bytes": 13597
+    },
+    "export_deidentified_geometry_table.py": {
+      "sha256": "105144546c1e627c232605b7241b8b15be95be62827f0a84ea1325e486175039",
+      "size_bytes": 3603
+    },
+    "generate_corrected_froc_plots.py": {
+      "sha256": "5e69f500bae1ab1c5ce5ef34578cea2667f05dce41720d3b120be7c33d5e976a",
+      "size_bytes": 2649
+    }
+  },
+  "package_sha256": "0f476ae4ab2f328db0813dbb6ad93dc99702eec3d6a4b16aa9c2b7fdfe9641c7",
+  "package_size_bytes": 762972,
+  "total_files": 28
+}

@@ -1,0 +1,7 @@
+{
+  "CLEAR3D-diagnostic-training-review-20261013-6e91ab/runs/diagnostic-epochs18-001/research/epoch-phase.json": {
+    "epoch": 0,
+    "monotonic": 12473789.363650788,
+    "phase": "training"
+  }
+}
